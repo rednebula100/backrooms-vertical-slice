@@ -2,9 +2,10 @@
   "scene_id": "L0-0003B",
   "source_scene_id": "L0-0002B",
   "source_path_id": "L0-0002B-P1",
-  "reference_image_role": "The corrected L0-0002B asset is the architectural and photographic continuity reference",
-  "continuity_assessment": "The camera advances beneath the soffit transition and past an offset. A rounded wall continues on the left, staggered piers constrain the right, and the carpet channel remains narrow and dimmer than the A branch.",
-  "known_drift": "The source soffit has resolved into the ordinary acoustic grid, as expected after the short direct movement.",
+  "reference_image_role": "L0-0002B is the direct source reference and L0-0004B is the fixed downstream continuity reference",
+  "generation_output": "exec-cea7b0bb-9d64-442a-9d82-bfea4d970931.png",
+  "continuity_assessment": "The camera clearly passes the near pier from L0-0002B and completes a rightward bend into a staggered pocket. A close left wall mass, central offset, curved right boundary and one narrow right-center opening prepare the alternating wall rhythm in L0-0004B.",
+  "known_drift": "The bend is more visually explicit than the replaced asset, intentionally preventing the direct-adjacent pair from reading as duplicate crops while preserving the compressed B-branch grammar.",
   "active_path_id": "L0-0003B-P1",
   "target_scene_id": "L0-0004B",
   "status": "provisional"

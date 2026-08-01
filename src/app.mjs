@@ -85,7 +85,7 @@ function setDebugEnabled(enabled) {
 }
 
 function configureDevelopmentTools(params) {
-  developmentToolsAvailable = isDevelopmentHost() || params.get("dev") === "1";
+  developmentToolsAvailable = params.get("dev") === "1";
   debugToggle.hidden = !developmentToolsAvailable;
   if (!developmentToolsAvailable) return;
   setDebugEnabled(sessionStorage.getItem("backrooms.mask-debug") === "true");
@@ -98,10 +98,6 @@ function renderImage(source, asset) {
 }
 
 function activatePath(path) {
-  if (debugEnabled) {
-    updateDebugReadout(path.id);
-    return;
-  }
   if (path.kind === "boundary-symbol") {
     localStorage.removeItem(SAVE_KEY);
     renderEpilogue();

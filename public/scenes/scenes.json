@@ -1,5 +1,5 @@
 {
-  "worldVersion": "vertical-slice-0.3.0",
+  "worldVersion": "vertical-slice-0.4.0",
   "startSceneId": "L0-0001",
   "contentBoundary": {
     "symbolImage": "/boundary/content-boundary-symbol.png",
@@ -44,8 +44,8 @@
           "targetCamera": "immediately after the left bend, facing west",
           "continuityAnchors": ["curved left wall", "central wall becomes near right wall", "carpet direction", "ceiling-grid direction", "receding fluorescent line", "dark vinyl base trim"],
           "regions": {
-            "desktop": [[225, 365], [530, 350], [595, 660], [500, 785], [270, 825], [200, 655]],
-            "mobile": [[180, 330], [575, 315], [635, 695], [530, 855], [220, 880], [145, 640]]
+            "desktop": [[260, 390], [525, 390], [525, 540], [590, 570], [590, 700], [260, 700]],
+            "mobile": [[220, 360], [570, 360], [630, 540], [630, 735], [220, 735]]
           }
         },
         {
@@ -61,8 +61,8 @@
           "targetCamera": "a few meters inside the passage, facing east-northeast",
           "continuityAnchors": ["lowered soffit", "rounded inner wall on left", "straight outer wall on right", "same carpet", "slightly dimmer fluorescent light", "dark vinyl base trim"],
           "regions": {
-            "desktop": [[1020, 325], [1235, 325], [1260, 680], [1155, 800], [995, 720], [995, 425]],
-            "mobile": [[970, 290], [1295, 285], [1320, 725], [1160, 855], [940, 760], [940, 390]]
+            "desktop": [[1115, 345], [1245, 345], [1245, 700], [1090, 700], [1090, 500]],
+            "mobile": [[1040, 320], [1300, 320], [1300, 750], [1020, 750], [1020, 460]]
           }
         }
       ]
@@ -98,8 +98,8 @@
           "targetCamera": "a few meters beyond the offset, still following the leftward flow",
           "continuityAnchors": ["curved left wall", "right offset wall", "fluorescent center line", "same carpet and trim"],
           "regions": {
-            "desktop": [[690, 545], [850, 545], [890, 710], [650, 735]],
-            "mobile": [[635, 500], [915, 500], [960, 775], [585, 800]]
+            "desktop": [[705, 380], [885, 380], [885, 650], [705, 650]],
+            "mobile": [[640, 350], [950, 350], [950, 700], [640, 700]]
           }
         }
       ]
@@ -126,17 +126,17 @@
           "id": "L0-0002B-P1",
           "status": "active",
           "accessibleName": "Continue past the offset wall",
-          "semanticDescription": "Narrow carpeted corridor continuing beneath the soffit and past the offset wall",
+          "semanticDescription": "Narrow passage continuing beneath the soffit, past the offset wall, and into a staggered rightward pocket",
           "screenLocation": "center, medium depth",
           "physicalForm": "compressed passage between a rounded left wall and a right offset",
           "movementDirection": "forward then slightly right",
           "movementType": "DIRECT",
           "targetSceneId": "L0-0003B",
-          "targetCamera": "past the first offset while the corridor remains narrow",
+          "targetCamera": "past the first offset after a clearer rightward bend into a staggered pocket",
           "continuityAnchors": ["rounded left wall", "straight right wall", "lowered soffit transition", "compressed carpet channel"],
           "regions": {
-            "desktop": [[645, 575], [845, 575], [900, 760], [585, 780]],
-            "mobile": [[590, 525], [910, 525], [965, 825], [525, 840]]
+            "desktop": [[650, 340], [840, 340], [840, 655], [650, 655]],
+            "mobile": [[590, 320], [900, 320], [900, 700], [590, 700]]
           }
         }
       ]
@@ -172,8 +172,8 @@
           "targetCamera": "beyond the broad offset, facing into the next shallow bay",
           "continuityAnchors": ["curved outer wall", "broad offset on right", "same ceiling-grid direction", "brighter fluorescent run"],
           "regions": {
-            "desktop": [[545, 470], [720, 470], [740, 625], [530, 665]],
-            "mobile": [[485, 425], [780, 425], [805, 700], [465, 735]]
+            "desktop": [[545, 330], [720, 330], [720, 555], [545, 555]],
+            "mobile": [[485, 300], [780, 300], [780, 610], [485, 610]]
           }
         }
       ]
@@ -210,8 +210,8 @@
           "targetCamera": null,
           "continuityAnchors": ["broad central wall", "right-side carpet channel", "near framing walls", "receding fluorescent run"],
           "regions": {
-            "desktop": [[805, 525], [960, 525], [975, 690], [790, 715]],
-            "mobile": [[745, 475], [1020, 475], [1040, 765], [730, 790]]
+            "desktop": [[820, 360], [955, 360], [955, 635], [820, 635]],
+            "mobile": [[745, 330], [1030, 330], [1030, 685], [745, 685]]
           }
         }
       ]
@@ -223,12 +223,12 @@
       "status": "provisional",
       "approvalStatus": "provisional-generated",
       "reviewStatus": "needs-canon-review",
-      "accessibleName": "a narrow corridor beyond the first right offset",
-      "description": "The B route advances through a compressed carpet channel between a rounded wall and offset piers.",
+      "accessibleName": "a staggered narrow pocket beyond the first right offset",
+      "description": "The B route has passed its first pier and turned into a compressed pocket framed by a left wall mass and curved right boundary.",
       "sourceSceneId": "L0-0002B",
       "sourcePathId": "L0-0002B-P1",
-      "continuityAnchors": ["rounded left wall", "right offset piers", "narrow carpet channel", "dimmer fluorescent run"],
-      "recentChanges": ["Generated as the first fixed continuation in the B branch."],
+      "continuityAnchors": ["left foreground wall mass", "central offset", "curved right wall", "narrow right-center opening", "dimmer fluorescent run"],
+      "recentChanges": ["Replaced the first continuation because it repeated L0-0002B too closely; the camera now passes the pier and completes a legible rightward bend."],
       "image": "/scenes/L0-0003B/final/L0-0003B.png",
       "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
       "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east" },
@@ -238,17 +238,17 @@
           "id": "L0-0003B-P1",
           "status": "active",
           "accessibleName": "Continue through the narrow carpet channel",
-          "semanticDescription": "A single forward route passing the offset pier before a gentle right bend",
-          "screenLocation": "center, medium depth",
-          "physicalForm": "narrow corridor between a rounded outer wall and staggered piers",
+          "semanticDescription": "A single narrow opening between the central offset and curved right wall",
+          "screenLocation": "right-center, medium depth",
+          "physicalForm": "vertical passage gap beyond a staggered circulation pocket",
           "movementDirection": "forward then slightly right",
           "movementType": "DIRECT",
           "targetSceneId": "L0-0004B",
-          "targetCamera": "past the offset pier at the next gentle bend",
-          "continuityAnchors": ["rounded outer wall", "staggered pier", "compressed width", "dimmer fluorescent run"],
+          "targetCamera": "through the narrow right-center opening toward the next alternating wall mass",
+          "continuityAnchors": ["left wall mass", "central offset", "curved right boundary", "compressed width", "dimmer fluorescent run"],
           "regions": {
-            "desktop": [[570, 550], [850, 550], [885, 720], [520, 750]],
-            "mobile": [[515, 500], [910, 500], [950, 790], [460, 820]]
+            "desktop": [[940, 285], [1020, 285], [1020, 660], [940, 660]],
+            "mobile": [[870, 240], [1090, 240], [1090, 710], [870, 710]]
           }
         }
       ]
@@ -285,8 +285,8 @@
           "targetCamera": null,
           "continuityAnchors": ["left offset wall", "curved right wall", "single carpet channel", "muted fluorescent run"],
           "regions": {
-            "desktop": [[750, 500], [940, 500], [965, 690], [700, 720]],
-            "mobile": [[690, 450], [1000, 450], [1030, 755], [645, 785]]
+            "desktop": [[770, 270], [935, 270], [935, 580], [770, 580]],
+            "mobile": [[700, 240], [1005, 240], [1005, 630], [700, 630]]
           }
         }
       ]

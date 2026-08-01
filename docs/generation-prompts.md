@@ -165,6 +165,41 @@ Move a few meters through the narrow channel, passing the offset pier and follow
 Technical correction only: preserve the generated scene, composition, camera, geometry, lighting, textures, and single route while returning an exact landscape 4:3 raster. Add or remove no content.
 ```
 
+## 0.4.0 B-branch and transparent-boundary revisions
+
+Both revisions used the built-in `$imagegen` workflow. The playable scene was generated directly from its two adjacent B-branch references. The symbol used a chroma-key edit followed by the skill-provided local alpha-removal script; the resulting project asset is an RGBA PNG.
+
+### L0-0003B replacement
+
+Direct source reference: `L0-0002B.png`. Downstream continuity reference: `L0-0004B.png`. Output and final saved asset: `exec-cea7b0bb-9d64-442a-9d82-bfea4d970931.png`, 1448×1086.
+
+```text
+Use case: photorealistic-natural
+Asset type: replacement playable follow-up scene L0-0003B
+Input images: Image 1 is the direct source scene L0-0002B after entering the compressed B passage. Image 2 is the fixed downstream scene L0-0004B and is only a continuity destination reference, not an edit target.
+Primary request: Generate a genuinely progressed intermediate viewpoint one movement after Image 1 and one movement before Image 2. The camera has walked several meters past the near right-side pier from Image 1 and completed a clearer rightward bend, so the previous near pier and exact Image 1 composition are no longer repeated. Reveal a short staggered circulation pocket: a close wall mass now frames the left foreground, a shallow lateral recess is visible at mid-left, and one narrow traversable opening continues at medium depth toward the right-center, logically preparing the alternating left wall masses and curved right boundary seen in Image 2.
+Continuity anchors: Preserve the same Level 0 yellow-beige wallpaper, patterned brown-beige carpet, dark vinyl base trim, acoustic ceiling grid, flat fluorescent fixture family, standing eye height, moderate lens, and late-1990s to mid-2000s budget consumer-digital photographic character. Keep the B branch compressed and dimmer than the A branch.
+Spatial distinction: The new scene must be unmistakably different from Image 1 at a glance: no same corridor framing, no same central wall face, no same near-right pillar, and no composition that looks like a tiny forward crop. Show that the player has passed the obstacle and changed orientation. Still exactly one route, through a clearly bounded vertical opening at medium depth rather than a large carpet wedge.
+Composition/framing: Exact landscape 4:3, level camera, approximately 40 mm full-frame equivalent, human eye height about 1.65 m. The single route opening should be visually legible as a tall architectural gap suitable for a polygon mask over the opening itself.
+Lighting/mood: Muted flat fluorescent light, familiar, compressed, still and faintly unsettling; no dramatic darkness.
+Constraints: Small direct-adjacent spatial change, not a teleport. Mostly empty. No branch, door, landmark, new facility type, new level, text, UI, people, entities, bodies, gore, occult imagery, documents, windows, furniture, debris, strong ruin, dramatic horror, VHS/CCTV/glitch overlay, fisheye, arrows, glow, or highlighted route.
+```
+
+### Transparent content-boundary symbol
+
+Edit target: the original 0.3.0 symbol. Chroma output: `exec-c01f1385-5c29-4c52-83a3-e57b3c235119.png`. Post-process: `remove_chroma_key.py --auto-key border --soft-matte --transparent-threshold 12 --opaque-threshold 220 --despill`. Final saved asset: `content-boundary-symbol.png`, RGBA 1448×1086.
+
+```text
+Use case: background-extraction
+Asset type: transparent content-boundary glyph source
+Input images: Image 1 is the exact symbol edit target.
+Primary request: Preserve the exact off-white impossible rectilinear floor-plan knot from Image 1—same shape, line thickness, scale, centered position, worn material texture, and 4:3 canvas—but replace only the black background with a perfectly flat solid #00ff00 chroma-key background for local removal.
+Scene/backdrop: One uniform #00ff00 field with no shadows, gradients, vignette, texture, reflections, lighting variation, or black remnants.
+Subject: The existing off-white worn glyph only.
+Composition/framing: Exact landscape 4:3; glyph remains centered at the same size with generous empty margin.
+Constraints: Change only the background. Keep the glyph fully opaque with crisp antialiased edges. Do not use #00ff00 inside the glyph. No cast shadow, glow, halo, border, text, watermark, additional marks, or restyling.
+```
+
 ## 0.3.0 content-boundary operations
 
 Both assets below used the built-in `$imagegen` workflow as independent generations. They are provisional boundary assets, not new playable Level 0 scenes. The generated PNGs were copied without raster edits into `public/boundary/`.

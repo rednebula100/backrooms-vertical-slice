@@ -133,12 +133,20 @@ test("opening mobile hit regions are large and non-overlapping", () => {
   assert.ok(boxes[0].maxX < boxes[1].minX);
 });
 
-test("follow-up hit regions stay on distant openings instead of the foreground floor", () => {
-  for (const scene of world.scenes.filter((candidate) => candidate.id !== world.startSceneId)) {
+test("hit regions cover vertical passage openings instead of foreground carpet wedges", () => {
+  for (const scene of world.scenes) {
     for (const path of scene.paths) {
       for (const regionName of ["desktop", "mobile"]) {
+        const xs = path.regions[regionName].map(([x]) => x);
+        const ys = path.regions[regionName].map(([, y]) => y);
+        const width = Math.max(...xs) - Math.min(...xs);
+        const height = Math.max(...ys) - Math.min(...ys);
+        const minY = Math.min(...ys);
         const maxY = Math.max(...path.regions[regionName].map(([, y]) => y));
-        assert.ok(maxY < scene.asset.height * 0.8, `${path.id} ${regionName} extends too far into the foreground`);
+        assert.ok(minY < scene.asset.height * 0.4, `${path.id} ${regionName} starts too low to cover the opening`);
+        assert.ok(maxY < scene.asset.height * 0.7, `${path.id} ${regionName} extends into the foreground carpet`);
+        assert.ok(height >= scene.asset.height * 0.18, `${path.id} ${regionName} is too short to cover the passage height`);
+        assert.ok(height >= width * 0.8, `${path.id} ${regionName} is shaped like a floor wedge instead of an opening`);
       }
     }
   }
@@ -148,4 +156,9 @@ test("content boundary registers fixed 4:3 symbol and epilogue assets", () => {
   assert.equal(world.contentBoundary.asset.width / world.contentBoundary.asset.height, 4 / 3);
   assert.equal(world.contentBoundary.symbolImage, "/boundary/content-boundary-symbol.png");
   assert.equal(world.contentBoundary.epilogueImage, "/boundary/reset-epilogue.png");
+});
+
+test("content-boundary symbol is an RGBA PNG for floating over the page background", async () => {
+  const bytes = await readFile(path.join(root, "public", world.contentBoundary.symbolImage.replace(/^\//, "")));
+  assert.equal(bytes[25], 6);
 });
