@@ -164,3 +164,23 @@ Move a few meters through the narrow channel, passing the offset pier and follow
 
 Technical correction only: preserve the generated scene, composition, camera, geometry, lighting, textures, and single route while returning an exact landscape 4:3 raster. Add or remove no content.
 ```
+
+## 0.3.0 content-boundary operations
+
+Both assets below used the built-in `$imagegen` workflow as independent generations. They are provisional boundary assets, not new playable Level 0 scenes. The generated PNGs were copied without raster edits into `public/boundary/`.
+
+### Content-boundary symbol
+
+Default output: `exec-6cde1dd4-b40d-40e1-93e7-d7bc4401dbe4.png`. Saved project asset: `content-boundary-symbol.png`, 1448×1086.
+
+```text
+Create an exact landscape 4:3 content-boundary screen for a UI-free Backrooms web exploration. Use a pure matte-black field with one centered, large but isolated off-white symbol. The symbol is an original impossible rectilinear floor-plan knot: thick right-angle corridors overlap and return into themselves without becoming letters, numbers, a logo, a maze puzzle, an occult mark, or a known icon. Give the pale line work a faint worn plaster or carpet-fiber texture and imperfect age, but keep the silhouette sharply readable and the surrounding black completely empty. No text, border, interface, buttons, arrows, glow, gradients, scenery, people, entities, watermark, or additional marks.
+```
+
+### Reset epilogue
+
+Default output: `exec-62a18e0a-bd69-4b93-8ec1-a1a6751b5284.png`. Saved project asset: `reset-epilogue.png`, 1448×1086.
+
+```text
+Create an exact landscape 4:3 photorealistic final image for a Level 0 Backrooms exploration. A short, empty yellow commercial corridor ends at a flat dead wall. The brown-beige low-pile carpet continues forward and then bends seamlessly upward across the entire dead wall like one continuous material, removing every traversable route while remaining physically photographed rather than surreal illustration. Preserve late-1980s/1990s low-cost commercial materials, off-white acoustic ceiling tiles, one flat fluorescent fixture, dark vinyl base trim on the side walls, standing eye height, moderate lens, and a restrained late-1990s to mid-2000s consumer digital-camera character. Familiar, hollow, still, and quietly impossible; no dramatic horror. No openings, doors, text, signs, symbols, UI, people, entities, bodies, gore, objects, windows, exterior, arrows, glow, glitch, VHS overlay, fisheye, watermark, or cinematic grading.
+```

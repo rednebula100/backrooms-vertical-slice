@@ -3,6 +3,7 @@ import {
   indexScenes,
   makeSavePayload,
   reachableImages,
+  restoreBoundaryPathId,
   restoreSceneId,
   validateWorld,
 } from "./scene-model.mjs";
@@ -10,12 +11,25 @@ import {
 const image = document.querySelector("#scene-image");
 const overlay = document.querySelector("#path-overlay");
 const status = document.querySelector("#scene-status");
+const debugToggle = document.querySelector("#debug-toggle");
+const debugReadout = document.querySelector("#debug-readout");
 const coarsePointer = window.matchMedia("(pointer: coarse)");
 const activePointers = new Map();
+const debugPalette = [
+  { stroke: "#ff453a", fill: "rgba(255, 69, 58, 0.28)" },
+  { stroke: "#32d74b", fill: "rgba(50, 215, 75, 0.28)" },
+  { stroke: "#0a84ff", fill: "rgba(10, 132, 255, 0.28)" },
+  { stroke: "#ffd60a", fill: "rgba(255, 214, 10, 0.28)" },
+];
+
 let gestureCancelled = false;
 let world;
 let scenes;
 let currentScene;
+let currentBoundaryPath;
+let currentView = "scene";
+let debugEnabled = false;
+let developmentToolsAvailable = false;
 
 function isDevelopmentHost() {
   return ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname);
@@ -25,25 +39,77 @@ function pointsToAttribute(points) {
   return points.map(([x, y]) => `${x},${y}`).join(" ");
 }
 
+function regionCenter(points) {
+  const total = points.reduce((sum, [x, y]) => ({ x: sum.x + x, y: sum.y + y }), { x: 0, y: 0 });
+  return { x: total.x / points.length, y: total.y / points.length };
+}
+
 function usesMobileRegions() {
   return coarsePointer.matches || window.innerWidth <= 640;
 }
 
+function preload(source) {
+  const preloadImage = new Image();
+  preloadImage.src = source;
+}
+
 function preloadReachable(scene) {
-  for (const source of reachableImages(scene, scenes)) {
-    const preload = new Image();
-    preload.src = source;
-  }
+  for (const source of reachableImages(scene, scenes)) preload(source);
+  if (scene.paths.some((path) => path.status === "pending")) preload(world.contentBoundary.symbolImage);
 }
 
 function saveProgress(sceneId, extra = {}) {
   localStorage.setItem(SAVE_KEY, JSON.stringify(makeSavePayload(sceneId, world.worldVersion, extra)));
 }
 
+function currentViewId() {
+  if (currentView === "scene") return currentScene?.id ?? "scene";
+  if (currentView === "boundary") return currentBoundaryPath?.id ?? "content-boundary";
+  return "reset-epilogue";
+}
+
+function updateDebugReadout(pathId = "outside", x = null, y = null) {
+  if (!debugEnabled) return;
+  const coordinates = x === null || y === null ? "move over image" : `${Math.round(x)}, ${Math.round(y)}`;
+  debugReadout.textContent = `${currentViewId()} · ${pathId} · ${coordinates}`;
+}
+
+function setDebugEnabled(enabled) {
+  debugEnabled = developmentToolsAvailable && enabled;
+  document.body.dataset.debug = String(debugEnabled);
+  debugToggle.setAttribute("aria-pressed", String(debugEnabled));
+  debugToggle.textContent = debugEnabled ? "MASKS ON" : "MASKS OFF";
+  debugReadout.hidden = !debugEnabled;
+  if (developmentToolsAvailable) sessionStorage.setItem("backrooms.mask-debug", String(debugEnabled));
+  if (debugEnabled) updateDebugReadout();
+}
+
+function configureDevelopmentTools(params) {
+  developmentToolsAvailable = isDevelopmentHost() || params.get("dev") === "1";
+  debugToggle.hidden = !developmentToolsAvailable;
+  if (!developmentToolsAvailable) return;
+  setDebugEnabled(sessionStorage.getItem("backrooms.mask-debug") === "true");
+}
+
+function renderImage(source, asset) {
+  image.src = source;
+  image.width = asset.width;
+  image.height = asset.height;
+}
+
 function activatePath(path) {
+  if (debugEnabled) {
+    updateDebugReadout(path.id);
+    return;
+  }
+  if (path.kind === "boundary-symbol") {
+    localStorage.removeItem(SAVE_KEY);
+    renderEpilogue();
+    return;
+  }
   if (path.status === "pending") {
-    saveProgress(currentScene.id, { pending_path_id: path.id });
-    document.body.dataset.frontier = path.id;
+    saveProgress(currentScene.id, { pending_path_id: path.id, boundary_state: "symbol" });
+    renderBoundary(path);
     return;
   }
   const nextScene = scenes.get(path.targetSceneId);
@@ -80,31 +146,100 @@ function bindPointerActivation(node, path) {
   });
 }
 
-function renderOverlay(scene) {
+function renderOverlay(descriptor) {
   overlay.replaceChildren();
-  overlay.setAttribute("viewBox", `0 0 ${scene.asset.width} ${scene.asset.height}`);
-  for (const path of scene.paths ?? []) {
-    const polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+  overlay.setAttribute("viewBox", `0 0 ${descriptor.asset.width} ${descriptor.asset.height}`);
+  for (const [index, path] of (descriptor.paths ?? []).entries()) {
     const region = usesMobileRegions() ? path.regions.mobile : path.regions.desktop;
+    const color = debugPalette[index % debugPalette.length];
+    const polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     polygon.setAttribute("points", pointsToAttribute(region));
     polygon.setAttribute("class", "hit-region");
     polygon.setAttribute("role", "link");
     polygon.setAttribute("tabindex", "0");
     polygon.setAttribute("aria-label", path.accessibleName);
+    polygon.style.setProperty("--debug-color", color.stroke);
+    polygon.style.setProperty("--debug-fill", color.fill);
     polygon.dataset.pathId = path.id;
     bindPointerActivation(polygon, path);
     overlay.append(polygon);
+
+    const center = regionCenter(region);
+    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    label.setAttribute("x", String(center.x));
+    label.setAttribute("y", String(center.y));
+    label.setAttribute("class", "debug-label");
+    label.setAttribute("text-anchor", "middle");
+    label.setAttribute("aria-hidden", "true");
+    label.textContent = path.id;
+    overlay.append(label);
   }
+}
+
+function boundaryDescriptor() {
+  return {
+    asset: world.contentBoundary.asset,
+    paths: [
+      {
+        id: "CONTENT-BOUNDARY-SYMBOL",
+        kind: "boundary-symbol",
+        accessibleName: "Continue through the unresolved boundary glyph",
+        regions: world.contentBoundary.symbolRegions,
+      },
+    ],
+  };
+}
+
+function renderCurrentOverlay() {
+  if (currentView === "scene") renderOverlay(currentScene);
+  else if (currentView === "boundary") renderOverlay(boundaryDescriptor());
+  else overlay.replaceChildren();
 }
 
 function renderScene(scene) {
   currentScene = scene;
-  image.src = scene.image;
-  image.width = scene.asset.width;
-  image.height = scene.asset.height;
+  currentBoundaryPath = null;
+  currentView = "scene";
+  document.body.dataset.view = currentView;
+  delete document.body.dataset.frontier;
+  renderImage(scene.image, scene.asset);
   renderOverlay(scene);
   preloadReachable(scene);
   status.textContent = `Entered ${scene.accessibleName}.`;
+  updateDebugReadout();
+}
+
+function renderBoundary(path) {
+  currentBoundaryPath = path;
+  currentView = "boundary";
+  document.body.dataset.view = currentView;
+  document.body.dataset.frontier = path.id;
+  renderImage(world.contentBoundary.symbolImage, world.contentBoundary.asset);
+  renderOverlay(boundaryDescriptor());
+  preload(world.contentBoundary.epilogueImage);
+  status.textContent = `Reached ${world.contentBoundary.symbolAccessibleName}.`;
+  updateDebugReadout();
+}
+
+function renderEpilogue() {
+  currentBoundaryPath = null;
+  currentView = "epilogue";
+  document.body.dataset.view = currentView;
+  delete document.body.dataset.frontier;
+  renderImage(world.contentBoundary.epilogueImage, world.contentBoundary.asset);
+  overlay.replaceChildren();
+  status.textContent = `Entered ${world.contentBoundary.epilogueAccessibleName}.`;
+  updateDebugReadout("no paths");
+}
+
+function pointerCoordinates(event) {
+  const rect = overlay.getBoundingClientRect();
+  if (!rect.width || !rect.height) return null;
+  const asset = currentView === "scene" ? currentScene.asset : world.contentBoundary.asset;
+  return {
+    x: ((event.clientX - rect.left) / rect.width) * asset.width,
+    y: ((event.clientY - rect.top) / rect.height) * asset.height,
+  };
 }
 
 async function start() {
@@ -116,15 +251,39 @@ async function start() {
   scenes = indexScenes(world);
 
   const params = new URLSearchParams(window.location.search);
+  configureDevelopmentTools(params);
   if (params.get("reset") === "1") localStorage.removeItem(SAVE_KEY);
   const directSceneId = isDevelopmentHost() ? params.get("scene") : null;
-  const restoredId = restoreSceneId(localStorage.getItem(SAVE_KEY), world, directSceneId);
-  if (window.location.search) history.replaceState(null, "", window.location.pathname);
-  renderScene(scenes.get(restoredId));
+  const rawSave = localStorage.getItem(SAVE_KEY);
+  const restoredId = restoreSceneId(rawSave, world, directSceneId);
+  const restoredScene = scenes.get(restoredId);
+  const boundaryPathId = directSceneId ? null : restoreBoundaryPathId(rawSave, world, restoredId);
+  const boundaryPath = restoredScene.paths.find((path) => path.id === boundaryPathId);
 
-  coarsePointer.addEventListener("change", () => renderOverlay(currentScene));
-  window.addEventListener("resize", () => renderOverlay(currentScene));
+  const preservedParams = new URLSearchParams();
+  if (params.get("dev") === "1") preservedParams.set("dev", "1");
+  const preservedQuery = preservedParams.toString();
+  if (window.location.search !== (preservedQuery ? `?${preservedQuery}` : "")) {
+    history.replaceState(null, "", `${window.location.pathname}${preservedQuery ? `?${preservedQuery}` : ""}`);
+  }
+
+  if (boundaryPath) renderBoundary(boundaryPath);
+  else renderScene(restoredScene);
+
+  coarsePointer.addEventListener("change", renderCurrentOverlay);
+  window.addEventListener("resize", renderCurrentOverlay);
 }
 
+debugToggle.addEventListener("click", () => setDebugEnabled(!debugEnabled));
+window.addEventListener("keydown", (event) => {
+  if (developmentToolsAvailable && !event.repeat && event.key.toLowerCase() === "d") setDebugEnabled(!debugEnabled);
+});
+overlay.addEventListener("pointermove", (event) => {
+  if (!debugEnabled) return;
+  const point = pointerCoordinates(event);
+  if (!point) return;
+  updateDebugReadout(event.target.dataset.pathId ?? "outside", point.x, point.y);
+});
+overlay.addEventListener("pointerleave", () => updateDebugReadout());
 image.addEventListener("error", () => console.error(`Missing scene image: ${image.src}`));
 start().catch((error) => console.error(error));

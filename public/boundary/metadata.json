@@ -1,0 +1,19 @@
+{
+  "world_version": "vertical-slice-0.3.0",
+  "generation_mode": "built-in imagegen",
+  "approval_state": "provisional",
+  "assets": [
+    {
+      "role": "content-boundary-symbol",
+      "file": "content-boundary-symbol.png",
+      "generation_output": "exec-6cde1dd4-b40d-40e1-93e7-d7bc4401dbe4.png",
+      "size": [1448, 1086]
+    },
+    {
+      "role": "reset-epilogue",
+      "file": "reset-epilogue.png",
+      "generation_output": "exec-62a18e0a-bd69-4b93-8ec1-a1a6751b5284.png",
+      "size": [1448, 1086]
+    }
+  ]
+}

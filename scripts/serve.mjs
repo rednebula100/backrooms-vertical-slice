@@ -17,7 +17,7 @@ const mimeTypes = new Map([
 http.createServer(async (request, response) => {
   const pathname = decodeURIComponent(new URL(request.url, `http://${request.headers.host}`).pathname);
   const requested = pathname === "/" ? "/index.html" : pathname;
-  const filePath = requested.startsWith("/scenes/")
+  const filePath = requested.startsWith("/scenes/") || requested.startsWith("/boundary/")
     ? path.resolve(root, "public", `.${requested}`)
     : path.resolve(root, `.${requested}`);
   if (!filePath.startsWith(`${root}${path.sep}`)) {

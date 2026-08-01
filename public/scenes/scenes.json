@@ -1,6 +1,17 @@
 {
-  "worldVersion": "vertical-slice-0.2.0",
+  "worldVersion": "vertical-slice-0.3.0",
   "startSceneId": "L0-0001",
+  "contentBoundary": {
+    "symbolImage": "/boundary/content-boundary-symbol.png",
+    "epilogueImage": "/boundary/reset-epilogue.png",
+    "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+    "symbolAccessibleName": "an unresolved abstract boundary glyph",
+    "epilogueAccessibleName": "a corridor whose carpet folds upward across the dead wall",
+    "symbolRegions": {
+      "desktop": [[560, 255], [900, 255], [945, 805], [515, 805]],
+      "mobile": [[500, 210], [960, 210], [1005, 855], [455, 855]]
+    }
+  },
   "scenes": [
     {
       "id": "L0-0001",
@@ -87,8 +98,8 @@
           "targetCamera": "a few meters beyond the offset, still following the leftward flow",
           "continuityAnchors": ["curved left wall", "right offset wall", "fluorescent center line", "same carpet and trim"],
           "regions": {
-            "desktop": [[695, 555], [850, 555], [890, 700], [1030, 890], [825, 950], [585, 845], [665, 675]],
-            "mobile": [[650, 515], [900, 515], [950, 725], [1100, 930], [820, 1000], [520, 880], [610, 650]]
+            "desktop": [[690, 545], [850, 545], [890, 710], [650, 735]],
+            "mobile": [[635, 500], [915, 500], [960, 775], [585, 800]]
           }
         }
       ]
@@ -124,8 +135,8 @@
           "targetCamera": "past the first offset while the corridor remains narrow",
           "continuityAnchors": ["rounded left wall", "straight right wall", "lowered soffit transition", "compressed carpet channel"],
           "regions": {
-            "desktop": [[650, 590], [840, 590], [870, 700], [1025, 1086], [455, 1086], [575, 790]],
-            "mobile": [[610, 545], [890, 545], [930, 725], [1090, 1086], [395, 1086], [520, 760]]
+            "desktop": [[645, 575], [845, 575], [900, 760], [585, 780]],
+            "mobile": [[590, 525], [910, 525], [965, 825], [525, 840]]
           }
         }
       ]
@@ -161,8 +172,8 @@
           "targetCamera": "beyond the broad offset, facing into the next shallow bay",
           "continuityAnchors": ["curved outer wall", "broad offset on right", "same ceiling-grid direction", "brighter fluorescent run"],
           "regions": {
-            "desktop": [[600, 485], [720, 485], [735, 610], [690, 700], [535, 790], [220, 1086], [1010, 1086], [850, 900], [665, 760], [540, 650]],
-            "mobile": [[550, 445], [770, 445], [790, 630], [740, 735], [555, 830], [155, 1086], [1080, 1086], [910, 870], [690, 720], [505, 620]]
+            "desktop": [[545, 470], [720, 470], [740, 625], [530, 665]],
+            "mobile": [[485, 425], [780, 425], [805, 700], [465, 735]]
           }
         }
       ]
@@ -199,8 +210,8 @@
           "targetCamera": null,
           "continuityAnchors": ["broad central wall", "right-side carpet channel", "near framing walls", "receding fluorescent run"],
           "regions": {
-            "desktop": [[815, 535], [955, 535], [965, 660], [1085, 830], [1325, 1040], [1448, 1086], [315, 1086], [365, 850], [520, 700], [680, 665], [815, 620]],
-            "mobile": [[770, 495], [1000, 495], [1015, 680], [1150, 850], [1400, 1020], [1448, 1086], [255, 1086], [305, 820], [490, 655], [690, 620], [770, 585]]
+            "desktop": [[805, 525], [960, 525], [975, 690], [790, 715]],
+            "mobile": [[745, 475], [1020, 475], [1040, 765], [730, 790]]
           }
         }
       ]
@@ -236,8 +247,8 @@
           "targetCamera": "past the offset pier at the next gentle bend",
           "continuityAnchors": ["rounded outer wall", "staggered pier", "compressed width", "dimmer fluorescent run"],
           "regions": {
-            "desktop": [[575, 565], [845, 565], [870, 690], [1020, 1086], [395, 1086], [510, 805]],
-            "mobile": [[535, 520], [890, 520], [925, 720], [1090, 1086], [335, 1086], [455, 770]]
+            "desktop": [[570, 550], [850, 550], [885, 720], [520, 750]],
+            "mobile": [[515, 500], [910, 500], [950, 790], [460, 820]]
           }
         }
       ]
@@ -274,8 +285,8 @@
           "targetCamera": null,
           "continuityAnchors": ["left offset wall", "curved right wall", "single carpet channel", "muted fluorescent run"],
           "regions": {
-            "desktop": [[755, 515], [935, 515], [950, 645], [1000, 790], [1110, 1086], [435, 1086], [535, 850], [705, 695]],
-            "mobile": [[710, 475], [980, 475], [1005, 670], [1060, 815], [1175, 1086], [375, 1086], [475, 815], [670, 655]]
+            "desktop": [[750, 500], [940, 500], [965, 690], [700, 720]],
+            "mobile": [[690, 450], [1000, 450], [1030, 755], [645, 785]]
           }
         }
       ]

@@ -58,6 +58,66 @@ body {
   outline: none;
 }
 
+body[data-debug="true"] .hit-region {
+  fill: var(--debug-fill);
+  stroke: var(--debug-color);
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.debug-label {
+  display: none;
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 7;
+  paint-order: stroke;
+  font: 700 28px/1 ui-monospace, SFMono-Regular, Consolas, monospace;
+  pointer-events: none;
+}
+
+body[data-debug="true"] .debug-label {
+  display: block;
+}
+
+.debug-toggle,
+.debug-readout {
+  position: fixed;
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.86);
+  color: #fff;
+  font: 700 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.04em;
+}
+
+.debug-toggle {
+  top: 12px;
+  right: 12px;
+  min-width: 104px;
+  min-height: 40px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.debug-toggle[aria-pressed="true"] {
+  border-color: #32d74b;
+  color: #32d74b;
+}
+
+.debug-readout {
+  right: 12px;
+  bottom: 12px;
+  max-width: calc(100vw - 24px);
+  padding: 8px 10px;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.debug-toggle[hidden],
+.debug-readout[hidden] {
+  display: none;
+}
+
 .hit-region:focus-visible {
   stroke: rgba(255, 255, 255, 0.92);
   stroke-width: 4;

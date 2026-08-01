@@ -7,6 +7,7 @@ import {
   indexScenes,
   makeSavePayload,
   reachableImages,
+  restoreBoundaryPathId,
   restoreSceneId,
   validateFrontiers,
   validateWorld,
@@ -52,6 +53,23 @@ test("restore accepts valid progress and rejects stale or missing scenes", () =>
   assert.equal(restoreSceneId(JSON.stringify(makeSavePayload("L0-0002B", "old")), world), "L0-0001");
   assert.equal(restoreSceneId(JSON.stringify(makeSavePayload("missing", world.worldVersion)), world), "L0-0001");
   assert.equal(restoreSceneId("broken", world), "L0-0001");
+});
+
+test("content-boundary progress restores only a valid pending path", () => {
+  const boundarySave = JSON.stringify(makeSavePayload("L0-0004B", world.worldVersion, {
+    pending_path_id: "L0-0004B-P1",
+    boundary_state: "symbol",
+  }));
+  assert.equal(restoreBoundaryPathId(boundarySave, world, "L0-0004B"), "L0-0004B-P1");
+  assert.equal(restoreBoundaryPathId(boundarySave, world, "L0-0004A"), null);
+  assert.equal(restoreBoundaryPathId(JSON.stringify(makeSavePayload("L0-0004B", "old", {
+    pending_path_id: "L0-0004B-P1",
+    boundary_state: "symbol",
+  })), world, "L0-0004B"), null);
+  assert.equal(restoreBoundaryPathId(JSON.stringify(makeSavePayload("L0-0003B", world.worldVersion, {
+    pending_path_id: "L0-0003B-P1",
+    boundary_state: "symbol",
+  })), world, "L0-0003B"), null);
 });
 
 test("development direct entry overrides saved progress only for registered scenes", () => {
@@ -113,4 +131,21 @@ test("opening mobile hit regions are large and non-overlapping", () => {
     assert.ok((box.maxY - box.minY) * mobileScale >= 44);
   }
   assert.ok(boxes[0].maxX < boxes[1].minX);
+});
+
+test("follow-up hit regions stay on distant openings instead of the foreground floor", () => {
+  for (const scene of world.scenes.filter((candidate) => candidate.id !== world.startSceneId)) {
+    for (const path of scene.paths) {
+      for (const regionName of ["desktop", "mobile"]) {
+        const maxY = Math.max(...path.regions[regionName].map(([, y]) => y));
+        assert.ok(maxY < scene.asset.height * 0.8, `${path.id} ${regionName} extends too far into the foreground`);
+      }
+    }
+  }
+});
+
+test("content boundary registers fixed 4:3 symbol and epilogue assets", () => {
+  assert.equal(world.contentBoundary.asset.width / world.contentBoundary.asset.height, 4 / 3);
+  assert.equal(world.contentBoundary.symbolImage, "/boundary/content-boundary-symbol.png");
+  assert.equal(world.contentBoundary.epilogueImage, "/boundary/reset-epilogue.png");
 });

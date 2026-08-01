@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
-    <main class="scene-shell" aria-label="Backrooms exploration scene">
+    <main class="scene-shell" data-scene-stage aria-label="Backrooms exploration scene">
       <img id="scene-image" alt="" draggable="false" />
       <svg
         id="path-overlay"
@@ -18,8 +18,9 @@
         preserveAspectRatio="xMidYMid meet"
       ></svg>
     </main>
+    <button id="debug-toggle" class="debug-toggle" type="button" aria-pressed="false" hidden>MASKS OFF</button>
+    <output id="debug-readout" class="debug-readout" hidden></output>
     <p id="scene-status" class="sr-only" aria-live="polite"></p>
     <script type="module" src="/src/app.mjs"></script>
   </body>
 </html>
-

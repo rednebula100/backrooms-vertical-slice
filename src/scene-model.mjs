@@ -13,6 +13,24 @@ export function validateWorld(world) {
 
   if (!world?.worldVersion) errors.push("Missing worldVersion");
   if (!world?.startSceneId) errors.push("Missing startSceneId");
+  if (!world?.contentBoundary?.symbolImage || !world?.contentBoundary?.epilogueImage) {
+    errors.push("World must register content-boundary symbol and epilogue images");
+  }
+  if (!world?.contentBoundary?.asset || world.contentBoundary.asset.width / world.contentBoundary.asset.height !== 4 / 3) {
+    errors.push("Content-boundary assets must declare an exact 4:3 size");
+  }
+  for (const regionName of ["desktop", "mobile"]) {
+    const points = world?.contentBoundary?.symbolRegions?.[regionName];
+    if (!Array.isArray(points) || points.length < 3) {
+      errors.push(`Content-boundary symbol has an invalid ${regionName} region`);
+      continue;
+    }
+    for (const [x, y] of points) {
+      if (x < 0 || y < 0 || x > world.contentBoundary.asset.width || y > world.contentBoundary.asset.height) {
+        errors.push(`Content-boundary symbol ${regionName} point is outside the image`);
+      }
+    }
+  }
   if (!Array.isArray(world?.scenes) || world.scenes.length === 0) {
     return [...errors, "World must register at least one scene"];
   }
@@ -231,6 +249,19 @@ export function restoreSceneId(rawSave, world, directSceneId = null) {
     return save.scene_id;
   } catch {
     return world.startSceneId;
+  }
+}
+
+export function restoreBoundaryPathId(rawSave, world, sceneId) {
+  if (!rawSave) return null;
+  try {
+    const save = JSON.parse(rawSave);
+    if (save.world_version !== world.worldVersion || save.scene_id !== sceneId || save.boundary_state !== "symbol") return null;
+    const scene = indexScenes(world).get(sceneId);
+    const path = scene?.paths?.find((candidate) => candidate.id === save.pending_path_id);
+    return path?.status === "pending" && path.frontier === true ? path.id : null;
+  } catch {
+    return null;
   }
 }
 
