@@ -119,3 +119,48 @@ Lighting/mood: Flat fluorescent light with the near soffit gently shadowed, stil
 Constraints: Small direct-adjacent spatial change only. Mostly empty. No people, entities, bodies, gore, combat, occult imagery, text, logos, documents, windows showing outside, furniture clusters, luxury, futuristic forms, fantasy geometry, large debris, strong ruin, dramatic darkness, landmark, new facility category, new level, strong VHS/CCTV/glitch/date overlay, fisheye, UI, icons, arrows, glow, or highlighted route. Do not show the previous scene behind the camera.
 ```
 
+## 0.2.0 branch-expansion operations
+
+All operations below used the built-in `$imagegen` workflow with the immediately preceding scene as a local reference. The four new playable scenes and the corrected `L0-0002B` remain provisional until human canon review.
+
+### L0-0002B continuity replacement
+
+References: `L0-0001-final.png` and the previous `L0-0002B.png`. Default output: `exec-e9268777-c7cb-41f7-9dff-560bfe772241.png`.
+
+```text
+Preserve the existing corridor, walls, route, camera, materials, and lighting. Extend the awkward lowered soffit from the opening scene into the immediate foreground above the camera before the ordinary acoustic ceiling resumes. Keep the rounded left wall, straight right wall, compressed width, single forward route, 4:3 consumer-digital photographic character, and all exclusions from the Level 0 brief. Do not add text, UI, people, entities, doors, signs, landmarks, branches, or dramatic horror.
+```
+
+### L0-0003A
+
+Reference: `L0-0002A.png`. Default output: `exec-bd813c6b-6d95-4ebc-b167-a937fec30a09.png`.
+
+```text
+Advance only a few meters through the single route around the offset wall. Preserve the curved left wall, right offset, carpet, trim, ceiling grid, fluorescent character, eye height, moderate lens, and 4:3 consumer-digital medium. Let the corridor become modestly wider and less curved while retaining one obvious forward-left path. No branch, landmark, new facility type, text, UI, people, entities, or dramatic horror.
+```
+
+### L0-0004A
+
+Reference: `L0-0003A.png`. Default output: `exec-48cdafee-c676-4a78-8129-db7dad7a88f1.png`.
+
+```text
+Move through the existing route and pass the large offset with a gentle leftward flow. Reveal a moderately wider shallow circulation bay framed by near walls and one central offset, with exactly one forward continuation. Preserve the A-branch materials, ceiling grid, fluorescent line, camera height, lens, and 4:3 consumer-digital photographic character. No branch, landmark, level change, text, UI, people, entities, or dramatic horror.
+```
+
+### L0-0003B
+
+Reference: corrected `L0-0002B.png`. Default output: `exec-a47015b9-a6b9-4454-be3d-7a091d3bfeb1.png`.
+
+```text
+Advance beneath the soffit transition and past the offset wall, turning only slightly right. Preserve the rounded left wall, constrained right side, narrow carpet channel, muted fluorescence, eye height, moderate lens, and 4:3 consumer-digital medium. The passage may open only slightly and must remain narrower and dimmer than the A branch, with one forward route. No branch, landmark, text, UI, people, entities, or dramatic horror.
+```
+
+### L0-0004B
+
+Reference: `L0-0003B.png`. Initial output: `exec-a5405771-a844-41c5-8004-aac9908468af.png`. Exact-4:3 technical correction output and final saved asset: `exec-e2e42df2-cd04-4154-a440-660d114e502b.png`.
+
+```text
+Move a few meters through the narrow channel, passing the offset pier and following a gentle right bend. Carry staggered wall mass to the left after the turn, retain a curved outer wall on the right, and keep the corridor narrow, enclosed, and limited to one carpet route. Preserve Level 0 materials, muted light, eye height, moderate lens, and consumer-digital character. No branch, landmark, text, UI, people, entities, or dramatic horror.
+
+Technical correction only: preserve the generated scene, composition, camera, geometry, lighting, textures, and single route while returning an exact landscape 4:3 raster. Add or remove no content.
+```

@@ -1,8 +1,29 @@
 {
-  "world_version": "vertical-slice-0.1.0",
+  "world_version": "vertical-slice-0.2.0",
   "frontiers": [
-    { "branch_id": "BR-L0-P1", "current_scene_id": "L0-0002A", "path_id": "L0-0002A-P1", "level_id": "LV-000", "depth": 1, "status": "pending", "continuity_anchors": ["curved left wall", "right offset wall", "fluorescent center line"] },
-    { "branch_id": "BR-L0-P2", "current_scene_id": "L0-0002B", "path_id": "L0-0002B-P1", "level_id": "LV-000", "depth": 1, "status": "pending", "continuity_anchors": ["rounded left wall", "straight right wall", "compressed corridor"] }
+    {
+      "branch_id": "BR-L0-P1",
+      "current_scene_id": "L0-0004A",
+      "path_id": "L0-0004A-P1",
+      "level_id": "LV-000",
+      "depth": 3,
+      "status": "pending",
+      "approval_status": "provisional-generated",
+      "current_state": { "openness": 0.41, "ceiling": 0.35, "objects": 0, "wrongness": 0.18 },
+      "recent_drift": ["The route widened into a shallow circulation bay while preserving the curved-flow character."],
+      "continuity_anchors": ["broad central wall", "right-side carpet channel", "near framing walls", "receding fluorescent run"]
+    },
+    {
+      "branch_id": "BR-L0-P2",
+      "current_scene_id": "L0-0004B",
+      "path_id": "L0-0004B-P1",
+      "level_id": "LV-000",
+      "depth": 3,
+      "status": "pending",
+      "approval_status": "provisional-generated",
+      "current_state": { "openness": 0.21, "ceiling": 0.3, "objects": 0, "wrongness": 0.16 },
+      "recent_drift": ["The foreground soffit resolved into the acoustic grid while the route stayed narrow and enclosed."],
+      "continuity_anchors": ["left offset wall", "curved right wall", "single carpet channel", "muted fluorescent run"]
+    }
   ]
 }
-

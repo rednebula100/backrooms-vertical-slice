@@ -8,11 +8,13 @@ import {
   makeSavePayload,
   reachableImages,
   restoreSceneId,
+  validateFrontiers,
   validateWorld,
 } from "../src/scene-model.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const world = JSON.parse(await readFile(path.join(root, "public/scenes/scenes.json"), "utf8"));
+const frontiers = JSON.parse(await readFile(path.join(root, "public/scenes/production-frontiers.json"), "utf8"));
 
 test("scene registry is structurally valid", () => {
   assert.deepEqual(validateWorld(world), []);
@@ -24,14 +26,18 @@ test("the opening branches to two fixed, distinct scenes", () => {
   assert.equal(new Set(opening.paths.map((path) => path.targetSceneId)).size, 2);
 });
 
-test("follow-up routes are explicit pending production frontiers", () => {
+test("each opening branch has two fixed follow-ups", () => {
   const scenes = indexScenes(world);
-  for (const id of ["L0-0002A", "L0-0002B"]) {
-    const [path] = scenes.get(id).paths;
-    assert.equal(path.status, "pending");
-    assert.equal(path.frontier, true);
-    assert.equal(path.targetSceneId, null);
-  }
+  assert.equal(scenes.get("L0-0002A").paths[0].targetSceneId, "L0-0003A");
+  assert.equal(scenes.get("L0-0003A").paths[0].targetSceneId, "L0-0004A");
+  assert.equal(scenes.get("L0-0002B").paths[0].targetSceneId, "L0-0003B");
+  assert.equal(scenes.get("L0-0003B").paths[0].targetSceneId, "L0-0004B");
+});
+
+test("only the two bundle endpoints remain pending production frontiers", () => {
+  const pending = world.scenes.flatMap((scene) => scene.paths.filter((path) => path.status === "pending").map((path) => [scene.id, path.id]));
+  assert.deepEqual(pending, [["L0-0004A", "L0-0004A-P1"], ["L0-0004B", "L0-0004B-P1"]]);
+  assert.deepEqual(validateFrontiers(world, frontiers), []);
 });
 
 test("save payload stores at least scene_id and world_version", () => {
@@ -60,6 +66,38 @@ test("opening scene preloads both reachable images", () => {
     "/scenes/L0-0002A/final/L0-0002A.png",
     "/scenes/L0-0002B/final/L0-0002B.png",
   ]);
+});
+
+test("all registered scenes are reachable through fixed, non-merging paths", () => {
+  const scenes = indexScenes(world);
+  const reached = new Set();
+  const incoming = new Map(world.scenes.map((scene) => [scene.id, 0]));
+  const queue = [world.startSceneId];
+  while (queue.length) {
+    const sceneId = queue.shift();
+    if (reached.has(sceneId)) continue;
+    reached.add(sceneId);
+    for (const path of scenes.get(sceneId).paths.filter((candidate) => candidate.status === "active")) {
+      incoming.set(path.targetSceneId, incoming.get(path.targetSceneId) + 1);
+      queue.push(path.targetSceneId);
+    }
+  }
+  assert.equal(reached.size, world.scenes.length);
+  assert.equal(incoming.get(world.startSceneId), 0);
+  for (const scene of world.scenes.filter((candidate) => candidate.id !== world.startSceneId)) {
+    assert.equal(incoming.get(scene.id), 1);
+  }
+});
+
+test("scene provenance matches every active incoming path", () => {
+  const scenes = indexScenes(world);
+  for (const scene of world.scenes) {
+    for (const path of scene.paths.filter((candidate) => candidate.status === "active")) {
+      const target = scenes.get(path.targetSceneId);
+      assert.equal(target.sourceSceneId, scene.id);
+      assert.equal(target.sourcePathId, path.id);
+    }
+  }
 });
 
 test("opening mobile hit regions are large and non-overlapping", () => {

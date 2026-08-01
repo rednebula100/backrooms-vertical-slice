@@ -1,12 +1,20 @@
 {
-  "worldVersion": "vertical-slice-0.1.0",
+  "worldVersion": "vertical-slice-0.2.0",
   "startSceneId": "L0-0001",
   "scenes": [
     {
       "id": "L0-0001",
       "levelId": "LV-000",
+      "branchId": "BR-L0-ROOT",
       "status": "provisional",
+      "approvalStatus": "provisional-approved",
+      "reviewStatus": "reviewed",
       "accessibleName": "an empty yellow commercial interior with two routes",
+      "description": "The fixed Level 0 opening where a broad left bend and a tucked right passage split into unequal routes.",
+      "sourceSceneId": null,
+      "sourcePathId": null,
+      "continuityAnchors": ["yellow-cream walls", "beige-brown carpet", "acoustic ceiling grid", "fluorescent fixtures", "dark vinyl base trim"],
+      "recentChanges": ["Retained as the provisional opening for the 0.2.0 branch expansion."],
       "image": "/scenes/L0-0001/final/L0-0001-final.png",
       "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
       "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "north" },
@@ -51,8 +59,16 @@
     {
       "id": "L0-0002A",
       "levelId": "LV-000",
-      "status": "provisional-frontier",
+      "branchId": "BR-L0-P1",
+      "status": "provisional",
+      "approvalStatus": "provisional-approved",
+      "reviewStatus": "reviewed",
       "accessibleName": "the corridor immediately beyond the left bend",
+      "description": "A moderately open continuation whose curved left wall leads around an offset wall.",
+      "sourceSceneId": "L0-0001",
+      "sourcePathId": "L0-0001-P1",
+      "continuityAnchors": ["curved left wall", "near right wall", "receding fluorescent line", "same carpet and trim"],
+      "recentChanges": ["Converted the former production frontier into a fixed route to L0-0003A."],
       "image": "/scenes/L0-0002A/final/L0-0002A.png",
       "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
       "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "west" },
@@ -60,16 +76,19 @@
       "paths": [
         {
           "id": "L0-0002A-P1",
-          "status": "pending",
-          "frontier": true,
-          "targetSceneId": null,
+          "status": "active",
           "accessibleName": "Continue around the offset wall",
           "semanticDescription": "Forward carpeted continuation around the next offset wall",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "curving corridor between the outer wall and a right offset wall",
           "movementDirection": "forward",
           "movementType": "DIRECT",
+          "targetSceneId": "L0-0003A",
+          "targetCamera": "a few meters beyond the offset, still following the leftward flow",
+          "continuityAnchors": ["curved left wall", "right offset wall", "fluorescent center line", "same carpet and trim"],
           "regions": {
-            "desktop": [[650, 390], [880, 390], [910, 720], [635, 720]],
-            "mobile": [[585, 350], [940, 350], [970, 780], [570, 790]]
+            "desktop": [[695, 555], [850, 555], [890, 700], [1030, 890], [825, 950], [585, 845], [665, 675]],
+            "mobile": [[650, 515], [900, 515], [950, 725], [1100, 930], [820, 1000], [520, 880], [610, 650]]
           }
         }
       ]
@@ -77,29 +96,189 @@
     {
       "id": "L0-0002B",
       "levelId": "LV-000",
-      "status": "provisional-frontier",
+      "branchId": "BR-L0-P2",
+      "status": "provisional",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-canon-review",
       "accessibleName": "the narrow corridor beyond the right passage",
+      "description": "A corrected compressed corridor with the opening soffit carried into the immediate foreground.",
+      "sourceSceneId": "L0-0001",
+      "sourcePathId": "L0-0001-P2",
+      "continuityAnchors": ["foreground lowered soffit", "rounded left wall", "straight right wall", "compressed width", "dimmer fluorescence"],
+      "recentChanges": ["Replaced the first provisional asset to preserve the source soffit before the acoustic ceiling resumes.", "Converted the former production frontier into a fixed route to L0-0003B."],
       "image": "/scenes/L0-0002B/final/L0-0002B.png",
       "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
       "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east-northeast" },
-      "state": { "openness": 0.22, "ceiling": 0.3, "objects": 0, "wrongness": 0.14 },
+      "state": { "openness": 0.22, "ceiling": 0.25, "objects": 0, "wrongness": 0.14 },
       "paths": [
         {
           "id": "L0-0002B-P1",
+          "status": "active",
+          "accessibleName": "Continue past the offset wall",
+          "semanticDescription": "Narrow carpeted corridor continuing beneath the soffit and past the offset wall",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "compressed passage between a rounded left wall and a right offset",
+          "movementDirection": "forward then slightly right",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0003B",
+          "targetCamera": "past the first offset while the corridor remains narrow",
+          "continuityAnchors": ["rounded left wall", "straight right wall", "lowered soffit transition", "compressed carpet channel"],
+          "regions": {
+            "desktop": [[650, 590], [840, 590], [870, 700], [1025, 1086], [455, 1086], [575, 790]],
+            "mobile": [[610, 545], [890, 545], [930, 725], [1090, 1086], [395, 1086], [520, 760]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0003A",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P1",
+      "status": "provisional",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-canon-review",
+      "accessibleName": "a widening corridor beyond the first left offset",
+      "description": "The A route opens into a shallow circulation bay while retaining its curved outer wall.",
+      "sourceSceneId": "L0-0002A",
+      "sourcePathId": "L0-0002A-P1",
+      "continuityAnchors": ["curved left wall", "right offset wall", "brighter fluorescent run", "wider carpeted circulation"],
+      "recentChanges": ["Generated as the first fixed continuation in the A branch."],
+      "image": "/scenes/L0-0003A/final/L0-0003A.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "west-southwest" },
+      "state": { "openness": 0.43, "ceiling": 0.35, "objects": 0, "wrongness": 0.17 },
+      "paths": [
+        {
+          "id": "L0-0003A-P1",
+          "status": "active",
+          "accessibleName": "Follow the carpet around the broad offset",
+          "semanticDescription": "A single forward-left continuation around the broad central offset wall",
+          "screenLocation": "center-left, medium depth",
+          "physicalForm": "widened circulation bay narrowing around an offset",
+          "movementDirection": "forward then left",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0004A",
+          "targetCamera": "beyond the broad offset, facing into the next shallow bay",
+          "continuityAnchors": ["curved outer wall", "broad offset on right", "same ceiling-grid direction", "brighter fluorescent run"],
+          "regions": {
+            "desktop": [[600, 485], [720, 485], [735, 610], [690, 700], [535, 790], [220, 1086], [1010, 1086], [850, 900], [665, 760], [540, 650]],
+            "mobile": [[550, 445], [770, 445], [790, 630], [740, 735], [555, 830], [155, 1086], [1080, 1086], [910, 870], [690, 720], [505, 620]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0004A",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P1",
+      "status": "provisional-frontier",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-canon-review",
+      "accessibleName": "a shallow circulation bay at the end of the current left bundle",
+      "description": "The A route remains moderately open and bends around one final central wall into an unresolved continuation.",
+      "sourceSceneId": "L0-0003A",
+      "sourcePathId": "L0-0003A-P1",
+      "continuityAnchors": ["broad central offset", "near framing walls", "moderate openness", "receding fluorescent run"],
+      "recentChanges": ["Generated as the current A-branch production frontier."],
+      "image": "/scenes/L0-0004A/final/L0-0004A.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "southwest" },
+      "state": { "openness": 0.41, "ceiling": 0.35, "objects": 0, "wrongness": 0.18 },
+      "paths": [
+        {
+          "id": "L0-0004A-P1",
           "status": "pending",
           "frontier": true,
-          "targetSceneId": null,
-          "accessibleName": "Continue toward the opening ahead",
-          "semanticDescription": "Narrow carpeted corridor continuing past the offset wall",
-          "movementDirection": "forward",
+          "accessibleName": "Continue around the central wall",
+          "semanticDescription": "The unresolved carpeted continuation passing the central wall on its right",
+          "screenLocation": "center-right, medium depth",
+          "physicalForm": "shallow bay tightening into a forward route",
+          "movementDirection": "forward then slightly right",
           "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["broad central wall", "right-side carpet channel", "near framing walls", "receding fluorescent run"],
           "regions": {
-            "desktop": [[615, 340], [905, 340], [960, 790], [525, 790]],
-            "mobile": [[560, 300], [960, 300], [1020, 845], [470, 845]]
+            "desktop": [[815, 535], [955, 535], [965, 660], [1085, 830], [1325, 1040], [1448, 1086], [315, 1086], [365, 850], [520, 700], [680, 665], [815, 620]],
+            "mobile": [[770, 495], [1000, 495], [1015, 680], [1150, 850], [1400, 1020], [1448, 1086], [255, 1086], [305, 820], [490, 655], [690, 620], [770, 585]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0003B",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P2",
+      "status": "provisional",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-canon-review",
+      "accessibleName": "a narrow corridor beyond the first right offset",
+      "description": "The B route advances through a compressed carpet channel between a rounded wall and offset piers.",
+      "sourceSceneId": "L0-0002B",
+      "sourcePathId": "L0-0002B-P1",
+      "continuityAnchors": ["rounded left wall", "right offset piers", "narrow carpet channel", "dimmer fluorescent run"],
+      "recentChanges": ["Generated as the first fixed continuation in the B branch."],
+      "image": "/scenes/L0-0003B/final/L0-0003B.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east" },
+      "state": { "openness": 0.24, "ceiling": 0.3, "objects": 0, "wrongness": 0.15 },
+      "paths": [
+        {
+          "id": "L0-0003B-P1",
+          "status": "active",
+          "accessibleName": "Continue through the narrow carpet channel",
+          "semanticDescription": "A single forward route passing the offset pier before a gentle right bend",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "narrow corridor between a rounded outer wall and staggered piers",
+          "movementDirection": "forward then slightly right",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0004B",
+          "targetCamera": "past the offset pier at the next gentle bend",
+          "continuityAnchors": ["rounded outer wall", "staggered pier", "compressed width", "dimmer fluorescent run"],
+          "regions": {
+            "desktop": [[575, 565], [845, 565], [870, 690], [1020, 1086], [395, 1086], [510, 805]],
+            "mobile": [[535, 520], [890, 520], [925, 720], [1090, 1086], [335, 1086], [455, 770]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0004B",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-canon-review",
+      "accessibleName": "a tight curved corridor at the end of the current right bundle",
+      "description": "The B route remains narrow and enclosed as its carpet channel threads between a left offset and curved right wall.",
+      "sourceSceneId": "L0-0003B",
+      "sourcePathId": "L0-0003B-P1",
+      "continuityAnchors": ["left offset walls", "curved right wall", "narrow carpet channel", "muted fluorescent light"],
+      "recentChanges": ["Generated and aspect-corrected as the current B-branch production frontier."],
+      "image": "/scenes/L0-0004B/final/L0-0004B.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east-southeast" },
+      "state": { "openness": 0.21, "ceiling": 0.3, "objects": 0, "wrongness": 0.16 },
+      "paths": [
+        {
+          "id": "L0-0004B-P1",
+          "status": "pending",
+          "frontier": true,
+          "accessibleName": "Continue through the bend ahead",
+          "semanticDescription": "The unresolved narrow carpet route between the left offset and curved right wall",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "tight corridor bending gently around staggered walls",
+          "movementDirection": "forward then slightly right",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["left offset wall", "curved right wall", "single carpet channel", "muted fluorescent run"],
+          "regions": {
+            "desktop": [[755, 515], [935, 515], [950, 645], [1000, 790], [1110, 1086], [435, 1086], [535, 850], [705, 695]],
+            "mobile": [[710, 475], [980, 475], [1005, 670], [1060, 815], [1175, 1086], [375, 1086], [475, 815], [670, 655]]
           }
         }
       ]
     }
   ]
 }
-

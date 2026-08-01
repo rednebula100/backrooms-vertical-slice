@@ -1,0 +1,10 @@
+{
+  "scene_id": "L0-0004A",
+  "source_scene_id": "L0-0003A",
+  "source_path_id": "L0-0003A-P1",
+  "reference_image_role": "L0-0003A is the architectural and photographic continuity reference",
+  "continuity_assessment": "The camera clears the broad offset into a shallow bay. Near walls frame a single carpet route around the central wall, with the same wall finish, carpet, ceiling grid, lighting family, eye height, and lens.",
+  "known_drift": "The curved wall recedes and the central offset becomes more rectilinear, but moderate openness and the receding fluorescent line preserve the branch identity.",
+  "frontier_path_id": "L0-0004A-P1",
+  "status": "provisional-frontier"
+}

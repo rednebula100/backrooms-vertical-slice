@@ -2,9 +2,9 @@
   "scene_id": "L0-0002B",
   "source_path_id": "L0-0001-P2",
   "reference_image_role": "L0-0001-final is the architectural and photographic continuity reference",
-  "continuity_assessment": "The camera advances into the narrow route and turns slightly right. The rounded inner wall continues on the left, the straight outer wall stays on the right, and the carpet, trim, compressed width, ceiling system, fluorescent character, eye height, and lens family persist.",
-  "known_drift": "The source soffit resolves into a low ceiling sooner than ideal; the passage remains spatially convincing enough for a provisional slice.",
-  "frontier_path_id": "L0-0002B-P1",
-  "status": "provisional-frontier"
+  "continuity_assessment": "The replacement camera advances into the narrow route and turns slightly right. The rounded inner wall continues on the left, the straight outer wall stays on the right, and the carpet, trim, compressed width, ceiling system, fluorescent character, eye height, and lens family persist.",
+  "known_drift": "Resolved: the awkward lowered soffit now occupies the immediate foreground before the acoustic ceiling resumes.",
+  "active_path_id": "L0-0002B-P1",
+  "target_scene_id": "L0-0003B",
+  "status": "provisional"
 }
-

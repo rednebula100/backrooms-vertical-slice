@@ -1,0 +1,11 @@
+{
+  "scene_id": "L0-0003A",
+  "source_scene_id": "L0-0002A",
+  "source_path_id": "L0-0002A-P1",
+  "reference_image_role": "L0-0002A is the architectural and photographic continuity reference",
+  "continuity_assessment": "The camera advances only a few meters around the offset. The curved outer wall remains on the left, the right offset stays legible, and the corridor widens modestly without changing facility type.",
+  "known_drift": "The circulation bay is slightly wider and brighter than the source while remaining within the planned A-branch openness drift.",
+  "active_path_id": "L0-0003A-P1",
+  "target_scene_id": "L0-0004A",
+  "status": "provisional"
+}

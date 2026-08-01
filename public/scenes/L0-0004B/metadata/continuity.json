@@ -1,0 +1,10 @@
+{
+  "scene_id": "L0-0004B",
+  "source_scene_id": "L0-0003B",
+  "source_path_id": "L0-0003B-P1",
+  "reference_image_role": "L0-0003B is the architectural and photographic continuity reference",
+  "continuity_assessment": "The camera passes the offset pier into another short bend. Staggered walls now occupy the left, a curved outer wall contains the right, and one narrow carpet channel remains the only traversable route.",
+  "known_drift": "The corridor turns a little more clearly to the right while preserving compression, muted fluorescence, material continuity, eye height, and lens family.",
+  "frontier_path_id": "L0-0004B-P1",
+  "status": "provisional-frontier"
+}
