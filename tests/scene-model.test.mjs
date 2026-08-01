@@ -35,6 +35,12 @@ test("each opening branch has two fixed follow-ups", () => {
   assert.equal(scenes.get("L0-0003B").paths[0].targetSceneId, "L0-0004B");
 });
 
+test("only the opening scene exposes multiple routes", () => {
+  for (const scene of world.scenes) {
+    assert.equal(scene.paths.length, scene.id === world.startSceneId ? 2 : 1, scene.id);
+  }
+});
+
 test("only the two bundle endpoints remain pending production frontiers", () => {
   const pending = world.scenes.flatMap((scene) => scene.paths.filter((path) => path.status === "pending").map((path) => [scene.id, path.id]));
   assert.deepEqual(pending, [["L0-0004A", "L0-0004A-P1"], ["L0-0004B", "L0-0004B-P1"]]);

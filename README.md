@@ -17,5 +17,5 @@ Progress is stored at `localStorage["backrooms.progress"]` with `scene_id` and `
 
 ## Asset status
 
-`L0-0001-final`, `L0-0002A`, and `L0-0002B` are provisional production assets, not final human canon approvals. Scene registration, path geometry, and image paths live in `public/scenes/scenes.json`, so images can be replaced without navigation rewrites.
+All seven playable rasters are provisional production assets, not final human canon approvals. In `vertical-slice-0.5.0`, `L0-0001` is the only scene with two routes; every follow-up registers and visually presents one continuation. Scene registration, opening-aligned path geometry, and image paths live in `public/scenes/scenes.json`, so images can be replaced without navigation rewrites.
 

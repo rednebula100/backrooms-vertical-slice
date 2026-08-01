@@ -165,6 +165,34 @@ Move a few meters through the narrow channel, passing the offset pier and follow
 Technical correction only: preserve the generated scene, composition, camera, geometry, lighting, textures, and single route while returning an exact landscape 4:3 raster. Add or remove no content.
 ```
 
+## 0.5.0 A-branch single-route revisions
+
+All three assets used the built-in `$imagegen` edit workflow. Each prompt treated the existing scene as the only edit target and adjacent scenes as fixed continuity references. The final outputs were copied directly into the stable scene URLs at 1448×1086.
+
+### L0-0002A replacement
+
+Output: `exec-1e100643-eab9-46f8-aee3-09991ac0d58a.png`.
+
+```text
+Use case: precise scene-geometry edit. Asset: replacement for playable scene L0-0002A. Image 1 is the only edit target; Images 2 and 3 are fixed previous/next continuity references. Make the existing forward-left route around the offset the only traversable corridor. Close the apparent right-side route with matching wallpapered wall, continuous base trim, and no carpet channel behind it. Preserve exact 4:3 framing, camera, Level 0 materials, lighting, texture, and the intended left passage. Make the smallest possible edit. No people, objects, text, symbols, doors, extra openings, T-junctions, side corridors, stairs, or surreal effects.
+```
+
+### L0-0003A replacement
+
+Output: `exec-49b4d89c-efd2-4124-b266-e5f867cf5176.png`.
+
+```text
+Use case: precise scene-geometry edit. Asset: replacement for playable scene L0-0003A. Image 1 is the only edit target; Images 2 and 3 are fixed previous/next continuity references. Preserve the narrow forward-left passage between the curved left wall and broad offset as the only route. Close the broad right-side carpeted space with a matching wall mass and continuous base trim so it reads as a shallow sealed bay with a visible terminating wall. Preserve exact 4:3 framing, camera, Level 0 materials, lighting, texture, and the intended center-left passage. Make the smallest possible edit. No people, objects, text, symbols, doors, extra openings, T-junctions, side corridors, stairs, or surreal effects.
+```
+
+### L0-0004A replacement
+
+Output: `exec-859ffaf0-24f0-4f5f-9367-c6d95602aedd.png`.
+
+```text
+Use case: precise scene-geometry edit. Asset: replacement for playable scene L0-0004A. Image 1 is the only edit target; Image 2 is the fixed previous-scene continuity reference. Preserve the existing right-side carpet passage as the only route. Join or overlap the central wall and near left framing wall as one continuous solid obstruction so no left-side gap or hidden path can be inferred. Preserve exact 4:3 framing, camera, Level 0 materials, lighting, texture, and the intended right passage. Make the smallest possible edit. No people, objects, text, symbols, doors, extra openings, T-junctions, side corridors, stairs, or surreal effects.
+```
+
 ## 0.4.0 B-branch and transparent-boundary revisions
 
 Both revisions used the built-in `$imagegen` workflow. The playable scene was generated directly from its two adjacent B-branch references. The symbol used a chroma-key edit followed by the skill-provided local alpha-removal script; the resulting project asset is an RGBA PNG.

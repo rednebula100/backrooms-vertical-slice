@@ -1,5 +1,5 @@
 {
-  "worldVersion": "vertical-slice-0.4.0",
+  "worldVersion": "vertical-slice-0.5.0",
   "startSceneId": "L0-0001",
   "contentBoundary": {
     "symbolImage": "/boundary/content-boundary-symbol.png",
@@ -72,25 +72,25 @@
       "levelId": "LV-000",
       "branchId": "BR-L0-P1",
       "status": "provisional",
-      "approvalStatus": "provisional-approved",
-      "reviewStatus": "reviewed",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-canon-review",
       "accessibleName": "the corridor immediately beyond the left bend",
-      "description": "A moderately open continuation whose curved left wall leads around an offset wall.",
+      "description": "A single left-curving continuation whose opposite side is sealed by an offset wall.",
       "sourceSceneId": "L0-0001",
       "sourcePathId": "L0-0001-P1",
       "continuityAnchors": ["curved left wall", "near right wall", "receding fluorescent line", "same carpet and trim"],
-      "recentChanges": ["Converted the former production frontier into a fixed route to L0-0003A."],
+      "recentChanges": ["Converted the former production frontier into a fixed route to L0-0003A.", "Replaced the image so the left-curving continuation is the only visually traversable route."],
       "image": "/scenes/L0-0002A/final/L0-0002A.png",
       "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
       "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "west" },
-      "state": { "openness": 0.37, "ceiling": 0.34, "objects": 0, "wrongness": 0.17 },
+      "state": { "openness": 0.33, "ceiling": 0.34, "objects": 0, "wrongness": 0.17 },
       "paths": [
         {
           "id": "L0-0002A-P1",
           "status": "active",
           "accessibleName": "Continue around the offset wall",
-          "semanticDescription": "Forward carpeted continuation around the next offset wall",
-          "screenLocation": "center, medium depth",
+          "semanticDescription": "The only carpeted continuation, curving forward-left around the next offset wall",
+          "screenLocation": "center-left, medium depth",
           "physicalForm": "curving corridor between the outer wall and a right offset wall",
           "movementDirection": "forward",
           "movementType": "DIRECT",
@@ -98,8 +98,8 @@
           "targetCamera": "a few meters beyond the offset, still following the leftward flow",
           "continuityAnchors": ["curved left wall", "right offset wall", "fluorescent center line", "same carpet and trim"],
           "regions": {
-            "desktop": [[705, 380], [885, 380], [885, 650], [705, 650]],
-            "mobile": [[640, 350], [950, 350], [950, 700], [640, 700]]
+            "desktop": [[545, 380], [710, 380], [710, 690], [545, 690]],
+            "mobile": [[490, 350], [770, 350], [770, 735], [490, 735]]
           }
         }
       ]
@@ -149,15 +149,15 @@
       "approvalStatus": "provisional-generated",
       "reviewStatus": "needs-canon-review",
       "accessibleName": "a widening corridor beyond the first left offset",
-      "description": "The A route opens into a shallow circulation bay while retaining its curved outer wall.",
+      "description": "The A route retains its curved outer wall and one forward-left passage beside a sealed shallow bay.",
       "sourceSceneId": "L0-0002A",
       "sourcePathId": "L0-0002A-P1",
       "continuityAnchors": ["curved left wall", "right offset wall", "brighter fluorescent run", "wider carpeted circulation"],
-      "recentChanges": ["Generated as the first fixed continuation in the A branch."],
+      "recentChanges": ["Generated as the first fixed continuation in the A branch.", "Closed the broad right-side circulation space so only the intended forward-left passage reads as traversable."],
       "image": "/scenes/L0-0003A/final/L0-0003A.png",
       "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
       "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "west-southwest" },
-      "state": { "openness": 0.43, "ceiling": 0.35, "objects": 0, "wrongness": 0.17 },
+      "state": { "openness": 0.35, "ceiling": 0.35, "objects": 0, "wrongness": 0.17 },
       "paths": [
         {
           "id": "L0-0003A-P1",
@@ -186,15 +186,15 @@
       "approvalStatus": "provisional-generated",
       "reviewStatus": "needs-canon-review",
       "accessibleName": "a shallow circulation bay at the end of the current left bundle",
-      "description": "The A route remains moderately open and bends around one final central wall into an unresolved continuation.",
+      "description": "The A route narrows to one right-side passage around a final joined wall mass.",
       "sourceSceneId": "L0-0003A",
       "sourcePathId": "L0-0003A-P1",
-      "continuityAnchors": ["broad central offset", "near framing walls", "moderate openness", "receding fluorescent run"],
-      "recentChanges": ["Generated as the current A-branch production frontier."],
+      "continuityAnchors": ["joined left wall mass", "near framing walls", "single right-side carpet channel", "receding fluorescent run"],
+      "recentChanges": ["Generated as the current A-branch production frontier.", "Joined the left wall masses so the right-side opening is the only visually traversable route."],
       "image": "/scenes/L0-0004A/final/L0-0004A.png",
       "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
       "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "southwest" },
-      "state": { "openness": 0.41, "ceiling": 0.35, "objects": 0, "wrongness": 0.18 },
+      "state": { "openness": 0.31, "ceiling": 0.35, "objects": 0, "wrongness": 0.18 },
       "paths": [
         {
           "id": "L0-0004A-P1",

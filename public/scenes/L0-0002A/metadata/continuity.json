@@ -2,8 +2,10 @@
   "scene_id": "L0-0002A",
   "source_path_id": "L0-0001-P1",
   "reference_image_role": "L0-0001-final is the architectural and photographic continuity reference",
-  "continuity_assessment": "The camera advances a few meters and rotates left. The curved outer wall continues on the left, the prior central wall becomes the near right wall, and the carpet, trim, ceiling grid, fluorescent line, eye height, and lens family persist.",
-  "known_drift": "The curved soffit is slightly more pronounced than in the source but remains a small Level 0 proportional wrongness.",
+  "continuity_assessment": "The camera advances a few meters and rotates left. The curved outer wall continues on the left, the opposite offset is sealed, and one carpet route continues forward-left with the same trim, ceiling grid, fluorescent line, eye height, and lens family.",
+  "known_drift": "The corridor is slightly more enclosed than the source so the selected route reads unambiguously as the only continuation.",
+  "replacement_generation_output": "exec-1e100643-eab9-46f8-aee3-09991ac0d58a.png",
+  "replacement_reason": "Close the apparent secondary gap while preserving the selected forward-left route.",
   "active_path_id": "L0-0002A-P1",
   "target_scene_id": "L0-0003A",
   "status": "provisional"

@@ -3,8 +3,10 @@
   "source_scene_id": "L0-0002A",
   "source_path_id": "L0-0002A-P1",
   "reference_image_role": "L0-0002A is the architectural and photographic continuity reference",
-  "continuity_assessment": "The camera advances only a few meters around the offset. The curved outer wall remains on the left, the right offset stays legible, and the corridor widens modestly without changing facility type.",
-  "known_drift": "The circulation bay is slightly wider and brighter than the source while remaining within the planned A-branch openness drift.",
+  "continuity_assessment": "The camera advances only a few meters around the offset. The curved outer wall remains on the left, the broad right wall terminates the shallow bay, and one forward-left passage remains without changing facility type.",
+  "known_drift": "The shallow foreground bay remains broad, but its right side is visibly sealed instead of implying another continuation.",
+  "replacement_generation_output": "exec-49b4d89c-efd2-4124-b266-e5f867cf5176.png",
+  "replacement_reason": "Remove the apparent right-side route while preserving the mask-aligned forward-left passage.",
   "active_path_id": "L0-0003A-P1",
   "target_scene_id": "L0-0004A",
   "status": "provisional"

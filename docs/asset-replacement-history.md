@@ -29,3 +29,13 @@
 - Reason: the former scene repeated `L0-0002B`'s corridor framing, central wall face, and near-right obstruction too closely. The replacement passes that obstruction, changes orientation, and introduces a staggered pocket while retaining one compressed B-branch route.
 - Data effects: updated continuity metadata, path description, path screen location, opening-shaped masks, and scene-change notes while retaining IDs and navigation provenance.
 - Approval: provisional-generated; human canon review remains required.
+
+## A branch — 0.5.0 single-route correction
+
+- Stable scene IDs and URLs: `L0-0002A`, `L0-0003A`, and `L0-0004A`.
+- Replacement generations: `exec-1e100643-eab9-46f8-aee3-09991ac0d58a.png`, `exec-49b4d89c-efd2-4124-b266-e5f867cf5176.png`, and `exec-859ffaf0-24f0-4f5f-9367-c6d95602aedd.png`.
+- Reason: offset walls and broad bays in the former rasters created additional apparent corridors even though every follow-up scene has one registered route.
+- Geometry result: `L0-0002A` and `L0-0003A` retain one forward-left continuation; `L0-0004A` retains one right-side continuation. All other apparent ways are visibly sealed.
+- Data effects: retained graph IDs and targets, aligned only the changed `L0-0002A` opening mask, revised continuity metadata, and advanced the world registry to `vertical-slice-0.5.0`.
+- Recovery point: Git commit `e50f6cc`.
+- Approval: provisional-generated; human canon review remains required.

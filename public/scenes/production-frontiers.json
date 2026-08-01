@@ -1,5 +1,5 @@
 {
-  "world_version": "vertical-slice-0.4.0",
+  "world_version": "vertical-slice-0.5.0",
   "frontiers": [
     {
       "branch_id": "BR-L0-P1",
@@ -9,9 +9,9 @@
       "depth": 3,
       "status": "pending",
       "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.41, "ceiling": 0.35, "objects": 0, "wrongness": 0.18 },
-      "recent_drift": ["The route widened into a shallow circulation bay while preserving the curved-flow character."],
-      "continuity_anchors": ["broad central wall", "right-side carpet channel", "near framing walls", "receding fluorescent run"]
+      "current_state": { "openness": 0.31, "ceiling": 0.35, "objects": 0, "wrongness": 0.18 },
+      "recent_drift": ["The route resolves into one right-side carpet channel; the left wall masses join as a solid obstruction."],
+      "continuity_anchors": ["joined left wall mass", "single right-side carpet channel", "near framing walls", "receding fluorescent run"]
     },
     {
       "branch_id": "BR-L0-P2",
