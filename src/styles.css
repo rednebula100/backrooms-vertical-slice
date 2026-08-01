@@ -1,0 +1,91 @@
+:root {
+  color-scheme: dark;
+  background: #000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+.scene-shell {
+  position: relative;
+  width: min(58vw, 960px, 90.666dvh);
+  aspect-ratio: 4 / 3;
+  max-height: 68dvh;
+  background: #000;
+  isolation: isolate;
+  touch-action: auto;
+}
+
+#scene-image,
+.path-overlay {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#scene-image {
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.path-overlay {
+  z-index: 1;
+}
+
+.hit-region {
+  fill: transparent;
+  stroke: transparent;
+  pointer-events: all;
+  cursor: pointer;
+  outline: none;
+}
+
+.hit-region:focus-visible {
+  stroke: rgba(255, 255, 255, 0.92);
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 1024px) {
+  .scene-shell {
+    width: min(82vw, 900px, 96dvh);
+    max-height: 72dvh;
+  }
+}
+
+@media (max-width: 640px) {
+  .scene-shell {
+    width: min(calc(100vw - 26px), 93.333dvh);
+    max-height: 70dvh;
+  }
+}

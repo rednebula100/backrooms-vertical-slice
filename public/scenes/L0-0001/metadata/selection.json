@@ -1,0 +1,10 @@
+{
+  "scene_id": "L0-0001",
+  "selection_status": "provisional-not-canon-approved",
+  "selected_candidate": "L0-0001-C03",
+  "refined_asset": "../final/L0-0001-final.png",
+  "size": [1448, 1086],
+  "reason": "Strong Level 0 identity, unequal natural branch, low menu-like risk, non-overlapping hit regions, and distinct continuity anchors for both follow-ups.",
+  "replacement_policy": "Keep L0-0001 and path IDs stable; replace the image URL and image-derived region coordinates in the scene registry."
+}
+

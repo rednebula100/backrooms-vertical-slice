@@ -1,0 +1,105 @@
+{
+  "worldVersion": "vertical-slice-0.1.0",
+  "startSceneId": "L0-0001",
+  "scenes": [
+    {
+      "id": "L0-0001",
+      "levelId": "LV-000",
+      "status": "provisional",
+      "accessibleName": "an empty yellow commercial interior with two routes",
+      "image": "/scenes/L0-0001/final/L0-0001-final.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "north" },
+      "state": { "openness": 0.55, "ceiling": 0.35, "objects": 0.01, "wrongness": 0.16 },
+      "paths": [
+        {
+          "id": "L0-0001-P1",
+          "status": "active",
+          "accessibleName": "Move through the broad passage bending left",
+          "semanticDescription": "Broad open carpeted continuation bending left around the central wall",
+          "screenLocation": "left-center, medium depth",
+          "physicalForm": "widened corridor with a gentle left bend",
+          "movementDirection": "forward then left",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0002A",
+          "targetCamera": "immediately after the left bend, facing west",
+          "continuityAnchors": ["curved left wall", "central wall becomes near right wall", "carpet direction", "ceiling-grid direction", "receding fluorescent line", "dark vinyl base trim"],
+          "regions": {
+            "desktop": [[225, 365], [530, 350], [595, 660], [500, 785], [270, 825], [200, 655]],
+            "mobile": [[180, 330], [575, 315], [635, 695], [530, 855], [220, 880], [145, 640]]
+          }
+        },
+        {
+          "id": "L0-0001-P2",
+          "status": "active",
+          "accessibleName": "Move into the narrow passage on the right",
+          "semanticDescription": "Narrower passage tucked beneath a lowered soffit and turning right",
+          "screenLocation": "right-center, medium depth",
+          "physicalForm": "compressed side passage between a rounded inner wall and straight outer wall",
+          "movementDirection": "forward then slightly right",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0002B",
+          "targetCamera": "a few meters inside the passage, facing east-northeast",
+          "continuityAnchors": ["lowered soffit", "rounded inner wall on left", "straight outer wall on right", "same carpet", "slightly dimmer fluorescent light", "dark vinyl base trim"],
+          "regions": {
+            "desktop": [[1020, 325], [1235, 325], [1260, 680], [1155, 800], [995, 720], [995, 425]],
+            "mobile": [[970, 290], [1295, 285], [1320, 725], [1160, 855], [940, 760], [940, 390]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0002A",
+      "levelId": "LV-000",
+      "status": "provisional-frontier",
+      "accessibleName": "the corridor immediately beyond the left bend",
+      "image": "/scenes/L0-0002A/final/L0-0002A.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "west" },
+      "state": { "openness": 0.37, "ceiling": 0.34, "objects": 0, "wrongness": 0.17 },
+      "paths": [
+        {
+          "id": "L0-0002A-P1",
+          "status": "pending",
+          "frontier": true,
+          "targetSceneId": null,
+          "accessibleName": "Continue around the offset wall",
+          "semanticDescription": "Forward carpeted continuation around the next offset wall",
+          "movementDirection": "forward",
+          "movementType": "DIRECT",
+          "regions": {
+            "desktop": [[650, 390], [880, 390], [910, 720], [635, 720]],
+            "mobile": [[585, 350], [940, 350], [970, 780], [570, 790]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0002B",
+      "levelId": "LV-000",
+      "status": "provisional-frontier",
+      "accessibleName": "the narrow corridor beyond the right passage",
+      "image": "/scenes/L0-0002B/final/L0-0002B.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east-northeast" },
+      "state": { "openness": 0.22, "ceiling": 0.3, "objects": 0, "wrongness": 0.14 },
+      "paths": [
+        {
+          "id": "L0-0002B-P1",
+          "status": "pending",
+          "frontier": true,
+          "targetSceneId": null,
+          "accessibleName": "Continue toward the opening ahead",
+          "semanticDescription": "Narrow carpeted corridor continuing past the offset wall",
+          "movementDirection": "forward",
+          "movementType": "DIRECT",
+          "regions": {
+            "desktop": [[615, 340], [905, 340], [960, 790], [525, 790]],
+            "mobile": [[560, 300], [960, 300], [1020, 845], [470, 845]]
+          }
+        }
+      ]
+    }
+  ]
+}
+

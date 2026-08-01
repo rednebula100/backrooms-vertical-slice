@@ -1,0 +1,11 @@
+{
+  "scene_id": "L0-0001",
+  "generation_mode": "built-in imagegen",
+  "candidates": [
+    { "id": "L0-0001-C01", "file": "../candidates/L0-0001-C01.png", "size": [1448, 1086], "composition": "broad center-left opening and narrow right route behind partitions", "status": "candidate" },
+    { "id": "L0-0001-C02", "file": "../candidates/L0-0001-C02.png", "size": [1448, 1086], "composition": "near left recess and deep right continuation around an L-shaped core", "status": "candidate" },
+    { "id": "L0-0001-C03", "file": "../candidates/L0-0001-C03.png", "size": [1448, 1086], "composition": "broad left bend and low-ceiling right passage", "status": "provisional-selection-source" },
+    { "id": "L0-0001-C04", "file": "../candidates/L0-0001-C04.png", "size": [1448, 1086], "composition": "open left bay and occluded right slot around a support core", "status": "candidate" }
+  ]
+}
+

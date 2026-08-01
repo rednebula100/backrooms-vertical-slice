@@ -1,0 +1,10 @@
+{
+  "scene_id": "L0-0002A",
+  "source_path_id": "L0-0001-P1",
+  "reference_image_role": "L0-0001-final is the architectural and photographic continuity reference",
+  "continuity_assessment": "The camera advances a few meters and rotates left. The curved outer wall continues on the left, the prior central wall becomes the near right wall, and the carpet, trim, ceiling grid, fluorescent line, eye height, and lens family persist.",
+  "known_drift": "The curved soffit is slightly more pronounced than in the source but remains a small Level 0 proportional wrongness.",
+  "frontier_path_id": "L0-0002A-P1",
+  "status": "provisional-frontier"
+}
+

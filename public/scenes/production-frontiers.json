@@ -1,0 +1,8 @@
+{
+  "world_version": "vertical-slice-0.1.0",
+  "frontiers": [
+    { "branch_id": "BR-L0-P1", "current_scene_id": "L0-0002A", "path_id": "L0-0002A-P1", "level_id": "LV-000", "depth": 1, "status": "pending", "continuity_anchors": ["curved left wall", "right offset wall", "fluorescent center line"] },
+    { "branch_id": "BR-L0-P2", "current_scene_id": "L0-0002B", "path_id": "L0-0002B-P1", "level_id": "LV-000", "depth": 1, "status": "pending", "continuity_anchors": ["rounded left wall", "straight right wall", "compressed corridor"] }
+  ]
+}
+

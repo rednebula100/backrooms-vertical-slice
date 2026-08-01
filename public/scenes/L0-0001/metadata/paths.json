@@ -1,0 +1,29 @@
+{
+  "scene_id": "L0-0001",
+  "native_coordinate_system": { "width": 1448, "height": 1086 },
+  "paths": [
+    {
+      "path_id": "L0-0001-P1",
+      "semantic_description": "Broad open carpeted continuation bending left around the central wall.",
+      "screen_location": "left-center, medium depth",
+      "physical_form": "widened corridor with a gentle left bend",
+      "movement_direction": "forward then left",
+      "movement_type": "DIRECT",
+      "expected_camera": "immediately after completing the left bend, facing west",
+      "continuity_anchors": ["curved outer wall", "central wall becomes the near right wall", "carpet direction", "ceiling-grid direction", "fluorescent line", "base trim"],
+      "target_scene_id": "L0-0002A"
+    },
+    {
+      "path_id": "L0-0001-P2",
+      "semantic_description": "Narrower passage tucked beneath a lowered soffit and turning slightly right.",
+      "screen_location": "right-center, medium depth",
+      "physical_form": "compressed side passage between rounded inner and straight outer walls",
+      "movement_direction": "forward then slightly right",
+      "movement_type": "DIRECT",
+      "expected_camera": "a few meters inside the passage, facing east-northeast",
+      "continuity_anchors": ["lowered soffit", "rounded wall on left", "straight wall on right", "same carpet", "slightly dimmer fluorescence", "base trim"],
+      "target_scene_id": "L0-0002B"
+    }
+  ]
+}
+
