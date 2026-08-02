@@ -111,7 +111,8 @@ export function buildRoutePacketRegistry(world, annotations, overrides, { sceneI
         continuityAnchors: clone(pathOverride.continuityAnchors),
         spatialBrief: clone(pathOverride.spatialBrief),
         forbiddenSourcePathIds: scene.paths.map((candidate) => candidate.id).filter((candidate) => candidate !== path.id),
-        promptRecord: `docs/generation-prompts.md#${path.id.toLowerCase()}-route-packet-pilot`,
+        promptRecord: pathOverride.promptRecord
+          ?? `docs/generation-prompts.md#${path.id.toLowerCase()}-route-packet-pilot`,
       };
       packet.prompt = buildPrompt(scene, path, packet, packet.forbiddenSourcePathIds);
       packets.push(packet);

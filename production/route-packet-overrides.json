@@ -96,6 +96,222 @@
           }
         }
       }
+    },
+    "L0-0008A": {
+      "sourceSpaceId": "SP-L0-0008A",
+      "paths": {
+        "L0-0008A-P1": {
+          "promptRecord": "docs/generation-prompts.md#l0-0008a-p1-route-packet-wave-2",
+          "targetSceneId": "L0-0009A",
+          "targetSpaceId": "SP-L0-0008A",
+          "transitionRelation": "same-space-advance",
+          "cameraTransition": {
+            "instruction": "follow the only carpeted route around the right-hand curve until the near wall slips fully behind the camera",
+            "distanceMeters": 7,
+            "targetView": "past the curve, looking across a modest central volume whose ceiling feels slightly more open"
+          },
+          "continuityAnchors": [
+            "the continuous right-curving carpet edge",
+            "the long unbroken yellow wall on the left",
+            "the rounded foreground wall on the right",
+            "the same ceiling-grid direction and taupe carpet"
+          ],
+          "spatialBrief": {
+            "intensity": "moderate",
+            "archetype": "ceiling-expansion",
+            "instruction": "let the bend release into one wider central volume with a slightly taller-feeling middle, while retaining the familiar low ceiling grid around its edges"
+          }
+        }
+      }
+    },
+    "L0-0007B": {
+      "sourceSpaceId": "SP-L0-0007B",
+      "paths": {
+        "L0-0007B-P1": {
+          "promptRecord": "docs/generation-prompts.md#l0-0007b-p1-route-packet-wave-2",
+          "targetSceneId": "L0-0008B",
+          "targetSpaceId": "SP-L0-0007B",
+          "transitionRelation": "same-space-advance",
+          "cameraTransition": {
+            "instruction": "walk around the visible rightward bend, keeping close to the inside rounded wall and preserving the corridor width",
+            "distanceMeters": 5,
+            "targetView": "just after the bend where the full floor plane of the continuation becomes visible"
+          },
+          "continuityAnchors": [
+            "the rounded inside wall on the left",
+            "the right-curving carpet and dark base trim",
+            "the single bright panel near the bend",
+            "the narrow B-branch proportions"
+          ],
+          "spatialBrief": {
+            "intensity": "subtle",
+            "archetype": "wide-bend",
+            "instruction": "continue the broad turn and vary only its radius and wall offset; do not turn it into a doorway or a dramatic new chamber"
+          }
+        }
+      }
+    },
+    "L0-0007C": {
+      "sourceSpaceId": "SP-L0-0007C",
+      "paths": {
+        "L0-0007C-P1": {
+          "promptRecord": "docs/generation-prompts.md#l0-0007c-p1-route-packet-wave-2",
+          "targetSceneId": "L0-0008C",
+          "targetSpaceId": "SP-L0-0008C",
+          "transitionRelation": "adjacent-space",
+          "cameraTransition": {
+            "instruction": "cross the single narrow opening in the center-right wall and clear its wall thickness before turning slightly left",
+            "distanceMeters": 5,
+            "targetView": "inside the space beyond, looking across two unequal connected room volumes"
+          },
+          "continuityAnchors": [
+            "the single narrow wall opening",
+            "the carpet continuing through its threshold",
+            "the broad curved source wall",
+            "the brighter yellow wallpaper and ceiling grid"
+          ],
+          "spatialBrief": {
+            "intensity": "moderate",
+            "archetype": "nested-chamber",
+            "instruction": "reveal two unequal room volumes joined by one wide internal wall opening, with clear foreground and background depth but no extra door-like portals"
+          }
+        }
+      }
+    },
+    "L0-0007D": {
+      "sourceSpaceId": "SP-L0-0007D",
+      "paths": {
+        "L0-0007D-P1": {
+          "promptRecord": "docs/generation-prompts.md#l0-0007d-p1-route-packet-wave-2",
+          "targetSceneId": "L0-0008D",
+          "targetSpaceId": "SP-L0-0008D",
+          "transitionRelation": "adjacent-space",
+          "cameraTransition": {
+            "instruction": "walk through the broad left opening only and follow its left-curving carpet well beyond the separating center wall",
+            "distanceMeters": 9,
+            "targetView": "after the curve, looking diagonally across a broad hall with layered attached piers"
+          },
+          "continuityAnchors": [
+            "the broad left opening",
+            "the left-curving carpet and dark base trim",
+            "the bright repeating ceiling panels",
+            "the thick solid wall separating the unused right route"
+          ],
+          "spatialBrief": {
+            "intensity": "pronounced",
+            "archetype": "column-field",
+            "instruction": "open into a broad carpeted hall with a sparse rhythm of attached rectangular piers and a long diagonal sightline; keep it empty, legible, and recognizably Level 0"
+          }
+        }
+      }
+    },
+    "L0-0007E": {
+      "sourceSpaceId": "SP-L0-0007E",
+      "paths": {
+        "L0-0007E-P2": {
+          "promptRecord": "docs/generation-prompts.md#l0-0007e-p2-route-packet-wave-2",
+          "targetSceneId": "L0-0008E",
+          "targetSpaceId": "SP-L0-0007E",
+          "transitionRelation": "same-space-advance",
+          "cameraTransition": {
+            "instruction": "follow the center carpet route around the offset wall pier, keeping the pier on the right and excluding the wall-like right-side sibling region",
+            "distanceMeters": 6,
+            "targetView": "past the pier, facing a wider continuation partly compressed by one low soffit"
+          },
+          "continuityAnchors": [
+            "the center carpet continuation",
+            "the offset wall pier on the right",
+            "the dimmer B-side fluorescent light",
+            "the smooth rightward curve of the base trim"
+          ],
+          "spatialBrief": {
+            "intensity": "moderate",
+            "archetype": "ceiling-compression",
+            "instruction": "let the passage widen into a room where one attached low soffit compresses only part of the view; keep the rest of the ceiling at normal Level 0 height"
+          }
+        }
+      }
+    },
+    "L0-0006D": {
+      "sourceSpaceId": "SP-L0-0006D",
+      "paths": {
+        "L0-0006D-P2": {
+          "promptRecord": "docs/generation-prompts.md#l0-0006d-p2-route-packet-wave-2",
+          "targetSceneId": "L0-0007F",
+          "targetSpaceId": "SP-L0-0006D",
+          "transitionRelation": "same-space-advance",
+          "cameraTransition": {
+            "instruction": "move through the center-left carpeted continuation and around the broad wall mass, while rejecting the large wall-like sibling region on the right",
+            "distanceMeters": 7,
+            "targetView": "beyond the wall mass, looking along several offset attached wall planes"
+          },
+          "continuityAnchors": [
+            "the center-left strip of continuing carpet",
+            "the broad center-right wall mass",
+            "the slightly wavy dark base trim",
+            "the same ceiling grid and subdued wallpaper"
+          ],
+          "spatialBrief": {
+            "intensity": "moderate",
+            "archetype": "long-parallax",
+            "instruction": "reveal a deeper lateral sequence of attached wall planes with believable parallax and one long diagonal sightline; avoid freestanding maze walls"
+          }
+        }
+      }
+    },
+    "L0-0006E": {
+      "sourceSpaceId": "SP-L0-0006E",
+      "paths": {
+        "L0-0006E-P1": {
+          "promptRecord": "docs/generation-prompts.md#l0-0006e-p1-route-packet-wave-2",
+          "targetSceneId": "L0-0007G",
+          "targetSpaceId": "SP-L0-0006E",
+          "transitionRelation": "same-space-advance",
+          "cameraTransition": {
+            "instruction": "slip left around the thick foreground return wall indicated by the selected side passage and keep the dead-end wall behind to the right",
+            "distanceMeters": 4,
+            "targetView": "just past the return wall, looking into a small asymmetric room"
+          },
+          "continuityAnchors": [
+            "the thick foreground return wall on the left",
+            "the narrow side passage beside it",
+            "the single near fluorescent panel",
+            "the compact proportions and dark trim"
+          ],
+          "spatialBrief": {
+            "intensity": "subtle",
+            "archetype": "offset-room",
+            "instruction": "reveal a modest asymmetric room split by one attached offset wall mass; keep the room compact and change no more than one major spatial feature"
+          }
+        }
+      }
+    },
+    "L0-0006F": {
+      "sourceSpaceId": "SP-L0-0006F",
+      "paths": {
+        "L0-0006F-P1": {
+          "promptRecord": "docs/generation-prompts.md#l0-0006f-p1-route-packet-wave-2",
+          "targetSceneId": "L0-0007H",
+          "targetSpaceId": "SP-L0-0007H",
+          "transitionRelation": "adjacent-space",
+          "cameraTransition": {
+            "instruction": "cross the centered opening between the attached wall masses and continue far enough that the source curve is no longer visible",
+            "distanceMeters": 10,
+            "targetView": "from one edge of a sparse open commercial floor with a deep off-center sightline"
+          },
+          "continuityAnchors": [
+            "the centered carpeted opening",
+            "the staggered attached wall masses around it",
+            "the broad source floor plane",
+            "the subdued fluorescent grid and yellow-beige wallpaper"
+          ],
+          "spatialBrief": {
+            "intensity": "pronounced",
+            "archetype": "service-grid",
+            "instruction": "open into a sparse broad commercial floor with irregular ceiling-grid spacing and a few attached wall offsets; preserve large empty zones and avoid a forest of corridors"
+          }
+        }
+      }
     }
   }
 }

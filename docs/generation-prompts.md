@@ -523,6 +523,80 @@ Style: photorealistic late-1990s to mid-2000s budget consumer-digital photograph
 Exact landscape 4:3, direct adjacent viewpoint, believable parallax and wall thickness, mostly empty. No text, UI, colored route marks, labels, arrows, people, entities, furniture, unsupported doors, windows, stairs, landmarks, dramatic horror, cinematic grading, VHS, glitch, fisheye, bloom, logo, watermark, or view of the previous room behind the camera.
 ```
 
+## 0.9.3 route-conditioned wave-2 completion
+
+All eight images used built-in `imagegen` generation mode. Each call supplied three references in the same order: the clean source scene, a route-selection map with the chosen path in green and sibling paths in red, and a clean crop of the chosen path. The diagnostic colors were forbidden from the outputs. All saved candidates are 1448×1086 PNG files (exact 4:3) and remain staged until human route annotation.
+
+### L0-0008A-P1 route packet wave 2
+
+Target: `L0-0009A`. Output: `exec-2e03ee16-ef61-4cc4-b2b3-f6a94e1a5d2d.png`. Archetype: `ceiling-expansion`, moderate.
+
+```text
+Move about 7 meters around L0-0008A-P1's selected right-hand curve until the near rounded wall passes behind the camera. Remain in the same continuous space. Preserve the right-curving carpet edge, long unbroken yellow wall, taupe patterned carpet, dark trim, acoustic grid, and flat fluorescence. Reveal a moderately wider central volume with a slightly taller-feeling middle ceiling while the familiar low grid remains around its edges. Use clear foreground, middle-ground, and background depth; do not default to a centered doorway or another narrow straight corridor.
+```
+
+### L0-0007B-P1 route packet wave 2
+
+Target: `L0-0008B`. Output: `exec-e0612c32-4866-4050-9266-74f5233d285a.png`. Archetype: `wide-bend`, subtle.
+
+```text
+Walk about 5 meters around the selected rightward bend, close to the rounded inside wall. Stay in the same continuous space and preserve the narrow B-branch proportions, right-curving carpet and trim, subdued wallpaper, ceiling grid, and near fluorescent panel. Show the view just after the bend when more of the floor plane is visible. Change only the turn radius and wall offset. Do not create a doorway, a dramatic chamber, or a repeated straight-corridor composition.
+```
+
+### L0-0007C-P1 route packet wave 2
+
+Target: `L0-0008C`. Output: `exec-e7fc5a66-abfe-4759-8a84-275a4b9fc97d.png`. Archetype: `nested-chamber`, moderate.
+
+```text
+Cross the single narrow center-right opening, clear its wall thickness, move about 5 meters, and face slightly left. Enter an adjacent connected space while preserving the threshold, carpet line, curved source-wall logic, brighter wallpaper, trim, grid, and fluorescent light. Reveal two unequal room volumes joined by one wide internal wall opening. Use strong layered depth rather than a repeated centered doorway and avoid multiplying tall rectangular portals.
+```
+
+### L0-0007D-P1 route packet wave 2
+
+Target: `L0-0008D`. Output: `exec-daec94e7-4898-48a7-9139-72557a7747ad.png`. Archetype: `column-field`, pronounced.
+
+```text
+Walk through the broad selected left opening and follow its left-curving carpet about 9 meters beyond the thick center wall. Exclude the unselected right opening and leave the source junction behind the camera. Reveal a broad carpeted hall with a sparse rhythm of attached rectangular structural piers, a long diagonal sightline, layered occlusion, and large empty floor areas. Piers must remain attached architecture, not freestanding maze obstacles; avoid a forest of doorways.
+```
+
+### L0-0007E-P2 route packet wave 2
+
+Target: `L0-0008E`. Output: `exec-dc68f323-2d3e-4542-9b25-b3c6cbd75a7e.png`. Archetype: `ceiling-compression`, moderate.
+
+```text
+Move about 6 meters along the selected center carpet route around the offset pier, keeping the pier on the right and rejecting the wall-like sibling region. Stay in the same space and preserve the smooth right-curving trim, dim B-side fluorescent tone, wallpaper, carpet, and attached-pier logic. Reveal a moderately wider room compressed only beneath one broad attached low soffit; keep the remaining ceiling at familiar Level 0 height. Use unequal foreground occlusion and one off-center continuation.
+```
+
+### L0-0006D-P2 route packet wave 2
+
+Target: `L0-0007F`. Output: `exec-007ab7bd-62a7-4422-981b-735cae43af47.png`. Archetype: `long-parallax`, moderate.
+
+```text
+Advance about 7 meters through the selected center-left carpet continuation and around the broad center-right wall mass, rejecting the large wall-like sibling region. Stay in the same room and let the wall pass the camera with believable parallax. Reveal several attached offset wall planes forming a deep lateral sequence and one long diagonal sightline. Walls remain attached architecture, with broad around-corner circulation instead of repeated tall doorways.
+```
+
+### L0-0006E-P1 route packet wave 2
+
+Target: `L0-0007G`. Output: `exec-9a4cafc6-6f77-4667-83c4-fa8b5e7529a4.png`. Archetype: `offset-room`, subtle.
+
+```text
+Slip left around the thick foreground return wall through the thin selected side passage and move about 4 meters, keeping the source dead-end behind and to the right. Preserve the compact proportions, single near fluorescent panel logic, wallpaper, carpet, and trim. Reveal a small asymmetric offset room split by one attached wall mass. Change only one major spatial feature and use one clear carpet continuation rather than a centered doorway or dramatic hall.
+```
+
+### L0-0006F-P1 route packet wave 2
+
+Target: `L0-0007H`. Output: `exec-781ecae0-da76-4b14-bf3a-a80fcc54c132.png`. Archetype: `service-grid`, pronounced.
+
+```text
+Cross the selected centered opening between staggered attached wall masses and move about 10 meters until the source curve is behind the camera. Preserve the broad floor plane, wallpaper, carpet, trim, subdued fluorescent grid, and attached-wall construction. Reveal a sparse open commercial floor from one edge, with irregular ceiling-grid spacing, a few large attached wall offsets, large empty zones, and a deep off-center sightline. Do not fill it with corridors, small doorways, or many pillars.
+```
+
+Shared style and exclusion tail for all eight prompts:
+
+```text
+Photorealistic late-1990s to mid-2000s budget consumer-digital photograph; exact landscape 4:3; standing eye height about 1.65 m; restrained 40 mm-equivalent lens; mostly empty. No text, UI, colored masks, labels, arrows, people, entities, furniture, windows, stairs, dramatic horror, cinematic grading, VHS, glitch, fisheye, bloom, logo, or watermark.
+```
+
 ### L0-0005E-P2 route packet pilot
 
 Target: `L0-0006F`. Source path: `L0-0005E-P2` (leftmost broad curved opening). Output: `exec-69cb0b20-f0d3-4fca-aa0c-12d54008c1b5.png`.
