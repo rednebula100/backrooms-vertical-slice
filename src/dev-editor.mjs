@@ -878,7 +878,11 @@ export function createDevEditor({
     elements.routePacketCrop.src = resolvePublicUrl(packet.references.routeCrop);
     elements.routePacketRelation.textContent = packet.transitionRelation === "same-space-advance" ? "같은 공간에서 전진" : "인접 공간으로 이동";
     elements.routePacketCamera.textContent = packet.cameraTransition.instruction;
-    elements.routePacketStatus.textContent = packet.generationStatus === "ready" ? "생성 가능" : "소스 형상 확인 필요";
+    elements.routePacketStatus.textContent = {
+      ready: "생성 가능",
+      consumed: "사용 완료",
+      "blocked-source-geometry": "소스 형상 확인 필요",
+    }[packet.generationStatus] ?? "상태 확인 필요";
     elements.routePacketStatus.dataset.status = packet.generationStatus;
     elements.routePacketPreview.hidden = false;
     motion.enterPanel(elements.routePacketPreview, "right");

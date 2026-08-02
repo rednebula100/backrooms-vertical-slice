@@ -192,6 +192,32 @@
       ]
     },
     {
+      "sceneId": "L0-0006E",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": [
+        "L0-0006E-P1"
+      ],
+      "imageInspectionStatus": "human-pass",
+      "maskInspectionStatus": "human-pass",
+      "playtestStatus": "pass",
+      "notes": [
+        "Promoted from a human-completed route annotation."
+      ]
+    },
+    {
+      "sceneId": "L0-0006F",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": [
+        "L0-0006F-P1"
+      ],
+      "imageInspectionStatus": "human-pass",
+      "maskInspectionStatus": "human-pass",
+      "playtestStatus": "pass",
+      "notes": [
+        "Promoted from a human-completed route annotation."
+      ]
+    },
+    {
       "sceneId": "L0-0007A",
       "observedVisibleRouteCount": 1,
       "registeredPathIds": [

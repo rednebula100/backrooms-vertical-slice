@@ -83,6 +83,10 @@ export function buildRoutePacketRegistry(world, annotations, overrides, { sceneI
       const mask = maskByPath.get(pathId);
       const pathOverride = sceneOverride.paths[pathId];
       if (!path || !mask) throw new Error(`Route packet path or confirmed mask is missing: ${pathId}`);
+      const targetScene = scenes.get(pathOverride.targetSceneId);
+      const consumed = path.status === "active"
+        && path.targetSceneId === pathOverride.targetSceneId
+        && targetScene?.sourcePathId === path.id;
       const outputDirectory = `/scenes/${scene.id}/route-packets`;
       const packet = {
         id: `RP-${path.id}`,
@@ -92,7 +96,7 @@ export function buildRoutePacketRegistry(world, annotations, overrides, { sceneI
         targetSceneId: pathOverride.targetSceneId,
         targetSpaceId: pathOverride.targetSpaceId,
         transitionRelation: pathOverride.transitionRelation,
-        generationStatus: pathOverride.generationStatus ?? "ready",
+        generationStatus: consumed ? "consumed" : pathOverride.generationStatus ?? "ready",
         screenRole: roles.get(path.id),
         movementType: path.movementType,
         maskFingerprint: routeMaskFingerprint(mask),
@@ -144,16 +148,24 @@ export function validateRoutePacketRegistry(world, annotations, registry) {
     sourcePaths.add(packet.sourcePathId);
     const scene = scenes.get(packet.sourceSceneId);
     const path = scene?.paths.find((candidate) => candidate.id === packet.sourcePathId);
+    const targetScene = scenes.get(packet.targetSceneId);
     const annotation = annotationById.get(packet.sourceSceneId);
     const mask = annotation?.masks.find((candidate) => candidate.sourcePathId === packet.sourcePathId);
-    if (!scene || !path || path.status !== "pending") errors.push(`Route packet ${packet.id} must target a pending source path`);
+    if (!scene || !path) errors.push(`Route packet ${packet.id} source path is missing`);
     if (!mask || annotation.annotationStatus !== "masks-confirmed") errors.push(`Route packet ${packet.id} must use a human-confirmed mask`);
     else if (packet.maskFingerprint !== routeMaskFingerprint(mask)) errors.push(`Route packet ${packet.id} has a stale mask fingerprint`);
     if (!new Set(["same-space-advance", "adjacent-space"]).has(packet.transitionRelation)) errors.push(`Route packet ${packet.id} has an invalid transition relation`);
-    if (!new Set(["ready", "blocked-source-geometry"]).has(packet.generationStatus)) errors.push(`Route packet ${packet.id} has an invalid generation status`);
+    if (!new Set(["ready", "blocked-source-geometry", "consumed"]).has(packet.generationStatus)) errors.push(`Route packet ${packet.id} has an invalid generation status`);
     if (packet.transitionRelation === "same-space-advance" && packet.sourceSpaceId !== packet.targetSpaceId) errors.push(`Route packet ${packet.id} must retain its space id`);
     if (packet.transitionRelation === "adjacent-space" && packet.sourceSpaceId === packet.targetSpaceId) errors.push(`Route packet ${packet.id} must enter a new space id`);
-    if (!packet.targetSceneId || scenes.has(packet.targetSceneId)) errors.push(`Route packet ${packet.id} must reserve a new target scene id`);
+    if (packet.generationStatus === "consumed") {
+      if (path?.status !== "active" || path.targetSceneId !== packet.targetSceneId || targetScene?.sourcePathId !== packet.sourcePathId) {
+        errors.push(`Consumed route packet ${packet.id} must match its promoted target scene`);
+      }
+    } else {
+      if (path?.status !== "pending") errors.push(`Route packet ${packet.id} must target a pending source path`);
+      if (!packet.targetSceneId || targetScene) errors.push(`Route packet ${packet.id} must reserve a new target scene id`);
+    }
     if (!packet.references?.cleanSource || !packet.references?.routeMap || !packet.references?.routeCrop) errors.push(`Route packet ${packet.id} is missing visual references`);
     if (!packet.cameraTransition?.instruction || !packet.cameraTransition?.distanceMeters || !packet.cameraTransition?.targetView) errors.push(`Route packet ${packet.id} is missing its camera contract`);
     if (!Array.isArray(packet.continuityAnchors) || packet.continuityAnchors.length < 3) errors.push(`Route packet ${packet.id} needs at least three continuity anchors`);

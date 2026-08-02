@@ -1674,6 +1674,11 @@ body[data-editor-mode="edit"] .scene-shell {
   color: #c77b6e;
 }
 
+.selected-strip > .route-packet-open[data-status="consumed"] {
+  border-color: #30302d;
+  color: #77756f;
+}
+
 .route-packet-preview {
   position: fixed;
   top: 84px;

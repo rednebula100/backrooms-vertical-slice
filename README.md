@@ -18,7 +18,7 @@ Progress is stored at `localStorage["backrooms.progress"]` with `scene_id` and `
 
 ## Asset status
 
-The registry currently contains twenty-seven connected playable rasters. The first ten-scene review wave has been human-annotated and promoted, creating the confirmed frontiers needed for the remaining ten scenes in the active twenty-scene cycle. Every visually plausible opening must be registered; unproduced openings lead to the existing transparent boundary glyph. Wave 2 follows the spatial-first variation policy so route-count constraints do not collapse every image into the same corridor-and-opening composition.
+The registry currently contains twenty-nine connected playable rasters. Twelve scenes in the active twenty-scene cycle have been human-annotated and promoted; the first two wave-2 scenes were generated from distinct route-conditioned packets branching from the same source image. Every visually plausible opening must be registered; unproduced openings lead to the existing transparent boundary glyph. Wave 2 follows the spatial-first variation policy so route-count constraints do not collapse every image into the same corridor-and-opening composition.
 
 The production queue lives in `production/generation-jobs.json`, staged candidates live in `public/scenes/staging-scenes.json`, and user playtest decisions live in `public/scenes/route-reviews.json`. Human polygon annotation is the authoritative route count and mask source; automated vision audits are optional diagnostics rather than a promotion authority. See [the human-gated production workflow](docs/human-gated-production.md) and [the Level 0 expansion policy](docs/level-0-expansion-policy-ko.md).
 

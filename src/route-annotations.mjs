@@ -2,6 +2,56 @@ function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
+export function collapseDuplicatePendingPaths(inputWorld, inputAnnotations) {
+  const world = clone(inputWorld);
+  const annotations = clone(inputAnnotations);
+  const removedPathIds = [];
+  const annotationById = new Map((annotations.scenes ?? []).map((record) => [record.sceneId, record]));
+
+  for (const scene of world.scenes) {
+    const canonicalByRegion = new Map();
+    const replacements = new Map();
+    for (const path of scene.paths) {
+      if (path.status !== "pending" || !path.regions) continue;
+      const fingerprint = JSON.stringify(path.regions);
+      const canonical = canonicalByRegion.get(fingerprint);
+      if (canonical) {
+        replacements.set(path.id, canonical.id);
+        removedPathIds.push(path.id);
+      } else {
+        canonicalByRegion.set(fingerprint, path);
+      }
+    }
+    if (!replacements.size) continue;
+    scene.paths = scene.paths.filter((path) => !replacements.has(path.id));
+    for (const mask of annotationById.get(scene.id)?.masks ?? []) {
+      if (replacements.has(mask.sourcePathId)) mask.sourcePathId = replacements.get(mask.sourcePathId);
+    }
+  }
+
+  return { world, annotations, removedPathIds };
+}
+
+export function restoreKnownMaskSources(inputPayload, world, previousAnnotations) {
+  const payload = clone(inputPayload);
+  const scenes = new Map(world.scenes.map((scene) => [scene.id, scene]));
+  const previousByScene = new Map((previousAnnotations?.scenes ?? []).map((record) => [record.sceneId, record]));
+  for (const record of payload.scenes ?? []) {
+    const scene = scenes.get(record.sceneId);
+    const previousMasks = new Map((previousByScene.get(record.sceneId)?.masks ?? []).map((mask) => [mask.id, mask]));
+    if (!scene) continue;
+    for (const mask of record.masks ?? []) {
+      if (mask.sourcePathId) continue;
+      const previous = previousMasks.get(mask.id);
+      const path = previous?.sourcePathId && scene.paths.find((candidate) => candidate.id === previous.sourcePathId);
+      if (!path) continue;
+      mask.sourcePathId = path.id;
+      mask.status = path.status;
+    }
+  }
+  return payload;
+}
+
 function deriveAnnotationStatus(scene, masks, reviewComplete) {
   const sourceIds = new Set(masks.map((mask) => mask.sourcePathId).filter(Boolean));
   const hasNewRoutes = masks.some((mask) => !mask.sourcePathId);

@@ -56,3 +56,17 @@ test("route packets bind each branch to a distinct visual and camera contract", 
   assert.match(registry.packets[0].prompt, /Follow only S1-P1/);
   assert.deepEqual(validateRoutePacketRegistry(world, annotations, registry), []);
 });
+
+test("route packets become consumed provenance after their target is promoted", () => {
+  const promotedWorld = structuredClone(world);
+  promotedWorld.scenes[0].paths[0] = {
+    ...promotedWorld.scenes[0].paths[0],
+    status: "active",
+    targetSceneId: "S2",
+  };
+  promotedWorld.scenes.push({ id: "S2", sourceSceneId: "S1", sourcePathId: "S1-P1", paths: [] });
+  const registry = buildRoutePacketRegistry(promotedWorld, annotations, overrides, { updatedAt: "later" });
+  assert.equal(registry.packets.find((packet) => packet.sourcePathId === "S1-P1").generationStatus, "consumed");
+  assert.equal(registry.packets.find((packet) => packet.sourcePathId === "S1-P2").generationStatus, "ready");
+  assert.deepEqual(validateRoutePacketRegistry(promotedWorld, annotations, registry), []);
+});
