@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "policyId": "level0-spatial-first-001",
+  "appliesFromWave": 2,
+  "principle": "Choose the spatial shell before mentioning route count. Human annotation remains authoritative for visible routes.",
+  "promptAssemblyOrder": [
+    "continuity anchors from the source path",
+    "spatial scale and archetype",
+    "foreground, middle-ground, and background depth layers",
+    "camera placement and sightline",
+    "ceiling and lighting variation",
+    "route readability constraints",
+    "material and safety constraints"
+  ],
+  "batchRules": {
+    "sceneCount": 10,
+    "minimumDistinctArchetypes": 7,
+    "maximumConsecutiveCorridorScenes": 2,
+    "noRepeatArchetypeWithinPreviousScenes": 3,
+    "minimumRoomOrHallScaleScenes": 6,
+    "minimumLongSightlineScenes": 3,
+    "maximumDoorwayLikeOpeningScenes": 2
+  },
+  "archetypes": [
+    { "id": "offset-room", "scale": "room", "form": "an irregular room split by one attached offset wall mass" },
+    { "id": "column-field", "scale": "hall", "form": "a broad carpeted hall with attached structural piers and layered occlusion" },
+    { "id": "transverse-hall", "scale": "hall", "form": "a long crosswise circulation space discovered from one end" },
+    { "id": "nested-chamber", "scale": "room", "form": "two unequal room volumes joined by a wide wall opening" },
+    { "id": "ceiling-compression", "scale": "room", "form": "a wide room whose low soffit compresses only part of the view" },
+    { "id": "ceiling-expansion", "scale": "hall", "form": "a taller-feeling central volume surrounded by the familiar low grid" },
+    { "id": "wall-pocket", "scale": "room", "form": "a shallow side volume hidden behind a thick attached return wall" },
+    { "id": "long-parallax", "scale": "hall", "form": "several attached wall planes producing deep lateral parallax" },
+    { "id": "wide-bend", "scale": "room", "form": "a broad continuous turn whose route is read from the whole floor plane" },
+    { "id": "service-grid", "scale": "open", "form": "a sparse open commercial floor broken by ceiling-grid and wall-offset inconsistencies" }
+  ],
+  "cameraVariants": [
+    "off-center near an attached wall",
+    "just beyond a threshold looking across a room",
+    "wall-hugging view with a long diagonal sightline",
+    "near a structural pier with unequal foreground occlusion",
+    "from one end of a transverse hall"
+  ],
+  "routeRules": {
+    "requestedCountIsIntentOnly": true,
+    "humanPolygonCountIsAuthoritative": true,
+    "allowAroundCornerAndWideBayRoutes": true,
+    "avoidRepeatedTallRectangularDoorwayComposition": true,
+    "fourPlusRoutesRequireExplicitApproval": true
+  },
+  "negativeLoopBreakers": [
+    "do not default to a narrow straight corridor",
+    "do not place every continuation as a centered tall rectangle",
+    "do not reuse the previous scene's wall silhouette",
+    "do not make route count determine the entire room layout",
+    "do not flatten the image into one foreground wall and one distant opening"
+  ]
+}

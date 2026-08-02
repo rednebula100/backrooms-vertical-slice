@@ -2,127 +2,394 @@
   "world_version": "vertical-slice-0.7.0",
   "frontiers": [
     {
+      "branch_id": "BR-L0-P1",
+      "current_scene_id": "L0-0008A",
+      "path_id": "L0-0008A-P1",
+      "level_id": "LV-000",
+      "depth": 7,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.25,
+        "ceiling": 0.33,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "recent_drift": [
+        "Promoted from human review with 1 visible route."
+      ],
+      "continuity_anchors": [
+        "rightward carpet bend",
+        "continuous curved wall",
+        "yellow-beige wallpaper",
+        "taupe patterned carpet"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-P2",
+      "current_scene_id": "L0-0007B",
+      "path_id": "L0-0007B-P1",
+      "level_id": "LV-000",
+      "depth": 6,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.22,
+        "ceiling": 0.3,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "recent_drift": [
+        "Promoted from human review with 1 visible route."
+      ],
+      "continuity_anchors": [
+        "narrow B-branch proportions",
+        "rightward carpet bend",
+        "yellow-beige patterned wallpaper",
+        "taupe patterned carpet"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0005A-P2",
+      "current_scene_id": "L0-0007C",
+      "path_id": "L0-0007C-P1",
+      "level_id": "LV-000",
+      "depth": 6,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.31,
+        "ceiling": 0.34,
+        "objects": 0,
+        "wrongness": 0.17
+      },
+      "recent_drift": [
+        "Promoted from human review with 1 visible route."
+      ],
+      "continuity_anchors": [
+        "small left source opening",
+        "broad curved wall",
+        "single narrow opening",
+        "brighter wallpaper"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0006C-P2",
+      "current_scene_id": "L0-0007D",
+      "path_id": "L0-0007D-P1",
+      "level_id": "LV-000",
+      "depth": 6,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.46,
+        "ceiling": 0.36,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "recent_drift": [
+        "Promoted from human review with 1 visible route."
+      ],
+      "continuity_anchors": [
+        "broad right source opening",
+        "two separated portals",
+        "solid center wall",
+        "bright ceiling grid"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0006B-P2",
+      "current_scene_id": "L0-0007E",
+      "path_id": "L0-0007E-P1",
+      "level_id": "LV-000",
+      "depth": 6,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.24,
+        "ceiling": 0.31,
+        "objects": 0,
+        "wrongness": 0.17
+      },
+      "recent_drift": [
+        "Promoted from human review with 2 visible routes."
+      ],
+      "continuity_anchors": [
+        "broad right source opening",
+        "right-curving carpet",
+        "offset wall pier",
+        "dim B-side lighting"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0007E-P2",
+      "current_scene_id": "L0-0007E",
+      "path_id": "L0-0007E-P2",
+      "level_id": "LV-000",
+      "depth": 6,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.24,
+        "ceiling": 0.31,
+        "objects": 0,
+        "wrongness": 0.17
+      },
+      "recent_drift": [
+        "Promoted from human review with 2 visible routes."
+      ],
+      "continuity_anchors": [
+        "broad right source opening",
+        "right-curving carpet",
+        "offset wall pier",
+        "dim B-side lighting"
+      ],
+      "parent_branch_id": "BR-L0-0006B-P2"
+    },
+    {
+      "branch_id": "BR-L0-0004B-P2",
+      "current_scene_id": "L0-0006D",
+      "path_id": "L0-0006D-P1",
+      "level_id": "LV-000",
+      "depth": 5,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.34,
+        "ceiling": 0.32,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "recent_drift": [
+        "Promoted from human review with 2 visible routes."
+      ],
+      "continuity_anchors": [
+        "left source passage",
+        "broad center-right wall",
+        "left carpet continuation",
+        "ambiguous right edge"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0006D-P2",
+      "current_scene_id": "L0-0006D",
+      "path_id": "L0-0006D-P2",
+      "level_id": "LV-000",
+      "depth": 5,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.34,
+        "ceiling": 0.32,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "recent_drift": [
+        "Promoted from human review with 2 visible routes."
+      ],
+      "continuity_anchors": [
+        "left source passage",
+        "broad center-right wall",
+        "left carpet continuation",
+        "ambiguous right edge"
+      ],
+      "parent_branch_id": "BR-L0-0004B-P2"
+    },
+    {
+      "branch_id": "BR-L0-0003B-P2",
+      "current_scene_id": "L0-0005D",
+      "path_id": "L0-0005D-P1",
+      "level_id": "LV-000",
+      "depth": 4,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.24,
+        "ceiling": 0.32,
+        "objects": 0,
+        "wrongness": 0.16
+      },
+      "recent_drift": [
+        "Promoted from human review with 1 visible route."
+      ],
+      "continuity_anchors": [
+        "center source opening",
+        "left-offset continuation",
+        "continuous dark trim",
+        "same wallpaper and carpet"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0003B-P3",
+      "current_scene_id": "L0-0005E",
+      "path_id": "L0-0005E-P1",
+      "level_id": "LV-000",
+      "depth": 4,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.38,
+        "ceiling": 0.32,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "recent_drift": [
+        "Promoted from human review with 2 visible routes."
+      ],
+      "continuity_anchors": [
+        "left source corridor",
+        "two separated openings",
+        "solid center wall",
+        "dim fluorescent family"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0005E-P2",
+      "current_scene_id": "L0-0005E",
+      "path_id": "L0-0005E-P2",
+      "level_id": "LV-000",
+      "depth": 4,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.38,
+        "ceiling": 0.32,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "recent_drift": [
+        "Promoted from human review with 2 visible routes."
+      ],
+      "continuity_anchors": [
+        "left source corridor",
+        "two separated openings",
+        "solid center wall",
+        "dim fluorescent family"
+      ],
+      "parent_branch_id": "BR-L0-0003B-P3"
+    },
+    {
+      "branch_id": "BR-L0-0004D-P2",
+      "current_scene_id": "L0-0005F",
+      "path_id": "L0-0005F-P1",
+      "level_id": "LV-000",
+      "depth": 4,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.2,
+        "ceiling": 0.29,
+        "objects": 0,
+        "wrongness": 0.17
+      },
+      "recent_drift": [
+        "Promoted from human review with 1 visible route."
+      ],
+      "continuity_anchors": [
+        "right source opening",
+        "narrow corridor",
+        "left carpet bend",
+        "dim ceiling panels"
+      ]
+    },
+    {
       "branch_id": "BR-L0-0002B-P2",
-      "current_scene_id": "L0-0003C",
-      "path_id": "L0-0003C-P1",
+      "current_scene_id": "L0-0004E",
+      "path_id": "L0-0004E-P1",
+      "level_id": "LV-000",
+      "depth": 3,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.28,
+        "ceiling": 0.32,
+        "objects": 0,
+        "wrongness": 0.17
+      },
+      "recent_drift": [
+        "Promoted from human review with 2 visible routes."
+      ],
+      "continuity_anchors": [
+        "left-curving source carpet",
+        "solid center pier",
+        "single rightward continuation",
+        "same wallpaper and carpet"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0004E-P2",
+      "current_scene_id": "L0-0004E",
+      "path_id": "L0-0004E-P2",
+      "level_id": "LV-000",
+      "depth": 3,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.28,
+        "ceiling": 0.32,
+        "objects": 0,
+        "wrongness": 0.17
+      },
+      "recent_drift": [
+        "Promoted from human review with 2 visible routes."
+      ],
+      "continuity_anchors": [
+        "left-curving source carpet",
+        "solid center pier",
+        "single rightward continuation",
+        "same wallpaper and carpet"
+      ],
+      "parent_branch_id": "BR-L0-0002B-P2"
+    },
+    {
+      "branch_id": "BR-L0-0003A-P2",
+      "current_scene_id": "L0-0003A",
+      "path_id": "L0-0003A-P2",
       "level_id": "LV-000",
       "depth": 2,
       "status": "pending",
       "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.24, "ceiling": 0.29, "objects": 0, "wrongness": 0.16 },
-      "recent_drift": ["The new B-side branch contracts into one left-curving corridor around a solid pier."],
-      "continuity_anchors": ["left-curving carpet", "central pier", "rounded outer wall", "dim fluorescent panel"]
+      "current_state": {
+        "openness": 0.35,
+        "ceiling": 0.35,
+        "objects": 0,
+        "wrongness": 0.17
+      },
+      "recent_drift": [
+        "Closed the broad right-side circulation space so only the intended forward-left passage reads as traversable."
+      ],
+      "continuity_anchors": [
+        "curved left wall",
+        "right offset wall",
+        "brighter fluorescent run",
+        "wider carpeted circulation"
+      ],
+      "parent_branch_id": "BR-L0-P1"
     },
     {
-      "branch_id": "BR-L0-0003B-P2",
-      "current_scene_id": "L0-0004C",
-      "path_id": "L0-0004C-P1",
+      "branch_id": "BR-L0-0003C-P2",
+      "current_scene_id": "L0-0003C",
+      "path_id": "L0-0003C-P2",
       "level_id": "LV-000",
-      "depth": 3,
+      "depth": 2,
       "status": "pending",
       "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.23, "ceiling": 0.3, "objects": 0, "wrongness": 0.16 },
-      "recent_drift": ["The route settles beside a long wall and turns once behind the right frame."],
-      "continuity_anchors": ["right framing wall", "carpet turn", "single ceiling panel", "long left wall"]
-    },
-    {
-      "branch_id": "BR-L0-0003B-P3",
-      "current_scene_id": "L0-0004D",
-      "path_id": "L0-0004D-P1",
-      "level_id": "LV-000",
-      "depth": 3,
-      "status": "pending",
-      "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.31, "ceiling": 0.31, "objects": 0, "wrongness": 0.17 },
-      "recent_drift": ["The middle route reaches a two-way junction and keeps its narrower continuation on the left."],
-      "continuity_anchors": ["narrow left corridor", "central wall mass", "receding fluorescent panels", "same carpet"]
-    },
-    {
-      "branch_id": "BR-L0-0004D-P2",
-      "parent_branch_id": "BR-L0-0003B-P3",
-      "current_scene_id": "L0-0004D",
-      "path_id": "L0-0004D-P2",
-      "level_id": "LV-000",
-      "depth": 3,
-      "status": "pending",
-      "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.31, "ceiling": 0.31, "objects": 0, "wrongness": 0.17 },
-      "recent_drift": ["A separate right opening splits away behind the central wall mass."],
-      "continuity_anchors": ["right opening", "central wall corner", "bright ceiling panel", "same carpet and trim"]
-    },
-    {
-      "branch_id": "BR-L0-0004B-P2",
-      "current_scene_id": "L0-0005C",
-      "path_id": "L0-0005C-P1",
-      "level_id": "LV-000",
-      "depth": 4,
-      "status": "pending",
-      "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.22, "ceiling": 0.3, "objects": 0, "wrongness": 0.17 },
-      "recent_drift": ["The B-side route contracts to one narrow passage behind the center wall."],
-      "continuity_anchors": ["left-side opening", "center wall face", "muted fluorescent panel", "same carpet"]
-    },
-    {
-      "branch_id": "BR-L0-0005A-P2",
-      "current_scene_id": "L0-0006C",
-      "path_id": "L0-0006C-P1",
-      "level_id": "LV-000",
-      "depth": 5,
-      "status": "pending",
-      "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.44, "ceiling": 0.36, "objects": 0, "wrongness": 0.18 },
-      "recent_drift": ["The secondary A route opens into a brighter split; the smaller continuation stays on the left."],
-      "continuity_anchors": ["small left opening", "left fluorescent panel", "same wallpaper", "same carpet"]
-    },
-    {
-      "branch_id": "BR-L0-0006C-P2",
-      "parent_branch_id": "BR-L0-0005A-P2",
-      "current_scene_id": "L0-0006C",
-      "path_id": "L0-0006C-P2",
-      "level_id": "LV-000",
-      "depth": 5,
-      "status": "pending",
-      "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.44, "ceiling": 0.36, "objects": 0, "wrongness": 0.18 },
-      "recent_drift": ["A broader continuation curves away on the right without merging back."],
-      "continuity_anchors": ["broad right opening", "curved wall", "receding bright panels", "same carpet and trim"]
-    },
-    {
-      "branch_id": "BR-L0-P2",
-      "current_scene_id": "L0-0006B",
-      "path_id": "L0-0006B-P1",
-      "level_id": "LV-000",
-      "depth": 5,
-      "status": "pending",
-      "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.3, "ceiling": 0.31, "objects": 0, "wrongness": 0.18 },
-      "recent_drift": ["The B branch reaches a solid central wall mass and keeps its narrower main continuation on the left."],
-      "continuity_anchors": ["narrow left corridor", "central wall mass", "single fluorescent panel", "same carpet and trim"]
-    },
-    {
-      "branch_id": "BR-L0-0006B-P2",
-      "parent_branch_id": "BR-L0-P2",
-      "current_scene_id": "L0-0006B",
-      "path_id": "L0-0006B-P2",
-      "level_id": "LV-000",
-      "depth": 5,
-      "status": "pending",
-      "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.3, "ceiling": 0.31, "objects": 0, "wrongness": 0.18 },
-      "recent_drift": ["A broad secondary right opening appears without changing the B branch's dimmer material and lighting family."],
-      "continuity_anchors": ["broad right opening", "central wall corner", "muted fluorescent panel", "same carpet and trim"]
-    },
-    {
-      "branch_id": "BR-L0-P1",
-      "current_scene_id": "L0-0007A",
-      "path_id": "L0-0007A-P1",
-      "level_id": "LV-000",
-      "depth": 6,
-      "status": "pending",
-      "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.32, "ceiling": 0.34, "objects": 0, "wrongness": 0.17 },
-      "recent_drift": ["The A branch contracts slightly and offsets its only continuation to the left."],
-      "continuity_anchors": ["left-offset wall opening", "curved continuation", "bright ceiling panel", "same carpet and trim"]
+      "current_state": {
+        "openness": 0.24,
+        "ceiling": 0.29,
+        "objects": 0,
+        "wrongness": 0.16
+      },
+      "recent_drift": [
+        "Registered its only visible continuation as a production frontier."
+      ],
+      "continuity_anchors": [
+        "rounded corridor wall",
+        "single offset pier",
+        "dim fluorescent panels",
+        "same carpet and trim"
+      ],
+      "parent_branch_id": "BR-L0-0002B-P2"
     }
   ]
 }

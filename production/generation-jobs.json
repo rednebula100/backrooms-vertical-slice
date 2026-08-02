@@ -6,7 +6,7 @@
   "runtimeGeneration": false,
   "policy": {
     "targetSceneCount": 10,
-    "expectedRouteDistribution": { "1": 6, "2": 4, "3": 0, "4+": 0 },
+    "expectedRouteDistribution": { "1": 5, "2": 5, "3": 0, "4+": 0 },
     "normalVisibleRouteMaximum": 3,
     "fourPlusRouteRateMaximum": 0.01,
     "humanPlaytestRequiredBeforeExpansion": true
@@ -83,7 +83,7 @@
       "sourceSceneId": "L0-0002B",
       "sourcePathId": "L0-0002B-P2",
       "desiredVisibleRouteCount": 1,
-      "observedVisibleRouteCount": 1,
+      "observedVisibleRouteCount": 2,
       "status": "registered",
       "reviewStatus": "needs-user-playtest",
       "generatorOutput": "exec-c510901a-8612-4b81-a7c9-1b42b6f8a424.png",

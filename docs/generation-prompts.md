@@ -492,3 +492,11 @@ Reference: `L0-0006B.png`, source path `L0-0006B-P2`. Output: `exec-76ccd680-853
 ```text
 Generate the immediately adjacent viewpoint after taking the source image's broad right-side opening. Contract it into one subdued corridor curving right around an offset wall pier. The right-curving carpet continuation is the only walkable route. Close all other walls continuously and avoid side bays, slots, freestanding masses, doorways, or extra openings.
 ```
+
+## 0.9.1 spatial-first correction for wave 2
+
+The first wave over-weighted exact route-count language. Repeated instructions such as “exactly one fully bounded opening” caused the generator to converge on the same narrow corridor, flat wall, and tall rectangular gap even when the source branches differed. Those ten reviewed images remain valid connected scenes; replacing them after annotation would invalidate the human polygons.
+
+Wave 2 therefore uses `production/spatial-variation-policy.json`. A prompt must first select a spatial scale, archetype, three-layer depth composition, camera position, and ceiling variation. Route-count wording is added only after that spatial shell is fixed, and it describes interaction readability rather than the room's entire shape. Across ten images, at least seven spatial archetypes must appear, at least six scenes must be room-, hall-, or open-scale, and no more than two narrow corridor scenes may occur consecutively.
+
+The preferred route vocabulary also expands beyond doorway-shaped rectangles: carpet continuing around a broad corner, a wide bay between attached wall masses, a transverse hall, and a partially occluded continuation can all be valid. Human polygons—not requested count—remain the final record of what the generated image actually contains.

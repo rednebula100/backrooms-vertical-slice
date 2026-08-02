@@ -1172,9 +1172,9 @@ body[data-editor-mode="edit"] .scene-shell {
 
 .graph-workspace .scene-tree .scene-tree-branch {
   display: grid;
-  grid-template-columns: 172px auto;
+  grid-template-columns: 216px auto;
   align-items: center;
-  column-gap: 42px;
+  column-gap: 52px;
   padding: 8px 0;
 }
 
@@ -1182,15 +1182,34 @@ body[data-editor-mode="edit"] .scene-shell {
   position: relative;
   z-index: 2;
   display: grid;
-  width: 172px;
-  grid-template-columns: minmax(0, 1fr) 29px;
+  width: 216px;
+  grid-template-columns: minmax(0, 1fr) 36px;
   border: 1px solid #2d2d2a;
   background: #0b0b0b;
 }
 
 .graph-workspace .scene-tree-node {
-  min-height: 56px;
-  padding: 8px 9px;
+  min-height: 66px;
+  padding: 10px 12px;
+}
+
+.graph-workspace .scene-tree-node b {
+  font-size: 13px;
+}
+
+.graph-workspace .scene-tree-node small {
+  font-size: 10px;
+}
+
+.graph-workspace .scene-tree-node em {
+  color: #aaa8a1;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.graph-workspace .scene-tree-node .tree-node-mark {
+  width: 7px;
+  height: 7px;
 }
 
 .graph-workspace .scene-tree-node:hover {
@@ -1217,7 +1236,8 @@ body[data-editor-mode="edit"] .scene-shell {
   border-left: 1px solid #282826 !important;
   background: #090909;
   color: #77746e;
-  font-size: 8px;
+  font-size: 11px;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -1259,14 +1279,23 @@ body[data-editor-mode="edit"] .scene-shell {
   padding: 2px 4px;
   transform: translateY(-50%);
   background: #070707;
+  font-size: 9px;
 }
 
 .graph-workspace .scene-tree-terminal {
-  width: 172px;
-  min-height: 52px;
+  width: 216px;
+  min-height: 60px;
   grid-template-columns: 7px 1fr;
   padding: 8px 10px;
   background: #0a0908;
+}
+
+.graph-workspace .scene-tree-terminal b {
+  font-size: 11px;
+}
+
+.graph-workspace .scene-tree-terminal small {
+  font-size: 9px;
 }
 
 .graph-workspace .scene-tree-branch[data-connection="removed"] > .tree-node-row,
@@ -1299,7 +1328,8 @@ body[data-editor-mode="edit"] .scene-shell {
   .editor-topbar { left: 150px; }
   .graph-workspace { left: 150px; }
   .graph-metrics { display: none; }
-  .graph-controls button:first-child { display: none; }
+  .graph-controls [data-collapse-branches],
+  .graph-controls [data-expand-branches] { display: none; }
   .rail-legend { display: none; }
   body[data-editor-mode="edit"] .editor-rail { display: none; }
   body[data-editor-mode="edit"] .editor-topbar { left: 0; }
@@ -2262,7 +2292,8 @@ kbd {
 
   body[data-editor-mode="graph"] .graph-heading,
   body[data-editor-mode="graph"] .graph-metrics,
-  body[data-editor-mode="graph"] .graph-controls > button:first-child {
+  body[data-editor-mode="graph"] .graph-controls [data-collapse-branches],
+  body[data-editor-mode="graph"] .graph-controls [data-expand-branches] {
     display: none;
   }
 }

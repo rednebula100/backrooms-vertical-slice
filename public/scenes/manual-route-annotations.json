@@ -1,6 +1,6 @@
 {
   "worldVersion": "vertical-slice-0.7.0",
-  "updatedAt": "2026-08-02T13:42:05.658Z",
+  "updatedAt": "2026-08-02T16:46:38.149Z",
   "scenes": [
     {
       "sceneId": "L0-0001",
@@ -272,7 +272,7 @@
       "sceneId": "L0-0003A",
       "image": "/scenes/L0-0003A/final/L0-0003A.png",
       "observedVisibleRouteCount": 2,
-      "annotationStatus": "needs-route-registration",
+      "annotationStatus": "awaiting-review-approval",
       "reviewComplete": false,
       "masks": [
         {
@@ -308,7 +308,7 @@
                 330
               ],
               [
-                771,
+                772,
                 562
               ],
               [
@@ -320,8 +320,8 @@
         },
         {
           "id": "MASK-L0-0003A-01",
-          "sourcePathId": null,
-          "status": "draft",
+          "sourcePathId": "L0-0003A-P2",
+          "status": "pending",
           "regions": {
             "desktop": [
               [
@@ -343,7 +343,7 @@
             ],
             "mobile": [
               [
-                664,
+                665,
                 323
               ],
               [
@@ -403,7 +403,7 @@
                 251
               ],
               [
-                1082,
+                1083,
                 694
               ],
               [
@@ -485,7 +485,7 @@
                 173
               ],
               [
-                885,
+                886,
                 250
               ],
               [
@@ -505,13 +505,13 @@
       "sceneId": "L0-0003C",
       "image": "/scenes/L0-0003C/final/L0-0003C.png",
       "observedVisibleRouteCount": 2,
-      "annotationStatus": "needs-route-registration",
+      "annotationStatus": "masks-confirmed",
       "reviewComplete": true,
       "masks": [
         {
           "id": "L0-0003C-P1",
           "sourcePathId": "L0-0003C-P1",
-          "status": "pending",
+          "status": "active",
           "regions": {
             "desktop": [
               [
@@ -553,8 +553,8 @@
         },
         {
           "id": "MASK-L0-0003C-01",
-          "sourcePathId": null,
-          "status": "draft",
+          "sourcePathId": "L0-0003C-P2",
+          "status": "pending",
           "regions": {
             "desktop": [
               [
@@ -576,7 +576,7 @@
             ],
             "mobile": [
               [
-                912,
+                913,
                 187
               ],
               [
@@ -632,11 +632,11 @@
                 300
               ],
               [
-                1006,
+                1007,
                 306
               ],
               [
-                1006,
+                1007,
                 665
               ],
               [
@@ -753,7 +753,7 @@
         {
           "id": "L0-0004C-P1",
           "sourcePathId": "L0-0004C-P1",
-          "status": "pending",
+          "status": "active",
           "regions": {
             "desktop": [
               [
@@ -805,7 +805,7 @@
         {
           "id": "L0-0004D-P1",
           "sourcePathId": "L0-0004D-P1",
-          "status": "pending",
+          "status": "active",
           "regions": {
             "desktop": [
               [
@@ -848,7 +848,7 @@
         {
           "id": "L0-0004D-P2",
           "sourcePathId": "L0-0004D-P2",
-          "status": "pending",
+          "status": "active",
           "regions": {
             "desktop": [
               [
@@ -884,6 +884,101 @@
               [
                 1019,
                 829
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0004E",
+      "image": "/scenes/L0-0004E/candidates/L0-0004E-C01.png",
+      "observedVisibleRouteCount": 2,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "MASK-L0-0004E-01",
+          "sourcePathId": "L0-0004E-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                765,
+                257
+              ],
+              [
+                752,
+                768
+              ],
+              [
+                1057,
+                794
+              ],
+              [
+                1065,
+                241
+              ]
+            ],
+            "mobile": [
+              [
+                739,
+                211
+              ],
+              [
+                724,
+                814
+              ],
+              [
+                1084,
+                844
+              ],
+              [
+                1093,
+                192
+              ]
+            ]
+          }
+        },
+        {
+          "id": "MASK-L0-0004E-02",
+          "sourcePathId": "L0-0004E-P2",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                563,
+                76
+              ],
+              [
+                718,
+                198
+              ],
+              [
+                715,
+                776
+              ],
+              [
+                561,
+                941
+              ]
+            ],
+            "mobile": [
+              [
+                543,
+                0
+              ],
+              [
+                740,
+                144
+              ],
+              [
+                735,
+                826
+              ],
+              [
+                540,
+                1021
               ]
             ]
           }
@@ -969,11 +1064,11 @@
                 220
               ],
               [
-                1156,
+                1157,
                 190
               ],
               [
-                1156,
+                1157,
                 780
               ],
               [
@@ -1021,7 +1116,7 @@
                 232
               ],
               [
-                798,
+                799,
                 221
               ],
               [
@@ -1047,7 +1142,7 @@
         {
           "id": "L0-0005C-P1",
           "sourcePathId": "L0-0005C-P1",
-          "status": "pending",
+          "status": "active",
           "regions": {
             "desktop": [
               [
@@ -1073,7 +1168,7 @@
                 81
               ],
               [
-                616,
+                617,
                 155
               ],
               [
@@ -1083,6 +1178,205 @@
               [
                 434,
                 899
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0005D",
+      "image": "/scenes/L0-0005D/candidates/L0-0005D-C01.png",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "MASK-L0-0005D-01",
+          "sourcePathId": "L0-0005D-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                637,
+                233
+              ],
+              [
+                530,
+                174
+              ],
+              [
+                526,
+                757
+              ],
+              [
+                622,
+                678
+              ]
+            ],
+            "mobile": [
+              [
+                684,
+                192
+              ],
+              [
+                491,
+                122
+              ],
+              [
+                484,
+                810
+              ],
+              [
+                656,
+                717
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0005E",
+      "image": "/scenes/L0-0005E/candidates/L0-0005E-C01.png",
+      "observedVisibleRouteCount": 2,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "MASK-L0-0005E-01",
+          "sourcePathId": "L0-0005E-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                918,
+                339
+              ],
+              [
+                1061,
+                344
+              ],
+              [
+                1057,
+                798
+              ],
+              [
+                926,
+                813
+              ]
+            ],
+            "mobile": [
+              [
+                890,
+                297
+              ],
+              [
+                1090,
+                303
+              ],
+              [
+                1083,
+                838
+              ],
+              [
+                901,
+                856
+              ]
+            ]
+          }
+        },
+        {
+          "id": "MASK-L0-0005E-02",
+          "sourcePathId": "L0-0005E-P2",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                572,
+                318
+              ],
+              [
+                570,
+                831
+              ],
+              [
+                293,
+                850
+              ],
+              [
+                302,
+                300
+              ]
+            ],
+            "mobile": [
+              [
+                597,
+                272
+              ],
+              [
+                594,
+                877
+              ],
+              [
+                268,
+                900
+              ],
+              [
+                278,
+                251
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0005F",
+      "image": "/scenes/L0-0005F/candidates/L0-0005F-C01.png",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "MASK-L0-0005F-01",
+          "sourcePathId": "L0-0005F-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                792,
+                226
+              ],
+              [
+                569,
+                287
+              ],
+              [
+                569,
+                665
+              ],
+              [
+                787,
+                706
+              ]
+            ],
+            "mobile": [
+              [
+                812,
+                182
+              ],
+              [
+                549,
+                254
+              ],
+              [
+                549,
+                700
+              ],
+              [
+                806,
+                748
               ]
             ]
           }
@@ -1151,7 +1445,7 @@
         {
           "id": "L0-0006B-P1",
           "sourcePathId": "L0-0006B-P1",
-          "status": "pending",
+          "status": "active",
           "regions": {
             "desktop": [
               [
@@ -1177,7 +1471,7 @@
                 136
               ],
               [
-                472,
+                473,
                 85
               ],
               [
@@ -1194,7 +1488,7 @@
         {
           "id": "L0-0006B-P2",
           "sourcePathId": "L0-0006B-P2",
-          "status": "pending",
+          "status": "active",
           "regions": {
             "desktop": [
               [
@@ -1246,7 +1540,7 @@
         {
           "id": "L0-0006C-P1",
           "sourcePathId": "L0-0006C-P1",
-          "status": "pending",
+          "status": "active",
           "regions": {
             "desktop": [
               [
@@ -1272,7 +1566,7 @@
                 130
               ],
               [
-                340,
+                341,
                 184
               ],
               [
@@ -1289,7 +1583,7 @@
         {
           "id": "L0-0006C-P2",
           "sourcePathId": "L0-0006C-P2",
-          "status": "pending",
+          "status": "active",
           "regions": {
             "desktop": [
               [
@@ -1332,6 +1626,101 @@
       ]
     },
     {
+      "sceneId": "L0-0006D",
+      "image": "/scenes/L0-0006D/candidates/L0-0006D-C01.png",
+      "observedVisibleRouteCount": 2,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "MASK-L0-0006D-01",
+          "sourcePathId": "L0-0006D-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                1198,
+                152
+              ],
+              [
+                1200,
+                839
+              ],
+              [
+                815,
+                763
+              ],
+              [
+                817,
+                220
+              ]
+            ],
+            "mobile": [
+              [
+                1232,
+                91
+              ],
+              [
+                1235,
+                901
+              ],
+              [
+                780,
+                812
+              ],
+              [
+                783,
+                171
+              ]
+            ]
+          }
+        },
+        {
+          "id": "MASK-L0-0006D-02",
+          "sourcePathId": "L0-0006D-P2",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                730,
+                305
+              ],
+              [
+                730,
+                678
+              ],
+              [
+                565,
+                654
+              ],
+              [
+                574,
+                316
+              ]
+            ],
+            "mobile": [
+              [
+                747,
+                272
+              ],
+              [
+                747,
+                712
+              ],
+              [
+                547,
+                684
+              ],
+              [
+                558,
+                285
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
       "sceneId": "L0-0007A",
       "image": "/scenes/L0-0007A/final/L0-0007A.png",
       "observedVisibleRouteCount": 1,
@@ -1341,7 +1730,7 @@
         {
           "id": "L0-0007A-P1",
           "sourcePathId": "L0-0007A-P1",
-          "status": "pending",
+          "status": "active",
           "regions": {
             "desktop": [
               [
@@ -1387,13 +1776,13 @@
       "sceneId": "L0-0007B",
       "image": "/scenes/L0-0007B/candidates/L0-0007B-C01.png",
       "observedVisibleRouteCount": 1,
-      "annotationStatus": "staging-masks-confirmed",
+      "annotationStatus": "masks-confirmed",
       "reviewComplete": true,
       "masks": [
         {
           "id": "MASK-L0-0007B-01",
-          "sourcePathId": null,
-          "status": "draft",
+          "sourcePathId": "L0-0007B-P1",
+          "status": "pending",
           "regions": {
             "desktop": [
               [
@@ -1436,12 +1825,255 @@
       ]
     },
     {
+      "sceneId": "L0-0007C",
+      "image": "/scenes/L0-0007C/candidates/L0-0007C-C01.png",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "MASK-L0-0007C-01",
+          "sourcePathId": "L0-0007C-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                863,
+                302
+              ],
+              [
+                859,
+                578
+              ],
+              [
+                772,
+                581
+              ],
+              [
+                776,
+                296
+              ]
+            ],
+            "mobile": [
+              [
+                918,
+                277
+              ],
+              [
+                908,
+                603
+              ],
+              [
+                718,
+                607
+              ],
+              [
+                727,
+                270
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0007D",
+      "image": "/scenes/L0-0007D/candidates/L0-0007D-C01.png",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "MASK-L0-0007D-02",
+          "sourcePathId": "L0-0007D-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                633,
+                192
+              ],
+              [
+                643,
+                750
+              ],
+              [
+                282,
+                746
+              ],
+              [
+                285,
+                187
+              ]
+            ],
+            "mobile": [
+              [
+                664,
+                142
+              ],
+              [
+                676,
+                801
+              ],
+              [
+                250,
+                796
+              ],
+              [
+                253,
+                136
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0007E",
+      "image": "/scenes/L0-0007E/candidates/L0-0007E-C01.png",
+      "observedVisibleRouteCount": 2,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "MASK-L0-0007E-01",
+          "sourcePathId": "L0-0007E-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                1018,
+                150
+              ],
+              [
+                924,
+                226
+              ],
+              [
+                924,
+                639
+              ],
+              [
+                1011,
+                730
+              ]
+            ],
+            "mobile": [
+              [
+                1073,
+                98
+              ],
+              [
+                873,
+                188
+              ],
+              [
+                873,
+                675
+              ],
+              [
+                1058,
+                783
+              ]
+            ]
+          }
+        },
+        {
+          "id": "MASK-L0-0007E-02",
+          "sourcePathId": "L0-0007E-P2",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                913,
+                228
+              ],
+              [
+                700,
+                209
+              ],
+              [
+                702,
+                643
+              ],
+              [
+                907,
+                635
+              ]
+            ],
+            "mobile": [
+              [
+                932,
+                192
+              ],
+              [
+                681,
+                169
+              ],
+              [
+                683,
+                682
+              ],
+              [
+                925,
+                672
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
       "sceneId": "L0-0008A",
       "image": "/scenes/L0-0008A/candidates/L0-0008A-C01.png",
-      "observedVisibleRouteCount": 0,
-      "annotationStatus": "staging-masks-confirmed",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "masks-confirmed",
       "reviewComplete": true,
-      "masks": []
+      "masks": [
+        {
+          "id": "MASK-L0-0008A-01",
+          "sourcePathId": "L0-0008A-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                951,
+                192
+              ],
+              [
+                725,
+                239
+              ],
+              [
+                730,
+                652
+              ],
+              [
+                941,
+                765
+              ]
+            ],
+            "mobile": [
+              [
+                972,
+                143
+              ],
+              [
+                705,
+                199
+              ],
+              [
+                711,
+                686
+              ],
+              [
+                960,
+                820
+              ]
+            ]
+          }
+        }
+      ]
     }
   ]
 }

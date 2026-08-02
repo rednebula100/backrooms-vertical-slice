@@ -62,6 +62,11 @@ export function createDevEditor({
       .map((scene) => [scene.sourcePathId, scene]),
   );
   const draftKey = `${DRAFT_KEY_PREFIX}${world.worldVersion}`;
+  const registryFingerprint = orderedScenes
+    .map((scene) => `${scene.id}:${scene.paths.map((path) => `${path.id}/${path.status}`).join(",")}`)
+    .sort()
+    .join("|");
+  const annotationRevision = annotations?.updatedAt ?? "none";
   const storedPayload = loadStoredDrafts();
   const stored = storedPayload.scenes;
   const reviewedScenes = new Set([
@@ -149,6 +154,7 @@ export function createDevEditor({
         </div>
         <div class="graph-controls">
           <button type="button" data-collapse-branches>가지 접기</button>
+          <button type="button" data-expand-branches>전부 펼치기</button>
           <button type="button" data-focus-graph>현재 위치</button>
           <button type="button" data-zoom-out aria-label="축소">−</button>
           <span data-graph-scale>100%</span>
@@ -210,6 +216,9 @@ export function createDevEditor({
     try {
       const parsed = JSON.parse(localStorage.getItem(draftKey));
       if (parsed?.worldVersion !== world.worldVersion) return { scenes: {}, reviewedSceneIds: [] };
+      if (parsed?.registryFingerprint !== registryFingerprint || parsed?.annotationRevision !== annotationRevision) {
+        return { scenes: {}, reviewedSceneIds: [] };
+      }
       return { scenes: parsed.scenes ?? {}, reviewedSceneIds: parsed.reviewedSceneIds ?? [] };
     } catch {
       return { scenes: {}, reviewedSceneIds: [] };
@@ -237,6 +246,8 @@ export function createDevEditor({
     for (const [sceneId, state] of states) sceneEntries[sceneId] = { masks: state.masks };
     localStorage.setItem(draftKey, JSON.stringify({
       worldVersion: world.worldVersion,
+      registryFingerprint,
+      annotationRevision,
       scenes: sceneEntries,
       reviewedSceneIds: [...reviewedScenes].sort(),
     }));
@@ -362,6 +373,11 @@ export function createDevEditor({
     }
     renderSceneList();
     elements.graphViewport.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }
+
+  function expandBranches() {
+    collapsedScenes.clear();
+    renderSceneList();
   }
 
   function toggleTestMasks() {
@@ -951,6 +967,7 @@ export function createDevEditor({
   root.querySelector("[data-open-editor]").addEventListener("click", () => setMode("edit"));
   root.querySelector("[data-focus-graph]").addEventListener("click", () => focusCurrentGraph());
   root.querySelector("[data-collapse-branches]").addEventListener("click", collapseBranches);
+  root.querySelector("[data-expand-branches]").addEventListener("click", expandBranches);
   root.querySelector("[data-zoom-out]").addEventListener("click", () => setGraphScale(graphScale - 0.1));
   root.querySelector("[data-zoom-in]").addEventListener("click", () => setGraphScale(graphScale + 0.1));
   elements.newMask.addEventListener("click", () => drawing ? finishDrawing() : startDrawing());
