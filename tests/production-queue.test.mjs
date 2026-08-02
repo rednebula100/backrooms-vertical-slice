@@ -27,6 +27,12 @@ test("classifyFrontiers blocks four-plus scenes without a rarity approval", () =
   assert.equal(classifyFrontiers(world, frontiers, annotations, { fourPlusApprovedSceneIds: ["S1"] }).ready.length, 1);
 });
 
+test("classifyFrontiers reserves source paths already consumed by active candidates", () => {
+  const result = classifyFrontiers(world, frontiers, confirmed, { reservedSourcePathIds: ["S1-P1"] });
+  assert.equal(result.ready.length, 0);
+  assert.equal(result.blocked.find((frontier) => frontier.path_id === "S1-P1").reason, "active-candidate");
+});
+
 test("deriveCandidateStatus follows the staging annotation", () => {
   const candidate = { id: "S2" };
   assert.equal(deriveCandidateStatus(candidate, { scenes: [] }), "awaiting-route-annotation");

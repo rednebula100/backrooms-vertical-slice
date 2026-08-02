@@ -10,10 +10,14 @@ function compareFrontiers(first, second) {
     || first.path_id.localeCompare(second.path_id);
 }
 
-export function classifyFrontiers(world, registry, annotations, { fourPlusApprovedSceneIds = [] } = {}) {
+export function classifyFrontiers(world, registry, annotations, {
+  fourPlusApprovedSceneIds = [],
+  reservedSourcePathIds = [],
+} = {}) {
   const scenes = indexScenes(world);
   const humanRecords = annotationMap(annotations);
   const rareApprovals = new Set(fourPlusApprovedSceneIds);
+  const reservedPaths = new Set(reservedSourcePathIds);
   const ready = [];
   const blocked = [];
 
@@ -24,6 +28,7 @@ export function classifyFrontiers(world, registry, annotations, { fourPlusApprov
     let reason = null;
 
     if (!scene || !path) reason = "invalid-frontier";
+    else if (reservedPaths.has(frontier.path_id)) reason = "active-candidate";
     else if (!annotation) reason = "awaiting-human-annotation";
     else if (annotation.annotationStatus !== "masks-confirmed") reason = annotation.annotationStatus;
     else if (annotation.observedVisibleRouteCount >= 4 && !rareApprovals.has(scene.id)) reason = "requires-four-plus-approval";

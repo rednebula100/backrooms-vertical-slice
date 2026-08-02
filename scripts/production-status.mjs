@@ -19,6 +19,7 @@ if (errors.length) {
 } else {
   const { ready, blocked } = classifyFrontiers(world, frontiers, annotations, {
     fourPlusApprovedSceneIds: queue.batch.fourPlusApprovedSceneIds,
+    reservedSourcePathIds: queue.candidates.map((candidate) => candidate.sourcePathId),
   });
   console.log(`${queue.batch.id}: ${queue.completedSceneIds.length}/${queue.batch.targetSceneCount} scenes promoted`);
   for (const candidate of queue.candidates) {

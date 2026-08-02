@@ -556,30 +556,25 @@ export function createDevEditor({
     tree.append(createSceneBranch(scenes.get(world.startSceneId)));
     elements.sceneList.append(tree);
 
-    const reviewScenes = reviewQueueScenes().sort((first, second) => {
-      return Number(reviewedScenes.has(first.id)) - Number(reviewedScenes.has(second.id))
-        || Number(second.staging) - Number(first.staging)
-        || first.id.localeCompare(second.id);
-    });
+    const reviewScenes = reviewQueueScenes()
+      .filter((scene) => !reviewedScenes.has(scene.id))
+      .sort((first, second) => Number(second.staging) - Number(first.staging) || first.id.localeCompare(second.id));
     if (reviewScenes.length) {
-      const pendingCount = reviewScenes.filter((scene) => !reviewedScenes.has(scene.id)).length;
       const queue = document.createElement("section");
       queue.className = "staging-queue";
-      queue.innerHTML = `<div class="staging-queue-title"><span>검수 대기</span><em>${pendingCount}/${reviewScenes.length}</em></div>`;
+      queue.innerHTML = `<div class="staging-queue-title"><span>검수 대기</span><em>${reviewScenes.length}</em></div>`;
       for (const scene of reviewScenes) {
         const masks = getState(scene).masks;
-        const reviewed = reviewedScenes.has(scene.id);
         const status = annotationStatus(scene, masks);
         const button = document.createElement("button");
         button.type = "button";
         button.className = "staging-scene-node";
         button.dataset.current = String(scene.id === getCurrentScene().id);
         button.dataset.state = status;
-        button.dataset.reviewed = String(reviewed);
         const origin = scene.staging
           ? `새 후보 · ${scene.sourceSceneId} ${shortPathId(scene.sourcePathId)}`
           : `기존 프런티어 · ${scene.paths.length}개 통로`;
-        button.innerHTML = `<span class="staging-scene-mark"></span><span><b>${scene.id}</b><small>${origin}</small></span><em>${reviewed ? "완료" : masks.length || "·"}</em>`;
+        button.innerHTML = `<span class="staging-scene-mark"></span><span><b>${scene.id}</b><small>${origin}</small></span><em>${masks.length || "·"}</em>`;
         button.addEventListener("click", () => navigateToScene(scene.id));
         queue.append(button);
       }

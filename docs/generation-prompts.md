@@ -389,6 +389,22 @@ Constraints: Mostly empty. The declared left-offset continuation is the only pas
 
 ## 0.8.0 human-gated five-scene batch
 
+### L0-0007B
+
+Reference: `L0-0006B.png`. Candidate output: `exec-777c3695-c3df-4d28-ab6d-0dae7b63c9e0.png`. This image remains staged until its visible routes are manually annotated.
+
+```text
+Use case: photorealistic-natural
+Asset type: playable Backrooms follow-up candidate L0-0007B
+Input images: Image 1 is the fixed architectural, material, and photographic continuity reference L0-0006B; it is not an edit target.
+Primary request: Generate a brand-new immediately adjacent viewpoint after walking through Image 1's narrow ahead-left passage. Advance the camera only several meters and clear the near wall. The result must feel like the next physical space, not a restaging of Image 1. Show exactly one visually obvious, fully bounded walkable continuation at medium depth, curving gently to the right and out of sight, with the same carpet visibly continuing through it.
+Continuity anchors: preserve pale yellow-beige patterned wallpaper, taupe patterned low-pile carpet, dark brown vinyl base trim, acoustic ceiling grid, muted rectangular fluorescent panels, standing human eye height about 1.65 m, moderate 40 mm-equivalent lens, late-1990s to mid-2000s budget consumer-digital photographic realism. Keep this B branch tighter, dimmer, and more compressed than the A branch.
+Spatial variation: a short narrow corridor with one continuous offset wall creating the rightward bend; do not repeat Image 1's two-opening junction or central wall composition.
+Composition/framing: exact landscape 4:3 canvas, level camera, modest forward movement, no black borders.
+Lighting/mood: muted flat fluorescent light, empty, familiar, hollow, still, faintly unsettling; no dramatic horror or dramatic darkness.
+Constraints: The declared right-curving continuation is the only passage-like gap. All other walls must connect continuously to walls or image boundaries so no side slot, hidden floor channel, bay, alcove, doorway, second route, or implied corridor reads as walkable. Mostly empty. No freestanding partition, pillar with floor visible on both sides, door, stairs, landmark, previous room visible behind the camera, new level, text, UI, arrows, colored overlays, people, entities, bodies, gore, occult imagery, windows, furniture, debris, heavy ruin, cinematic grading, VHS/CCTV/glitch overlay, fisheye, ultra-wide distortion, bloom, logo, or watermark.
+```
+
 ### L0-0008A
 
 Reference: `L0-0007A.png`. Candidate output: `exec-d5919c6a-8d75-4c89-84f5-af82831d819c.png`. This image remains staged until its visible routes are manually annotated.
