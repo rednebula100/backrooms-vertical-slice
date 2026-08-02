@@ -250,6 +250,7 @@ async function start() {
   if (developmentToolsAvailable) {
     preservedParams.set("dev", "1");
     preservedParams.set("scene", restoredScene.id);
+    if (params.get("static") === "1") preservedParams.set("static", "1");
   }
   const preservedQuery = preservedParams.toString();
   if (window.location.search !== (preservedQuery ? `?${preservedQuery}` : "")) {

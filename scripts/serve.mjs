@@ -96,17 +96,23 @@ async function saveEditorScene(request, response) {
     const annotatedSourceIds = new Set(masks.map((mask) => mask.sourcePathId).filter(Boolean));
     const hasNewRoutes = masks.some((mask) => !mask.sourcePathId);
     const hasRemovedRoutes = scene.paths.some((pathEntry) => !annotatedSourceIds.has(pathEntry.id));
+    const reviewComplete = payload.reviewComplete === true;
     const record = {
       sceneId: scene.id,
       image: scene.image,
       observedVisibleRouteCount: masks.length,
       annotationStatus: isStaging
-        ? "staging-masks-confirmed"
+        ? reviewComplete
+          ? "staging-masks-confirmed"
+          : "staging-awaiting-approval"
         : hasNewRoutes
           ? "needs-route-registration"
           : hasRemovedRoutes
             ? "needs-route-reconciliation"
-            : "masks-confirmed",
+            : reviewComplete
+              ? "masks-confirmed"
+              : "awaiting-review-approval",
+      reviewComplete,
       masks,
     };
     const existingIndex = annotations.scenes.findIndex((entry) => entry.sceneId === scene.id);
@@ -118,13 +124,19 @@ async function saveEditorScene(request, response) {
     await atomicJsonWrite(annotationPath, annotations);
     if (isStaging) {
       const candidate = staging.candidates.find((entry) => entry.id === scene.id);
-      candidate.status = "ready-for-promotion";
-      candidate.reviewStatus = "route-annotation-complete";
+      candidate.status = reviewComplete ? "ready-for-promotion" : "awaiting-review-approval";
+      candidate.reviewStatus = reviewComplete ? "route-annotation-complete" : "needs-human-approval";
       candidate.observedVisibleRouteCount = masks.length;
       staging.updatedAt = new Date().toISOString();
       await atomicJsonWrite(stagingScenePath, staging);
     }
-    sendJson(response, 200, { ok: true, sceneId: scene.id, routeCount: masks.length, annotationStatus: record.annotationStatus });
+    sendJson(response, 200, {
+      ok: true,
+      sceneId: scene.id,
+      routeCount: masks.length,
+      annotationStatus: record.annotationStatus,
+      reviewComplete,
+    });
   } catch (error) {
     sendJson(response, 400, { ok: false, error: error.message });
   }

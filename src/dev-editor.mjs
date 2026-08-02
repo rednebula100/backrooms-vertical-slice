@@ -57,7 +57,14 @@ export function createDevEditor({
   const motion = new EditorMotion();
   const orderedScenes = [...scenes.values()];
   const draftKey = `${DRAFT_KEY_PREFIX}${world.worldVersion}`;
-  const stored = loadStoredDrafts();
+  const storedPayload = loadStoredDrafts();
+  const stored = storedPayload.scenes;
+  const reviewedScenes = new Set([
+    ...(storedPayload.reviewedSceneIds ?? []),
+    ...(annotations?.scenes ?? [])
+      .filter((entry) => ["masks-confirmed", "staging-masks-confirmed"].includes(entry.annotationStatus))
+      .map((entry) => entry.sceneId),
+  ]);
   const states = new Map();
   const histories = new Map();
   const dirtyScenes = new Set();
@@ -66,7 +73,7 @@ export function createDevEditor({
   const saveStates = new Map();
   let mode = "edit";
   let viewport = "desktop";
-  let masksVisible = true;
+  let testMasksVisible = false;
   let selectedMaskId = null;
   let selectedVertex = null;
   let drawing = null;
@@ -108,7 +115,6 @@ export function createDevEditor({
         <button type="button" data-viewport="desktop" aria-pressed="true">D</button>
         <button type="button" data-viewport="mobile" aria-pressed="false">M</button>
       </div>
-      <button class="editor-action quiet" type="button" data-toggle-masks aria-pressed="true">마스크 켬</button>
       <button class="editor-action quiet export-action" type="button" data-export-annotations aria-label="주석 JSON 내보내기">JSON ↓</button>
       <span class="autosave-status" data-auto-save-status data-state="idle"><i aria-hidden="true"></i><span data-auto-save-label>자동 반영</span></span>
     </header>
@@ -121,6 +127,7 @@ export function createDevEditor({
       </section>
       <div class="inspector-actions">
         <button class="editor-action primary" type="button" data-new-mask>+ 새 통로 그리기</button>
+        <button class="editor-action review-action" type="button" data-complete-review hidden>검수 완료</button>
         <div class="history-buttons"><button type="button" data-undo disabled>↶ 실행 취소</button><button type="button" data-redo disabled>↷ 다시 실행</button></div>
       </div>
       <section class="inspector-section">
@@ -138,6 +145,7 @@ export function createDevEditor({
     <div class="drawing-banner" data-drawing-banner hidden><span>통로 외곽을 순서대로 찍으세요</span><small>Enter 완료 · Esc 취소</small></div>
     <div class="test-mode-toolbar" data-test-mode-toolbar>
       <span data-test-scene>—</span>
+      <button type="button" data-test-mask-toggle aria-pressed="false">영역 보기</button>
       <button type="button" data-exit-test>편집으로 <kbd>Esc</kbd></button>
     </div>
     <section class="incomplete-overlay" data-incomplete-overlay hidden>
@@ -149,7 +157,7 @@ export function createDevEditor({
   `;
   document.body.append(root);
 
-  const elements = Object.fromEntries([...root.querySelectorAll("[data-scene-list], [data-scene-search], [data-current-scene], [data-scene-description], [data-route-count], [data-draft-count], [data-mask-list], [data-selected-id], [data-selected-meta], [data-delete-mask], [data-undo], [data-redo], [data-new-mask], [data-toggle-masks], [data-auto-save-status], [data-auto-save-label], [data-editor-toast], [data-drawing-banner], [data-parent-scene], [data-test-scene], [data-incomplete-overlay], [data-incomplete-id]")].map((node) => {
+  const elements = Object.fromEntries([...root.querySelectorAll("[data-scene-list], [data-scene-search], [data-current-scene], [data-scene-description], [data-route-count], [data-draft-count], [data-mask-list], [data-selected-id], [data-selected-meta], [data-delete-mask], [data-undo], [data-redo], [data-new-mask], [data-complete-review], [data-test-mask-toggle], [data-auto-save-status], [data-auto-save-label], [data-editor-toast], [data-drawing-banner], [data-parent-scene], [data-test-scene], [data-incomplete-overlay], [data-incomplete-id]")].map((node) => {
     const key = Object.keys(node.dataset)[0];
     return [key, node];
   }));
@@ -157,9 +165,10 @@ export function createDevEditor({
   function loadStoredDrafts() {
     try {
       const parsed = JSON.parse(localStorage.getItem(draftKey));
-      return parsed?.worldVersion === world.worldVersion ? parsed.scenes ?? {} : {};
+      if (parsed?.worldVersion !== world.worldVersion) return { scenes: {}, reviewedSceneIds: [] };
+      return { scenes: parsed.scenes ?? {}, reviewedSceneIds: parsed.reviewedSceneIds ?? [] };
     } catch {
-      return {};
+      return { scenes: {}, reviewedSceneIds: [] };
     }
   }
 
@@ -182,7 +191,15 @@ export function createDevEditor({
   function persistDrafts() {
     const sceneEntries = {};
     for (const [sceneId, state] of states) sceneEntries[sceneId] = { masks: state.masks };
-    localStorage.setItem(draftKey, JSON.stringify({ worldVersion: world.worldVersion, scenes: sceneEntries }));
+    localStorage.setItem(draftKey, JSON.stringify({
+      worldVersion: world.worldVersion,
+      scenes: sceneEntries,
+      reviewedSceneIds: [...reviewedScenes].sort(),
+    }));
+  }
+
+  function invalidateReview(scene = getCurrentScene()) {
+    reviewedScenes.delete(scene.id);
   }
 
   function snapshot(scene = getCurrentScene()) {
@@ -203,6 +220,7 @@ export function createDevEditor({
     history.past.push(previous);
     if (history.past.length > 80) history.past.shift();
     history.future = [];
+    invalidateReview(scene);
     persistDrafts();
     scheduleAutoSave(scene.id);
     render();
@@ -220,6 +238,7 @@ export function createDevEditor({
     if (!history.past.length) return;
     history.future.push(snapshot(scene));
     getState(scene).masks = history.past.pop();
+    invalidateReview(scene);
     persistDrafts();
     scheduleAutoSave(scene.id);
     render();
@@ -231,6 +250,7 @@ export function createDevEditor({
     if (!history.future.length) return;
     history.past.push(snapshot(scene));
     getState(scene).masks = history.future.pop();
+    invalidateReview(scene);
     persistDrafts();
     scheduleAutoSave(scene.id);
     render();
@@ -256,11 +276,10 @@ export function createDevEditor({
     render();
   }
 
-  function toggleMasks() {
-    masksVisible = !masksVisible;
-    elements.toggleMasks.setAttribute("aria-pressed", String(masksVisible));
-    elements.toggleMasks.textContent = masksVisible ? "마스크 켬" : "마스크 끔";
-    document.body.dataset.debug = String(masksVisible);
+  function toggleTestMasks() {
+    testMasksVisible = !testMasksVisible;
+    elements.testMaskToggle.setAttribute("aria-pressed", String(testMasksVisible));
+    elements.testMaskToggle.textContent = testMasksVisible ? "영역 숨기기" : "영역 보기";
     render();
   }
 
@@ -380,22 +399,59 @@ export function createDevEditor({
     toast.clearTimeout = window.setTimeout(() => { elements.editorToast.textContent = ""; }, 2450);
   }
 
-  function annotationRecord(scene) {
-    const masks = clone(getState(scene).masks);
+  function isReviewQueueScene(scene) {
+    return scene.staging || scene.status === "provisional-frontier";
+  }
+
+  function reviewQueueScenes() {
+    return orderedScenes.filter(isReviewQueueScene);
+  }
+
+  function annotationStatus(scene, masks = getState(scene).masks) {
     const sourceIds = new Set(masks.map((mask) => mask.sourcePathId).filter(Boolean));
     const hasNewRoutes = masks.some((mask) => !mask.sourcePathId);
     const hasRemovedRoutes = scene.paths.some((path) => !sourceIds.has(path.id));
+    if (scene.staging) {
+      if (reviewedScenes.has(scene.id)) return "staging-masks-confirmed";
+      return masks.length ? "staging-awaiting-approval" : "awaiting-route-annotation";
+    }
+    if (hasNewRoutes) return "needs-route-registration";
+    if (hasRemovedRoutes) return "needs-route-reconciliation";
+    return reviewedScenes.has(scene.id) ? "masks-confirmed" : "awaiting-review-approval";
+  }
+
+  function completeReview() {
+    const scene = getCurrentScene();
+    if (!isReviewQueueScene(scene) || reviewedScenes.has(scene.id)) return;
+    if (drawing || getState(scene).masks.length === 0) {
+      toast("통로 마스크를 먼저 완성하세요", true);
+      return;
+    }
+    reviewedScenes.add(scene.id);
+    persistDrafts();
+    scheduleAutoSave(scene.id);
+    render();
+
+    const queue = reviewQueueScenes();
+    const currentIndex = queue.findIndex((candidate) => candidate.id === scene.id);
+    const orderedNext = [...queue.slice(currentIndex + 1), ...queue.slice(0, currentIndex)];
+    const next = orderedNext.find((candidate) => !reviewedScenes.has(candidate.id));
+    if (next) {
+      toast(`${scene.id} 검수 완료 · 다음 대기로 이동합니다`);
+      window.setTimeout(() => navigateToScene(next.id), 240);
+    } else {
+      toast("현재 대기열 검수를 모두 완료했습니다");
+    }
+  }
+
+  function annotationRecord(scene) {
+    const masks = clone(getState(scene).masks);
     return {
       sceneId: scene.id,
       image: scene.image,
       observedVisibleRouteCount: masks.length,
-      annotationStatus: scene.staging
-        ? "staging-masks-confirmed"
-        : hasNewRoutes
-          ? "needs-route-registration"
-          : hasRemovedRoutes
-            ? "needs-route-reconciliation"
-            : "masks-confirmed",
+      annotationStatus: annotationStatus(scene, masks),
+      reviewComplete: reviewedScenes.has(scene.id),
       masks,
     };
   }
@@ -500,18 +556,30 @@ export function createDevEditor({
     tree.append(createSceneBranch(scenes.get(world.startSceneId)));
     elements.sceneList.append(tree);
 
-    const stagingScenes = orderedScenes.filter((scene) => scene.staging);
-    if (stagingScenes.length) {
+    const reviewScenes = reviewQueueScenes().sort((first, second) => {
+      return Number(reviewedScenes.has(first.id)) - Number(reviewedScenes.has(second.id))
+        || Number(second.staging) - Number(first.staging)
+        || first.id.localeCompare(second.id);
+    });
+    if (reviewScenes.length) {
+      const pendingCount = reviewScenes.filter((scene) => !reviewedScenes.has(scene.id)).length;
       const queue = document.createElement("section");
       queue.className = "staging-queue";
-      queue.innerHTML = `<div class="staging-queue-title"><span>검수 대기</span><em>${stagingScenes.length}</em></div>`;
-      for (const scene of stagingScenes) {
+      queue.innerHTML = `<div class="staging-queue-title"><span>검수 대기</span><em>${pendingCount}/${reviewScenes.length}</em></div>`;
+      for (const scene of reviewScenes) {
+        const masks = getState(scene).masks;
+        const reviewed = reviewedScenes.has(scene.id);
+        const status = annotationStatus(scene, masks);
         const button = document.createElement("button");
         button.type = "button";
         button.className = "staging-scene-node";
         button.dataset.current = String(scene.id === getCurrentScene().id);
-        button.dataset.state = scene.status;
-        button.innerHTML = `<span class="staging-scene-mark"></span><span><b>${scene.id}</b><small>${scene.sourceSceneId} · ${shortPathId(scene.sourcePathId)}에서 생성</small></span><em>${getState(scene).masks.length || "·"}</em>`;
+        button.dataset.state = status;
+        button.dataset.reviewed = String(reviewed);
+        const origin = scene.staging
+          ? `새 후보 · ${scene.sourceSceneId} ${shortPathId(scene.sourcePathId)}`
+          : `기존 프런티어 · ${scene.paths.length}개 통로`;
+        button.innerHTML = `<span class="staging-scene-mark"></span><span><b>${scene.id}</b><small>${origin}</small></span><em>${reviewed ? "완료" : masks.length || "·"}</em>`;
         button.addEventListener("click", () => navigateToScene(scene.id));
         queue.append(button);
       }
@@ -626,6 +694,17 @@ export function createDevEditor({
     elements.deleteMask.hidden = !mask;
     elements.undo.disabled = history.past.length === 0;
     elements.redo.disabled = history.future.length === 0;
+    const reviewable = isReviewQueueScene(scene);
+    const reviewed = reviewedScenes.has(scene.id);
+    const status = annotationStatus(scene, masks);
+    elements.completeReview.hidden = !reviewable;
+    elements.completeReview.disabled = !reviewable || reviewed || masks.length === 0 || Boolean(drawing);
+    elements.completeReview.dataset.complete = String(reviewed);
+    elements.completeReview.textContent = reviewed
+      ? status.includes("registration") || status.includes("reconciliation")
+        ? "검수 완료 · 등록 정리 필요"
+        : "검수 완료됨"
+      : "검수 완료";
     const autoSaveState = saveStates.get(scene.id) ?? "idle";
     elements.autoSaveStatus.dataset.state = autoSaveState;
     elements.autoSaveLabel.textContent = {
@@ -642,13 +721,15 @@ export function createDevEditor({
     const scene = getCurrentScene();
     if (!scene) return;
     const masks = getState(scene).masks;
-    document.body.dataset.debug = String(mode === "edit" && masksVisible);
+    document.body.dataset.debug = String(mode === "test" && testMasksVisible);
     elements.currentScene.textContent = scene.id;
     elements.sceneDescription.textContent = scene.accessibleName;
     elements.testScene.textContent = scene.id;
     elements.parentScene.disabled = !scene.sourceSceneId;
     buttonPressed(root, "[data-mode]", mode, "mode");
     buttonPressed(root, "[data-viewport]", viewport, "viewport");
+    elements.testMaskToggle.setAttribute("aria-pressed", String(testMasksVisible));
+    elements.testMaskToggle.textContent = testMasksVisible ? "영역 숨기기" : "영역 보기";
     renderSceneList();
     renderInspector(masks);
     if (mode === "test") {
@@ -696,7 +777,12 @@ export function createDevEditor({
       const response = await fetch("/__dev/editor/save", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ worldVersion: world.worldVersion, sceneId: scene.id, masks }),
+        body: JSON.stringify({
+          worldVersion: world.worldVersion,
+          sceneId: scene.id,
+          reviewComplete: reviewedScenes.has(scene.id),
+          masks,
+        }),
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(result.error ?? `HTTP ${response.status}`);
@@ -753,7 +839,8 @@ export function createDevEditor({
   elements.deleteMask.addEventListener("click", removeSelectedMask);
   elements.undo.addEventListener("click", undo);
   elements.redo.addEventListener("click", redo);
-  elements.toggleMasks.addEventListener("click", toggleMasks);
+  elements.completeReview.addEventListener("click", completeReview);
+  elements.testMaskToggle.addEventListener("click", toggleTestMasks);
   root.querySelector("[data-export-annotations]").addEventListener("click", exportAnnotations);
   root.querySelector("[data-exit-test]").addEventListener("click", () => setMode("edit"));
   root.querySelector("[data-close-incomplete]").addEventListener("click", closeIncomplete);

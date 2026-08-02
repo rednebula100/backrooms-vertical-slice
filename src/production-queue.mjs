@@ -43,6 +43,7 @@ export function deriveCandidateStatus(candidate, annotations) {
   const annotation = annotationMap(annotations).get(candidate.id);
   if (!annotation) return "awaiting-route-annotation";
   if (annotation.annotationStatus === "staging-masks-confirmed") return "ready-for-promotion";
+  if (annotation.annotationStatus === "staging-awaiting-approval") return "awaiting-review-approval";
   return "annotation-invalid";
 }
 
@@ -55,19 +56,29 @@ export function validateProductionQueue(world, registry, annotations, queue) {
     errors.push("Production queue target scene count must be between 1 and 20");
   }
   if (!Array.isArray(queue?.completedSceneIds)) errors.push("Production queue must contain completedSceneIds");
-  if (!Array.isArray(queue?.candidates) || queue.candidates.length > 1) {
-    errors.push("A human-gated production queue may expose at most one candidate at a time");
+  if (!Array.isArray(queue?.candidates)) {
+    errors.push("Production queue must contain candidates");
     return errors;
   }
 
   const scenes = indexScenes(world);
   const frontiers = new Map((registry?.frontiers ?? []).map((entry) => [entry.path_id, entry]));
   const completed = new Set(queue.completedSceneIds ?? []);
+  const candidateIds = new Set();
+  const candidateSources = new Set();
   if (completed.size !== (queue.completedSceneIds ?? []).length) errors.push("Production queue completed scene ids must be unique");
   if (completed.size > (queue.batch?.targetSceneCount ?? 0)) errors.push("Production queue completed count exceeds its target");
+  if (completed.size + queue.candidates.length > (queue.batch?.targetSceneCount ?? 0)) {
+    errors.push("Production queue candidates and completed scenes exceed the batch target");
+  }
 
   for (const candidate of queue.candidates ?? []) {
-    if (!candidate.id || scenes.has(candidate.id) || completed.has(candidate.id)) errors.push(`Candidate id is missing or already registered: ${candidate.id ?? "unknown"}`);
+    if (!candidate.id || scenes.has(candidate.id) || completed.has(candidate.id) || candidateIds.has(candidate.id)) {
+      errors.push(`Candidate id is missing, duplicated, or already registered: ${candidate.id ?? "unknown"}`);
+    }
+    candidateIds.add(candidate.id);
+    if (candidateSources.has(candidate.sourcePathId)) errors.push(`Multiple candidates consume source path ${candidate.sourcePathId}`);
+    candidateSources.add(candidate.sourcePathId);
     const source = scenes.get(candidate.sourceSceneId);
     const sourcePath = source?.paths?.find((path) => path.id === candidate.sourcePathId);
     const frontier = frontiers.get(candidate.sourcePathId);
