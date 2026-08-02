@@ -970,6 +970,15 @@ body[data-editor="true"] .path-overlay {
   background: #b18d52;
 }
 
+.scene-tree-node[data-staging="true"] .tree-node-mark {
+  border-color: #62b88b;
+  background: #173828;
+}
+
+.scene-tree-node[data-staging="true"] small {
+  color: #62b88b;
+}
+
 .scene-tree-node span:nth-child(2) {
   display: grid;
   min-width: 0;

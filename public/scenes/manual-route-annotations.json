@@ -1,12 +1,13 @@
 {
   "worldVersion": "vertical-slice-0.7.0",
-  "updatedAt": "2026-08-02T12:15:46.127Z",
+  "updatedAt": "2026-08-02T13:42:05.658Z",
   "scenes": [
     {
       "sceneId": "L0-0001",
       "image": "/scenes/L0-0001/final/L0-0001-final.png",
       "observedVisibleRouteCount": 2,
       "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
       "masks": [
         {
           "id": "L0-0001-P1",
@@ -125,6 +126,7 @@
       "image": "/scenes/L0-0002A/final/L0-0002A.png",
       "observedVisibleRouteCount": 1,
       "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
       "masks": [
         {
           "id": "L0-0002A-P1",
@@ -172,10 +174,201 @@
       ]
     },
     {
+      "sceneId": "L0-0002B",
+      "image": "/scenes/L0-0002B/final/L0-0002B.png",
+      "observedVisibleRouteCount": 2,
+      "annotationStatus": "awaiting-review-approval",
+      "reviewComplete": false,
+      "masks": [
+        {
+          "id": "L0-0002B-P1",
+          "sourcePathId": "L0-0002B-P1",
+          "status": "active",
+          "regions": {
+            "desktop": [
+              [
+                650,
+                340
+              ],
+              [
+                840,
+                340
+              ],
+              [
+                840,
+                655
+              ],
+              [
+                650,
+                655
+              ]
+            ],
+            "mobile": [
+              [
+                590,
+                320
+              ],
+              [
+                900,
+                320
+              ],
+              [
+                900,
+                700
+              ],
+              [
+                590,
+                700
+              ]
+            ]
+          }
+        },
+        {
+          "id": "L0-0002B-P2",
+          "sourcePathId": "L0-0002B-P2",
+          "status": "active",
+          "regions": {
+            "desktop": [
+              [
+                845,
+                335
+              ],
+              [
+                934,
+                278
+              ],
+              [
+                927,
+                876
+              ],
+              [
+                847,
+                744
+              ]
+            ],
+            "mobile": [
+              [
+                791,
+                295
+              ],
+              [
+                991,
+                228
+              ],
+              [
+                975,
+                933
+              ],
+              [
+                796,
+                777
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0003A",
+      "image": "/scenes/L0-0003A/final/L0-0003A.png",
+      "observedVisibleRouteCount": 2,
+      "annotationStatus": "needs-route-registration",
+      "reviewComplete": false,
+      "masks": [
+        {
+          "id": "L0-0003A-P1",
+          "sourcePathId": "L0-0003A-P1",
+          "status": "active",
+          "regions": {
+            "desktop": [
+              [
+                640,
+                348
+              ],
+              [
+                701,
+                348
+              ],
+              [
+                703,
+                544
+              ],
+              [
+                642,
+                541
+              ]
+            ],
+            "mobile": [
+              [
+                572,
+                330
+              ],
+              [
+                765,
+                330
+              ],
+              [
+                771,
+                562
+              ],
+              [
+                578,
+                558
+              ]
+            ]
+          }
+        },
+        {
+          "id": "MASK-L0-0003A-01",
+          "sourcePathId": null,
+          "status": "draft",
+          "regions": {
+            "desktop": [
+              [
+                577,
+                341
+              ],
+              [
+                544,
+                331
+              ],
+              [
+                545,
+                542
+              ],
+              [
+                573,
+                542
+              ]
+            ],
+            "mobile": [
+              [
+                664,
+                323
+              ],
+              [
+                465,
+                312
+              ],
+              [
+                471,
+                561
+              ],
+              [
+                640,
+                561
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
       "sceneId": "L0-0003B",
       "image": "/scenes/L0-0003B/final/L0-0003B.png",
       "observedVisibleRouteCount": 3,
       "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
       "masks": [
         {
           "id": "L0-0003B-P1",
@@ -188,7 +381,7 @@
                 285
               ],
               [
-                1020,
+                1014,
                 285
               ],
               [
@@ -202,20 +395,20 @@
             ],
             "mobile": [
               [
-                870,
-                240
+                883,
+                251
               ],
               [
-                1090,
-                240
+                1067,
+                251
               ],
               [
-                1090,
-                710
+                1082,
+                694
               ],
               [
-                870,
-                710
+                883,
+                694
               ]
             ]
           }
@@ -227,38 +420,38 @@
           "regions": {
             "desktop": [
               [
-                390,
-                205
+                462,
+                13
               ],
               [
-                590,
-                205
+                716,
+                220
               ],
               [
-                590,
-                650
+                725,
+                811
               ],
               [
-                390,
-                650
+                473,
+                1086
               ]
             ],
             "mobile": [
               [
-                370,
-                175
+                438,
+                0
               ],
               [
-                570,
-                175
+                738,
+                164
               ],
               [
-                570,
-                700
+                749,
+                861
               ],
               [
-                370,
-                700
+                451,
+                1086
               ]
             ]
           }
@@ -270,38 +463,38 @@
           "regions": {
             "desktop": [
               [
-                650,
-                210
+                730,
+                222
               ],
               [
-                850,
-                210
+                840,
+                287
               ],
               [
-                850,
-                650
+                836,
+                659
               ],
               [
-                650,
-                650
+                729,
+                800
               ]
             ],
             "mobile": [
               [
-                650,
-                180
+                687,
+                173
               ],
               [
-                850,
-                180
+                885,
+                250
               ],
               [
-                850,
-                700
+                877,
+                689
               ],
               [
-                650,
-                700
+                686,
+                855
               ]
             ]
           }
@@ -313,6 +506,7 @@
       "image": "/scenes/L0-0003C/final/L0-0003C.png",
       "observedVisibleRouteCount": 2,
       "annotationStatus": "needs-route-registration",
+      "reviewComplete": true,
       "masks": [
         {
           "id": "L0-0003C-P1",
@@ -403,10 +597,556 @@
       ]
     },
     {
+      "sceneId": "L0-0004A",
+      "image": "/scenes/L0-0004A/final/L0-0004A.png",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "awaiting-review-approval",
+      "reviewComplete": false,
+      "masks": [
+        {
+          "id": "L0-0004A-P1",
+          "sourcePathId": "L0-0004A-P1",
+          "status": "active",
+          "regions": {
+            "desktop": [
+              [
+                847,
+                328
+              ],
+              [
+                971,
+                333
+              ],
+              [
+                971,
+                637
+              ],
+              [
+                843,
+                637
+              ]
+            ],
+            "mobile": [
+              [
+                813,
+                300
+              ],
+              [
+                1006,
+                306
+              ],
+              [
+                1006,
+                665
+              ],
+              [
+                807,
+                665
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0004B",
+      "image": "/scenes/L0-0004B/final/L0-0004B.png",
+      "observedVisibleRouteCount": 2,
+      "annotationStatus": "awaiting-review-approval",
+      "reviewComplete": false,
+      "masks": [
+        {
+          "id": "L0-0004B-P1",
+          "sourcePathId": "L0-0004B-P1",
+          "status": "active",
+          "regions": {
+            "desktop": [
+              [
+                770,
+                270
+              ],
+              [
+                935,
+                270
+              ],
+              [
+                935,
+                580
+              ],
+              [
+                770,
+                580
+              ]
+            ],
+            "mobile": [
+              [
+                700,
+                240
+              ],
+              [
+                1005,
+                240
+              ],
+              [
+                1005,
+                630
+              ],
+              [
+                700,
+                630
+              ]
+            ]
+          }
+        },
+        {
+          "id": "L0-0004B-P2",
+          "sourcePathId": "L0-0004B-P2",
+          "status": "active",
+          "regions": {
+            "desktop": [
+              [
+                527,
+                111
+              ],
+              [
+                703,
+                205
+              ],
+              [
+                712,
+                698
+              ],
+              [
+                551,
+                907
+              ]
+            ],
+            "mobile": [
+              [
+                510,
+                45
+              ],
+              [
+                717,
+                155
+              ],
+              [
+                728,
+                737
+              ],
+              [
+                538,
+                984
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0004C",
+      "image": "/scenes/L0-0004C/final/L0-0004C.png",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "L0-0004C-P1",
+          "sourcePathId": "L0-0004C-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                1025,
+                285
+              ],
+              [
+                1210,
+                285
+              ],
+              [
+                1210,
+                650
+              ],
+              [
+                1025,
+                650
+              ]
+            ],
+            "mobile": [
+              [
+                1000,
+                250
+              ],
+              [
+                1230,
+                250
+              ],
+              [
+                1230,
+                700
+              ],
+              [
+                1000,
+                700
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0004D",
+      "image": "/scenes/L0-0004D/final/L0-0004D.png",
+      "observedVisibleRouteCount": 2,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "L0-0004D-P1",
+          "sourcePathId": "L0-0004D-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                300,
+                280
+              ],
+              [
+                460,
+                280
+              ],
+              [
+                460,
+                650
+              ],
+              [
+                300,
+                650
+              ]
+            ],
+            "mobile": [
+              [
+                270,
+                245
+              ],
+              [
+                480,
+                245
+              ],
+              [
+                480,
+                700
+              ],
+              [
+                270,
+                700
+              ]
+            ]
+          }
+        },
+        {
+          "id": "L0-0004D-P2",
+          "sourcePathId": "L0-0004D-P2",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                1058,
+                296
+              ],
+              [
+                1164,
+                307
+              ],
+              [
+                1160,
+                781
+              ],
+              [
+                1062,
+                785
+              ]
+            ],
+            "mobile": [
+              [
+                1011,
+                252
+              ],
+              [
+                1211,
+                265
+              ],
+              [
+                1203,
+                824
+              ],
+              [
+                1019,
+                829
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0005A",
+      "image": "/scenes/L0-0005A/final/L0-0005A.png",
+      "observedVisibleRouteCount": 2,
+      "annotationStatus": "awaiting-review-approval",
+      "reviewComplete": false,
+      "masks": [
+        {
+          "id": "L0-0005A-P1",
+          "sourcePathId": "L0-0005A-P1",
+          "status": "active",
+          "regions": {
+            "desktop": [
+              [
+                445,
+                215
+              ],
+              [
+                699,
+                257
+              ],
+              [
+                701,
+                700
+              ],
+              [
+                445,
+                744
+              ]
+            ],
+            "mobile": [
+              [
+                422,
+                167
+              ],
+              [
+                722,
+                217
+              ],
+              [
+                724,
+                740
+              ],
+              [
+                422,
+                792
+              ]
+            ]
+          }
+        },
+        {
+          "id": "L0-0005A-P2",
+          "sourcePathId": "L0-0005A-P2",
+          "status": "active",
+          "regions": {
+            "desktop": [
+              [
+                991,
+                261
+              ],
+              [
+                1125,
+                235
+              ],
+              [
+                1125,
+                735
+              ],
+              [
+                988,
+                718
+              ]
+            ],
+            "mobile": [
+              [
+                961,
+                220
+              ],
+              [
+                1156,
+                190
+              ],
+              [
+                1156,
+                780
+              ],
+              [
+                957,
+                760
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0005B",
+      "image": "/scenes/L0-0005B/final/L0-0005B.png",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "awaiting-review-approval",
+      "reviewComplete": false,
+      "masks": [
+        {
+          "id": "L0-0005B-P1",
+          "sourcePathId": "L0-0005B-P1",
+          "status": "active",
+          "regions": {
+            "desktop": [
+              [
+                653,
+                266
+              ],
+              [
+                743,
+                257
+              ],
+              [
+                738,
+                648
+              ],
+              [
+                655,
+                650
+              ]
+            ],
+            "mobile": [
+              [
+                599,
+                232
+              ],
+              [
+                798,
+                221
+              ],
+              [
+                787,
+                683
+              ],
+              [
+                604,
+                685
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0005C",
+      "image": "/scenes/L0-0005C/final/L0-0005C.png",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "L0-0005C-P1",
+          "sourcePathId": "L0-0005C-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                464,
+                142
+              ],
+              [
+                570,
+                205
+              ],
+              [
+                562,
+                741
+              ],
+              [
+                473,
+                835
+              ]
+            ],
+            "mobile": [
+              [
+                417,
+                81
+              ],
+              [
+                616,
+                155
+              ],
+              [
+                601,
+                788
+              ],
+              [
+                434,
+                899
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0006A",
+      "image": "/scenes/L0-0006A/final/L0-0006A.png",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "awaiting-review-approval",
+      "reviewComplete": false,
+      "masks": [
+        {
+          "id": "L0-0006A-P1",
+          "sourcePathId": "L0-0006A-P1",
+          "status": "active",
+          "regions": {
+            "desktop": [
+              [
+                705,
+                255
+              ],
+              [
+                910,
+                255
+              ],
+              [
+                910,
+                738
+              ],
+              [
+                705,
+                738
+              ]
+            ],
+            "mobile": [
+              [
+                665,
+                220
+              ],
+              [
+                952,
+                220
+              ],
+              [
+                952,
+                755
+              ],
+              [
+                665,
+                755
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
       "sceneId": "L0-0006B",
       "image": "/scenes/L0-0006B/final/L0-0006B.png",
       "observedVisibleRouteCount": 2,
       "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
       "masks": [
         {
           "id": "L0-0006B-P1",
@@ -419,12 +1159,12 @@
                 180
               ],
               [
-                446,
-                180
+                447,
+                137
               ],
               [
-                446,
-                620
+                438,
+                765
               ],
               [
                 296,
@@ -433,20 +1173,20 @@
             ],
             "mobile": [
               [
-                260,
-                145
+                273,
+                136
               ],
               [
-                485,
-                145
+                472,
+                85
               ],
               [
-                485,
-                700
+                460,
+                826
               ],
               [
-                260,
-                700
+                273,
+                655
               ]
             ]
           }
@@ -459,53 +1199,132 @@
             "desktop": [
               [
                 910,
-                55
+                137
               ],
               [
                 1218,
                 55
               ],
               [
-                1218,
-                650
+                1206,
+                1086
               ],
               [
-                985,
-                650
-              ],
-              [
-                985,
-                225
-              ],
-              [
-                910,
-                225
+                916,
+                915
               ]
             ],
             "mobile": [
               [
-                870,
-                30
+                883,
+                63
               ],
               [
-                1255,
-                30
+                1246,
+                0
               ],
               [
-                1255,
-                715
+                1232,
+                1086
               ],
               [
-                950,
-                715
+                890,
+                981
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0006C",
+      "image": "/scenes/L0-0006C/final/L0-0006C.png",
+      "observedVisibleRouteCount": 2,
+      "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "L0-0006C-P1",
+          "sourcePathId": "L0-0006C-P1",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                170,
+                180
               ],
               [
-                950,
-                205
+                312,
+                226
               ],
               [
-                870,
-                205
+                308,
+                693
+              ],
+              [
+                175,
+                739
+              ]
+            ],
+            "mobile": [
+              [
+                141,
+                130
+              ],
+              [
+                340,
+                184
+              ],
+              [
+                335,
+                735
+              ],
+              [
+                148,
+                789
+              ]
+            ]
+          }
+        },
+        {
+          "id": "L0-0006C-P2",
+          "sourcePathId": "L0-0006C-P2",
+          "status": "pending",
+          "regions": {
+            "desktop": [
+              [
+                808,
+                176
+              ],
+              [
+                1140,
+                130
+              ],
+              [
+                1140,
+                796
+              ],
+              [
+                812,
+                741
+              ]
+            ],
+            "mobile": [
+              [
+                778,
+                125
+              ],
+              [
+                1170,
+                70
+              ],
+              [
+                1170,
+                856
+              ],
+              [
+                783,
+                791
               ]
             ]
           }
@@ -517,6 +1336,7 @@
       "image": "/scenes/L0-0007A/final/L0-0007A.png",
       "observedVisibleRouteCount": 1,
       "annotationStatus": "masks-confirmed",
+      "reviewComplete": true,
       "masks": [
         {
           "id": "L0-0007A-P1",
@@ -562,6 +1382,66 @@
           }
         }
       ]
+    },
+    {
+      "sceneId": "L0-0007B",
+      "image": "/scenes/L0-0007B/candidates/L0-0007B-C01.png",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "staging-masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "MASK-L0-0007B-01",
+          "sourcePathId": null,
+          "status": "draft",
+          "regions": {
+            "desktop": [
+              [
+                777,
+                187
+              ],
+              [
+                1180,
+                172
+              ],
+              [
+                1169,
+                661
+              ],
+              [
+                786,
+                648
+              ]
+            ],
+            "mobile": [
+              [
+                741,
+                146
+              ],
+              [
+                1216,
+                128
+              ],
+              [
+                1203,
+                705
+              ],
+              [
+                751,
+                690
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L0-0008A",
+      "image": "/scenes/L0-0008A/candidates/L0-0008A-C01.png",
+      "observedVisibleRouteCount": 0,
+      "annotationStatus": "staging-masks-confirmed",
+      "reviewComplete": true,
+      "masks": []
     }
   ]
 }

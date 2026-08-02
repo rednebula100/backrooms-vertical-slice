@@ -56,13 +56,18 @@ export function createDevEditor({
 }) {
   const motion = new EditorMotion();
   const orderedScenes = [...scenes.values()];
+  const stagedBySourcePath = new Map(
+    orderedScenes
+      .filter((scene) => scene.staging && scene.sourcePathId)
+      .map((scene) => [scene.sourcePathId, scene]),
+  );
   const draftKey = `${DRAFT_KEY_PREFIX}${world.worldVersion}`;
   const storedPayload = loadStoredDrafts();
   const stored = storedPayload.scenes;
   const reviewedScenes = new Set([
     ...(storedPayload.reviewedSceneIds ?? []),
     ...(annotations?.scenes ?? [])
-      .filter((entry) => ["masks-confirmed", "staging-masks-confirmed"].includes(entry.annotationStatus))
+      .filter((entry) => entry.reviewComplete === true || ["masks-confirmed", "staging-masks-confirmed"].includes(entry.annotationStatus))
       .map((entry) => entry.sceneId),
   ]);
   const states = new Map();
@@ -511,7 +516,8 @@ export function createDevEditor({
     button.className = "scene-tree-node";
     button.dataset.current = String(scene.id === getCurrentScene().id);
     button.dataset.incomplete = String(hasIncomplete);
-    button.innerHTML = `<span class="tree-node-mark"></span><span><b>${scene.id}</b><small>단계 ${depth}</small></span><em>${masks.length}</em>`;
+    button.dataset.staging = String(Boolean(scene.staging));
+    button.innerHTML = `<span class="tree-node-mark"></span><span><b>${scene.id}</b><small>${scene.staging ? "후보" : `단계 ${depth}`}</small></span><em>${masks.length}</em>`;
     button.addEventListener("click", () => navigateToScene(scene.id));
     item.append(button);
 
@@ -523,12 +529,19 @@ export function createDevEditor({
       const included = masksBySource.has(path.id);
       if (path.status === "active" && scenes.has(path.targetSceneId)) {
         children.append(createSceneBranch(scenes.get(path.targetSceneId), depth + 1, { path, included }, nextAncestry));
+      } else if (stagedBySourcePath.has(path.id)) {
+        children.append(createSceneBranch(stagedBySourcePath.get(path.id), depth + 1, { path, included }, nextAncestry));
       } else {
         children.append(createTerminalNode(path.id, "미완성 구역", included ? "incomplete" : "removed"));
       }
     }
     for (const mask of masks.filter((candidate) => !candidate.sourcePathId)) {
-      children.append(createTerminalNode(mask.id, "새 미완성 통로"));
+      const stagedScene = stagedBySourcePath.get(mask.id);
+      if (stagedScene) {
+        children.append(createSceneBranch(stagedScene, depth + 1, { path: mask, included: true }, nextAncestry));
+      } else {
+        children.append(createTerminalNode(mask.id, "새 미완성 통로"));
+      }
     }
     if (children.childElementCount) item.append(children);
     return item;
