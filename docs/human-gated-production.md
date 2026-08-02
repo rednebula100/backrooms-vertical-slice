@@ -1,19 +1,39 @@
-# Human-gated scene production
+# 사람 검수 기반 장면 제작
 
-The production loop is image-first and depth-first, but the review UI is a multi-item queue. Several independent frontiers can have generated candidates at the same time. Only candidates that depend on a newly generated scene remain sequential because their next source path does not exist until a person annotates the new image.
+제작은 `이미지 생성 → 사람이 모든 통로를 폴리곤으로 표시 → 검수 완료 → 정식 등록 → 새 최전선 생성` 순서로 진행한다. 서로 독립된 기존 최전선은 동시에 생성할 수 있지만, 새 이미지에서 다시 이어지는 다음 장면은 통로 마스크가 확정되기 전에는 만들 수 없다. 존재하지 않는 통로를 임의로 연결하지 않기 위한 제한이다.
 
-1. Select the deepest human-confirmed pending frontier.
-2. Generate one adjacent 4:3 scene using the current scene as a continuity reference.
-3. Store the output in `public/scenes/<scene-id>/candidates/` and register it in `public/scenes/staging-scenes.json`.
-4. Open the editor with `?dev=1&scene=<scene-id>` and draw every visible route. Finishing a polygon saves immediately but does not approve it.
-5. Click `검수 완료` to record the explicit human decision. The completed item immediately leaves `검수 대기`, and the editor advances to the next unreviewed item. The candidate then becomes `ready-for-promotion`; it is still not playable canon.
-6. Promotion registers the scene, path masks, new production frontiers, generation provenance, and the source path connection together.
-7. Repeat from the selected continuation until the batch reaches five promoted scenes, then stop for a complete playtest.
+## 20장 제작 주기
 
-The connection tree is a live view of the complete editor state, not only the committed scene registry. A staged candidate appears beneath its source path, and every newly drawn mask appears beneath that scene as an unregistered frontier. The queue shows only scenes that still need human confirmation, so completed work does not remain mixed into the pending list. Edit mode always shows editable polygons. Click-test mode hides them by default and provides `영역 보기` only as a diagnostic overlay. `npm run production:status` reports every active candidate, confirmed alternative frontier, and frontier still blocked on human annotation or route reconciliation. Four-or-more-route scenes are never selected automatically without a separate rarity approval.
+1. 사람이 확인한 미사용 최전선에서 후보 이미지를 생성한다.
+2. 이미지를 `public/scenes/<scene-id>/candidates/`에 저장하고 `staging-scenes.json`에 등록한다.
+3. 에디터에서 이미지에 보이는 모든 실제 통로를 점으로 둘러싼다. 폴리곤 완성 즉시 브라우저에 자동 저장된다.
+4. `검수 완료`를 누르면 해당 장면은 검수 대기 목록에서 빠지고 `ready-for-promotion` 상태가 된다.
+5. 승격 시 원본 장면의 경로 연결, 새 장면, 마스크, 새 제작 최전선, 생성 출처를 한 번에 정식 레지스트리에 기록한다.
+6. 새 최전선에서 다음 후보를 생성한다.
 
-## GitHub Pages editor
+현재 20장 주기의 첫 웨이브는 기존 후보 2장과 새 후보 8장, 총 10장이다. 이 10장의 마스크를 사람이 확정하면 거기서 생긴 최전선을 이용해 두 번째 10장을 생성한다. 따라서 “20장”은 한 번에 서로 무관한 이미지를 만드는 숫자가 아니라, 연결성이 유지된 후보 20장을 완성하는 주기다.
 
-Append `?dev=1&scene=<scene-id>` to the deployed Pages URL to open the hidden editor. Pages is static and cannot write into the repository, so edits are automatically preserved in that browser instead of being posted to the local Node server. The `JSON ↓` control or `Ctrl+Shift+E` exports a full snapshot of every registered and staged scene, including edits made outside the current review item. Import it with `npm run annotations:import -- <exported-json-path>`; the importer rejects partial, stale, or geometrically invalid snapshots before replacing the repository annotation registry. Regular visitors who do not use the `dev=1` query parameter see only the exploration site.
+장면 하나에 통로가 네 개 이상 보이면 자동 승격하지 않는다. 희소성 검수와 명시적 승인이 추가로 필요하다.
 
-Run `npm run preview:pages` after `npm run build` to test the same project-subpath behavior locally at `http://127.0.0.1:4181/backrooms-vertical-slice/`.
+## 에디터 상태
+
+중앙 연결 그래프는 정식 장면과 후보 장면을 함께 보여준다. 후보는 원본 장면의 경로 아래에 붙고, 새로 그린 마스크는 아직 미등록인 최전선으로 표시된다. 검수 대기에는 사람의 확정이 필요한 장면만 남는다.
+
+- 편집: 폴리곤과 점을 항상 표시한다. 빈 곳 클릭은 점 추가, 점 드래그는 이동, 점 우클릭은 삭제다.
+- 클릭 테스트: 편집 패널을 숨기고 실제 플레이처럼 이동을 검사한다. `마스크 보기`는 이 모드에서만 사용하는 진단 오버레이다.
+- 자동 저장: 별도 저장 버튼 없이 모든 수정이 즉시 반영된다.
+- 전체 내보내기: 현재 검수 대상뿐 아니라 정식·후보 장면 전체의 변경을 한 번에 JSON으로 저장한다.
+
+`npm run production:status`는 활성 후보, 확정된 대체 최전선, 사람 검수로 막힌 최전선을 모두 보고한다.
+
+## GitHub Pages 에디터
+
+배포 주소에 `?dev=1&scene=<scene-id>`를 붙이면 숨겨진 에디터가 열린다. Pages는 정적 호스팅이라 저장소에 직접 쓸 수 없으므로 변경은 해당 브라우저에 자동 보존된다. `JSON 내보내기` 또는 `Ctrl+Shift+E`로 전체 스냅샷을 내려받은 다음 아래 명령으로 저장소에 반영한다.
+
+```powershell
+npm run annotations:import -- <내보낸-json-경로>
+```
+
+가져오기는 누락되거나 오래되었거나 기하학적으로 잘못된 스냅샷을 거부한다. 일반 방문자는 `dev=1`을 사용하지 않는 한 탐색 화면만 본다.
+
+GitHub Pages와 같은 하위 경로 동작은 빌드 뒤 `npm run preview:pages`로 검사한다. 기본 확인 주소는 `http://127.0.0.1:4181/backrooms-vertical-slice/`다.

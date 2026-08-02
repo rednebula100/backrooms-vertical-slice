@@ -420,3 +420,75 @@ Composition/framing: exact landscape 4:3 canvas, level camera, modest forward mo
 Lighting/mood: flat fluorescent light, empty, familiar, hollow, still, faintly unsettling; no dramatic horror.
 Constraints: The declared right-offset continuation is the only passage-like gap. All other wall masses must connect continuously to walls or image boundaries so no hidden floor channel, side slot, bay, alcove, doorway, second route, or implied corridor reads as walkable. Mostly empty. No freestanding partition, door, stairs, landmark, previous room visible behind the camera, new level, text, UI, arrows, colored overlays, people, entities, bodies, gore, occult imagery, windows, furniture, debris, heavy ruin, cinematic grading, VHS/CCTV/glitch overlay, fisheye, ultra-wide distortion, bloom, logo, or watermark.
 ```
+
+## 0.9.0 twenty-candidate cycle — first review wave
+
+The first review wave reuses the two staged candidates above and adds eight connected candidates. Every request used the referenced source raster as continuity context, requested an exact 4:3 photorealistic image, kept the camera near 1.65 m with a moderate roughly 40 mm-equivalent view, and preserved pale yellow-beige wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling tiles, flat fluorescent lighting, and restrained late-1990s to mid-2000s consumer-digital realism. All outputs exclude text, UI, route overlays, people, entities, gore, furniture, windows, stairs, dramatic horror, cinematic grading, VHS/glitch effects, fisheye distortion, logos, and watermarks.
+
+These are generated candidates, not accepted route annotations. The requested route count records generation intent; the human polygons record what the image actually contains.
+
+### L0-0004E
+
+Reference: `L0-0003C.png`, source path `L0-0003C-P1`. Output: `exec-a20fe296-67c6-4f1d-9628-9a836f2ce098.png`.
+
+```text
+Generate the immediately adjacent viewpoint after following the source passage around its left-curving carpet. Advance only several meters past the center pier. Create one fully bounded, clearly walkable continuation turning right at medium depth, with carpet continuing through it. All other wall masses must close continuously so no side slot, hidden floor channel, second opening, doorway, or implied corridor reads as traversable. Do not restage the source composition.
+```
+
+### L0-0005D
+
+Reference: `L0-0004C.png`, source path `L0-0004C-P1`. Output: `exec-507996b9-d7a8-4d0a-bf49-b1918b952118.png`.
+
+```text
+Generate the immediately adjacent space after crossing the source image's centered opening. Advance a few meters into a quiet offset chamber closed on three sides. Show exactly one fully bounded left-side continuation with visible carpet leading through it. Avoid freestanding partitions, floor visible on both sides of a wall, extra recesses, and any second route.
+```
+
+### L0-0005E
+
+Reference: `L0-0004D.png`, source path `L0-0004D-P1`. Output: `exec-9ae8b634-27e5-49c9-bb10-50b32511c781.png`.
+
+```text
+Generate the next viewpoint after walking through the source image's left opening. The compressed corridor opens into a small junction with exactly two fully bounded walkable passages: one broad left continuation and one narrower right continuation. Separate them with a solid wall mass and show carpet continuing into both. No overlapping openings, hidden route around the separating wall, third passage, or doorway.
+```
+
+### L0-0005F
+
+Reference: `L0-0004D.png`, source path `L0-0004D-P2`. Output: `exec-80b688fd-8fb6-4158-9fe2-710fa1530725.png`.
+
+```text
+Generate the immediately adjacent viewpoint after entering the source image's right opening. Contract the space into a narrow Level 0 corridor that bends left and out of sight. The leftward continuation is the only passage-like gap. Connect every other wall mass to a wall or image boundary and avoid side slots, alcoves, freestanding partitions, and a second route.
+```
+
+### L0-0006D
+
+Reference: `L0-0005C.png`, source path `L0-0005C-P1`. Output: `exec-cf226c6a-c7ed-4f24-bf3b-a9fd252356f6.png`.
+
+```text
+Generate the next physical space after following the source image's left passage. Advance around a broad center-right wall and show one clear leftward carpet continuation at medium depth. Keep the opposite edge visually closed with continuous architecture and do not create a second route. Preserve modest asymmetry and avoid copying the source view.
+```
+
+Human-review note: the generated right image edge may also read as traversable. The reviewer must decide from the visible floor and wall continuity whether this image contains one or two actual routes; generation intent must not override the image.
+
+### L0-0007C
+
+Reference: `L0-0006C.png`, source path `L0-0006C-P1`. Output: `exec-6250da9b-39b1-4547-a585-723293c0b498.png`.
+
+```text
+Generate the next viewpoint after entering the source image's small left opening. Let the path broaden into a smooth curved wall sequence and terminate visually in exactly one narrow, fully bounded opening at medium depth. Carpet must continue into that opening; every other boundary remains closed and attached.
+```
+
+### L0-0007D
+
+Reference: `L0-0006C.png`, source path `L0-0006C-P2`. Output: `exec-cb0461dd-1a38-4156-a876-d9219004e218.png`.
+
+```text
+Generate the adjacent room after moving through the source image's broad right opening. Create a brighter Level 0 junction with exactly two clearly separated, fully framed walkable openings and visible carpet entering both. A solid center wall must separate the openings. Do not create a third floor channel, overlapping portal, doorway, or hidden path around the wall.
+```
+
+### L0-0007E
+
+Reference: `L0-0006B.png`, source path `L0-0006B-P2`. Output: `exec-76ccd680-8534-4bab-8fb1-2d353da72b5f.png`.
+
+```text
+Generate the immediately adjacent viewpoint after taking the source image's broad right-side opening. Contract it into one subdued corridor curving right around an offset wall pier. The right-curving carpet continuation is the only walkable route. Close all other walls continuously and avoid side bays, slots, freestanding masses, doorways, or extra openings.
+```

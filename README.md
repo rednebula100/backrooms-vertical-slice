@@ -17,9 +17,9 @@ Progress is stored at `localStorage["backrooms.progress"]` with `scene_id` and `
 
 ## Asset status
 
-All seventeen playable rasters are provisional production assets, not final human canon approvals. `vertical-slice-0.7.0` adds the second five-scene production batch and brings the generated production set to ten scenes: six one-route scenes and four two-route scenes, with no generated three- or four-route outputs. The user-confirmed legacy B scenes retain their `2 / 3 / 2` route counts. Every visually plausible opening is registered; unproduced openings lead to the existing transparent boundary glyph.
+The seventeen committed playable rasters and every staged candidate are provisional production assets until human route review and promotion. The active target is one connected twenty-candidate cycle. Its first review wave contains ten candidates: two previously generated candidates and eight newly generated candidates. Human annotation of that wave creates the confirmed frontiers needed to generate the remaining ten without inventing disconnected routes. Every visually plausible opening must be registered; unproduced openings lead to the existing transparent boundary glyph.
 
-The production queue lives in `production/generation-jobs.json`, and user playtest decisions live in `public/scenes/route-reviews.json`. `npm run validate:release` intentionally fails until all ten generated scenes have `playtestStatus: "pass"` and every required visual audit passes; that gate must pass before expanding to twenty scenes or publishing GitHub Pages.
+The production queue lives in `production/generation-jobs.json`, staged candidates live in `public/scenes/staging-scenes.json`, and user playtest decisions live in `public/scenes/route-reviews.json`. Human polygon annotation is the authoritative route count and mask source; automated vision audits are optional diagnostics rather than a promotion authority. See [the human-gated production workflow](docs/human-gated-production.md) and [the Level 0 expansion policy](docs/level-0-expansion-policy-ko.md).
 
 ## Visual route audit
 
