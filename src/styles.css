@@ -1119,9 +1119,15 @@ body[data-editor-mode="edit"] .scene-shell {
   min-height: 0;
   overflow: auto;
   cursor: grab;
-  scrollbar-color: #353531 #0a0a0a;
-  scrollbar-width: thin;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   touch-action: none;
+}
+
+.graph-viewport::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .graph-viewport[data-dragging="true"] {
