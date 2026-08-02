@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "worldVersion": "vertical-slice-0.7.0",
+  "scenes": {
+    "L0-0004E": {
+      "sourceSpaceId": "SP-L0-0004E",
+      "paths": {
+        "L0-0004E-P1": {
+          "targetSceneId": "L0-0005G",
+          "targetSpaceId": "SP-L0-0005G",
+          "transitionRelation": "adjacent-space",
+          "cameraTransition": {
+            "instruction": "walk through the rightmost framed opening, clear its wall thickness, and follow the visible carpet as it begins to bend right",
+            "distanceMeters": 5,
+            "targetView": "just beyond the opening and facing along the rightward continuation"
+          },
+          "continuityAnchors": [
+            "the full-height rectangular opening and its thick wall frame",
+            "the bright fluorescent panel visible beyond the opening",
+            "the carpet line curving toward the right",
+            "the solid wall immediately to the opening's right"
+          ],
+          "spatialBrief": {
+            "intensity": "moderate",
+            "archetype": "offset-room",
+            "instruction": "let the passage enter a modest asymmetric room rather than another narrow doorway composition; change one main spatial feature and keep the rest restrained"
+          }
+        },
+        "L0-0004E-P2": {
+          "targetSceneId": "L0-0005H",
+          "targetSpaceId": "SP-L0-0004E",
+          "transitionRelation": "same-space-advance",
+          "generationStatus": "blocked-source-geometry",
+          "cameraTransition": {
+            "instruction": "move forward-left around the near curved wall mass while staying in the same room and let that wall slide past the camera with believable parallax",
+            "distanceMeters": 4,
+            "targetView": "past the curved wall and facing the continuation it previously occluded"
+          },
+          "continuityAnchors": [
+            "the large curved foreground wall on the left",
+            "the attached central divider edge",
+            "the same uninterrupted patterned carpet around the wall",
+            "the ceiling grid direction continuing across the move"
+          ],
+          "spatialBrief": {
+            "intensity": "subtle",
+            "archetype": "wide-bend",
+            "instruction": "reveal only the space hidden by the foreground wall; preserve the room's scale and avoid turning the bend into a brand-new chamber"
+          }
+        }
+      }
+    },
+    "L0-0005E": {
+      "sourceSpaceId": "SP-L0-0005E",
+      "paths": {
+        "L0-0005E-P1": {
+          "targetSceneId": "L0-0006E",
+          "targetSpaceId": "SP-L0-0006E",
+          "transitionRelation": "adjacent-space",
+          "cameraTransition": {
+            "instruction": "walk through the narrower rightmost opening, clear its wall thickness, and continue only a few meters into the compact space behind it",
+            "distanceMeters": 4,
+            "targetView": "just beyond the right opening, facing the tight continuation without borrowing the left route's curve"
+          },
+          "continuityAnchors": [
+            "the narrow full-height right opening",
+            "the short straight carpet run visible through it",
+            "the single fluorescent panel immediately beyond the opening",
+            "the solid separating wall on the opening's left"
+          ],
+          "spatialBrief": {
+            "intensity": "subtle",
+            "archetype": "wall-pocket",
+            "instruction": "keep the destination compact and slightly offset, changing only the local wall return and depth rather than opening into a dramatic chamber"
+          }
+        },
+        "L0-0005E-P2": {
+          "targetSceneId": "L0-0006F",
+          "targetSpaceId": "SP-L0-0006F",
+          "transitionRelation": "adjacent-space",
+          "cameraTransition": {
+            "instruction": "walk through the broad leftmost opening and follow its carpet as the corridor curves left beyond the thick separating wall",
+            "distanceMeters": 6,
+            "targetView": "after the left curve, facing into the wider space reached by that route"
+          },
+          "continuityAnchors": [
+            "the broad full-height left opening",
+            "the left-curving carpet and matching dark base trim",
+            "the fluorescent panel visible just beyond the opening",
+            "the thick solid wall that separates the right-hand route"
+          ],
+          "spatialBrief": {
+            "intensity": "moderate",
+            "archetype": "transverse-hall",
+            "instruction": "let the curve release into a modest crosswise hall with layered depth; keep the change noticeable but retain a plain Level 0 rhythm"
+          }
+        }
+      }
+    }
+  }
+}

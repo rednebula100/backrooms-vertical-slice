@@ -1658,6 +1658,116 @@ body[data-editor-mode="edit"] .scene-shell {
   cursor: pointer;
 }
 
+.selected-strip > .route-packet-open {
+  position: static;
+  justify-self: start;
+  margin-top: 5px;
+  padding: 5px 8px;
+  border: 1px solid #3b3428;
+  background: #15120d;
+  color: #c9a66b;
+  letter-spacing: 0.04em;
+}
+
+.selected-strip > .route-packet-open[data-status="blocked-source-geometry"] {
+  border-color: #5a3731;
+  color: #c77b6e;
+}
+
+.route-packet-preview {
+  position: fixed;
+  top: 84px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 20;
+  display: grid;
+  width: min(440px, calc(100vw - 32px));
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  border: 1px solid #2d2b27;
+  border-radius: 10px;
+  background: rgba(7, 7, 6, 0.97);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.72);
+  pointer-events: auto;
+}
+
+.route-packet-preview[hidden] {
+  display: none;
+}
+
+.route-packet-preview > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 14px;
+  border-bottom: 1px solid #24231f;
+}
+
+.route-packet-preview > header span {
+  display: grid;
+  gap: 3px;
+}
+
+.route-packet-preview > header small,
+.route-packet-images figcaption {
+  color: #77736a;
+  font: 8px/1 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.09em;
+}
+
+.route-packet-preview > header strong {
+  font: 700 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.route-packet-preview > header button {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  color: #89867f;
+  cursor: pointer;
+}
+
+.route-packet-images {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  overflow: auto;
+  padding: 14px;
+}
+
+.route-packet-images figure {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.route-packet-images img {
+  display: block;
+  width: 100%;
+  max-height: 34vh;
+  object-fit: contain;
+  background: #000;
+}
+
+.route-packet-preview > footer {
+  display: grid;
+  gap: 6px;
+  padding: 12px 14px;
+  border-top: 1px solid #24231f;
+  color: #8a877f;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.route-packet-preview > footer strong {
+  color: #69b98d;
+  font-size: 9px;
+}
+
+.route-packet-preview > footer strong[data-status="blocked-source-geometry"] {
+  color: #c77b6e;
+}
+
 /* Real playtest mode */
 
 .test-mode-toolbar {
@@ -1669,6 +1779,10 @@ body[data-editor-mode="test"] .editor-topbar,
 body[data-editor-mode="test"] .editor-inspector,
 body[data-editor-mode="test"] .editor-toast,
 body[data-editor-mode="test"] .drawing-banner {
+  display: none;
+}
+
+body[data-editor-mode="test"] .route-packet-preview {
   display: none;
 }
 

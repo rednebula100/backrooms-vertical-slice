@@ -231,9 +231,14 @@ async function start() {
   const params = new URLSearchParams(window.location.search);
   configureDevelopmentTools(params);
   let staging = null;
+  let routePackets = null;
   if (developmentToolsAvailable) {
-    const stagingResponse = await fetch(publicUrl("/scenes/staging-scenes.json"), { cache: "no-store" });
+    const [stagingResponse, routePacketResponse] = await Promise.all([
+      fetch(publicUrl("/scenes/staging-scenes.json"), { cache: "no-store" }),
+      fetch(publicUrl("/scenes/route-packets.json"), { cache: "no-store" }),
+    ]);
     staging = stagingResponse.ok ? await stagingResponse.json() : null;
+    routePackets = routePacketResponse.ok ? await routePacketResponse.json() : null;
     for (const candidate of staging?.candidates ?? []) scenes.set(candidate.id, candidate);
   }
   if (params.get("reset") === "1") localStorage.removeItem(SAVE_KEY);
@@ -265,6 +270,7 @@ async function start() {
       scenes,
       annotations,
       staging,
+      routePackets,
       saveMode: isDevelopmentHost() && params.get("static") !== "1" ? "server" : "browser",
       stage: document.querySelector("[data-scene-stage]"),
       image,
@@ -273,6 +279,7 @@ async function start() {
       showScene: (scene) => renderScene(scene),
       renderPlayableOverlay: renderOverlay,
       toAssetPoint: pointerCoordinates,
+      resolvePublicUrl: publicUrl,
     });
   }
 

@@ -7,6 +7,7 @@ A fixed, image-first Level 0 exploration slice built from actual AI-generated ra
 ```powershell
 npm test
 npm run validate
+npm run packets:build
 npm run build
 npm start
 ```
@@ -20,6 +21,8 @@ Progress is stored at `localStorage["backrooms.progress"]` with `scene_id` and `
 The registry currently contains twenty-seven connected playable rasters. The first ten-scene review wave has been human-annotated and promoted, creating the confirmed frontiers needed for the remaining ten scenes in the active twenty-scene cycle. Every visually plausible opening must be registered; unproduced openings lead to the existing transparent boundary glyph. Wave 2 follows the spatial-first variation policy so route-count constraints do not collapse every image into the same corridor-and-opening composition.
 
 The production queue lives in `production/generation-jobs.json`, staged candidates live in `public/scenes/staging-scenes.json`, and user playtest decisions live in `public/scenes/route-reviews.json`. Human polygon annotation is the authoritative route count and mask source; automated vision audits are optional diagnostics rather than a promotion authority. See [the human-gated production workflow](docs/human-gated-production.md) and [the Level 0 expansion policy](docs/level-0-expansion-policy-ko.md).
+
+Multi-route generation uses `public/scenes/route-packets.json`. Each packet binds one human-confirmed mask to a route-only selection map, clean crop, camera move, space relationship, continuity anchors, and a sibling-route exclusion prompt. The developer editor exposes these inputs through the selected route's `생성 입력` button.
 
 ## Visual route audit
 

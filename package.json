@@ -11,6 +11,7 @@
     "audit:batch": "node scripts/audit-routes.mjs --batch",
     "audit:regressions": "node scripts/audit-routes.mjs --assert-expected",
     "production:status": "node scripts/production-status.mjs",
+    "packets:build": "node scripts/build-route-packets.mjs",
     "annotations:import": "node scripts/import-route-annotations.mjs",
     "validate:audit": "node scripts/validate-route-audits.mjs",
     "validate": "node scripts/validate-scenes.mjs",

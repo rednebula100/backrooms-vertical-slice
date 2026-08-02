@@ -46,6 +46,7 @@ export function createDevEditor({
   scenes,
   annotations,
   saveMode = "server",
+  routePackets = null,
   stage,
   image,
   overlay,
@@ -53,6 +54,7 @@ export function createDevEditor({
   showScene,
   renderPlayableOverlay,
   toAssetPoint,
+  resolvePublicUrl = (source) => source,
 }) {
   const motion = new EditorMotion();
   const orderedScenes = [...scenes.values()];
@@ -60,6 +62,9 @@ export function createDevEditor({
     orderedScenes
       .filter((scene) => scene.staging && scene.sourcePathId)
       .map((scene) => [scene.sourcePathId, scene]),
+  );
+  const routePacketBySourcePath = new Map(
+    (routePackets?.packets ?? []).map((packet) => [packet.sourcePathId, packet]),
   );
   const draftKey = `${DRAFT_KEY_PREFIX}${world.worldVersion}`;
   const registryFingerprint = orderedScenes
@@ -188,6 +193,7 @@ export function createDevEditor({
         <button type="button" data-delete-mask hidden>삭제</button>
         <strong data-selected-id>선택 없음</strong>
         <small data-selected-meta>이미지에서 통로를 선택하세요</small>
+        <button class="route-packet-open" type="button" data-open-route-packet hidden>생성 입력</button>
       </section>
     </aside>
 
@@ -204,10 +210,25 @@ export function createDevEditor({
       <p>다음 장면이 아직 만들어지지 않았습니다.</p>
       <button type="button" data-close-incomplete>돌아가기</button>
     </section>
+    <section class="route-packet-preview" data-route-packet-preview hidden aria-label="경로 생성 입력 미리보기">
+      <header>
+        <span><small>ROUTE PACKET</small><strong data-route-packet-id>—</strong></span>
+        <button type="button" data-close-route-packet aria-label="닫기">×</button>
+      </header>
+      <div class="route-packet-images">
+        <figure><img data-route-packet-map alt="선택 통로와 금지 통로 지도" /><figcaption>선택 / 금지</figcaption></figure>
+        <figure><img data-route-packet-crop alt="선택 통로 원본 크롭" /><figcaption>선택 통로 원본</figcaption></figure>
+      </div>
+      <footer>
+        <span data-route-packet-relation>—</span>
+        <span data-route-packet-camera>—</span>
+        <strong data-route-packet-status>—</strong>
+      </footer>
+    </section>
   `;
   document.body.append(root);
 
-  const elements = Object.fromEntries([...root.querySelectorAll("[data-scene-list], [data-scene-search], [data-current-scene], [data-scene-description], [data-route-count], [data-draft-count], [data-mask-list], [data-selected-id], [data-selected-meta], [data-delete-mask], [data-undo], [data-redo], [data-new-mask], [data-complete-review], [data-test-mask-toggle], [data-auto-save-status], [data-auto-save-label], [data-editor-toast], [data-drawing-banner], [data-parent-scene], [data-test-scene], [data-incomplete-overlay], [data-incomplete-id], [data-rail-current], [data-rail-parent], [data-graph-total], [data-graph-frontiers], [data-graph-review], [data-graph-scale], [data-graph-viewport], [data-graph-canvas]")].map((node) => {
+  const elements = Object.fromEntries([...root.querySelectorAll("[data-scene-list], [data-scene-search], [data-current-scene], [data-scene-description], [data-route-count], [data-draft-count], [data-mask-list], [data-selected-id], [data-selected-meta], [data-delete-mask], [data-open-route-packet], [data-route-packet-preview], [data-route-packet-id], [data-route-packet-map], [data-route-packet-crop], [data-route-packet-relation], [data-route-packet-camera], [data-route-packet-status], [data-undo], [data-redo], [data-new-mask], [data-complete-review], [data-test-mask-toggle], [data-auto-save-status], [data-auto-save-label], [data-editor-toast], [data-drawing-banner], [data-parent-scene], [data-test-scene], [data-incomplete-overlay], [data-incomplete-id], [data-rail-current], [data-rail-parent], [data-graph-total], [data-graph-frontiers], [data-graph-review], [data-graph-scale], [data-graph-viewport], [data-graph-canvas]")].map((node) => {
     const key = Object.keys(node.dataset)[0];
     return [key, node];
   }));
@@ -318,6 +339,7 @@ export function createDevEditor({
   function setMode(nextMode) {
     if (drawing) cancelDrawing();
     if (nextMode !== "test") closeIncomplete();
+    elements.routePacketPreview.hidden = true;
     mode = nextMode;
     document.body.dataset.editorMode = mode;
     buttonPressed(root, "[data-mode]", mode, "mode");
@@ -393,6 +415,11 @@ export function createDevEditor({
   }
 
   function openIncomplete(path) {
+    const stagedScene = stagedBySourcePath.get(path.id);
+    if (stagedScene) {
+      navigateToScene(stagedScene.id);
+      return;
+    }
     incompletePath = path;
     elements.incompleteId.textContent = path.id;
     elements.incompleteOverlay.hidden = false;
@@ -805,6 +832,7 @@ export function createDevEditor({
   function renderInspector(masks = getState().masks) {
     const scene = getCurrentScene();
     const mask = selectedMask();
+    const packet = mask?.sourcePathId ? routePacketBySourcePath.get(mask.sourcePathId) : null;
     const incompleteCount = masks.filter((candidate) => connectionLabel(candidate, scene) === "미완성").length;
     const history = histories.get(scene.id);
     elements.routeCount.textContent = String(masks.length);
@@ -814,6 +842,8 @@ export function createDevEditor({
       ? `${shortPathId(mask.id)} → ${connectionLabel(mask, scene)} · ${mask.regions[viewport].length}점`
       : "이미지에서 통로를 선택하세요";
     elements.deleteMask.hidden = !mask;
+    elements.openRoutePacket.hidden = !packet;
+    elements.openRoutePacket.dataset.status = packet?.generationStatus ?? "";
     elements.undo.disabled = history.past.length === 0;
     elements.redo.disabled = history.future.length === 0;
     const reviewable = isReviewQueueScene(scene);
@@ -837,6 +867,21 @@ export function createDevEditor({
       error: "반영 실패",
     }[autoSaveState];
     renderMaskList(masks);
+  }
+
+  function openRoutePacketPreview() {
+    const mask = selectedMask();
+    const packet = mask?.sourcePathId ? routePacketBySourcePath.get(mask.sourcePathId) : null;
+    if (!packet) return;
+    elements.routePacketId.textContent = packet.sourcePathId;
+    elements.routePacketMap.src = resolvePublicUrl(packet.references.routeMap);
+    elements.routePacketCrop.src = resolvePublicUrl(packet.references.routeCrop);
+    elements.routePacketRelation.textContent = packet.transitionRelation === "same-space-advance" ? "같은 공간에서 전진" : "인접 공간으로 이동";
+    elements.routePacketCamera.textContent = packet.cameraTransition.instruction;
+    elements.routePacketStatus.textContent = packet.generationStatus === "ready" ? "생성 가능" : "소스 형상 확인 필요";
+    elements.routePacketStatus.dataset.status = packet.generationStatus;
+    elements.routePacketPreview.hidden = false;
+    motion.enterPanel(elements.routePacketPreview, "right");
   }
 
   function render() {
@@ -972,6 +1017,8 @@ export function createDevEditor({
   root.querySelector("[data-zoom-in]").addEventListener("click", () => setGraphScale(graphScale + 0.1));
   elements.newMask.addEventListener("click", () => drawing ? finishDrawing() : startDrawing());
   elements.deleteMask.addEventListener("click", removeSelectedMask);
+  elements.openRoutePacket.addEventListener("click", openRoutePacketPreview);
+  root.querySelector("[data-close-route-packet]").addEventListener("click", () => { elements.routePacketPreview.hidden = true; });
   elements.undo.addEventListener("click", undo);
   elements.redo.addEventListener("click", redo);
   elements.completeReview.addEventListener("click", completeReview);

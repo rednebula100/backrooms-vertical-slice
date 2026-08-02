@@ -500,3 +500,43 @@ The first wave over-weighted exact route-count language. Repeated instructions s
 Wave 2 therefore uses `production/spatial-variation-policy.json`. A prompt must first select a spatial scale, archetype, three-layer depth composition, camera position, and ceiling variation. Route-count wording is added only after that spatial shell is fixed, and it describes interaction readability rather than the room's entire shape. Across ten images, at least seven spatial archetypes must appear, at least six scenes must be room-, hall-, or open-scale, and no more than two narrow corridor scenes may occur consecutively.
 
 The preferred route vocabulary also expands beyond doorway-shaped rectangles: carpet continuing around a broad corner, a wide bay between attached wall masses, a transverse hall, and a partially occluded continuation can all be valid. Human polygons—not requested count—remain the final record of what the generated image actually contains.
+
+## 0.9.2 route-conditioned branch pilot
+
+The two images below intentionally share the same clean source raster but use different human-confirmed route maps and clean route crops. The selection map marks only the chosen source path in green and every sibling path in red. Generated candidates never retain those diagnostic colors.
+
+### L0-0005E-P1 route packet pilot
+
+Target: `L0-0006E`. Source path: `L0-0005E-P1` (rightmost narrow opening). Output: `exec-5f3213f3-7de7-40d8-807e-e6667598e70e.png`.
+
+```text
+Create a brand-new photorealistic playable Backrooms Level 0 transition candidate L0-0006E.
+
+Reference roles: Image 1 is the clean source scene L0-0005E. Image 2 is a route-selection diagram: green marks only L0-0005E-P1 and red marks the forbidden sibling route. Image 3 is a clean close crop of L0-0005E-P1. They are continuity and geometry references, not edit targets. Never reproduce colored overlays.
+
+Generate the camera viewpoint immediately after the player follows the rightmost human-confirmed route L0-0005E-P1. Walk through the narrower rightmost opening, clear its wall thickness, and continue about 4 meters into the compact adjacent space behind it. Finish just beyond that right opening, facing the tight continuation. Do not borrow the left route's curve and do not restage the source room.
+
+Preserve these local continuity anchors: the narrow full-height right opening, the short straight carpet run through it, the single fluorescent panel immediately beyond it, and the solid separating wall on the opening's left. Keep the destination a subtle, compact, slightly offset wall-pocket. Change only the local wall return and depth; do not open into a dramatic chamber.
+
+Style: photorealistic late-1990s to mid-2000s budget consumer-digital photograph; pale yellow-beige wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling grid, flat fluorescent light; standing eye height about 1.65 m; moderate 40 mm-equivalent lens.
+
+Exact landscape 4:3, direct adjacent viewpoint, believable parallax and wall thickness, mostly empty. No text, UI, colored route marks, labels, arrows, people, entities, furniture, unsupported doors, windows, stairs, landmarks, dramatic horror, cinematic grading, VHS, glitch, fisheye, bloom, logo, watermark, or view of the previous room behind the camera.
+```
+
+### L0-0005E-P2 route packet pilot
+
+Target: `L0-0006F`. Source path: `L0-0005E-P2` (leftmost broad curved opening). Output: `exec-69cb0b20-f0d3-4fca-aa0c-12d54008c1b5.png`.
+
+```text
+Create a brand-new photorealistic playable Backrooms Level 0 transition candidate L0-0006F.
+
+Reference roles: Image 1 is the clean source scene L0-0005E. Image 2 is a route-selection diagram: green marks only L0-0005E-P2 and red marks the forbidden sibling route. Image 3 is a clean close crop of L0-0005E-P2. They are continuity and geometry references, not edit targets. Never reproduce colored overlays.
+
+Generate the camera viewpoint immediately after the player follows the leftmost human-confirmed route L0-0005E-P2. Walk through the broad leftmost opening, follow its carpet around the left curve beyond the thick separating wall, and move about 6 meters. Finish after the curve, facing into the wider adjacent space reached only by this route. Do not enter or borrow geometry from the narrow right route and do not restage the source room.
+
+Preserve these local continuity anchors: the broad full-height left opening, the left-curving carpet and matching dark base trim, the fluorescent panel just beyond the opening, and the thick solid wall separating the right-hand route. Let the curve release into a modest crosswise hall with layered depth. Make the spatial change moderate and noticeable while retaining a plain restrained Level 0 rhythm.
+
+Style: photorealistic late-1990s to mid-2000s budget consumer-digital photograph; pale yellow-beige wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling grid, flat fluorescent light; standing eye height about 1.65 m; moderate 40 mm-equivalent lens.
+
+Exact landscape 4:3, direct adjacent viewpoint, believable parallax and wall thickness, mostly empty. No text, UI, colored route marks, labels, arrows, people, entities, furniture, unsupported doors, windows, stairs, landmarks, dramatic horror, cinematic grading, VHS, glitch, fisheye, bloom, logo, watermark, or view of the previous room behind the camera.
+```

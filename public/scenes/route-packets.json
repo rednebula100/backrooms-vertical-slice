@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "worldVersion": "vertical-slice-0.7.0",
+  "updatedAt": "2026-08-02T18:05:31.841Z",
+  "policy": {
+    "selectedMaskIsAuthoritative": true,
+    "unselectedRoutesAreForbidden": true,
+    "directViewpointAfterMovement": true,
+    "spatialVariationPolicy": "production/spatial-variation-policy.json"
+  },
+  "packets": [
+    {
+      "id": "RP-L0-0004E-P1",
+      "sourceSceneId": "L0-0004E",
+      "sourcePathId": "L0-0004E-P1",
+      "sourceSpaceId": "SP-L0-0004E",
+      "targetSceneId": "L0-0005G",
+      "targetSpaceId": "SP-L0-0005G",
+      "transitionRelation": "adjacent-space",
+      "generationStatus": "ready",
+      "screenRole": "rightmost",
+      "movementType": "DIRECT",
+      "maskFingerprint": "0d5c7b2e6a37ef1664e277097ccce508f495bb311748a7d5dc9fa198fc84aa1e",
+      "mask": [
+        [
+          765,
+          257
+        ],
+        [
+          752,
+          768
+        ],
+        [
+          1057,
+          794
+        ],
+        [
+          1065,
+          241
+        ]
+      ],
+      "cropBox": {
+        "left": 674,
+        "top": 163,
+        "width": 469,
+        "height": 709
+      },
+      "references": {
+        "cleanSource": "/scenes/L0-0004E/candidates/L0-0004E-C01.png",
+        "routeMap": "/scenes/L0-0004E/route-packets/L0-0004E-P1-route-map.png",
+        "routeCrop": "/scenes/L0-0004E/route-packets/L0-0004E-P1-route-crop.png"
+      },
+      "cameraTransition": {
+        "instruction": "walk through the rightmost framed opening, clear its wall thickness, and follow the visible carpet as it begins to bend right",
+        "distanceMeters": 5,
+        "targetView": "just beyond the opening and facing along the rightward continuation"
+      },
+      "continuityAnchors": [
+        "the full-height rectangular opening and its thick wall frame",
+        "the bright fluorescent panel visible beyond the opening",
+        "the carpet line curving toward the right",
+        "the solid wall immediately to the opening's right"
+      ],
+      "spatialBrief": {
+        "intensity": "moderate",
+        "archetype": "offset-room",
+        "instruction": "let the passage enter a modest asymmetric room rather than another narrow doorway composition; change one main spatial feature and keep the rest restrained"
+      },
+      "forbiddenSourcePathIds": [
+        "L0-0004E-P2"
+      ],
+      "promptRecord": "docs/generation-prompts.md#l0-0004e-p1-route-packet-pilot",
+      "prompt": "Use case: photorealistic-natural\nAsset type: playable Backrooms Level 0 transition candidate L0-0005G\nInput images: Image 1 is the clean source scene L0-0004E; Image 2 is a route-selection diagram where green marks only L0-0004E-P1 and red marks forbidden routes; Image 3 is a clean close crop of L0-0004E-P1. All three are references, not edit targets. Never reproduce colored overlays.\nPrimary request: Generate the camera viewpoint immediately after the player follows L0-0004E-P1, the rightmost human-confirmed route in Image 1. Pass completely through the selected opening into its immediately adjacent space; the unchosen route belongs to a different branch.\nCamera transition: walk through the rightmost framed opening, clear its wall thickness, and follow the visible carpet as it begins to bend right; move approximately 5 meters; finish just beyond the opening and facing along the rightward continuation.\nContinuity invariants: the full-height rectangular opening and its thick wall frame; the bright fluorescent panel visible beyond the opening; the carpet line curving toward the right; the solid wall immediately to the opening's right.\nSpatial variation: moderate intensity, offset-room; let the passage enter a modest asymmetric room rather than another narrow doorway composition; change one main spatial feature and keep the rest restrained.\nRoute guard: Follow only L0-0004E-P1. Do not enter, borrow geometry from, or restage L0-0004E-P2. Do not show the previous room behind the camera. Do not invent a discontinuous threshold.\nStyle/medium: photorealistic late-1990s to mid-2000s budget consumer-digital photograph; pale yellow-beige wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling grid, flat fluorescent light; standing eye height about 1.65 m; moderate 40 mm-equivalent lens.\nComposition/framing: exact landscape 4:3; a direct adjacent viewpoint with believable parallax and preserved wall thickness; spatial change should feel moderate, not like a showcase of novelty.\nConstraints: mostly empty; no text, UI, route colors, labels, arrows, people, entities, furniture, doors added without source support, windows, stairs, landmarks, dramatic horror, cinematic grading, VHS, glitch, fisheye, bloom, logo, or watermark."
+    },
+    {
+      "id": "RP-L0-0004E-P2",
+      "sourceSceneId": "L0-0004E",
+      "sourcePathId": "L0-0004E-P2",
+      "sourceSpaceId": "SP-L0-0004E",
+      "targetSceneId": "L0-0005H",
+      "targetSpaceId": "SP-L0-0004E",
+      "transitionRelation": "same-space-advance",
+      "generationStatus": "blocked-source-geometry",
+      "screenRole": "leftmost",
+      "movementType": "DIRECT",
+      "maskFingerprint": "f5bf78cad4b8fcb45afced960e52dfee4f1160e2664fcbd185dd023d22adea76",
+      "mask": [
+        [
+          563,
+          76
+        ],
+        [
+          718,
+          198
+        ],
+        [
+          715,
+          776
+        ],
+        [
+          561,
+          941
+        ]
+      ],
+      "cropBox": {
+        "left": 439,
+        "top": 0,
+        "width": 401,
+        "height": 1063
+      },
+      "references": {
+        "cleanSource": "/scenes/L0-0004E/candidates/L0-0004E-C01.png",
+        "routeMap": "/scenes/L0-0004E/route-packets/L0-0004E-P2-route-map.png",
+        "routeCrop": "/scenes/L0-0004E/route-packets/L0-0004E-P2-route-crop.png"
+      },
+      "cameraTransition": {
+        "instruction": "move forward-left around the near curved wall mass while staying in the same room and let that wall slide past the camera with believable parallax",
+        "distanceMeters": 4,
+        "targetView": "past the curved wall and facing the continuation it previously occluded"
+      },
+      "continuityAnchors": [
+        "the large curved foreground wall on the left",
+        "the attached central divider edge",
+        "the same uninterrupted patterned carpet around the wall",
+        "the ceiling grid direction continuing across the move"
+      ],
+      "spatialBrief": {
+        "intensity": "subtle",
+        "archetype": "wide-bend",
+        "instruction": "reveal only the space hidden by the foreground wall; preserve the room's scale and avoid turning the bend into a brand-new chamber"
+      },
+      "forbiddenSourcePathIds": [
+        "L0-0004E-P1"
+      ],
+      "promptRecord": "docs/generation-prompts.md#l0-0004e-p2-route-packet-pilot",
+      "prompt": "Use case: photorealistic-natural\nAsset type: playable Backrooms Level 0 transition candidate L0-0005H\nInput images: Image 1 is the clean source scene L0-0004E; Image 2 is a route-selection diagram where green marks only L0-0004E-P2 and red marks forbidden routes; Image 3 is a clean close crop of L0-0004E-P2. All three are references, not edit targets. Never reproduce colored overlays.\nPrimary request: Generate the camera viewpoint immediately after the player follows L0-0004E-P2, the leftmost human-confirmed route in Image 1. Remain inside the same physical room and advance to a new viewpoint; do not replace it with an unrelated room.\nCamera transition: move forward-left around the near curved wall mass while staying in the same room and let that wall slide past the camera with believable parallax; move approximately 4 meters; finish past the curved wall and facing the continuation it previously occluded.\nContinuity invariants: the large curved foreground wall on the left; the attached central divider edge; the same uninterrupted patterned carpet around the wall; the ceiling grid direction continuing across the move.\nSpatial variation: subtle intensity, wide-bend; reveal only the space hidden by the foreground wall; preserve the room's scale and avoid turning the bend into a brand-new chamber.\nRoute guard: Follow only L0-0004E-P2. Do not enter, borrow geometry from, or restage L0-0004E-P1. Do not show the previous room behind the camera. Do not invent a discontinuous threshold.\nStyle/medium: photorealistic late-1990s to mid-2000s budget consumer-digital photograph; pale yellow-beige wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling grid, flat fluorescent light; standing eye height about 1.65 m; moderate 40 mm-equivalent lens.\nComposition/framing: exact landscape 4:3; a direct adjacent viewpoint with believable parallax and preserved wall thickness; spatial change should feel subtle, not like a showcase of novelty.\nConstraints: mostly empty; no text, UI, route colors, labels, arrows, people, entities, furniture, doors added without source support, windows, stairs, landmarks, dramatic horror, cinematic grading, VHS, glitch, fisheye, bloom, logo, or watermark."
+    },
+    {
+      "id": "RP-L0-0005E-P1",
+      "sourceSceneId": "L0-0005E",
+      "sourcePathId": "L0-0005E-P1",
+      "sourceSpaceId": "SP-L0-0005E",
+      "targetSceneId": "L0-0006E",
+      "targetSpaceId": "SP-L0-0006E",
+      "transitionRelation": "adjacent-space",
+      "generationStatus": "ready",
+      "screenRole": "rightmost",
+      "movementType": "DIRECT",
+      "maskFingerprint": "09b6f983d3e358070bdaa84b37a80c471b5a7d5e5712bc9fb33d1bfe89ed0ea1",
+      "mask": [
+        [
+          918,
+          339
+        ],
+        [
+          1061,
+          344
+        ],
+        [
+          1057,
+          798
+        ],
+        [
+          926,
+          813
+        ]
+      ],
+      "cropBox": {
+        "left": 851,
+        "top": 272,
+        "width": 277,
+        "height": 608
+      },
+      "references": {
+        "cleanSource": "/scenes/L0-0005E/candidates/L0-0005E-C01.png",
+        "routeMap": "/scenes/L0-0005E/route-packets/L0-0005E-P1-route-map.png",
+        "routeCrop": "/scenes/L0-0005E/route-packets/L0-0005E-P1-route-crop.png"
+      },
+      "cameraTransition": {
+        "instruction": "walk through the narrower rightmost opening, clear its wall thickness, and continue only a few meters into the compact space behind it",
+        "distanceMeters": 4,
+        "targetView": "just beyond the right opening, facing the tight continuation without borrowing the left route's curve"
+      },
+      "continuityAnchors": [
+        "the narrow full-height right opening",
+        "the short straight carpet run visible through it",
+        "the single fluorescent panel immediately beyond the opening",
+        "the solid separating wall on the opening's left"
+      ],
+      "spatialBrief": {
+        "intensity": "subtle",
+        "archetype": "wall-pocket",
+        "instruction": "keep the destination compact and slightly offset, changing only the local wall return and depth rather than opening into a dramatic chamber"
+      },
+      "forbiddenSourcePathIds": [
+        "L0-0005E-P2"
+      ],
+      "promptRecord": "docs/generation-prompts.md#l0-0005e-p1-route-packet-pilot",
+      "prompt": "Use case: photorealistic-natural\nAsset type: playable Backrooms Level 0 transition candidate L0-0006E\nInput images: Image 1 is the clean source scene L0-0005E; Image 2 is a route-selection diagram where green marks only L0-0005E-P1 and red marks forbidden routes; Image 3 is a clean close crop of L0-0005E-P1. All three are references, not edit targets. Never reproduce colored overlays.\nPrimary request: Generate the camera viewpoint immediately after the player follows L0-0005E-P1, the rightmost human-confirmed route in Image 1. Pass completely through the selected opening into its immediately adjacent space; the unchosen route belongs to a different branch.\nCamera transition: walk through the narrower rightmost opening, clear its wall thickness, and continue only a few meters into the compact space behind it; move approximately 4 meters; finish just beyond the right opening, facing the tight continuation without borrowing the left route's curve.\nContinuity invariants: the narrow full-height right opening; the short straight carpet run visible through it; the single fluorescent panel immediately beyond the opening; the solid separating wall on the opening's left.\nSpatial variation: subtle intensity, wall-pocket; keep the destination compact and slightly offset, changing only the local wall return and depth rather than opening into a dramatic chamber.\nRoute guard: Follow only L0-0005E-P1. Do not enter, borrow geometry from, or restage L0-0005E-P2. Do not show the previous room behind the camera. Do not invent a discontinuous threshold.\nStyle/medium: photorealistic late-1990s to mid-2000s budget consumer-digital photograph; pale yellow-beige wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling grid, flat fluorescent light; standing eye height about 1.65 m; moderate 40 mm-equivalent lens.\nComposition/framing: exact landscape 4:3; a direct adjacent viewpoint with believable parallax and preserved wall thickness; spatial change should feel subtle, not like a showcase of novelty.\nConstraints: mostly empty; no text, UI, route colors, labels, arrows, people, entities, furniture, doors added without source support, windows, stairs, landmarks, dramatic horror, cinematic grading, VHS, glitch, fisheye, bloom, logo, or watermark."
+    },
+    {
+      "id": "RP-L0-0005E-P2",
+      "sourceSceneId": "L0-0005E",
+      "sourcePathId": "L0-0005E-P2",
+      "sourceSpaceId": "SP-L0-0005E",
+      "targetSceneId": "L0-0006F",
+      "targetSpaceId": "SP-L0-0006F",
+      "transitionRelation": "adjacent-space",
+      "generationStatus": "ready",
+      "screenRole": "leftmost",
+      "movementType": "DIRECT",
+      "maskFingerprint": "fd9fb8a55a496fd62f039b8ea3f6d65a31979a61b2c406d4eb643fd0115b5a96",
+      "mask": [
+        [
+          572,
+          318
+        ],
+        [
+          570,
+          831
+        ],
+        [
+          293,
+          850
+        ],
+        [
+          302,
+          300
+        ]
+      ],
+      "cropBox": {
+        "left": 216,
+        "top": 223,
+        "width": 433,
+        "height": 704
+      },
+      "references": {
+        "cleanSource": "/scenes/L0-0005E/candidates/L0-0005E-C01.png",
+        "routeMap": "/scenes/L0-0005E/route-packets/L0-0005E-P2-route-map.png",
+        "routeCrop": "/scenes/L0-0005E/route-packets/L0-0005E-P2-route-crop.png"
+      },
+      "cameraTransition": {
+        "instruction": "walk through the broad leftmost opening and follow its carpet as the corridor curves left beyond the thick separating wall",
+        "distanceMeters": 6,
+        "targetView": "after the left curve, facing into the wider space reached by that route"
+      },
+      "continuityAnchors": [
+        "the broad full-height left opening",
+        "the left-curving carpet and matching dark base trim",
+        "the fluorescent panel visible just beyond the opening",
+        "the thick solid wall that separates the right-hand route"
+      ],
+      "spatialBrief": {
+        "intensity": "moderate",
+        "archetype": "transverse-hall",
+        "instruction": "let the curve release into a modest crosswise hall with layered depth; keep the change noticeable but retain a plain Level 0 rhythm"
+      },
+      "forbiddenSourcePathIds": [
+        "L0-0005E-P1"
+      ],
+      "promptRecord": "docs/generation-prompts.md#l0-0005e-p2-route-packet-pilot",
+      "prompt": "Use case: photorealistic-natural\nAsset type: playable Backrooms Level 0 transition candidate L0-0006F\nInput images: Image 1 is the clean source scene L0-0005E; Image 2 is a route-selection diagram where green marks only L0-0005E-P2 and red marks forbidden routes; Image 3 is a clean close crop of L0-0005E-P2. All three are references, not edit targets. Never reproduce colored overlays.\nPrimary request: Generate the camera viewpoint immediately after the player follows L0-0005E-P2, the leftmost human-confirmed route in Image 1. Pass completely through the selected opening into its immediately adjacent space; the unchosen route belongs to a different branch.\nCamera transition: walk through the broad leftmost opening and follow its carpet as the corridor curves left beyond the thick separating wall; move approximately 6 meters; finish after the left curve, facing into the wider space reached by that route.\nContinuity invariants: the broad full-height left opening; the left-curving carpet and matching dark base trim; the fluorescent panel visible just beyond the opening; the thick solid wall that separates the right-hand route.\nSpatial variation: moderate intensity, transverse-hall; let the curve release into a modest crosswise hall with layered depth; keep the change noticeable but retain a plain Level 0 rhythm.\nRoute guard: Follow only L0-0005E-P2. Do not enter, borrow geometry from, or restage L0-0005E-P1. Do not show the previous room behind the camera. Do not invent a discontinuous threshold.\nStyle/medium: photorealistic late-1990s to mid-2000s budget consumer-digital photograph; pale yellow-beige wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling grid, flat fluorescent light; standing eye height about 1.65 m; moderate 40 mm-equivalent lens.\nComposition/framing: exact landscape 4:3; a direct adjacent viewpoint with believable parallax and preserved wall thickness; spatial change should feel moderate, not like a showcase of novelty.\nConstraints: mostly empty; no text, UI, route colors, labels, arrows, people, entities, furniture, doors added without source support, windows, stairs, landmarks, dramatic horror, cinematic grading, VHS, glitch, fisheye, bloom, logo, or watermark."
+    }
+  ]
+}
