@@ -7,14 +7,14 @@ import {
   restoreSceneId,
   validateWorld,
 } from "./scene-model.mjs";
+import { createDevEditor } from "./dev-editor.mjs";
 
 const image = document.querySelector("#scene-image");
 const overlay = document.querySelector("#path-overlay");
 const status = document.querySelector("#scene-status");
-const debugToggle = document.querySelector("#debug-toggle");
-const debugReadout = document.querySelector("#debug-readout");
 const coarsePointer = window.matchMedia("(pointer: coarse)");
 const activePointers = new Map();
+const publicRoot = new URL("../", import.meta.url);
 const debugPalette = [
   { stroke: "#ff453a", fill: "rgba(255, 69, 58, 0.28)" },
   { stroke: "#32d74b", fill: "rgba(50, 215, 75, 0.28)" },
@@ -28,11 +28,16 @@ let scenes;
 let currentScene;
 let currentBoundaryPath;
 let currentView = "scene";
-let debugEnabled = false;
 let developmentToolsAvailable = false;
+let devEditor = null;
 
 function isDevelopmentHost() {
   return ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname);
+}
+
+function publicUrl(source) {
+  if (!source || /^(?:data:|blob:|https?:)/i.test(source)) return source;
+  return new URL(source.replace(/^\/+/, ""), publicRoot).href;
 }
 
 function pointsToAttribute(points) {
@@ -50,7 +55,7 @@ function usesMobileRegions() {
 
 function preload(source) {
   const preloadImage = new Image();
-  preloadImage.src = source;
+  preloadImage.src = publicUrl(source);
 }
 
 function preloadReachable(scene) {
@@ -62,42 +67,21 @@ function saveProgress(sceneId, extra = {}) {
   localStorage.setItem(SAVE_KEY, JSON.stringify(makeSavePayload(sceneId, world.worldVersion, extra)));
 }
 
-function currentViewId() {
-  if (currentView === "scene") return currentScene?.id ?? "scene";
-  if (currentView === "boundary") return currentBoundaryPath?.id ?? "content-boundary";
-  return "reset-epilogue";
-}
-
-function updateDebugReadout(pathId = "outside", x = null, y = null) {
-  if (!debugEnabled) return;
-  const coordinates = x === null || y === null ? "move over image" : `${Math.round(x)}, ${Math.round(y)}`;
-  debugReadout.textContent = `${currentViewId()} · ${pathId} · ${coordinates}`;
-}
-
-function setDebugEnabled(enabled) {
-  debugEnabled = developmentToolsAvailable && enabled;
-  document.body.dataset.debug = String(debugEnabled);
-  debugToggle.setAttribute("aria-pressed", String(debugEnabled));
-  debugToggle.textContent = debugEnabled ? "MASKS ON" : "MASKS OFF";
-  debugReadout.hidden = !debugEnabled;
-  if (developmentToolsAvailable) sessionStorage.setItem("backrooms.mask-debug", String(debugEnabled));
-  if (debugEnabled) updateDebugReadout();
-}
-
 function configureDevelopmentTools(params) {
   developmentToolsAvailable = params.get("dev") === "1";
-  debugToggle.hidden = !developmentToolsAvailable;
-  if (!developmentToolsAvailable) return;
-  setDebugEnabled(sessionStorage.getItem("backrooms.mask-debug") === "true");
 }
 
 function renderImage(source, asset) {
-  image.src = source;
+  image.src = publicUrl(source);
   image.width = asset.width;
   image.height = asset.height;
 }
 
 function activatePath(path) {
+  if (devEditor && (path.status === "pending" || path.status === "editor-draft")) {
+    devEditor.openIncomplete(path);
+    return;
+  }
   if (path.kind === "boundary-symbol") {
     localStorage.removeItem(SAVE_KEY);
     renderEpilogue();
@@ -111,7 +95,8 @@ function activatePath(path) {
   const nextScene = scenes.get(path.targetSceneId);
   if (!nextScene) return;
   saveProgress(nextScene.id);
-  renderScene(nextScene);
+  if (devEditor) devEditor.navigateToScene(nextScene.id);
+  else renderScene(nextScene);
 }
 
 function bindPointerActivation(node, path) {
@@ -175,19 +160,18 @@ function renderOverlay(descriptor) {
 function boundaryDescriptor() {
   return {
     asset: world.contentBoundary.asset,
-    paths: [
-      {
-        id: "CONTENT-BOUNDARY-SYMBOL",
-        kind: "boundary-symbol",
-        accessibleName: "Continue through the unresolved boundary glyph",
-        regions: world.contentBoundary.symbolRegions,
-      },
-    ],
+    paths: [{
+      id: "CONTENT-BOUNDARY-SYMBOL",
+      kind: "boundary-symbol",
+      accessibleName: "Continue through the unresolved boundary glyph",
+      regions: world.contentBoundary.symbolRegions,
+    }],
   };
 }
 
 function renderCurrentOverlay() {
-  if (currentView === "scene") renderOverlay(currentScene);
+  if (currentView === "scene" && devEditor) devEditor.render();
+  else if (currentView === "scene") renderOverlay(currentScene);
   else if (currentView === "boundary") renderOverlay(boundaryDescriptor());
   else overlay.replaceChildren();
 }
@@ -199,10 +183,10 @@ function renderScene(scene) {
   document.body.dataset.view = currentView;
   delete document.body.dataset.frontier;
   renderImage(scene.image, scene.asset);
-  renderOverlay(scene);
+  if (devEditor) devEditor.sceneChanged(scene);
+  else renderOverlay(scene);
   preloadReachable(scene);
   status.textContent = `Entered ${scene.accessibleName}.`;
-  updateDebugReadout();
 }
 
 function renderBoundary(path) {
@@ -214,7 +198,6 @@ function renderBoundary(path) {
   renderOverlay(boundaryDescriptor());
   preload(world.contentBoundary.epilogueImage);
   status.textContent = `Reached ${world.contentBoundary.symbolAccessibleName}.`;
-  updateDebugReadout();
 }
 
 function renderEpilogue() {
@@ -225,7 +208,6 @@ function renderEpilogue() {
   renderImage(world.contentBoundary.epilogueImage, world.contentBoundary.asset);
   overlay.replaceChildren();
   status.textContent = `Entered ${world.contentBoundary.epilogueAccessibleName}.`;
-  updateDebugReadout("no paths");
 }
 
 function pointerCoordinates(event) {
@@ -239,7 +221,7 @@ function pointerCoordinates(event) {
 }
 
 async function start() {
-  const response = await fetch("/scenes/scenes.json", { cache: "no-store" });
+  const response = await fetch(publicUrl("/scenes/scenes.json"), { cache: "no-store" });
   if (!response.ok) throw new Error(`Unable to load scene registry (${response.status})`);
   world = await response.json();
   const validationErrors = validateWorld(world);
@@ -248,19 +230,49 @@ async function start() {
 
   const params = new URLSearchParams(window.location.search);
   configureDevelopmentTools(params);
+  let staging = null;
+  if (developmentToolsAvailable) {
+    const stagingResponse = await fetch(publicUrl("/scenes/staging-scenes.json"), { cache: "no-store" });
+    staging = stagingResponse.ok ? await stagingResponse.json() : null;
+    for (const candidate of staging?.candidates ?? []) scenes.set(candidate.id, candidate);
+  }
   if (params.get("reset") === "1") localStorage.removeItem(SAVE_KEY);
-  const directSceneId = isDevelopmentHost() ? params.get("scene") : null;
+  const directSceneId = developmentToolsAvailable ? params.get("scene") : null;
   const rawSave = localStorage.getItem(SAVE_KEY);
-  const restoredId = restoreSceneId(rawSave, world, directSceneId);
+  const restoredId = directSceneId && scenes.has(directSceneId)
+    ? directSceneId
+    : restoreSceneId(rawSave, world, directSceneId);
   const restoredScene = scenes.get(restoredId);
   const boundaryPathId = directSceneId ? null : restoreBoundaryPathId(rawSave, world, restoredId);
   const boundaryPath = restoredScene.paths.find((path) => path.id === boundaryPathId);
 
   const preservedParams = new URLSearchParams();
-  if (params.get("dev") === "1") preservedParams.set("dev", "1");
+  if (developmentToolsAvailable) {
+    preservedParams.set("dev", "1");
+    preservedParams.set("scene", restoredScene.id);
+  }
   const preservedQuery = preservedParams.toString();
   if (window.location.search !== (preservedQuery ? `?${preservedQuery}` : "")) {
     history.replaceState(null, "", `${window.location.pathname}${preservedQuery ? `?${preservedQuery}` : ""}`);
+  }
+
+  if (developmentToolsAvailable) {
+    const annotationResponse = await fetch(publicUrl("/scenes/manual-route-annotations.json"), { cache: "no-store" });
+    const annotations = annotationResponse.ok ? await annotationResponse.json() : null;
+    devEditor = createDevEditor({
+      world,
+      scenes,
+      annotations,
+      staging,
+      saveMode: isDevelopmentHost() && params.get("static") !== "1" ? "server" : "browser",
+      stage: document.querySelector("[data-scene-stage]"),
+      image,
+      overlay,
+      getCurrentScene: () => currentScene,
+      showScene: (scene) => renderScene(scene),
+      renderPlayableOverlay: renderOverlay,
+      toAssetPoint: pointerCoordinates,
+    });
   }
 
   if (boundaryPath) renderBoundary(boundaryPath);
@@ -270,16 +282,5 @@ async function start() {
   window.addEventListener("resize", renderCurrentOverlay);
 }
 
-debugToggle.addEventListener("click", () => setDebugEnabled(!debugEnabled));
-window.addEventListener("keydown", (event) => {
-  if (developmentToolsAvailable && !event.repeat && event.key.toLowerCase() === "d") setDebugEnabled(!debugEnabled);
-});
-overlay.addEventListener("pointermove", (event) => {
-  if (!debugEnabled) return;
-  const point = pointerCoordinates(event);
-  if (!point) return;
-  updateDebugReadout(event.target.dataset.pathId ?? "outside", point.x, point.y);
-});
-overlay.addEventListener("pointerleave", () => updateDebugReadout());
 image.addEventListener("error", () => console.error(`Missing scene image: ${image.src}`));
 start().catch((error) => console.error(error));

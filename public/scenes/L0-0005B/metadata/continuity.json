@@ -1,0 +1,12 @@
+{
+  "scene_id": "L0-0005B",
+  "source_scene_id": "L0-0004B",
+  "source_path_id": "L0-0004B-P1",
+  "generation_job_id": "GEN-L0-PILOT-002",
+  "reference_image_role": "L0-0004B is the architectural and photographic continuity reference, not an edit target",
+  "continuity_assessment": "The camera advances a few meters along the compressed B branch, retaining its close curved walls, dimmer fluorescence, carpet, trim, ceiling grid, eye height, and lens.",
+  "known_drift": "The alternating offsets resolve into a smoother single bend without adding a second visible passage.",
+  "generation_output": "exec-defd302a-48ed-455a-9366-ad698dd32f45.png",
+  "visible_route_count": 1,
+  "status": "needs-user-playtest"
+}

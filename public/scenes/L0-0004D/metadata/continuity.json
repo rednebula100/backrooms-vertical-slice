@@ -1,0 +1,10 @@
+{
+  "scene_id": "L0-0004D",
+  "source_scene_id": "L0-0003B",
+  "source_path_id": "L0-0003B-P3",
+  "reference_image_role": "L0-0003B is a continuity reference, not an edit target",
+  "continuity_assessment": "The camera passes between the middle staggered walls and reaches an adjacent junction separated by one solid wall mass.",
+  "known_drift": "The junction is slightly broader while remaining within the B-branch material and lighting family.",
+  "visible_route_count": 2,
+  "frontier_path_ids": ["L0-0004D-P1", "L0-0004D-P2"]
+}

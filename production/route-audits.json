@@ -1,0 +1,1500 @@
+{
+  "schemaVersion": 1,
+  "worldVersion": "vertical-slice-0.7.0",
+  "backend": "codex-cli-chatgpt",
+  "model": "gpt-5.6-terra",
+  "adjudicatorModel": "gpt-5.6-sol",
+  "imageInput": "native-file",
+  "generatedAt": "2026-08-02T06:54:06.658Z",
+  "audits": [
+    {
+      "sceneId": "L0-0002B",
+      "image": "/scenes/L0-0002B/final/L0-0002B.png",
+      "pathFingerprint": "fnv1a32-b2a63850",
+      "expectedReason": "One offset wall mass creates two plausible continuations.",
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 1,
+          "ambiguity": true,
+          "ambiguityReason": "The central staggered partitions create a single visibly open channel, but the AI-generated joins/baseboards make the occlusion behind the right partition slightly uncertain.",
+          "sceneSummary": "One clear carpeted passage turns right through the gap between the rear terminating wall mass and the central partition. The apparent left and far-right sides are sealed by joined boundary walls/baseboards.",
+          "averageConfidence": 0.84,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Rightward passage through the exposed gap between the two central wall masses.",
+              "evidence": "Carpet continues into the gap beside the rear wall's exposed right edge and passes left of the nearer partition.",
+              "visibility": "clear",
+              "confidence": 0.84,
+              "entry_region": {
+                "left": 552,
+                "top": 565,
+                "right": 590,
+                "bottom": 635
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 2,
+          "ambiguity": true,
+          "ambiguityReason": "The staggered partitions at the far end create a very narrow, partially occluded channel whose continuation is not fully visible.",
+          "sceneSummary": "A carpeted corridor curves toward a staggered set of partition walls, with one visible turn and a narrow additional continuation around the forward partition.",
+          "averageConfidence": 0.805,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Visible corridor continuation that bends right around the end of the left partition.",
+              "evidence": "Carpet remains exposed beyond the near corridor and wraps toward the gap beside the partition; its left vertical wall edge is clearly visible.",
+              "visibility": "clear",
+              "confidence": 0.93,
+              "entry_region": {
+                "left": 438,
+                "top": 568,
+                "right": 581,
+                "bottom": 777
+              }
+            },
+            {
+              "route_id": "route_2",
+              "description": "Narrow continuation between/around the staggered far partitions.",
+              "evidence": "A dark carpet strip and exposed offset wall edges remain visible immediately beyond the first partition, plausibly leading behind the forward wall mass.",
+              "visibility": "partial",
+              "confidence": 0.68,
+              "entry_region": {
+                "left": 563,
+                "top": 579,
+                "right": 643,
+                "bottom": 713
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": {
+        "auditor": "adjudicator",
+        "routeCount": 1,
+        "ambiguity": true,
+        "ambiguityReason": "The staggered rear wall and forward partition form one passage slot between their exposed vertical edges. The outer-left slot is visibly joined to the continuous left corridor wall, while the outer-right slot is sealed by the forward partition joining the near right boundary wall; AI-softened seams make those joins slightly uncertain.",
+        "sceneSummary": "A single carpeted continuation bends right through the narrow opening between two offset full-height wall masses.",
+        "averageConfidence": 0.88,
+        "routes": [
+          {
+            "route_id": "route_1",
+            "description": "Rightward continuation between the rear terminating wall and the forward offset partition.",
+            "evidence": "Exposed carpet wraps around the rear wall's right edge and remains visible in the narrow interval before the forward partition's left edge.",
+            "visibility": "clear",
+            "confidence": 0.88,
+            "entry_region": {
+              "left": 558,
+              "top": 566,
+              "right": 582,
+              "bottom": 703
+            }
+          }
+        ],
+        "backend": "codex-cli-chatgpt",
+        "responseId": null,
+        "responseModel": "gpt-5.6-sol",
+        "usage": null
+      },
+      "comparison": {
+        "status": "pass",
+        "auditorsAgree": false,
+        "adjudicated": true,
+        "preliminaryRouteCounts": [
+          1,
+          2
+        ],
+        "consensusRouteCount": 1,
+        "registeredRouteCount": 2,
+        "desiredRouteCount": null,
+        "expectedRouteCount": 2,
+        "rareRouteApproved": false,
+        "humanTopologyApproved": true,
+        "blockingReasons": []
+      }
+    },
+    {
+      "sceneId": "L0-0003B",
+      "image": "/scenes/L0-0003B/final/L0-0003B.png",
+      "pathFingerprint": "fnv1a32-3505e893",
+      "expectedReason": "Two staggered wall masses create three plausible continuations.",
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 3,
+          "ambiguity": true,
+          "ambiguityReason": "The staggered partitions create partially occluded channels whose exact connections are not fully visible.",
+          "sceneSummary": "Two offset interior wall masses sit beyond the boundary walls, producing three distinct passage slots from left to right.",
+          "averageConfidence": 0.8333333333333334,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Carpeted passage to the left of the nearer staggered wall mass.",
+              "evidence": "Visible carpet channel and the mass's exposed left vertical edge.",
+              "visibility": "clear",
+              "confidence": 0.91,
+              "entry_region": {
+                "left": 324,
+                "top": 595,
+                "right": 503,
+                "bottom": 999
+              }
+            },
+            {
+              "route_id": "route_2",
+              "description": "Partially occluded passage slot between the two staggered wall masses.",
+              "evidence": "Successive exposed partition edges and carpet/ceiling geometry support continuation through the gap.",
+              "visibility": "partial",
+              "confidence": 0.7,
+              "entry_region": {
+                "left": 500,
+                "top": 537,
+                "right": 671,
+                "bottom": 756
+              }
+            },
+            {
+              "route_id": "route_3",
+              "description": "Passage around the right side of the farther staggered wall mass.",
+              "evidence": "The farther mass ends at an exposed right edge with visible carpet continuing beside it toward the curved boundary wall.",
+              "visibility": "clear",
+              "confidence": 0.89,
+              "entry_region": {
+                "left": 652,
+                "top": 546,
+                "right": 704,
+                "bottom": 660
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 2,
+          "ambiguity": true,
+          "ambiguityReason": "Successive partitions create partially occluded channels; exact rear connections are indeterminate.",
+          "sceneSummary": "A curving corridor passes a staggered central partition and a farther offset partition, with two distinct navigable-looking channels on their right sides.",
+          "averageConfidence": 0.875,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Carpet channel turning right around the foreground central partition, toward the space between the partitions.",
+              "evidence": "The foreground partition ends at an exposed right vertical edge, with carpet continuing past it.",
+              "visibility": "clear",
+              "confidence": 0.93,
+              "entry_region": {
+                "left": 496,
+                "top": 603,
+                "right": 732,
+                "bottom": 798
+              }
+            },
+            {
+              "route_id": "route_2",
+              "description": "Narrower continuation passing right of the farther partition toward the curved corridor.",
+              "evidence": "A second exposed partition edge and visible carpet form a separate channel before the right boundary wall.",
+              "visibility": "partial",
+              "confidence": 0.82,
+              "entry_region": {
+                "left": 940,
+                "top": 565,
+                "right": 101,
+                "bottom": 662
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": {
+        "auditor": "adjudicator",
+        "routeCount": 3,
+        "ambiguity": true,
+        "ambiguityReason": "Two successive offset full-height partition masses are visible, but their outer-left and intermediate passage slots are partly occluded, so their hidden continuation cannot be confirmed from this viewpoint.",
+        "sceneSummary": "Excluding the near wall that frames the left image boundary, two staggered interior wall masses yield three distinct wall-ladder passage slots: outside the first mass on the left, between the two masses, and outside the farther mass on the right.",
+        "averageConfidence": 0.8066666666666666,
+        "routes": [
+          {
+            "route_id": "route_1",
+            "description": "Implied continuation outside the left side of the nearer staggered wall mass.",
+            "evidence": "The nearer interior mass has an exposed vertical edge beyond the excluded camera-framing wall; perspective plausibly conceals an outer-left slot, and no clearly continuous joined wall and baseboard seal it.",
+            "visibility": "implied",
+            "confidence": 0.62,
+            "entry_region": {
+              "left": 318,
+              "top": 585,
+              "right": 505,
+              "bottom": 930
+            }
+          },
+          {
+            "route_id": "route_2",
+            "description": "Carpeted passage slot between the nearer and farther staggered wall masses.",
+            "evidence": "Visible carpet bends past the nearer mass toward the exposed edge of the farther mass, defining the intermediate wall-ladder slot despite partial occlusion.",
+            "visibility": "partial",
+            "confidence": 0.86,
+            "entry_region": {
+              "left": 499,
+              "top": 535,
+              "right": 652,
+              "bottom": 757
+            }
+          },
+          {
+            "route_id": "route_3",
+            "description": "Narrow passage around the right side of the farther wall mass beside the curved boundary wall.",
+            "evidence": "The farther mass ends at a distinct exposed right edge, with a visible strip of carpet continuing beyond it along the curved wall.",
+            "visibility": "clear",
+            "confidence": 0.94,
+            "entry_region": {
+              "left": 647,
+              "top": 540,
+              "right": 704,
+              "bottom": 665
+            }
+          }
+        ],
+        "backend": "codex-cli-chatgpt",
+        "responseId": null,
+        "responseModel": "gpt-5.6-sol",
+        "usage": null
+      },
+      "comparison": {
+        "status": "pass",
+        "auditorsAgree": false,
+        "adjudicated": true,
+        "preliminaryRouteCounts": [
+          3,
+          2
+        ],
+        "consensusRouteCount": 3,
+        "registeredRouteCount": 3,
+        "desiredRouteCount": null,
+        "expectedRouteCount": 3,
+        "rareRouteApproved": false,
+        "humanTopologyApproved": true,
+        "blockingReasons": []
+      }
+    },
+    {
+      "sceneId": "L0-0003C",
+      "image": "/scenes/L0-0003C/final/L0-0003C.png",
+      "pathFingerprint": "fnv1a32-dc8f6526",
+      "expectedReason": null,
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 1,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "A single clear carpeted passage curves left around the exposed left edge of the staggered central wall mass. Its right side is visibly joined to the continuous near right wall, sealing that side.",
+          "averageConfidence": 0.96,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Left-curving passage around the central partition's exposed left edge.",
+              "evidence": "Visible carpet channel bends left behind the partition, with an open floor approach and exposed vertical wall edge.",
+              "visibility": "clear",
+              "confidence": 0.96,
+              "entry_region": {
+                "left": 325,
+                "top": 335,
+                "right": 515,
+                "bottom": 730
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 1,
+          "ambiguity": true,
+          "ambiguityReason": "The central partition appears joined to the right-side corridor wall, but its generated perspective is slightly ambiguous.",
+          "sceneSummary": "A carpeted corridor curves left around a full-height staggered partition; the right side is visually sealed by the continuous near wall and baseboard.",
+          "averageConfidence": 0.92,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Curving passage continuing around the left side of the central partition.",
+              "evidence": "Visible carpet channel curves left past the partition's exposed left vertical edge.",
+              "visibility": "clear",
+              "confidence": 0.92,
+              "entry_region": {
+                "left": 328,
+                "top": 565,
+                "right": 516,
+                "bottom": 1000
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": {
+        "auditor": "adjudicator",
+        "routeCount": 1,
+        "ambiguity": false,
+        "ambiguityReason": "",
+        "sceneSummary": "A single carpeted corridor curves left around the exposed edge of one offset full-height partition. The partition visibly meets the continuous near-right boundary wall, with joined faces and baseboards sealing any right-side slot.",
+        "averageConfidence": 0.97,
+        "routes": [
+          {
+            "route_id": "route_1",
+            "description": "Left-curving passage around the central partition.",
+            "evidence": "The carpet channel visibly bends behind the partition’s exposed left vertical edge; the ceiling and floor perspective continue into the opening.",
+            "visibility": "clear",
+            "confidence": 0.97,
+            "entry_region": {
+              "left": 322,
+              "top": 548,
+              "right": 515,
+              "bottom": 920
+            }
+          }
+        ],
+        "backend": "codex-cli-chatgpt",
+        "responseId": null,
+        "responseModel": "gpt-5.6-sol",
+        "usage": null
+      },
+      "comparison": {
+        "status": "pass",
+        "auditorsAgree": true,
+        "adjudicated": true,
+        "preliminaryRouteCounts": [
+          1,
+          1
+        ],
+        "consensusRouteCount": 1,
+        "registeredRouteCount": 1,
+        "desiredRouteCount": 1,
+        "expectedRouteCount": null,
+        "rareRouteApproved": false,
+        "blockingReasons": []
+      }
+    },
+    {
+      "sceneId": "L0-0004B",
+      "image": "/scenes/L0-0004B/final/L0-0004B.png",
+      "pathFingerprint": "fnv1a32-7b6cc884",
+      "expectedReason": "The user-confirmed image reading contains two traversable continuations.",
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 3,
+          "ambiguity": true,
+          "ambiguityReason": "Successive staggered wall masses create partially occluded passage slots; the far-right slot appears visually constrained by a terminating wall but is not fully topology-certain.",
+          "sceneSummary": "A narrow carpeted corridor is divided by two staggered full-height wall masses, with a curved right boundary wall and a partly occluded rear area.",
+          "averageConfidence": 0.69,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Partially occluded passage slot to the left/outside of the nearest staggered wall mass.",
+              "evidence": "The nearest mass has an exposed vertical right edge and its left-side continuation is largely hidden by the camera-framing left wall.",
+              "visibility": "implied",
+              "confidence": 0.54,
+              "entry_region": {
+                "left": 165,
+                "top": 470,
+                "right": 282,
+                "bottom": 935
+              }
+            },
+            {
+              "route_id": "route_2",
+              "description": "Carpet channel between the nearest wall mass and the recessed central wall mass.",
+              "evidence": "Visible carpet runs through the gap beneath the exposed offset wall edges, despite partial occlusion at the rear.",
+              "visibility": "clear",
+              "confidence": 0.86,
+              "entry_region": {
+                "left": 500,
+                "top": 617,
+                "right": 618,
+                "bottom": 884
+              }
+            },
+            {
+              "route_id": "route_3",
+              "description": "Right-side continuation around the recessed central wall mass.",
+              "evidence": "A separate carpet channel follows the mass's exposed right edge toward the rear; its final continuation is obscured/ambiguous near the rear wall.",
+              "visibility": "partial",
+              "confidence": 0.67,
+              "entry_region": {
+                "left": 746,
+                "top": 492,
+                "right": 923,
+                "bottom": 711
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 2,
+          "ambiguity": true,
+          "ambiguityReason": "The offset partitions create partially occluded carpet channels; the generated geometry makes their hidden connections uncertain.",
+          "sceneSummary": "A narrow carpeted corridor is divided by successive staggered full-height partitions, with a curved right boundary wall.",
+          "averageConfidence": 0.7350000000000001,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Passage slot around the left side of the nearer staggered partition.",
+              "evidence": "Carpet continues beside the partition's exposed left/front edge into the occluded space beyond it.",
+              "visibility": "partial",
+              "confidence": 0.8,
+              "entry_region": {
+                "left": 365,
+                "top": 603,
+                "right": 501,
+                "bottom": 704
+              }
+            },
+            {
+              "route_id": "route_2",
+              "description": "Narrow passage slot between the nearer partition and the rear offset wall mass.",
+              "evidence": "A distinct carpet channel is visible below the rear wall face and beside the nearer partition's exposed right edge.",
+              "visibility": "partial",
+              "confidence": 0.67,
+              "entry_region": {
+                "left": 524,
+                "top": 477,
+                "right": 648,
+                "bottom": 646
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": {
+        "auditor": "adjudicator",
+        "routeCount": 3,
+        "ambiguity": true,
+        "ambiguityReason": "Two successive offset full-height wall masses yield three wall-ladder slots, but the outer-left and outer-right continuations are substantially occluded and the generated rear geometry does not establish their hidden topology with confidence.",
+        "sceneSummary": "A carpeted corridor curves along the right boundary while two staggered wall masses form an implied left outer passage, a visible channel between the masses, and a separate continuation around the rear mass's right side.",
+        "averageConfidence": 0.7066666666666667,
+        "routes": [
+          {
+            "route_id": "route_1",
+            "description": "Outer-left passage slot beside the nearest staggered wall mass.",
+            "evidence": "The nearest mass has a distinct exposed vertical edge, while perspective and the foreground left boundary conceal the corresponding outside slot without a clearly continuous wall-and-baseboard seal.",
+            "visibility": "implied",
+            "confidence": 0.58,
+            "entry_region": {
+              "left": 165,
+              "top": 470,
+              "right": 300,
+              "bottom": 930
+            }
+          },
+          {
+            "route_id": "route_2",
+            "description": "Passage slot between the nearest mass and the recessed central mass.",
+            "evidence": "Offset vertical edges and exposed carpet define a separate channel between the two wall masses.",
+            "visibility": "partial",
+            "confidence": 0.84,
+            "entry_region": {
+              "left": 365,
+              "top": 535,
+              "right": 535,
+              "bottom": 850
+            }
+          },
+          {
+            "route_id": "route_3",
+            "description": "Outer-right continuation around the recessed central wall mass.",
+            "evidence": "Carpet continues along the rear mass's exposed right edge toward the curved right boundary, though the distant continuation is partly hidden by the apparent rear wall.",
+            "visibility": "partial",
+            "confidence": 0.7,
+            "entry_region": {
+              "left": 525,
+              "top": 475,
+              "right": 650,
+              "bottom": 690
+            }
+          }
+        ],
+        "backend": "codex-cli-chatgpt",
+        "responseId": null,
+        "responseModel": "gpt-5.6-sol",
+        "usage": null
+      },
+      "comparison": {
+        "status": "pass",
+        "auditorsAgree": false,
+        "adjudicated": true,
+        "preliminaryRouteCounts": [
+          3,
+          2
+        ],
+        "consensusRouteCount": 3,
+        "registeredRouteCount": 2,
+        "desiredRouteCount": null,
+        "expectedRouteCount": 2,
+        "rareRouteApproved": false,
+        "humanTopologyApproved": true,
+        "blockingReasons": []
+      }
+    },
+    {
+      "sceneId": "L0-0004C",
+      "image": "/scenes/L0-0004C/final/L0-0004C.png",
+      "pathFingerprint": "fnv1a32-0ef76a17",
+      "expectedReason": null,
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 1,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "A single clear passage opens ahead-right through the rectangular doorway; the surrounding left and right walls continuously frame the current corridor.",
+          "averageConfidence": 0.98,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Open doorway leading into the adjoining carpeted space.",
+              "evidence": "Clearly visible rectangular opening with exposed carpet and continuation wall beyond it.",
+              "visibility": "clear",
+              "confidence": 0.98,
+              "entry_region": {
+                "left": 709,
+                "top": 270,
+                "right": 835,
+                "bottom": 598
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 1,
+          "ambiguity": true,
+          "ambiguityReason": "The doorway reveals a short carpeted area that appears to terminate at a wall, but the generated perspective leaves its possible lateral continuation unclear.",
+          "sceneSummary": "A narrow carpeted corridor ends at a right-side doorway/opening; surrounding walls otherwise continuously frame the camera corridor.",
+          "averageConfidence": 0.67,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Right-side doorway into the partially visible adjoining space.",
+              "evidence": "A distinct full-height framed opening exposes carpet beyond the corridor wall.",
+              "visibility": "partial",
+              "confidence": 0.67,
+              "entry_region": {
+                "left": 708,
+                "top": 270,
+                "right": 836,
+                "bottom": 607
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": {
+        "auditor": "adjudicator",
+        "routeCount": 1,
+        "ambiguity": false,
+        "ambiguityReason": "",
+        "sceneSummary": "A single distinct rectangular doorway opens from the otherwise continuously framed corridor into a carpeted adjoining space. No additional exposed wall-edge continuations or staggered wall masses are visible.",
+        "averageConfidence": 0.98,
+        "routes": [
+          {
+            "route_id": "route_1",
+            "description": "Rectangular doorway leading into the adjoining carpeted space.",
+            "evidence": "The full-height framed opening clearly exposes continuous carpet and an interior wall beyond; the surrounding corridor walls and baseboards do not form any other passage slot.",
+            "visibility": "clear",
+            "confidence": 0.98,
+            "entry_region": {
+              "left": 705,
+              "top": 268,
+              "right": 831,
+              "bottom": 615
+            }
+          }
+        ],
+        "backend": "codex-cli-chatgpt",
+        "responseId": null,
+        "responseModel": "gpt-5.6-sol",
+        "usage": null
+      },
+      "comparison": {
+        "status": "pass",
+        "auditorsAgree": true,
+        "adjudicated": true,
+        "preliminaryRouteCounts": [
+          1,
+          1
+        ],
+        "consensusRouteCount": 1,
+        "registeredRouteCount": 1,
+        "desiredRouteCount": 1,
+        "expectedRouteCount": null,
+        "rareRouteApproved": false,
+        "blockingReasons": []
+      }
+    },
+    {
+      "sceneId": "L0-0004D",
+      "image": "/scenes/L0-0004D/final/L0-0004D.png",
+      "pathFingerprint": "fnv1a32-cb1fae6e",
+      "expectedReason": null,
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 2,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "Two separated passages run around the left and right sides of the central staggered wall mass.",
+          "averageConfidence": 0.97,
+          "routes": [
+            {
+              "route_id": "route_left",
+              "description": "Curving corridor continuing around the left side of the central wall mass.",
+              "evidence": "Visible carpet channel, ceiling lights, and the exposed left vertical edge of the central mass.",
+              "visibility": "clear",
+              "confidence": 0.98,
+              "entry_region": {
+                "left": 146,
+                "top": 262,
+                "right": 363,
+                "bottom": 756
+              }
+            },
+            {
+              "route_id": "route_right",
+              "description": "Narrow passage continuing around the right side of the central wall mass.",
+              "evidence": "Visible carpet and exposed vertical edges form a distinct opening to the right of the mass.",
+              "visibility": "clear",
+              "confidence": 0.96,
+              "entry_region": {
+                "left": 728,
+                "top": 274,
+                "right": 803,
+                "bottom": 720
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 2,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "Two distinct passage targets are visible around the central full-height partition: a curving corridor to its left and a narrow opening to its right.",
+          "averageConfidence": 0.975,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Curving left-side corridor continuing behind the central partition.",
+              "evidence": "Visible carpet channel, receding ceiling lights, and exposed left edge of the partition.",
+              "visibility": "clear",
+              "confidence": 0.98,
+              "entry_region": {
+                "left": 215,
+                "top": 260,
+                "right": 325,
+                "bottom": 650
+              }
+            },
+            {
+              "route_id": "route_2",
+              "description": "Narrow right-side passage through the opening beside the central partition.",
+              "evidence": "Visible opening with carpet and baseboards continuing beyond the partition edge.",
+              "visibility": "clear",
+              "confidence": 0.97,
+              "entry_region": {
+                "left": 732,
+                "top": 276,
+                "right": 800,
+                "bottom": 723
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": null,
+      "comparison": {
+        "status": "pass",
+        "auditorsAgree": true,
+        "adjudicated": false,
+        "preliminaryRouteCounts": [
+          2,
+          2
+        ],
+        "consensusRouteCount": 2,
+        "registeredRouteCount": 2,
+        "desiredRouteCount": 2,
+        "expectedRouteCount": null,
+        "rareRouteApproved": false,
+        "blockingReasons": []
+      }
+    },
+    {
+      "sceneId": "L0-0005A",
+      "image": "/scenes/L0-0005A/final/L0-0005A.png",
+      "pathFingerprint": "fnv1a32-2bdc174a",
+      "expectedReason": null,
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 2,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "Two distinct door-like carpeted passage entries are visible, one on each side of the central full-height wall mass.",
+          "averageConfidence": 0.985,
+          "routes": [
+            {
+              "route_id": "route_1_left",
+              "description": "Left-side opening into a curving, lit corridor.",
+              "evidence": "A wide rectangular entry exposes continuous carpet, baseboards, ceiling lights, and a hallway that bends beyond the opening.",
+              "visibility": "clear",
+              "confidence": 0.99,
+              "entry_region": {
+                "left": 309,
+                "top": 202,
+                "right": 475,
+                "bottom": 711
+              }
+            },
+            {
+              "route_id": "route_2_right",
+              "description": "Right-side opening alongside the central wall mass.",
+              "evidence": "A narrow rectangular entry exposes a separate carpet channel continuing behind the right side of the partition.",
+              "visibility": "clear",
+              "confidence": 0.98,
+              "entry_region": {
+                "left": 691,
+                "top": 230,
+                "right": 775,
+                "bottom": 691
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 2,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "Two distinct passage openings are visible around the central staggered wall mass: a wider opening to its left and a narrower continuation to its right.",
+          "averageConfidence": 0.96,
+          "routes": [
+            {
+              "route_id": "route_left",
+              "description": "Wide doorway leading into a leftward-curving carpeted corridor.",
+              "evidence": "Clearly exposed doorway, carpet channel, ceiling lights, and receding side wall.",
+              "visibility": "clear",
+              "confidence": 0.98,
+              "entry_region": {
+                "left": 310,
+                "top": 202,
+                "right": 475,
+                "bottom": 672
+              }
+            },
+            {
+              "route_id": "route_right",
+              "description": "Narrow doorway/passage continuing along the right side of the central wall mass.",
+              "evidence": "Exposed opening with carpet and baseboard continuing behind the partition edge.",
+              "visibility": "clear",
+              "confidence": 0.94,
+              "entry_region": {
+                "left": 684,
+                "top": 226,
+                "right": 774,
+                "bottom": 677
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": null,
+      "comparison": {
+        "status": "pass",
+        "auditorsAgree": true,
+        "adjudicated": false,
+        "preliminaryRouteCounts": [
+          2,
+          2
+        ],
+        "consensusRouteCount": 2,
+        "registeredRouteCount": 2,
+        "desiredRouteCount": 2,
+        "expectedRouteCount": null,
+        "rareRouteApproved": false,
+        "blockingReasons": []
+      }
+    },
+    {
+      "sceneId": "L0-0005B",
+      "image": "/scenes/L0-0005B/final/L0-0005B.png",
+      "pathFingerprint": "fnv1a32-798bfdae",
+      "expectedReason": null,
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 1,
+          "ambiguity": true,
+          "ambiguityReason": "The staggered central wall geometry is AI-ambiguous; the visible entry is clear, but its exact hidden branching behind the offset walls is not.",
+          "sceneSummary": "A narrow corridor curves into one visibly open continuation around the central staggered partition.",
+          "averageConfidence": 0.86,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Clear carpeted opening continuing beyond the central wall edge.",
+              "evidence": "Visible carpet channel and opening bounded by the left partition edge and right wall edge.",
+              "visibility": "clear",
+              "confidence": 0.86,
+              "entry_region": {
+                "left": 421,
+                "top": 519,
+                "right": 512,
+                "bottom": 607
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 3,
+          "ambiguity": true,
+          "ambiguityReason": "The offset partitions create partially occluded carpet channels whose connections behind the visible wall faces cannot be determined confidently.",
+          "sceneSummary": "A narrow curved corridor approaches staggered full-height partitions, with a visible central gap and plausible continuations around both sides of the offset wall mass.",
+          "averageConfidence": 0.7366666666666667,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Left-side continuation around the terminating near-left wall mass.",
+              "evidence": "The left wall exposes a terminating vertical edge near the center, with floor perspective plausibly continuing beyond it.",
+              "visibility": "implied",
+              "confidence": 0.54,
+              "entry_region": {
+                "left": 404,
+                "top": 560,
+                "right": 471,
+                "bottom": 785
+              }
+            },
+            {
+              "route_id": "route_2",
+              "description": "Narrow carpet channel through the visible gap between offset partitions.",
+              "evidence": "Carpet and baseboards are visibly exposed in the central opening between the wall faces.",
+              "visibility": "clear",
+              "confidence": 0.91,
+              "entry_region": {
+                "left": 438,
+                "top": 518,
+                "right": 510,
+                "bottom": 671
+              }
+            },
+            {
+              "route_id": "route_3",
+              "description": "Right-side continuation around the staggered partition toward the curved corridor.",
+              "evidence": "The right partition has an exposed inner vertical edge and the foreground carpet channel curves along its right-hand side.",
+              "visibility": "partial",
+              "confidence": 0.76,
+              "entry_region": {
+                "left": 504,
+                "top": 555,
+                "right": 645,
+                "bottom": 844
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": {
+        "auditor": "adjudicator",
+        "routeCount": 1,
+        "ambiguity": true,
+        "ambiguityReason": "The generated offset-wall geometry is somewhat ambiguous behind the visible opening, but the apparent left slot is sealed by joined wall faces/baseboard and the apparent right slot is only the foreground approach along the boundary wall.",
+        "sceneSummary": "A single narrow carpeted passage continues through the central opening between the terminating left partition edge and the curved right corridor wall.",
+        "averageConfidence": 0.9,
+        "routes": [
+          {
+            "route_id": "route_1",
+            "description": "Central carpeted opening continuing beyond the offset wall edge.",
+            "evidence": "A distinct carpet channel, baseboards, and open floor are visible through the gap. The other scout targets correspond to a sealed side of the left structure and to the same route's foreground approach, not separate passage slots.",
+            "visibility": "clear",
+            "confidence": 0.9,
+            "entry_region": {
+              "left": 438,
+              "top": 518,
+              "right": 510,
+              "bottom": 671
+            }
+          }
+        ],
+        "backend": "codex-cli-chatgpt",
+        "responseId": null,
+        "responseModel": "gpt-5.6-sol",
+        "usage": null
+      },
+      "comparison": {
+        "status": "blocked",
+        "auditorsAgree": false,
+        "adjudicated": true,
+        "preliminaryRouteCounts": [
+          1,
+          3
+        ],
+        "consensusRouteCount": 1,
+        "registeredRouteCount": 1,
+        "desiredRouteCount": 1,
+        "expectedRouteCount": null,
+        "rareRouteApproved": false,
+        "blockingReasons": [
+          "auditor-reported-ambiguity"
+        ]
+      }
+    },
+    {
+      "sceneId": "L0-0005C",
+      "image": "/scenes/L0-0005C/final/L0-0005C.png",
+      "pathFingerprint": "fnv1a32-dd1192dc",
+      "expectedReason": null,
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 2,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "One staggered full-height wall mass creates two distinct passable continuations, one on each side.",
+          "averageConfidence": 0.9450000000000001,
+          "routes": [
+            {
+              "route_id": "route_left",
+              "description": "Narrow carpeted passage continuing around the left side of the central wall mass.",
+              "evidence": "Visible carpet channel and exposed left vertical edge of the wall mass.",
+              "visibility": "clear",
+              "confidence": 0.96,
+              "entry_region": {
+                "left": 318,
+                "top": 258,
+                "right": 390,
+                "bottom": 552
+              }
+            },
+            {
+              "route_id": "route_right",
+              "description": "Carpeted continuation around the right side of the central wall mass.",
+              "evidence": "Exposed right vertical edge and uninterrupted floor space curving toward the right-side continuation.",
+              "visibility": "clear",
+              "confidence": 0.93,
+              "entry_region": {
+                "left": 630,
+                "top": 188,
+                "right": 790,
+                "bottom": 700
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 1,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "A narrow corridor approaches a staggered full-height partition. The only passable-looking continuation is the carpeted opening to the left of that partition; its right side is visibly joined into the enclosing wall, forming a terminating wall face rather than a second passage.",
+          "averageConfidence": 0.96,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Clear carpeted passage continuing around the left side of the staggered partition.",
+              "evidence": "Visible carpet channel and exposed vertical wall edge lead into a side corridor behind the partition.",
+              "visibility": "clear",
+              "confidence": 0.96,
+              "entry_region": {
+                "left": 318,
+                "top": 253,
+                "right": 390,
+                "bottom": 554
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": {
+        "auditor": "adjudicator",
+        "routeCount": 1,
+        "ambiguity": false,
+        "ambiguityReason": "",
+        "sceneSummary": "The corridor terminates against a full-height staggered partition with one visible carpeted continuation around its left edge. The partition’s right face is continuously joined to the enclosing right wall and baseboard, sealing that side.",
+        "averageConfidence": 0.98,
+        "routes": [
+          {
+            "route_id": "route_left",
+            "description": "Narrow carpeted passage continuing behind the left side of the central partition.",
+            "evidence": "A visible carpet channel, ceiling continuation, and exposed vertical partition edge establish a passable opening. On the opposite side, the partition meets the right wall at a continuous corner with uninterrupted baseboard, so no right-side slot remains.",
+            "visibility": "clear",
+            "confidence": 0.98,
+            "entry_region": {
+              "left": 318,
+              "top": 253,
+              "right": 390,
+              "bottom": 554
+            }
+          }
+        ],
+        "backend": "codex-cli-chatgpt",
+        "responseId": null,
+        "responseModel": "gpt-5.6-sol",
+        "usage": null
+      },
+      "comparison": {
+        "status": "pass",
+        "auditorsAgree": false,
+        "adjudicated": true,
+        "preliminaryRouteCounts": [
+          2,
+          1
+        ],
+        "consensusRouteCount": 1,
+        "registeredRouteCount": 1,
+        "desiredRouteCount": 1,
+        "expectedRouteCount": null,
+        "rareRouteApproved": false,
+        "blockingReasons": []
+      }
+    },
+    {
+      "sceneId": "L0-0006A",
+      "image": "/scenes/L0-0006A/final/L0-0006A.png",
+      "pathFingerprint": "fnv1a32-95397a74",
+      "expectedReason": null,
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 1,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "A single open doorway at center-right leads into a visibly continuing carpeted corridor that curves left.",
+          "averageConfidence": 0.99,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Open doorway into the continuing hallway.",
+              "evidence": "Clear rectangular opening with exposed carpet, baseboards, and receding ceiling lights beyond it.",
+              "visibility": "clear",
+              "confidence": 0.99,
+              "entry_region": {
+                "left": 491,
+                "top": 245,
+                "right": 625,
+                "bottom": 674
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 1,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "A single clear doorway opens into a continuing, left-curving carpeted corridor.",
+          "averageConfidence": 0.98,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Doorway into the continuing corridor.",
+              "evidence": "Visible carpet, ceiling lights, and receding walls extend beyond the opening.",
+              "visibility": "clear",
+              "confidence": 0.98,
+              "entry_region": {
+                "left": 490,
+                "top": 245,
+                "right": 622,
+                "bottom": 674
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": null,
+      "comparison": {
+        "status": "pass",
+        "auditorsAgree": true,
+        "adjudicated": false,
+        "preliminaryRouteCounts": [
+          1,
+          1
+        ],
+        "consensusRouteCount": 1,
+        "registeredRouteCount": 1,
+        "desiredRouteCount": 1,
+        "expectedRouteCount": null,
+        "rareRouteApproved": false,
+        "blockingReasons": []
+      }
+    },
+    {
+      "sceneId": "L0-0006B",
+      "image": "/scenes/L0-0006B/final/L0-0006B.png",
+      "pathFingerprint": "fnv1a32-ecf6c9d0",
+      "expectedReason": null,
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 2,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "One staggered full-height central partition creates two distinct carpeted passage slots, one on each side.",
+          "averageConfidence": 0.96,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Left-side narrow passage beside the central partition.",
+              "evidence": "A carpet channel continues between the left corridor boundary and the partition's exposed left vertical edge.",
+              "visibility": "clear",
+              "confidence": 0.96,
+              "entry_region": {
+                "left": 128,
+                "top": 520,
+                "right": 305,
+                "bottom": 1000
+              }
+            },
+            {
+              "route_id": "route_2",
+              "description": "Right-side passage around the central partition.",
+              "evidence": "Visible carpet and the partition's exposed right edge open into a separate channel to its right.",
+              "visibility": "clear",
+              "confidence": 0.96,
+              "entry_region": {
+                "left": 685,
+                "top": 565,
+                "right": 840,
+                "bottom": 1000
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 2,
+          "ambiguity": true,
+          "ambiguityReason": "The central staggered partition geometry is AI-ambiguous, but two distinct side passages are visibly supported.",
+          "sceneSummary": "A central full-height staggered wall mass divides the view into a narrow left passage and a wider right passage.",
+          "averageConfidence": 0.935,
+          "routes": [
+            {
+              "route_id": "route_left",
+              "description": "Narrow passage continuing behind the left side of the central partition.",
+              "evidence": "Exposed carpet channel, ceiling opening, and vertical wall edge lead rearward.",
+              "visibility": "clear",
+              "confidence": 0.94,
+              "entry_region": {
+                "left": 208,
+                "top": 210,
+                "right": 445,
+                "bottom": 610
+              }
+            },
+            {
+              "route_id": "route_right",
+              "description": "Passage continuing around the right side of the staggered central partition.",
+              "evidence": "A broad carpeted opening is framed by the partition's exposed right edge and the right corridor wall.",
+              "visibility": "clear",
+              "confidence": 0.93,
+              "entry_region": {
+                "left": 990,
+                "top": 195,
+                "right": 121,
+                "bottom": 688
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": null,
+      "comparison": {
+        "status": "blocked",
+        "auditorsAgree": true,
+        "adjudicated": false,
+        "preliminaryRouteCounts": [
+          2,
+          2
+        ],
+        "consensusRouteCount": 2,
+        "registeredRouteCount": 2,
+        "desiredRouteCount": 2,
+        "expectedRouteCount": null,
+        "rareRouteApproved": false,
+        "blockingReasons": [
+          "auditor-reported-ambiguity"
+        ]
+      }
+    },
+    {
+      "sceneId": "L0-0006C",
+      "image": "/scenes/L0-0006C/final/L0-0006C.png",
+      "pathFingerprint": "fnv1a32-2d06371e",
+      "expectedReason": null,
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 2,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "Two distinct passages flank the central full-height wall mass: a narrower left opening and a broad right opening that curves away.",
+          "averageConfidence": 0.985,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Narrow passage through the left opening, continuing behind the central wall mass.",
+              "evidence": "Visible carpet channel, doorway edges, and lit ceiling continue beyond the opening.",
+              "visibility": "clear",
+              "confidence": 0.98,
+              "entry_region": {
+                "left": 120,
+                "top": 170,
+                "right": 205,
+                "bottom": 650
+              }
+            },
+            {
+              "route_id": "route_2",
+              "description": "Broad passage through the right opening, curving behind the central wall mass.",
+              "evidence": "Large framed opening exposes continuous carpet, walls, ceiling lights, and a receding curved corridor.",
+              "visibility": "clear",
+              "confidence": 0.99,
+              "entry_region": {
+                "left": 560,
+                "top": 120,
+                "right": 785,
+                "bottom": 755
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 2,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "Two visually distinct passage openings are visible: a narrow left-side opening and a broad right-side curved corridor beyond the central partition.",
+          "averageConfidence": 0.975,
+          "routes": [
+            {
+              "route_id": "route_left_opening",
+              "description": "Narrow carpeted passage through the left opening, continuing behind the foreground wall mass.",
+              "evidence": "Visible doorway-sized gap with exposed carpet, baseboard, and ceiling-lit continuation.",
+              "visibility": "clear",
+              "confidence": 0.96,
+              "entry_region": {
+                "left": 120,
+                "top": 170,
+                "right": 215,
+                "bottom": 690
+              }
+            },
+            {
+              "route_id": "route_right_curved_corridor",
+              "description": "Broad passage to the right of the central wall, curving away into a lit corridor.",
+              "evidence": "Large opening shows continuous carpet, baseboard, ceiling lights, and receding curved wall.",
+              "visibility": "clear",
+              "confidence": 0.99,
+              "entry_region": {
+                "left": 555,
+                "top": 125,
+                "right": 790,
+                "bottom": 740
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": null,
+      "comparison": {
+        "status": "pass",
+        "auditorsAgree": true,
+        "adjudicated": false,
+        "preliminaryRouteCounts": [
+          2,
+          2
+        ],
+        "consensusRouteCount": 2,
+        "registeredRouteCount": 2,
+        "desiredRouteCount": 2,
+        "expectedRouteCount": null,
+        "rareRouteApproved": false,
+        "blockingReasons": []
+      }
+    },
+    {
+      "sceneId": "L0-0007A",
+      "image": "/scenes/L0-0007A/final/L0-0007A.png",
+      "pathFingerprint": "fnv1a32-310a2794",
+      "expectedReason": null,
+      "passes": [
+        {
+          "auditor": "independent-1",
+          "routeCount": 1,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "A single open doorway on the left leads into a curving carpeted continuation; the central wall mass is sealed to the right-side wall.",
+          "averageConfidence": 0.98,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Open left-side doorway into a carpeted hall continuing behind the central wall mass.",
+              "evidence": "Visible doorway, exposed carpet channel, and ceiling continuation.",
+              "visibility": "clear",
+              "confidence": 0.98,
+              "entry_region": {
+                "left": 277,
+                "top": 196,
+                "right": 390,
+                "bottom": 744
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        },
+        {
+          "auditor": "independent-2",
+          "routeCount": 1,
+          "ambiguity": false,
+          "ambiguityReason": "",
+          "sceneSummary": "A single open doorway on the left leads into a visibly continuing carpeted passage; the remaining walls form a closed alcove.",
+          "averageConfidence": 0.98,
+          "routes": [
+            {
+              "route_id": "route_1",
+              "description": "Open doorway leading to a leftward-curving corridor.",
+              "evidence": "Visible carpet and wall/ceiling continuation are seen through the doorway.",
+              "visibility": "clear",
+              "confidence": 0.98,
+              "entry_region": {
+                "left": 278,
+                "top": 194,
+                "right": 377,
+                "bottom": 747
+              }
+            }
+          ],
+          "backend": "codex-cli-chatgpt",
+          "responseId": null,
+          "responseModel": "gpt-5.6-terra",
+          "usage": null
+        }
+      ],
+      "adjudication": null,
+      "comparison": {
+        "status": "pass",
+        "auditorsAgree": true,
+        "adjudicated": false,
+        "preliminaryRouteCounts": [
+          1,
+          1
+        ],
+        "consensusRouteCount": 1,
+        "registeredRouteCount": 1,
+        "desiredRouteCount": 1,
+        "expectedRouteCount": null,
+        "rareRouteApproved": false,
+        "blockingReasons": []
+      }
+    }
+  ]
+}

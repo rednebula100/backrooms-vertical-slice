@@ -1,5 +1,11 @@
 # Asset replacement history
 
+## L0-0004C and L0-0004D — 0.7.0 route-silhouette corrections
+
+- `L0-0004C` keeps its stable scene ID and URL; its single continuation was moved inward from the cropped frame edge so the passage and mask are fully visible.
+- `L0-0004D` keeps its stable scene ID and URL; stray wall edges were joined and the left bend was opened so the intended two-route split no longer suggests extra wall-ladder slots.
+- The original generated files remain in the built-in imagegen output directory; only the project copies were replaced.
+
 ## L0-0002B — 0.2.0 continuity correction
 
 - Stable scene ID: `L0-0002B`

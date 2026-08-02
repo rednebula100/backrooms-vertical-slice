@@ -1,29 +1,128 @@
 {
-  "world_version": "vertical-slice-0.5.0",
+  "world_version": "vertical-slice-0.7.0",
   "frontiers": [
     {
-      "branch_id": "BR-L0-P1",
-      "current_scene_id": "L0-0004A",
-      "path_id": "L0-0004A-P1",
+      "branch_id": "BR-L0-0002B-P2",
+      "current_scene_id": "L0-0003C",
+      "path_id": "L0-0003C-P1",
+      "level_id": "LV-000",
+      "depth": 2,
+      "status": "pending",
+      "approval_status": "provisional-generated",
+      "current_state": { "openness": 0.24, "ceiling": 0.29, "objects": 0, "wrongness": 0.16 },
+      "recent_drift": ["The new B-side branch contracts into one left-curving corridor around a solid pier."],
+      "continuity_anchors": ["left-curving carpet", "central pier", "rounded outer wall", "dim fluorescent panel"]
+    },
+    {
+      "branch_id": "BR-L0-0003B-P2",
+      "current_scene_id": "L0-0004C",
+      "path_id": "L0-0004C-P1",
       "level_id": "LV-000",
       "depth": 3,
       "status": "pending",
       "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.31, "ceiling": 0.35, "objects": 0, "wrongness": 0.18 },
-      "recent_drift": ["The route resolves into one right-side carpet channel; the left wall masses join as a solid obstruction."],
-      "continuity_anchors": ["joined left wall mass", "single right-side carpet channel", "near framing walls", "receding fluorescent run"]
+      "current_state": { "openness": 0.23, "ceiling": 0.3, "objects": 0, "wrongness": 0.16 },
+      "recent_drift": ["The route settles beside a long wall and turns once behind the right frame."],
+      "continuity_anchors": ["right framing wall", "carpet turn", "single ceiling panel", "long left wall"]
+    },
+    {
+      "branch_id": "BR-L0-0003B-P3",
+      "current_scene_id": "L0-0004D",
+      "path_id": "L0-0004D-P1",
+      "level_id": "LV-000",
+      "depth": 3,
+      "status": "pending",
+      "approval_status": "provisional-generated",
+      "current_state": { "openness": 0.31, "ceiling": 0.31, "objects": 0, "wrongness": 0.17 },
+      "recent_drift": ["The middle route reaches a two-way junction and keeps its narrower continuation on the left."],
+      "continuity_anchors": ["narrow left corridor", "central wall mass", "receding fluorescent panels", "same carpet"]
+    },
+    {
+      "branch_id": "BR-L0-0004D-P2",
+      "parent_branch_id": "BR-L0-0003B-P3",
+      "current_scene_id": "L0-0004D",
+      "path_id": "L0-0004D-P2",
+      "level_id": "LV-000",
+      "depth": 3,
+      "status": "pending",
+      "approval_status": "provisional-generated",
+      "current_state": { "openness": 0.31, "ceiling": 0.31, "objects": 0, "wrongness": 0.17 },
+      "recent_drift": ["A separate right opening splits away behind the central wall mass."],
+      "continuity_anchors": ["right opening", "central wall corner", "bright ceiling panel", "same carpet and trim"]
+    },
+    {
+      "branch_id": "BR-L0-0004B-P2",
+      "current_scene_id": "L0-0005C",
+      "path_id": "L0-0005C-P1",
+      "level_id": "LV-000",
+      "depth": 4,
+      "status": "pending",
+      "approval_status": "provisional-generated",
+      "current_state": { "openness": 0.22, "ceiling": 0.3, "objects": 0, "wrongness": 0.17 },
+      "recent_drift": ["The B-side route contracts to one narrow passage behind the center wall."],
+      "continuity_anchors": ["left-side opening", "center wall face", "muted fluorescent panel", "same carpet"]
+    },
+    {
+      "branch_id": "BR-L0-0005A-P2",
+      "current_scene_id": "L0-0006C",
+      "path_id": "L0-0006C-P1",
+      "level_id": "LV-000",
+      "depth": 5,
+      "status": "pending",
+      "approval_status": "provisional-generated",
+      "current_state": { "openness": 0.44, "ceiling": 0.36, "objects": 0, "wrongness": 0.18 },
+      "recent_drift": ["The secondary A route opens into a brighter split; the smaller continuation stays on the left."],
+      "continuity_anchors": ["small left opening", "left fluorescent panel", "same wallpaper", "same carpet"]
+    },
+    {
+      "branch_id": "BR-L0-0006C-P2",
+      "parent_branch_id": "BR-L0-0005A-P2",
+      "current_scene_id": "L0-0006C",
+      "path_id": "L0-0006C-P2",
+      "level_id": "LV-000",
+      "depth": 5,
+      "status": "pending",
+      "approval_status": "provisional-generated",
+      "current_state": { "openness": 0.44, "ceiling": 0.36, "objects": 0, "wrongness": 0.18 },
+      "recent_drift": ["A broader continuation curves away on the right without merging back."],
+      "continuity_anchors": ["broad right opening", "curved wall", "receding bright panels", "same carpet and trim"]
     },
     {
       "branch_id": "BR-L0-P2",
-      "current_scene_id": "L0-0004B",
-      "path_id": "L0-0004B-P1",
+      "current_scene_id": "L0-0006B",
+      "path_id": "L0-0006B-P1",
       "level_id": "LV-000",
-      "depth": 3,
+      "depth": 5,
       "status": "pending",
       "approval_status": "provisional-generated",
-      "current_state": { "openness": 0.21, "ceiling": 0.3, "objects": 0, "wrongness": 0.16 },
-      "recent_drift": ["The foreground soffit resolved into the acoustic grid while the route stayed narrow and enclosed."],
-      "continuity_anchors": ["left offset wall", "curved right wall", "single carpet channel", "muted fluorescent run"]
+      "current_state": { "openness": 0.3, "ceiling": 0.31, "objects": 0, "wrongness": 0.18 },
+      "recent_drift": ["The B branch reaches a solid central wall mass and keeps its narrower main continuation on the left."],
+      "continuity_anchors": ["narrow left corridor", "central wall mass", "single fluorescent panel", "same carpet and trim"]
+    },
+    {
+      "branch_id": "BR-L0-0006B-P2",
+      "parent_branch_id": "BR-L0-P2",
+      "current_scene_id": "L0-0006B",
+      "path_id": "L0-0006B-P2",
+      "level_id": "LV-000",
+      "depth": 5,
+      "status": "pending",
+      "approval_status": "provisional-generated",
+      "current_state": { "openness": 0.3, "ceiling": 0.31, "objects": 0, "wrongness": 0.18 },
+      "recent_drift": ["A broad secondary right opening appears without changing the B branch's dimmer material and lighting family."],
+      "continuity_anchors": ["broad right opening", "central wall corner", "muted fluorescent panel", "same carpet and trim"]
+    },
+    {
+      "branch_id": "BR-L0-P1",
+      "current_scene_id": "L0-0007A",
+      "path_id": "L0-0007A-P1",
+      "level_id": "LV-000",
+      "depth": 6,
+      "status": "pending",
+      "approval_status": "provisional-generated",
+      "current_state": { "openness": 0.32, "ceiling": 0.34, "objects": 0, "wrongness": 0.17 },
+      "recent_drift": ["The A branch contracts slightly and offsets its only continuation to the left."],
+      "continuity_anchors": ["left-offset wall opening", "curved continuation", "bright ceiling panel", "same carpet and trim"]
     }
   ]
 }

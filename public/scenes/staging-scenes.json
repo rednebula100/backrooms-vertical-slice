@@ -1,0 +1,56 @@
+{
+  "worldVersion": "vertical-slice-0.7.0",
+  "updatedAt": "2026-08-02T00:00:00.000Z",
+  "batch": {
+    "id": "L0-AUTO-001",
+    "strategy": "depth-first-human-gated",
+    "targetSceneCount": 5,
+    "fourPlusApprovedSceneIds": []
+  },
+  "completedSceneIds": [],
+  "candidates": [
+    {
+      "id": "L0-0008A",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P1",
+      "status": "awaiting-route-annotation",
+      "approvalStatus": "generated-candidate",
+      "reviewStatus": "needs-human-route-annotation",
+      "staging": true,
+      "accessibleName": "an unreviewed A-branch corridor candidate",
+      "description": "The A route bends right through a longer, narrow fluorescent corridor.",
+      "sourceSceneId": "L0-0007A",
+      "sourcePathId": "L0-0007A-P1",
+      "continuityAnchors": [
+        "rightward carpet bend",
+        "continuous curved wall",
+        "yellow-beige wallpaper",
+        "taupe patterned carpet",
+        "bright fluorescent panels"
+      ],
+      "recentChanges": [
+        "Generated as candidate 1 of the first human-gated five-scene batch."
+      ],
+      "image": "/scenes/L0-0008A/candidates/L0-0008A-C01.png",
+      "asset": {
+        "width": 1448,
+        "height": 1086,
+        "aspectRatio": "4:3"
+      },
+      "camera": {
+        "heightMeters": 1.65,
+        "lensEquivalentMm": 40,
+        "facing": "west-northwest"
+      },
+      "state": {
+        "openness": 0.25,
+        "ceiling": 0.33,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "paths": [],
+      "generatorOutput": "exec-d5919c6a-8d75-4c89-84f5-af82831d819c.png",
+      "promptRecord": "docs/generation-prompts.md#l0-0008a"
+    }
+  ]
+}

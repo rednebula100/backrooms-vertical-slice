@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "description": "Human-confirmed regression cases for AI-generated multi-route geometry.",
+  "cases": [
+    {
+      "sceneId": "L0-0002B",
+      "expectedVisibleRouteCount": 2,
+      "humanTopologyApproved": true,
+      "reason": "One offset wall mass creates two plausible continuations."
+    },
+    {
+      "sceneId": "L0-0003B",
+      "expectedVisibleRouteCount": 3,
+      "humanTopologyApproved": true,
+      "reason": "Two staggered wall masses create three plausible continuations."
+    },
+    {
+      "sceneId": "L0-0004B",
+      "expectedVisibleRouteCount": 2,
+      "humanTopologyApproved": true,
+      "reason": "The user-confirmed image reading contains two traversable continuations."
+    }
+  ]
+}

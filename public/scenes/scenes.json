@@ -1,5 +1,5 @@
 {
-  "worldVersion": "vertical-slice-0.5.0",
+  "worldVersion": "vertical-slice-0.7.0",
   "startSceneId": "L0-0001",
   "contentBoundary": {
     "symbolImage": "/boundary/content-boundary-symbol.png",
@@ -112,11 +112,11 @@
       "approvalStatus": "provisional-generated",
       "reviewStatus": "needs-canon-review",
       "accessibleName": "the narrow corridor beyond the right passage",
-      "description": "A corrected compressed corridor with the opening soffit carried into the immediate foreground.",
+      "description": "A corrected compressed corridor with the opening soffit carried into the foreground and two visible continuations around the offset pier.",
       "sourceSceneId": "L0-0001",
       "sourcePathId": "L0-0001-P2",
       "continuityAnchors": ["foreground lowered soffit", "rounded left wall", "straight right wall", "compressed width", "dimmer fluorescence"],
-      "recentChanges": ["Replaced the first provisional asset to preserve the source soffit before the acoustic ceiling resumes.", "Converted the former production frontier into a fixed route to L0-0003B."],
+      "recentChanges": ["Replaced the first provisional asset to preserve the source soffit before the acoustic ceiling resumes.", "Converted the former production frontier into a fixed route to L0-0003B.", "Registered the user-confirmed second passage on the right side of the offset pier."],
       "image": "/scenes/L0-0002B/final/L0-0002B.png",
       "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
       "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east-northeast" },
@@ -137,6 +137,23 @@
           "regions": {
             "desktop": [[650, 340], [840, 340], [840, 655], [650, 655]],
             "mobile": [[590, 320], [900, 320], [900, 700], [590, 700]]
+          }
+        },
+        {
+          "id": "L0-0002B-P2",
+          "status": "active",
+          "accessibleName": "Continue on the right side of the offset pier",
+          "semanticDescription": "The second compressed continuation visible along the right edge of the offset pier",
+          "screenLocation": "right-center, medium depth",
+          "physicalForm": "narrow wall-bounded passage beside the offset pier",
+          "movementDirection": "forward then right",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0003C",
+          "targetCamera": "several meters beyond the right side of the offset pier, facing a single left-curving continuation",
+          "continuityAnchors": ["right edge of the offset pier", "lowered soffit transition", "compressed carpet channel", "dimmer fluorescence"],
+          "regions": {
+            "desktop": [[845, 335], [930, 335], [930, 650], [845, 650]],
+            "mobile": [[905, 300], [1105, 300], [1105, 690], [905, 690]]
           }
         }
       ]
@@ -182,15 +199,15 @@
       "id": "L0-0004A",
       "levelId": "LV-000",
       "branchId": "BR-L0-P1",
-      "status": "provisional-frontier",
+      "status": "provisional",
       "approvalStatus": "provisional-generated",
       "reviewStatus": "needs-canon-review",
-      "accessibleName": "a shallow circulation bay at the end of the current left bundle",
-      "description": "The A route narrows to one right-side passage around a final joined wall mass.",
+      "accessibleName": "a shallow circulation bay along the left bundle",
+      "description": "The A route narrows to one right-side passage around a joined wall mass before opening into the next junction.",
       "sourceSceneId": "L0-0003A",
       "sourcePathId": "L0-0003A-P1",
       "continuityAnchors": ["joined left wall mass", "near framing walls", "single right-side carpet channel", "receding fluorescent run"],
-      "recentChanges": ["Generated as the current A-branch production frontier.", "Joined the left wall masses so the right-side opening is the only visually traversable route."],
+      "recentChanges": ["Generated as the former A-branch production frontier.", "Joined the left wall masses so the right-side opening is the only visually traversable route.", "Activated its registered passage for the five-scene pilot batch."],
       "image": "/scenes/L0-0004A/final/L0-0004A.png",
       "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
       "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "southwest" },
@@ -198,16 +215,15 @@
       "paths": [
         {
           "id": "L0-0004A-P1",
-          "status": "pending",
-          "frontier": true,
+          "status": "active",
           "accessibleName": "Continue around the central wall",
           "semanticDescription": "The unresolved carpeted continuation passing the central wall on its right",
           "screenLocation": "center-right, medium depth",
           "physicalForm": "shallow bay tightening into a forward route",
           "movementDirection": "forward then slightly right",
           "movementType": "DIRECT",
-          "targetSceneId": null,
-          "targetCamera": null,
+          "targetSceneId": "L0-0005A",
+          "targetCamera": "several meters beyond the right-side passage, facing a two-route circulation pocket",
           "continuityAnchors": ["broad central wall", "right-side carpet channel", "near framing walls", "receding fluorescent run"],
           "regions": {
             "desktop": [[820, 360], [955, 360], [955, 635], [820, 635]],
@@ -224,11 +240,11 @@
       "approvalStatus": "provisional-generated",
       "reviewStatus": "needs-canon-review",
       "accessibleName": "a staggered narrow pocket beyond the first right offset",
-      "description": "The B route has passed its first pier and turned into a compressed pocket framed by a left wall mass and curved right boundary.",
+      "description": "The B route has passed its first pier and entered a compressed pocket with three user-confirmed continuations around staggered wall masses.",
       "sourceSceneId": "L0-0002B",
       "sourcePathId": "L0-0002B-P1",
       "continuityAnchors": ["left foreground wall mass", "central offset", "curved right wall", "narrow right-center opening", "dimmer fluorescent run"],
-      "recentChanges": ["Replaced the first continuation because it repeated L0-0002B too closely; the camera now passes the pier and completes a legible rightward bend."],
+      "recentChanges": ["Replaced the first continuation because it repeated L0-0002B too closely; the camera now passes the pier and completes a legible rightward bend.", "Registered three distinct passage masks from the user's image review."],
       "image": "/scenes/L0-0003B/final/L0-0003B.png",
       "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
       "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east" },
@@ -238,7 +254,7 @@
           "id": "L0-0003B-P1",
           "status": "active",
           "accessibleName": "Continue through the narrow carpet channel",
-          "semanticDescription": "A single narrow opening between the central offset and curved right wall",
+          "semanticDescription": "The rightmost narrow opening between the central offset and curved right wall",
           "screenLocation": "right-center, medium depth",
           "physicalForm": "vertical passage gap beyond a staggered circulation pocket",
           "movementDirection": "forward then slightly right",
@@ -250,6 +266,40 @@
             "desktop": [[940, 285], [1020, 285], [1020, 660], [940, 660]],
             "mobile": [[870, 240], [1090, 240], [1090, 710], [870, 710]]
           }
+        },
+        {
+          "id": "L0-0003B-P2",
+          "status": "active",
+          "accessibleName": "Turn through the left opening around the near wall mass",
+          "semanticDescription": "A near left continuation slipping around the first staggered wall mass",
+          "screenLocation": "left-center, medium depth",
+          "physicalForm": "partially occluded carpeted passage beside the near wall mass",
+          "movementDirection": "forward then left",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0004C",
+          "targetCamera": "around the near left wall mass, facing one right-edge continuation",
+          "continuityAnchors": ["near left wall mass", "staggered pocket", "same carpet and trim", "dimmer fluorescent run"],
+          "regions": {
+            "desktop": [[390, 205], [590, 205], [590, 650], [390, 650]],
+            "mobile": [[370, 175], [570, 175], [570, 700], [370, 700]]
+          }
+        },
+        {
+          "id": "L0-0003B-P3",
+          "status": "active",
+          "accessibleName": "Continue through the middle staggered opening",
+          "semanticDescription": "A middle continuation threading between the two staggered wall masses",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "narrow carpeted passage between offset wall faces",
+          "movementDirection": "forward",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0004D",
+          "targetCamera": "between the staggered wall masses, facing an unequal two-route split",
+          "continuityAnchors": ["two staggered wall masses", "middle carpet channel", "same ceiling grid", "curved outer wall"],
+          "regions": {
+            "desktop": [[650, 210], [850, 210], [850, 650], [650, 650]],
+            "mobile": [[650, 180], [850, 180], [850, 700], [650, 700]]
+          }
         }
       ]
     },
@@ -257,15 +307,15 @@
       "id": "L0-0004B",
       "levelId": "LV-000",
       "branchId": "BR-L0-P2",
-      "status": "provisional-frontier",
+      "status": "provisional",
       "approvalStatus": "provisional-generated",
       "reviewStatus": "needs-canon-review",
-      "accessibleName": "a tight curved corridor at the end of the current right bundle",
-      "description": "The B route remains narrow and enclosed as its carpet channel threads between a left offset and curved right wall.",
+      "accessibleName": "a tight curved corridor along the right bundle",
+      "description": "The B route remains narrow and enclosed while two user-confirmed continuations split around the staggered left offset.",
       "sourceSceneId": "L0-0003B",
       "sourcePathId": "L0-0003B-P1",
       "continuityAnchors": ["left offset walls", "curved right wall", "narrow carpet channel", "muted fluorescent light"],
-      "recentChanges": ["Generated and aspect-corrected as the current B-branch production frontier."],
+      "recentChanges": ["Generated and aspect-corrected as the former B-branch production frontier.", "Activated its registered passage for the five-scene pilot batch.", "Registered the user-confirmed second passage around the left offset."],
       "image": "/scenes/L0-0004B/final/L0-0004B.png",
       "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
       "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east-southeast" },
@@ -273,20 +323,494 @@
       "paths": [
         {
           "id": "L0-0004B-P1",
-          "status": "pending",
-          "frontier": true,
+          "status": "active",
           "accessibleName": "Continue through the bend ahead",
-          "semanticDescription": "The unresolved narrow carpet route between the left offset and curved right wall",
+          "semanticDescription": "The right-hand narrow carpet route between the left offset and curved right wall",
           "screenLocation": "center, medium depth",
           "physicalForm": "tight corridor bending gently around staggered walls",
           "movementDirection": "forward then slightly right",
           "movementType": "DIRECT",
-          "targetSceneId": null,
-          "targetCamera": null,
+          "targetSceneId": "L0-0005B",
+          "targetCamera": "several meters into the bend, facing a single compressed continuation",
           "continuityAnchors": ["left offset wall", "curved right wall", "single carpet channel", "muted fluorescent run"],
           "regions": {
             "desktop": [[770, 270], [935, 270], [935, 580], [770, 580]],
             "mobile": [[700, 240], [1005, 240], [1005, 630], [700, 630]]
+          }
+        },
+        {
+          "id": "L0-0004B-P2",
+          "status": "active",
+          "accessibleName": "Continue around the left side of the staggered offset",
+          "semanticDescription": "The second passage slipping behind the staggered left wall mass",
+          "screenLocation": "left-center, medium depth",
+          "physicalForm": "partially occluded wall-bounded corridor around the left offset",
+          "movementDirection": "forward then left",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0005C",
+          "targetCamera": "around the left side of the staggered offset, facing one left continuation",
+          "continuityAnchors": ["staggered left wall mass", "left carpet continuation", "same ceiling grid", "muted fluorescent light"],
+          "regions": {
+            "desktop": [[440, 175], [650, 175], [650, 650], [440, 650]],
+            "mobile": [[430, 145], [650, 145], [650, 650], [430, 650]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0005A",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P1",
+      "status": "provisional",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-route-playtest",
+      "accessibleName": "a broad circulation pocket split by two unequal openings",
+      "description": "The brighter A route clears its joined wall mass and separates into a broad left continuation and a narrower right passage.",
+      "sourceSceneId": "L0-0004A",
+      "sourcePathId": "L0-0004A-P1",
+      "continuityAnchors": ["yellow-beige wallpaper", "taupe patterned carpet", "dark vinyl base trim", "acoustic ceiling grid", "bright fluorescent panels"],
+      "recentChanges": ["Generated for the five-scene automation pilot.", "Registered both visually plausible passages instead of forcing a single-route interpretation."],
+      "image": "/scenes/L0-0005A/final/L0-0005A.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "south-southwest" },
+      "state": { "openness": 0.43, "ceiling": 0.35, "objects": 0, "wrongness": 0.17 },
+      "paths": [
+        {
+          "id": "L0-0005A-P1",
+          "status": "active",
+          "accessibleName": "Move through the broad opening on the left",
+          "semanticDescription": "Broad carpeted opening that continues around a gentle left bend",
+          "screenLocation": "left-center, medium depth",
+          "physicalForm": "wide rectangular wall opening into a curved corridor",
+          "movementDirection": "forward then left",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0006A",
+          "targetCamera": "past the broad opening and several meters around its gentle left bend",
+          "continuityAnchors": ["wide left opening", "curved inner wall", "bright fluorescent run", "same carpet and trim"],
+          "regions": {
+            "desktop": [[445, 215], [692, 215], [692, 744], [445, 744]],
+            "mobile": [[410, 185], [730, 185], [730, 755], [410, 755]]
+          }
+        },
+        {
+          "id": "L0-0005A-P2",
+          "status": "active",
+          "accessibleName": "Move through the narrow opening on the right",
+          "semanticDescription": "Narrower carpeted side passage receding behind the right wall opening",
+          "screenLocation": "right-center, medium depth",
+          "physicalForm": "narrow rectangular wall opening into a short side corridor",
+          "movementDirection": "forward then slightly right",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0006C",
+          "targetCamera": "beyond the narrow right opening, facing two asymmetric carpeted continuations",
+          "continuityAnchors": ["narrow right opening", "right-side corridor wall", "same ceiling tiles", "same carpet and trim"],
+          "regions": {
+            "desktop": [[988, 235], [1125, 235], [1125, 735], [988, 735]],
+            "mobile": [[950, 205], [1165, 205], [1165, 755], [950, 755]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0005B",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P2",
+      "status": "provisional",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-route-playtest",
+      "accessibleName": "a compressed corridor continuing through one shallow bend",
+      "description": "The darker B route advances into a single narrow carpet channel bounded by close curved walls.",
+      "sourceSceneId": "L0-0004B",
+      "sourcePathId": "L0-0004B-P1",
+      "continuityAnchors": ["close yellow-beige walls", "taupe patterned carpet", "dark vinyl base trim", "compressed ceiling grid", "muted fluorescent panels"],
+      "recentChanges": ["Generated for the five-scene automation pilot.", "Confirmed one visible route without hidden floor channels."],
+      "image": "/scenes/L0-0005B/final/L0-0005B.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east" },
+      "state": { "openness": 0.2, "ceiling": 0.29, "objects": 0, "wrongness": 0.16 },
+      "paths": [
+        {
+          "id": "L0-0005B-P1",
+          "status": "active",
+          "accessibleName": "Continue through the narrow bend ahead",
+          "semanticDescription": "The single carpeted corridor between the close wall masses",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "compressed corridor bending slightly left",
+          "movementDirection": "forward then slightly left",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0006B",
+          "targetCamera": "several meters around the slight bend at the next compressed junction",
+          "continuityAnchors": ["left wall edge", "curved right wall", "single carpet channel", "muted fluorescent run"],
+          "regions": {
+            "desktop": [[605, 205], [746, 205], [746, 735], [605, 735]],
+            "mobile": [[565, 175], [790, 175], [790, 755], [565, 755]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0006A",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P1",
+      "status": "provisional",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-route-playtest",
+      "accessibleName": "a quiet broad chamber with one centered continuation",
+      "description": "The broad A branch settles into a shallow chamber whose only opening curves gently away to the right.",
+      "sourceSceneId": "L0-0005A",
+      "sourcePathId": "L0-0005A-P1",
+      "continuityAnchors": ["broad curved walls", "yellow-beige wallpaper", "taupe patterned carpet", "dark vinyl base trim", "bright fluorescent panels"],
+      "recentChanges": ["Generated for the five-scene automation pilot.", "Registered the full height of its only visible opening as the click region."],
+      "image": "/scenes/L0-0006A/final/L0-0006A.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "south" },
+      "state": { "openness": 0.36, "ceiling": 0.35, "objects": 0, "wrongness": 0.16 },
+      "paths": [
+        {
+          "id": "L0-0006A-P1",
+          "status": "active",
+          "accessibleName": "Continue through the opening ahead",
+          "semanticDescription": "The only carpeted opening, curving gently right beyond the shallow chamber",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "tall rectangular opening into a right-curving corridor",
+          "movementDirection": "forward then right",
+          "movementType": "DIRECT",
+          "targetSceneId": "L0-0007A",
+          "targetCamera": "through the centered opening and several meters around its rightward curve",
+          "continuityAnchors": ["centered wall opening", "right-curving continuation", "bright fluorescent run", "same carpet and trim"],
+          "regions": {
+            "desktop": [[705, 255], [910, 255], [910, 738], [705, 738]],
+            "mobile": [[665, 220], [952, 220], [952, 755], [665, 755]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0006B",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-route-playtest",
+      "accessibleName": "a compressed junction divided into two unequal routes",
+      "description": "The B branch reaches a solid central wall mass with a narrow left corridor and a broader right opening.",
+      "sourceSceneId": "L0-0005B",
+      "sourcePathId": "L0-0005B-P1",
+      "continuityAnchors": ["central joined wall mass", "dim yellow-beige wallpaper", "taupe patterned carpet", "dark vinyl base trim", "muted fluorescent panels"],
+      "recentChanges": ["Generated for the five-scene automation pilot.", "Registered both visible routes as separate pending production frontiers."],
+      "image": "/scenes/L0-0006B/final/L0-0006B.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east-northeast" },
+      "state": { "openness": 0.3, "ceiling": 0.31, "objects": 0, "wrongness": 0.18 },
+      "paths": [
+        {
+          "id": "L0-0006B-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-P2",
+          "accessibleName": "Continue through the narrow corridor on the left",
+          "semanticDescription": "Narrow carpeted continuation running beside the left edge of the central wall mass",
+          "screenLocation": "left-center, medium depth",
+          "physicalForm": "narrow wall-bounded corridor",
+          "movementDirection": "forward then slightly left",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["narrow left corridor", "central wall mass", "single fluorescent panel", "same carpet and trim"],
+          "regions": {
+            "desktop": [[296, 180], [446, 180], [446, 620], [296, 620]],
+            "mobile": [[260, 145], [485, 145], [485, 700], [260, 700]]
+          }
+        },
+        {
+          "id": "L0-0006B-P2",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0006B-P2",
+          "accessibleName": "Move through the broad opening on the right",
+          "semanticDescription": "Broader carpeted opening beyond the right edge of the central wall mass",
+          "screenLocation": "right-center, near to medium depth",
+          "physicalForm": "wide rectangular wall opening into a shallow side space",
+          "movementDirection": "forward then right",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["broad right opening", "central wall corner", "muted fluorescent panel", "same carpet and trim"],
+          "regions": {
+            "desktop": [[910, 55], [1218, 55], [1218, 650], [985, 650], [985, 225], [910, 225]],
+            "mobile": [[870, 30], [1255, 30], [1255, 715], [950, 715], [950, 205], [870, 205]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0007A",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P1",
+      "status": "provisional-frontier",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-route-playtest",
+      "accessibleName": "a shallow A-branch chamber with one left continuation",
+      "description": "The A route contracts slightly and leaves one tall left-side opening curving out of sight.",
+      "sourceSceneId": "L0-0006A",
+      "sourcePathId": "L0-0006A-P1",
+      "continuityAnchors": ["curved right wall", "left-offset opening", "yellow-beige wallpaper", "taupe patterned carpet", "bright fluorescent panel"],
+      "recentChanges": ["Generated as the fifth scene in the automation pilot.", "Registered its only visible route as the current A production frontier."],
+      "image": "/scenes/L0-0007A/final/L0-0007A.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "south-southwest" },
+      "state": { "openness": 0.32, "ceiling": 0.34, "objects": 0, "wrongness": 0.17 },
+      "paths": [
+        {
+          "id": "L0-0007A-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-P1",
+          "accessibleName": "Continue through the tall opening on the left",
+          "semanticDescription": "The only carpeted continuation, offset left and bending out of sight",
+          "screenLocation": "left-center, medium depth",
+          "physicalForm": "tall rectangular opening into a left-curving corridor",
+          "movementDirection": "forward then left",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["left-offset wall opening", "curved continuation", "bright ceiling panel", "same carpet and trim"],
+          "regions": {
+            "desktop": [[398, 205], [568, 205], [568, 748], [398, 748]],
+            "mobile": [[360, 170], [612, 170], [612, 755], [360, 755]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0003C",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-0002B-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-route-playtest",
+      "accessibleName": "a compressed B-side corridor curving left around one pier",
+      "description": "The second route from L0-0002B clears the right side of its pier and contracts into one left-curving continuation.",
+      "sourceSceneId": "L0-0002B",
+      "sourcePathId": "L0-0002B-P2",
+      "continuityAnchors": ["rounded corridor wall", "single offset pier", "dim fluorescent panels", "same carpet and trim"],
+      "recentChanges": ["Generated to make the user-confirmed second route in L0-0002B playable.", "Registered its only visible continuation as a production frontier."],
+      "image": "/scenes/L0-0003C/final/L0-0003C.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east-southeast" },
+      "state": { "openness": 0.24, "ceiling": 0.29, "objects": 0, "wrongness": 0.16 },
+      "paths": [
+        {
+          "id": "L0-0003C-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0002B-P2",
+          "accessibleName": "Continue around the left side of the pier",
+          "semanticDescription": "The only carpeted continuation curving left around the central pier",
+          "screenLocation": "left-center, medium depth",
+          "physicalForm": "narrow curved corridor beside a solid pier",
+          "movementDirection": "forward then left",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["left-curving carpet", "central pier", "rounded outer wall", "dim fluorescent panel"],
+          "regions": {
+            "desktop": [[485, 295], [735, 295], [735, 650], [485, 650]],
+            "mobile": [[450, 260], [700, 260], [700, 700], [450, 700]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0004C",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-0003B-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-route-playtest",
+      "accessibleName": "a tight B-side pocket ending in one right turn",
+      "description": "The leftmost route from L0-0003B settles beside a long wall and turns once at the far right edge.",
+      "sourceSceneId": "L0-0003B",
+      "sourcePathId": "L0-0003B-P2",
+      "continuityAnchors": ["long left wall", "right-edge turn", "muted fluorescent panel", "same carpet and trim"],
+      "recentChanges": ["Generated to make the user-confirmed leftmost route in L0-0003B playable.", "Moved its only opening inward from the cropped frame edge so the full passage is clickable."],
+      "image": "/scenes/L0-0004C/final/L0-0004C.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "northeast" },
+      "state": { "openness": 0.23, "ceiling": 0.3, "objects": 0, "wrongness": 0.16 },
+      "paths": [
+        {
+          "id": "L0-0004C-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0003B-P2",
+          "accessibleName": "Turn through the opening at the far right",
+          "semanticDescription": "The only carpet continuation turning behind the right framing wall",
+          "screenLocation": "far right, medium depth",
+          "physicalForm": "partially occluded right-turn corridor",
+          "movementDirection": "forward then right",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["right framing wall", "carpet turn", "single ceiling panel", "long left wall"],
+          "regions": {
+            "desktop": [[1025, 285], [1210, 285], [1210, 650], [1025, 650]],
+            "mobile": [[1000, 250], [1230, 250], [1230, 700], [1000, 700]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0004D",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-0003B-P3",
+      "status": "provisional-frontier",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-route-playtest",
+      "accessibleName": "a compressed B-side junction split by a broad wall mass",
+      "description": "The middle route from L0-0003B opens onto unequal left and right passages divided by one solid wall.",
+      "sourceSceneId": "L0-0003B",
+      "sourcePathId": "L0-0003B-P3",
+      "continuityAnchors": ["broad central wall mass", "narrow left corridor", "right opening", "muted fluorescent grid"],
+      "recentChanges": ["Generated to make the user-confirmed middle route in L0-0003B playable.", "Joined stray wall edges and opened the left bend so exactly two continuations remain legible."],
+      "image": "/scenes/L0-0004D/final/L0-0004D.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east" },
+      "state": { "openness": 0.31, "ceiling": 0.31, "objects": 0, "wrongness": 0.17 },
+      "paths": [
+        {
+          "id": "L0-0004D-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0003B-P3",
+          "accessibleName": "Continue through the narrow corridor on the left",
+          "semanticDescription": "A narrow left passage running beside the central wall mass",
+          "screenLocation": "left, medium depth",
+          "physicalForm": "tall narrow wall-bounded corridor",
+          "movementDirection": "forward then slightly left",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["narrow left corridor", "central wall mass", "receding fluorescent panels", "same carpet"],
+          "regions": {
+            "desktop": [[300, 280], [460, 280], [460, 650], [300, 650]],
+            "mobile": [[270, 245], [480, 245], [480, 700], [270, 700]]
+          }
+        },
+        {
+          "id": "L0-0004D-P2",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0004D-P2",
+          "accessibleName": "Move through the opening on the right",
+          "semanticDescription": "A separate right passage beyond the central wall mass",
+          "screenLocation": "right-center, medium depth",
+          "physicalForm": "rectangular wall-bounded side opening",
+          "movementDirection": "forward then right",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["right opening", "central wall corner", "bright ceiling panel", "same carpet and trim"],
+          "regions": {
+            "desktop": [[1055, 230], [1190, 230], [1190, 650], [1055, 650]],
+            "mobile": [[1020, 195], [1250, 195], [1250, 700], [1020, 700]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0005C",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-0004B-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-route-playtest",
+      "accessibleName": "a dim B-side corridor turning left behind one wall",
+      "description": "The second route from L0-0004B clears the left offset and contracts to one narrow left-hand continuation.",
+      "sourceSceneId": "L0-0004B",
+      "sourcePathId": "L0-0004B-P2",
+      "continuityAnchors": ["left opening", "solid center wall", "single fluorescent panel", "same carpet and trim"],
+      "recentChanges": ["Generated to make the user-confirmed second route in L0-0004B playable.", "Kept all other wall edges sealed."],
+      "image": "/scenes/L0-0005C/final/L0-0005C.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "east-northeast" },
+      "state": { "openness": 0.22, "ceiling": 0.3, "objects": 0, "wrongness": 0.17 },
+      "paths": [
+        {
+          "id": "L0-0005C-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0004B-P2",
+          "accessibleName": "Continue through the narrow opening on the left",
+          "semanticDescription": "The only carpeted continuation slipping behind the center wall",
+          "screenLocation": "left-center, medium depth",
+          "physicalForm": "narrow tall passage behind an offset wall",
+          "movementDirection": "forward then left",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["left-side opening", "center wall face", "muted fluorescent panel", "same carpet"],
+          "regions": {
+            "desktop": [[450, 205], [570, 205], [570, 650], [450, 650]],
+            "mobile": [[400, 175], [605, 175], [605, 700], [400, 700]]
+          }
+        }
+      ]
+    },
+    {
+      "id": "L0-0006C",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-0005A-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "provisional-generated",
+      "reviewStatus": "needs-route-playtest",
+      "accessibleName": "a brighter A-side room with unequal left and right openings",
+      "description": "The narrow right route from L0-0005A opens into a brighter asymmetric split with a small left passage and broad right curve.",
+      "sourceSceneId": "L0-0005A",
+      "sourcePathId": "L0-0005A-P2",
+      "continuityAnchors": ["small left opening", "broad right curve", "bright fluorescent panels", "same carpet and trim"],
+      "recentChanges": ["Generated to resolve the secondary route from L0-0005A.", "Registered exactly two visually separated continuations."],
+      "image": "/scenes/L0-0006C/final/L0-0006C.png",
+      "asset": { "width": 1448, "height": 1086, "aspectRatio": "4:3" },
+      "camera": { "heightMeters": 1.65, "lensEquivalentMm": 40, "facing": "south" },
+      "state": { "openness": 0.44, "ceiling": 0.36, "objects": 0, "wrongness": 0.18 },
+      "paths": [
+        {
+          "id": "L0-0006C-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0005A-P2",
+          "accessibleName": "Move through the narrow opening on the left",
+          "semanticDescription": "The smaller carpeted opening on the far left",
+          "screenLocation": "far left, near to medium depth",
+          "physicalForm": "narrow rectangular wall opening",
+          "movementDirection": "forward then left",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["small left opening", "left fluorescent panel", "same wallpaper", "same carpet"],
+          "regions": {
+            "desktop": [[170, 180], [320, 180], [320, 650], [170, 650]],
+            "mobile": [[130, 150], [360, 150], [360, 700], [130, 700]]
+          }
+        },
+        {
+          "id": "L0-0006C-P2",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0006C-P2",
+          "accessibleName": "Follow the broad opening curving right",
+          "semanticDescription": "The broad primary continuation curving away on the right",
+          "screenLocation": "right-center, medium depth",
+          "physicalForm": "wide rectangular opening into a curved corridor",
+          "movementDirection": "forward then right",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": ["broad right opening", "curved wall", "receding bright panels", "same carpet and trim"],
+          "regions": {
+            "desktop": [[810, 130], [1140, 130], [1140, 650], [810, 650]],
+            "mobile": [[770, 105], [1180, 105], [1180, 700], [770, 700]]
           }
         }
       ]

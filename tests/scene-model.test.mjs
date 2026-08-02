@@ -10,12 +10,16 @@ import {
   restoreBoundaryPathId,
   restoreSceneId,
   validateFrontiers,
+  validateGenerationBatch,
+  validateRouteReviews,
   validateWorld,
 } from "../src/scene-model.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const world = JSON.parse(await readFile(path.join(root, "public/scenes/scenes.json"), "utf8"));
 const frontiers = JSON.parse(await readFile(path.join(root, "public/scenes/production-frontiers.json"), "utf8"));
+const routeReviews = JSON.parse(await readFile(path.join(root, "public/scenes/route-reviews.json"), "utf8"));
+const generationBatch = JSON.parse(await readFile(path.join(root, "production/generation-jobs.json"), "utf8"));
 
 test("scene registry is structurally valid", () => {
   assert.deepEqual(validateWorld(world), []);
@@ -27,24 +31,52 @@ test("the opening branches to two fixed, distinct scenes", () => {
   assert.equal(new Set(opening.paths.map((path) => path.targetSceneId)).size, 2);
 });
 
-test("each opening branch has two fixed follow-ups", () => {
+test("both opening branches reach the ten generated production scenes through fixed paths", () => {
   const scenes = indexScenes(world);
   assert.equal(scenes.get("L0-0002A").paths[0].targetSceneId, "L0-0003A");
   assert.equal(scenes.get("L0-0003A").paths[0].targetSceneId, "L0-0004A");
+  assert.equal(scenes.get("L0-0004A").paths[0].targetSceneId, "L0-0005A");
+  assert.equal(scenes.get("L0-0005A").paths[0].targetSceneId, "L0-0006A");
+  assert.equal(scenes.get("L0-0006A").paths[0].targetSceneId, "L0-0007A");
   assert.equal(scenes.get("L0-0002B").paths[0].targetSceneId, "L0-0003B");
   assert.equal(scenes.get("L0-0003B").paths[0].targetSceneId, "L0-0004B");
+  assert.equal(scenes.get("L0-0004B").paths[0].targetSceneId, "L0-0005B");
+  assert.equal(scenes.get("L0-0005B").paths[0].targetSceneId, "L0-0006B");
+  assert.equal(scenes.get("L0-0002B").paths[1].targetSceneId, "L0-0003C");
+  assert.equal(scenes.get("L0-0003B").paths[1].targetSceneId, "L0-0004C");
+  assert.equal(scenes.get("L0-0003B").paths[2].targetSceneId, "L0-0004D");
+  assert.equal(scenes.get("L0-0004B").paths[1].targetSceneId, "L0-0005C");
+  assert.equal(scenes.get("L0-0005A").paths[1].targetSceneId, "L0-0006C");
 });
 
-test("only the opening scene exposes multiple routes", () => {
-  for (const scene of world.scenes) {
-    assert.equal(scene.paths.length, scene.id === world.startSceneId ? 2 : 1, scene.id);
-  }
+test("the ten-scene production set uses the planned 6x single-route and 4x two-route distribution", () => {
+  const routeCounts = generationBatch.jobs.map((job) => job.observedVisibleRouteCount);
+  assert.deepEqual(routeCounts.sort(), [1, 1, 1, 1, 1, 1, 2, 2, 2, 2]);
+  assert.equal(routeCounts.filter((count) => count >= 4).length, 0);
+  assert.deepEqual(validateGenerationBatch(world, generationBatch), []);
 });
 
-test("only the two bundle endpoints remain pending production frontiers", () => {
+test("every unproduced visible passage is a registered production frontier", () => {
   const pending = world.scenes.flatMap((scene) => scene.paths.filter((path) => path.status === "pending").map((path) => [scene.id, path.id]));
-  assert.deepEqual(pending, [["L0-0004A", "L0-0004A-P1"], ["L0-0004B", "L0-0004B-P1"]]);
+  assert.deepEqual(pending, [
+    ["L0-0006B", "L0-0006B-P1"],
+    ["L0-0006B", "L0-0006B-P2"],
+    ["L0-0007A", "L0-0007A-P1"],
+    ["L0-0003C", "L0-0003C-P1"],
+    ["L0-0004C", "L0-0004C-P1"],
+    ["L0-0004D", "L0-0004D-P1"],
+    ["L0-0004D", "L0-0004D-P2"],
+    ["L0-0005C", "L0-0005C-P1"],
+    ["L0-0006C", "L0-0006C-P1"],
+    ["L0-0006C", "L0-0006C-P2"],
+  ]);
+  assert.equal(new Set(frontiers.frontiers.map((frontier) => frontier.branch_id)).size, pending.length);
   assert.deepEqual(validateFrontiers(world, frontiers), []);
+});
+
+test("route-review registry covers the ten generated scenes and keeps release gated", () => {
+  assert.deepEqual(validateRouteReviews(world, routeReviews), []);
+  assert.equal(validateRouteReviews(world, routeReviews, { requirePlaytestPass: true }).length, 10);
 });
 
 test("save payload stores at least scene_id and world_version", () => {
@@ -62,16 +94,16 @@ test("restore accepts valid progress and rejects stale or missing scenes", () =>
 });
 
 test("content-boundary progress restores only a valid pending path", () => {
-  const boundarySave = JSON.stringify(makeSavePayload("L0-0004B", world.worldVersion, {
-    pending_path_id: "L0-0004B-P1",
+  const boundarySave = JSON.stringify(makeSavePayload("L0-0006B", world.worldVersion, {
+    pending_path_id: "L0-0006B-P2",
     boundary_state: "symbol",
   }));
-  assert.equal(restoreBoundaryPathId(boundarySave, world, "L0-0004B"), "L0-0004B-P1");
-  assert.equal(restoreBoundaryPathId(boundarySave, world, "L0-0004A"), null);
-  assert.equal(restoreBoundaryPathId(JSON.stringify(makeSavePayload("L0-0004B", "old", {
-    pending_path_id: "L0-0004B-P1",
+  assert.equal(restoreBoundaryPathId(boundarySave, world, "L0-0006B"), "L0-0006B-P2");
+  assert.equal(restoreBoundaryPathId(boundarySave, world, "L0-0007A"), null);
+  assert.equal(restoreBoundaryPathId(JSON.stringify(makeSavePayload("L0-0006B", "old", {
+    pending_path_id: "L0-0006B-P2",
     boundary_state: "symbol",
-  })), world, "L0-0004B"), null);
+  })), world, "L0-0006B"), null);
   assert.equal(restoreBoundaryPathId(JSON.stringify(makeSavePayload("L0-0003B", world.worldVersion, {
     pending_path_id: "L0-0003B-P1",
     boundary_state: "symbol",
@@ -124,19 +156,23 @@ test("scene provenance matches every active incoming path", () => {
   }
 });
 
-test("opening mobile hit regions are large and non-overlapping", () => {
-  const opening = indexScenes(world).get("L0-0001");
-  const boxes = opening.paths.map((path) => {
-    const xs = path.regions.mobile.map(([x]) => x);
-    const ys = path.regions.mobile.map(([, y]) => y);
-    return { minX: Math.min(...xs), maxX: Math.max(...xs), minY: Math.min(...ys), maxY: Math.max(...ys) };
-  });
-  const mobileScale = 364.4 / opening.asset.width;
-  for (const box of boxes) {
-    assert.ok((box.maxX - box.minX) * mobileScale >= 44);
-    assert.ok((box.maxY - box.minY) * mobileScale >= 44);
+test("mobile hit regions are large and distinct in every multi-route scene", () => {
+  for (const scene of world.scenes.filter((candidate) => candidate.paths.length > 1)) {
+    const boxes = scene.paths.map((path) => {
+      const xs = path.regions.mobile.map(([x]) => x);
+      const ys = path.regions.mobile.map(([, y]) => y);
+      return { minX: Math.min(...xs), maxX: Math.max(...xs), minY: Math.min(...ys), maxY: Math.max(...ys) };
+    });
+    const mobileScale = 364.4 / scene.asset.width;
+    for (const box of boxes) {
+      assert.ok((box.maxX - box.minX) * mobileScale >= 44, scene.id);
+      assert.ok((box.maxY - box.minY) * mobileScale >= 44, scene.id);
+    }
+    const sorted = boxes.sort((left, right) => left.minX - right.minX);
+    for (let index = 1; index < sorted.length; index += 1) {
+      assert.ok(sorted[index - 1].maxX < sorted[index].minX, scene.id);
+    }
   }
-  assert.ok(boxes[0].maxX < boxes[1].minX);
 });
 
 test("hit regions cover vertical passage openings instead of foreground carpet wedges", () => {

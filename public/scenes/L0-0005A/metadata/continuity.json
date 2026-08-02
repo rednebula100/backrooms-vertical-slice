@@ -1,0 +1,12 @@
+{
+  "scene_id": "L0-0005A",
+  "source_scene_id": "L0-0004A",
+  "source_path_id": "L0-0004A-P1",
+  "generation_job_id": "GEN-L0-PILOT-001",
+  "reference_image_role": "L0-0004A is the architectural and photographic continuity reference, not an edit target",
+  "continuity_assessment": "The camera clears the right-side passage into a modest A-branch pocket while preserving the material, lens, eye-height, ceiling-grid, and bright fluorescent family.",
+  "known_drift": "The route count increases from one to two; both visible openings are registered as paths.",
+  "generation_output": "exec-7381a83e-3bb1-4729-9e0c-46755df1f28e.png",
+  "visible_route_count": 2,
+  "status": "needs-user-playtest"
+}

@@ -1,0 +1,10 @@
+{
+  "scene_id": "L0-0005C",
+  "source_scene_id": "L0-0004B",
+  "source_path_id": "L0-0004B-P2",
+  "reference_image_role": "L0-0004B is a continuity reference, not an edit target",
+  "continuity_assessment": "The camera clears the left side of the staggered offset and enters an adjacent narrow corridor with one left continuation.",
+  "known_drift": "The curved outer wall becomes more rectilinear without changing the B-branch compression or materials.",
+  "visible_route_count": 1,
+  "frontier_path_ids": ["L0-0005C-P1"]
+}

@@ -1,0 +1,12 @@
+{
+  "scene_id": "L0-0006A",
+  "source_scene_id": "L0-0005A",
+  "source_path_id": "L0-0005A-P1",
+  "generation_job_id": "GEN-L0-PILOT-003",
+  "reference_image_role": "L0-0005A is the architectural and photographic continuity reference, not an edit target",
+  "continuity_assessment": "The camera takes the broad left opening and settles into a shallow bright chamber with the same A-branch materials and photographic character.",
+  "known_drift": "The two-route pocket narrows back to one centered opening that curves right.",
+  "generation_output": "exec-98f26328-654a-495b-9f97-8b35f7c482b6.png",
+  "visible_route_count": 1,
+  "status": "needs-user-playtest"
+}

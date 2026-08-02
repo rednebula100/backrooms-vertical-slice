@@ -1,15 +1,25 @@
 {
   "name": "backrooms-vertical-slice",
-  "version": "0.5.0",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.mjs",
+    "preview:pages": "node scripts/preview-pages.mjs",
     "test": "node --test",
+    "audit:routes": "node scripts/audit-routes.mjs",
+    "audit:batch": "node scripts/audit-routes.mjs --batch",
+    "audit:regressions": "node scripts/audit-routes.mjs --assert-expected",
+    "production:status": "node scripts/production-status.mjs",
+    "validate:audit": "node scripts/validate-route-audits.mjs",
     "validate": "node scripts/validate-scenes.mjs",
+    "validate:release": "node scripts/validate-release.mjs",
     "build": "node scripts/build.mjs"
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "@openai/codex": "^0.146.0"
   }
 }

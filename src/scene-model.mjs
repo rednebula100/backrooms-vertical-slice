@@ -61,11 +61,12 @@ export function validateWorld(world) {
     }
 
     const pendingPaths = (scene.paths ?? []).filter((path) => path.status === "pending");
-    if (scene.status === "provisional-frontier" && pendingPaths.length !== 1) {
-      errors.push(`Frontier scene ${scene.id} must register exactly one pending path`);
+    const activePaths = (scene.paths ?? []).filter((path) => path.status === "active");
+    if (scene.status === "provisional-frontier" && pendingPaths.length === 0) {
+      errors.push(`Frontier scene ${scene.id} must register at least one pending path`);
     }
-    if (scene.status !== "provisional-frontier" && pendingPaths.length > 0) {
-      errors.push(`Non-frontier scene ${scene.id} cannot register a pending path`);
+    if (scene.status === "provisional-frontier" && activePaths.length > 0) {
+      errors.push(`Frontier scene ${scene.id} cannot register an active path`);
     }
 
     for (const path of scene.paths ?? []) {
@@ -89,6 +90,9 @@ export function validateWorld(world) {
       }
       if (path.status === "pending" && (!path.frontier || path.targetSceneId)) {
         errors.push(`Pending path ${path.id} must be a frontier without a target`);
+      }
+      if (path.status === "pending" && !path.frontierBranchId) {
+        errors.push(`Pending path ${path.id} must declare its frontier branch`);
       }
       if (!new Set(["active", "pending"]).has(path.status)) {
         errors.push(`Path ${path.id} has unsupported status ${path.status}`);
@@ -216,7 +220,10 @@ export function validateFrontiers(world, registry) {
       errors.push(`Frontier ${frontier.path_id} does not match a pending scene path`);
       continue;
     }
-    if (frontier.branch_id !== match.scene.branchId) errors.push(`Frontier ${frontier.path_id} has the wrong branch`);
+    if (frontier.branch_id !== match.path.frontierBranchId) errors.push(`Frontier ${frontier.path_id} has the wrong branch`);
+    if (frontier.branch_id !== match.scene.branchId && frontier.parent_branch_id !== match.scene.branchId) {
+      errors.push(`Frontier ${frontier.path_id} must identify its parent branch`);
+    }
     if (frontier.level_id !== match.scene.levelId) errors.push(`Frontier ${frontier.path_id} has the wrong level`);
     if (frontier.status !== "pending") errors.push(`Frontier ${frontier.path_id} must remain pending`);
     if (frontier.depth !== depths.get(match.scene.id)) errors.push(`Frontier ${frontier.path_id} has the wrong graph depth`);
@@ -230,6 +237,102 @@ export function validateFrontiers(world, registry) {
 
   for (const pathId of pending.keys()) {
     if (!registeredPaths.has(pathId)) errors.push(`Pending path ${pathId} is missing from the frontier registry`);
+  }
+  return errors;
+}
+
+export function validateGenerationBatch(world, batch) {
+  const errors = [];
+  if (!batch || batch.worldVersion !== world.worldVersion) {
+    errors.push("Generation batch world version must match the scene registry");
+  }
+  if (!Array.isArray(batch?.jobs) || batch.jobs.length === 0) {
+    return [...errors, "Generation batch must contain jobs"];
+  }
+
+  const scenes = indexScenes(world);
+  const jobIds = new Set();
+  const sceneIds = new Set();
+  const routeCounts = new Map();
+  for (const job of batch.jobs) {
+    if (!job.id || jobIds.has(job.id)) errors.push(`Duplicate or missing generation job: ${job.id ?? "unknown"}`);
+    jobIds.add(job.id);
+    if (!job.sceneId || sceneIds.has(job.sceneId)) errors.push(`Duplicate or missing generated scene: ${job.sceneId ?? "unknown"}`);
+    sceneIds.add(job.sceneId);
+    const scene = scenes.get(job.sceneId);
+    if (!scene) {
+      errors.push(`Generation job ${job.id} targets missing scene ${job.sceneId}`);
+      continue;
+    }
+    if (scene.sourceSceneId !== job.sourceSceneId || scene.sourcePathId !== job.sourcePathId) {
+      errors.push(`Generation job ${job.id} source metadata does not match ${job.sceneId}`);
+    }
+    const sourcePath = scenes.get(job.sourceSceneId)?.paths?.find((path) => path.id === job.sourcePathId);
+    if (sourcePath?.targetSceneId !== job.sceneId) {
+      errors.push(`Generation job ${job.id} is not connected from its source path`);
+    }
+    if (job.status !== "registered") errors.push(`Generation job ${job.id} is not registered`);
+    if (job.observedVisibleRouteCount !== scene.paths.length) {
+      errors.push(`Generation job ${job.id} route count does not match its registered masks`);
+    }
+    if (job.finalImage !== scene.image) errors.push(`Generation job ${job.id} final image does not match its scene`);
+    if (!job.promptRecord || !job.generatorOutput) errors.push(`Generation job ${job.id} is missing generation provenance`);
+    routeCounts.set(job.observedVisibleRouteCount, (routeCounts.get(job.observedVisibleRouteCount) ?? 0) + 1);
+  }
+
+  if (batch.policy?.targetSceneCount !== batch.jobs.length) {
+    errors.push("Generation batch target scene count does not match its jobs");
+  }
+  const expected = batch.policy?.expectedRouteDistribution ?? {};
+  for (const [bucket, count] of Object.entries(expected)) {
+    const observed = bucket === "4+"
+      ? [...routeCounts].filter(([routeCount]) => routeCount >= 4).reduce((sum, [, value]) => sum + value, 0)
+      : routeCounts.get(Number(bucket)) ?? 0;
+    if (observed !== count) errors.push(`Generation batch route bucket ${bucket} expected ${count}, got ${observed}`);
+  }
+  return errors;
+}
+
+export function validateRouteReviews(world, registry, { requirePlaytestPass = false } = {}) {
+  const errors = [];
+  if (!registry || registry.worldVersion !== world.worldVersion) {
+    errors.push("Route-review world version must match the scene registry");
+  }
+  if (!Array.isArray(registry?.scenes)) {
+    return [...errors, "Route-review registry must contain scenes"];
+  }
+
+  const scenes = indexScenes(world);
+  const registered = new Set();
+  for (const review of registry.scenes) {
+    if (!review.sceneId || registered.has(review.sceneId)) {
+      errors.push(`Duplicate or missing route-review scene: ${review.sceneId ?? "unknown"}`);
+      continue;
+    }
+    registered.add(review.sceneId);
+    const scene = scenes.get(review.sceneId);
+    if (!scene) {
+      errors.push(`Route review targets missing scene ${review.sceneId}`);
+      continue;
+    }
+    const pathIds = scene.paths.map((path) => path.id).sort();
+    const registeredPathIds = [...(review.registeredPathIds ?? [])].sort();
+    if (JSON.stringify(pathIds) !== JSON.stringify(registeredPathIds)) {
+      errors.push(`Route review ${review.sceneId} does not cover every registered path`);
+    }
+    if (review.observedVisibleRouteCount !== scene.paths.length) {
+      errors.push(`Route review ${review.sceneId} route count does not match the scene`);
+    }
+    if (!review.imageInspectionStatus || !review.maskInspectionStatus || !review.playtestStatus) {
+      errors.push(`Route review ${review.sceneId} is missing a review status`);
+    }
+    if (requirePlaytestPass && review.playtestStatus !== "pass") {
+      errors.push(`Route review ${review.sceneId} still needs user playtest approval`);
+    }
+  }
+
+  for (const scene of world.scenes.filter((candidate) => candidate.reviewStatus === "needs-route-playtest")) {
+    if (!registered.has(scene.id)) errors.push(`Scene ${scene.id} is missing from the route-review registry`);
   }
   return errors;
 }

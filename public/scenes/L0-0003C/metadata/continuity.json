@@ -1,0 +1,10 @@
+{
+  "scene_id": "L0-0003C",
+  "source_scene_id": "L0-0002B",
+  "source_path_id": "L0-0002B-P2",
+  "reference_image_role": "L0-0002B is a continuity reference, not an edit target",
+  "continuity_assessment": "The camera clears the right side of the offset pier and enters an adjacent compressed corridor with the same B-branch materials, camera, and light family.",
+  "known_drift": "The route curves left around one larger pier while retaining one visible continuation.",
+  "visible_route_count": 1,
+  "frontier_path_ids": ["L0-0003C-P1"]
+}

@@ -1,0 +1,10 @@
+{
+  "scene_id": "L0-0004C",
+  "source_scene_id": "L0-0003B",
+  "source_path_id": "L0-0003B-P2",
+  "reference_image_role": "L0-0003B is a continuity reference, not an edit target",
+  "continuity_assessment": "The camera takes the leftmost route around the near staggered wall and settles beside a long wall with one right-edge turn.",
+  "known_drift": "The composition becomes more rectilinear but keeps the compressed B-branch palette and scale.",
+  "visible_route_count": 1,
+  "frontier_path_ids": ["L0-0004C-P1"]
+}

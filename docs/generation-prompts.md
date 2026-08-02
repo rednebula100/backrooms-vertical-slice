@@ -19,6 +19,66 @@ Materials/textures: Cheap wallpaper over drywall, vinyl base trim, worn continuo
 Constraints: Realistic architectural plausibility with subtle proportion errors; mostly empty; no text or watermark; no visible people or living entities; no corpses, gore, combat, chase, occult symbols, readable logos, readable documents, futuristic or luxury design, fantasy geometry, exterior scenery, large debris, extreme ruin, strong VHS/CCTV/glitch/date overlay; no fisheye or exaggerated wide angle; no symmetrical choice doors, portals, game menu, cards, UI, arrows, signs, glowing paths, or colored highlights.
 ```
 
+## 0.7.0 visible-route completion batch
+
+All five assets were generated in built-in `imagegen` mode with the source image used only as a continuity reference. Final dimensions are 1448×1086 PNG (exact 4:3). The batch deliberately contains three one-route scenes and two two-route scenes.
+
+### L0-0003C
+
+Reference: `L0-0002B.png`, route `L0-0002B-P2`. Output: `exec-c510901a-8612-4b81-a7c9-1b42b6f8a424.png`.
+
+```text
+Generate a brand-new adjacent Backrooms Level 0 scene for L0-0003C. The supplied image is a continuity reference only, not an edit target. The camera has walked only several meters through L0-0002B's SECOND route: the compressed opening along the RIGHT side of the offset pier, not the existing center-left route. Show the immediately adjacent space after clearing that pier. Preserve pale yellow-beige patterned wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling grid, dim flat fluorescent panels, standing eye height about 1.65 m, moderate 40 mm-equivalent lens, and late-1990s to mid-2000s budget consumer-digital photographic character. Keep the B branch narrow and slightly dim. Present exactly ONE visually traversable wall-bounded carpet continuation, offset left and bending out of sight. All other wall masses must join or close so no second passage, doorway, bay, alcove, gap, dark slot, or implied corridor reads as walkable. Exact landscape 4:3. Mostly empty. No text, UI, labels, arrows, people, entities, furniture, doors, windows, signs, landmarks, new level, dramatic horror, VHS, glitch, fisheye, bloom, or watermark.
+```
+
+### L0-0004C
+
+Reference: `L0-0003B.png`, route `L0-0003B-P2`. Initial output: `exec-6672f664-f049-4da2-8ece-f6bd41843f82.png`. Final correction output: `exec-1a842cf3-d546-48bb-b9a9-5ea3eeaf3eaf.png`.
+
+```text
+Generate a brand-new adjacent Backrooms Level 0 scene for L0-0004C. The supplied image is a continuity reference only, not an edit target. The camera has walked only several meters through L0-0003B's LEFTMOST user-confirmed route, slipping around the near staggered wall mass. Do not follow the existing far-right route or the middle route. Show the immediately adjacent view after the left turn. Preserve the compressed B-branch family: pale yellow-beige patterned wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling grid, muted flat fluorescent panels, standing eye height about 1.65 m, moderate 40 mm-equivalent lens, and budget consumer-digital photographic realism. Present exactly ONE visually traversable tall wall-bounded carpet continuation, forward-right at medium depth. Join and seal all other wall masses so there is no second opening, hidden bay, slot, doorway, side corridor, or implied route. Exact landscape 4:3. Mostly empty. No text, UI, labels, arrows, people, entities, furniture, doors, windows, signs, landmarks, new level, dramatic horror, VHS, glitch, fisheye, bloom, or watermark.
+```
+
+Correction prompt:
+
+```text
+Edit Image 1 as the target scene L0-0004C. Image 2 is the previous-scene continuity reference only. Preserve Image 1's exact landscape 4:3 framing, Level 0 materials, lighting, camera height, lens, long left wall, empty mood, and photographic character. Make the smallest architectural correction needed: move the only right-turn passage inward from the cropped image edge so it becomes one fully visible, tall, wall-bounded opening at center-right with carpet visibly continuing through it. Keep the opening clearly inside the frame with solid wall visible on both its left and right sides. Seal and join every other wall edge, floor channel, bay, slot, or recess. The finished image must contain exactly ONE plausible traversable passage. No doors, extra openings, freestanding partitions, text, UI, people, entities, furniture, windows, signs, landmarks, arrows, dramatic horror, glitch, fisheye, or watermark.
+```
+
+### L0-0004D
+
+Reference: `L0-0003B.png`, route `L0-0003B-P3`. Initial output: `exec-43e316d2-0f3b-453d-ba45-ef95fb0dfac1.png`. Final correction output: `exec-b47a9231-ae48-49f1-927f-a0d95bbdb076.png`.
+
+```text
+Generate a brand-new adjacent Backrooms Level 0 scene for L0-0004D. The supplied image is a continuity reference only, not an edit target. The camera has walked only several meters through L0-0003B's MIDDLE user-confirmed route between its two staggered wall masses. Do not follow the far-right opening or the leftmost route. Show the immediately adjacent view after passing between those walls. Preserve the compressed B-branch family: pale yellow-beige patterned wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling grid, muted flat fluorescent panels, standing eye height about 1.65 m, moderate 40 mm-equivalent lens, and late-1990s to mid-2000s budget consumer-digital photographic realism. Present exactly TWO visually traversable, tall, fully wall-bounded carpet openings: a narrow primary opening ahead-left and a smaller secondary opening on the right at a different depth. Separate them with one continuous solid wall mass. Neither opening may hide or imply a third route. Close every other wall edge and bay. Exact landscape 4:3, strong asymmetry, no paired-door/menu composition. Mostly empty. No text, UI, labels, arrows, people, entities, furniture, doors, windows, signs, landmarks, new level, dramatic horror, VHS, glitch, fisheye, bloom, or watermark.
+```
+
+Correction prompts:
+
+```text
+Edit Image 1 as the target scene L0-0004D. Image 2 is the previous-scene continuity reference only. Preserve Image 1's exact landscape 4:3 framing, central broad wall mass, Level 0 materials, muted lighting, camera height, lens, empty mood, and photographic character. Make the smallest architectural correction needed so the finished image has exactly TWO and only two plausible traversable passages: one clean uninterrupted corridor on the left side of the central wall, and one fully bounded opening on the right side of the central wall. On the left, remove or join the thin inner pier and every extra exposed wall edge so the left corridor cannot split into multiple slots. On the right, connect the outer right wall continuously to the image boundary so nothing can pass around its far side. Keep carpet visible through both intended openings, with one continuous solid central wall separating them. No third passage, nested opening, hidden bay, slot, freestanding partition, door, text, UI, people, entities, furniture, windows, signs, landmarks, arrows, dramatic horror, glitch, fisheye, or watermark.
+```
+
+```text
+Edit Image 1 as the target L0-0004D; Image 2 is continuity reference only. Preserve exact 4:3 framing, the broad central wall, the fully bounded right opening, Level 0 materials, lighting, camera, and photographic character. The left corridor currently appears to terminate at a flat wall. Correct only that problem: create a clearly visible architectural continuation at the far end of the left corridor by offsetting the back wall so the carpet unmistakably bends left through a tall opening and continues out of sight. Keep the entire left side as ONE uninterrupted route with continuous outer wall and no thin pier, no extra exposed wall edge, and no side slot. Keep the right side as ONE route and join the outer right wall to the image boundary. The result must contain exactly TWO traversable routes total, left and right, separated by the central solid wall. No third route, door, nested opening, text, UI, people, entities, furniture, windows, signs, arrows, dramatic horror, glitch, fisheye, or watermark.
+```
+
+### L0-0005C
+
+Reference: `L0-0004B.png`, route `L0-0004B-P2`. Output: `exec-4d167cfa-8c74-4dca-af78-a57014b7d235.png`.
+
+```text
+Generate a brand-new adjacent Backrooms Level 0 scene for L0-0005C. The supplied image is a continuity reference only, not an edit target. The camera has walked only several meters through L0-0004B's SECOND user-confirmed route, slipping LEFT around the staggered left wall mass. Do not follow the existing right-hand carpet route. Show the immediately adjacent space after clearing the left offset. Preserve pale yellow-beige patterned wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling grid, muted fluorescent panels, standing eye height about 1.65 m, moderate 40 mm-equivalent lens, and budget consumer-digital photographic realism. Keep this B-derived branch compressed and modestly dim. Present exactly ONE visually traversable tall wall-bounded carpet continuation, offset center-left and turning out of sight. Join and seal all other wall masses so no second passage, slot, doorway, bay, alcove, or implied corridor reads as walkable. Exact landscape 4:3. Mostly empty. No text, UI, labels, arrows, people, entities, furniture, doors, windows, signs, landmarks, new level, dramatic horror, VHS, glitch, fisheye, bloom, or watermark.
+```
+
+### L0-0006C
+
+Reference: `L0-0005A.png`, route `L0-0005A-P2`. Output: `exec-0cea3eb2-f1d5-4015-9883-c4087004c022.png`.
+
+```text
+Generate a brand-new adjacent Backrooms Level 0 scene for L0-0006C. The supplied image is a continuity reference only, not an edit target. The camera has walked only several meters through L0-0005A's SECOND route: the narrower RIGHT-side opening, not the broad left route. Show the immediately adjacent view after clearing that right opening. Preserve the brighter A-branch family: pale yellow-beige patterned wallpaper, taupe patterned low-pile carpet, dark vinyl base trim, acoustic ceiling grid, moderately bright flat fluorescent panels, standing eye height about 1.65 m, moderate 40 mm-equivalent lens, and late-1990s to mid-2000s budget consumer-digital photographic realism. Present exactly TWO visually traversable, tall, fully wall-bounded carpet openings at unequal depths and unequal screen weights: a broader primary opening curving ahead-right and a narrower secondary opening on the far left. Separate them with a continuous solid wall mass. Neither may hide or imply a third route. Close every other wall edge and bay. Exact landscape 4:3, strong asymmetry, no paired-door or menu composition. Mostly empty. No text, UI, labels, arrows, people, entities, furniture, doors, windows, signs, landmarks, new level, dramatic horror, VHS, glitch, fisheye, bloom, or watermark.
+```
+
 ## L0-0001-C02
 
 Default output: `exec-4d80ab31-63bd-4c47-9248-2b6197106649.png`
@@ -246,4 +306,101 @@ Default output: `exec-62a18e0a-bd69-4b93-8ec1-a1a6751b5284.png`. Saved project a
 
 ```text
 Create an exact landscape 4:3 photorealistic final image for a Level 0 Backrooms exploration. A short, empty yellow commercial corridor ends at a flat dead wall. The brown-beige low-pile carpet continues forward and then bends seamlessly upward across the entire dead wall like one continuous material, removing every traversable route while remaining physically photographed rather than surreal illustration. Preserve late-1980s/1990s low-cost commercial materials, off-white acoustic ceiling tiles, one flat fluorescent fixture, dark vinyl base trim on the side walls, standing eye height, moderate lens, and a restrained late-1990s to mid-2000s consumer digital-camera character. Familiar, hollow, still, and quietly impossible; no dramatic horror. No openings, doors, text, signs, symbols, UI, people, entities, bodies, gore, objects, windows, exterior, arrows, glow, glitch, VHS overlay, fisheye, watermark, or cinematic grading.
+```
+
+## 0.6.0 five-scene automation pilot
+
+All five assets used built-in `$imagegen` generation mode. Each preceding playable scene was a fixed architectural and photographic continuity reference, not an edit target. The generated outputs were copied into stable project URLs without deleting the original generated files.
+
+### L0-0005A
+
+Reference: `L0-0004A.png`. Output: `exec-7381a83e-3bb1-4729-9e0c-46755df1f28e.png`.
+
+```text
+Use case: photorealistic-natural
+Asset type: playable Backrooms follow-up scene L0-0005A
+Input images: Image 1 is the fixed architectural and photographic continuity reference L0-0004A; it is not an edit target.
+Primary request: Generate the immediately adjacent viewpoint after walking through Image 1's visible right-side passage. The camera advances only several meters, clears the near wall mass, and enters a modest Level 0 circulation pocket. Present exactly two visually obvious, fully bounded walkable openings: a broad primary continuation bending gently forward-left and a distinctly narrower secondary continuation on the right. Both openings must be tall architectural gaps with visible carpet continuing through them and must not overlap.
+Continuity anchors: same yellow-beige wallpaper, patterned beige-brown low-pile carpet, dark vinyl base trim, acoustic ceiling grid, flat fluorescent fixtures, standing eye height, moderate 40 mm-equivalent lens, late-1990s to mid-2000s budget consumer-digital snapshot character.
+Composition/framing: exact landscape 4:3, level camera, human eye height about 1.65 m, modest forward movement, same facility.
+Lighting/mood: flat fluorescent light, familiar, hollow, still, faintly unsettling; no dramatic horror.
+Constraints: Mostly empty. The two declared openings are the only passage-like gaps. No hidden carpet channel behind a freestanding central wall, no third opening, no door, no stairs, no landmark, no previous room behind the camera, no new level, text, UI, arrows, highlights, people, entities, bodies, gore, occult imagery, windows, furniture, debris, heavy ruin, cinematic grading, VHS/CCTV/glitch overlay, fisheye, ultra-wide distortion, logo, or watermark.
+```
+
+### L0-0005B
+
+Reference: `L0-0004B.png`. Output: `exec-defd302a-48ed-455a-9366-ad698dd32f45.png`.
+
+```text
+Use case: photorealistic-natural
+Asset type: playable Backrooms follow-up scene L0-0005B
+Input images: Image 1 is the fixed architectural and photographic continuity reference L0-0004B; it is not an edit target.
+Primary request: Generate the immediately adjacent viewpoint after walking through Image 1's narrow center passage. The camera advances only several meters past the alternating left wall mass and follows the curved right boundary into a compressed Level 0 corridor. Show one clear forward continuation bending slightly left at medium depth. The route should be a tall wall-bounded opening with carpet visibly continuing through it.
+Continuity anchors: same yellow-beige wallpaper, patterned beige-brown low-pile carpet, dark vinyl base trim, acoustic ceiling grid, muted flat fluorescent fixtures, standing eye height, moderate 40 mm-equivalent lens, late-1990s to mid-2000s budget consumer-digital snapshot character. Keep the B branch narrower and dimmer than A.
+Composition/framing: exact landscape 4:3, level camera, human eye height about 1.65 m, small direct-adjacent movement.
+Lighting/mood: muted flat fluorescence, compressed, familiar, quiet and faintly unsettling; no dramatic darkness.
+Constraints: Mostly empty. Aim for one obvious route, but do not fake or conceal any passage that the architecture naturally shows. Avoid freestanding central walls with floor visible on both sides. No door, stairs, landmark, previous room, new level, text, UI, arrows, highlights, people, entities, bodies, gore, occult imagery, windows, furniture, debris, heavy ruin, cinematic grading, VHS/CCTV/glitch overlay, fisheye, ultra-wide distortion, logo, or watermark.
+```
+
+### L0-0006A
+
+Reference: `L0-0005A.png`. Output: `exec-98f26328-654a-495b-9f97-8b35f7c482b6.png`.
+
+```text
+Use case: photorealistic-natural
+Asset type: playable Backrooms follow-up scene L0-0006A
+Input images: Image 1 is the fixed architectural and photographic continuity reference L0-0005A; it is not an edit target.
+Primary request: Generate the immediately adjacent viewpoint after walking through Image 1's broad left opening. The camera moves only several meters around that gentle left bend into a quieter Level 0 corridor. Show exactly one visually obvious, fully bounded walkable continuation at medium depth, bending gently right. It must be a tall architectural opening with the same carpet visibly continuing through it.
+Continuity anchors: same pale yellow-beige patterned wallpaper, taupe patterned low-pile carpet, dark brown vinyl base trim, acoustic ceiling grid, rectangular fluorescent panels, standing eye height, moderate 40 mm-equivalent lens, late-1990s to mid-2000s budget consumer-digital snapshot character. Preserve the brighter and broader A-branch feel without making the space grand.
+Composition/framing: exact landscape 4:3, level camera, human eye height about 1.65 m, direct adjacent-room progression with modest forward movement.
+Lighting/mood: flat familiar fluorescent light, empty, hollow, still, faintly unsettling; no dramatic horror.
+Constraints: Mostly empty. The declared forward continuation is the only passage-like gap. Use continuous wall masses so there is no hidden floor channel around a pillar or freestanding partition. No second opening, third opening, door, stairs, landmark, previous room behind camera, new level, text, UI, arrows, highlights, people, entities, bodies, gore, occult imagery, windows, furniture, debris, heavy ruin, cinematic grading, VHS/CCTV/glitch overlay, fisheye, ultra-wide distortion, logo, or watermark.
+```
+
+### L0-0006B
+
+Reference: `L0-0005B.png`. Output: `exec-3dc01a6c-6797-4cfb-9635-bcb8d1345b71.png`.
+
+```text
+Use case: photorealistic-natural
+Asset type: playable Backrooms follow-up scene L0-0006B
+Input images: Image 1 is the fixed architectural and photographic continuity reference L0-0005B; it is not an edit target.
+Primary request: Generate the immediately adjacent viewpoint after following Image 1's only narrow forward route around its slight left bend. The camera moves only several meters into a small compressed Level 0 junction. Present exactly two visually obvious and fully bounded walkable openings: a narrow primary continuation ahead-left and a secondary opening on the right that begins closer to the camera. Both must be tall wall-bounded gaps with carpet visibly continuing through them, separated by a solid wall corner, and neither may overlap or hide another route.
+Continuity anchors: same pale yellow-beige patterned wallpaper, taupe patterned low-pile carpet, dark brown vinyl base trim, acoustic ceiling grid, muted rectangular fluorescent panels, standing eye height, moderate 40 mm-equivalent lens, late-1990s to mid-2000s budget consumer-digital snapshot character. Keep the B branch tighter and slightly dimmer than A.
+Composition/framing: exact landscape 4:3, level camera, human eye height about 1.65 m, direct adjacent-room progression with modest forward movement.
+Lighting/mood: muted flat fluorescence, compressed, familiar, quiet and faintly unsettling; no dramatic darkness.
+Constraints: Mostly empty. The two declared openings are the only passage-like gaps. No carpet visible behind a freestanding central wall, no third opening, no door, stairs, landmark, previous room, new level, text, UI, arrows, highlights, people, entities, bodies, gore, occult imagery, windows, furniture, debris, heavy ruin, cinematic grading, VHS/CCTV/glitch overlay, fisheye, ultra-wide distortion, logo, or watermark.
+```
+
+### L0-0007A
+
+Reference: `L0-0006A.png`. Output: `exec-56069300-06cc-4cf2-a073-c5cf1a95a131.png`.
+
+```text
+Use case: photorealistic-natural
+Asset type: playable Backrooms follow-up scene L0-0007A
+Input images: Image 1 is the fixed architectural and photographic continuity reference L0-0006A; it is not an edit target.
+Primary request: Generate the immediately adjacent viewpoint after walking through Image 1's single centered opening and following its gentle rightward curve. Move the camera only several meters into a slightly narrower Level 0 corridor chamber. Show exactly one visually obvious, fully bounded walkable continuation at medium depth, offset toward the left and bending out of sight. It must be a tall architectural gap with the same carpet visibly continuing through it.
+Continuity anchors: same pale yellow-beige patterned wallpaper, taupe patterned low-pile carpet, dark brown vinyl base trim, acoustic ceiling grid, rectangular fluorescent panels, standing eye height, moderate 40 mm-equivalent lens, late-1990s to mid-2000s budget consumer-digital snapshot character. Retain the moderately bright A-branch character but introduce only subtle spatial variation.
+Composition/framing: exact landscape 4:3, level camera, human eye height about 1.65 m, direct adjacent-room progression with modest forward movement.
+Lighting/mood: flat fluorescent light, familiar, hollow, empty, still, faintly unsettling; no dramatic horror.
+Constraints: Mostly empty. The declared left-offset continuation is the only passage-like gap. Use continuous wall masses so no hidden floor channel appears around a pillar or freestanding partition. No second opening, third opening, door, stairs, landmark, previous room behind camera, new level, text, UI, arrows, highlights, people, entities, bodies, gore, occult imagery, windows, furniture, debris, heavy ruin, cinematic grading, VHS/CCTV/glitch overlay, fisheye, ultra-wide distortion, logo, or watermark.
+```
+
+## 0.8.0 human-gated five-scene batch
+
+### L0-0008A
+
+Reference: `L0-0007A.png`. Candidate output: `exec-d5919c6a-8d75-4c89-84f5-af82831d819c.png`. This image remains staged until its visible routes are manually annotated.
+
+```text
+Use case: photorealistic-natural
+Asset type: playable Backrooms follow-up candidate L0-0008A
+Input images: Image 1 is the fixed architectural, material, and photographic continuity reference L0-0007A; it is not an edit target.
+Primary request: Generate a brand-new immediately adjacent viewpoint after walking through Image 1's only tall left-side opening and following that corridor several meters around its gentle left bend. The result must feel like the next physical space, not a restaging of Image 1. Show exactly one visually obvious, fully bounded walkable continuation at medium depth, offset toward the right and bending out of sight, with the same carpet clearly continuing through it.
+Continuity anchors: preserve pale yellow-beige patterned wallpaper, taupe patterned low-pile carpet, dark brown vinyl base trim, acoustic ceiling grid, simple rectangular fluorescent panels, standing human eye height about 1.65 m, moderate 40 mm-equivalent lens, late-1990s to mid-2000s budget consumer-digital photographic realism, moderately bright A-branch character.
+Spatial variation: slightly longer and narrower than Image 1, with one broad continuous wall mass creating an asymmetric rightward continuation; avoid repeating Image 1's exact doorway shape or composition.
+Composition/framing: exact landscape 4:3 canvas, level camera, modest forward movement, no black borders.
+Lighting/mood: flat fluorescent light, empty, familiar, hollow, still, faintly unsettling; no dramatic horror.
+Constraints: The declared right-offset continuation is the only passage-like gap. All other wall masses must connect continuously to walls or image boundaries so no hidden floor channel, side slot, bay, alcove, doorway, second route, or implied corridor reads as walkable. Mostly empty. No freestanding partition, door, stairs, landmark, previous room visible behind the camera, new level, text, UI, arrows, colored overlays, people, entities, bodies, gore, occult imagery, windows, furniture, debris, heavy ruin, cinematic grading, VHS/CCTV/glitch overlay, fisheye, ultra-wide distortion, bloom, logo, or watermark.
 ```

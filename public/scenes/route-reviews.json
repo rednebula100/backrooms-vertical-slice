@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "batchId": "level0-production-10",
+  "worldVersion": "vertical-slice-0.7.0",
+  "policy": {
+    "everyVisibleRouteMustBeRegistered": true,
+    "masksCoverArchitecturalOpenings": true,
+    "foregroundCarpetOnlyMasksForbidden": true,
+    "releaseRequiresUserPlaytestPass": true
+  },
+  "scenes": [
+    {
+      "sceneId": "L0-0005A",
+      "observedVisibleRouteCount": 2,
+      "registeredPathIds": ["L0-0005A-P1", "L0-0005A-P2"],
+      "imageInspectionStatus": "assistant-pass",
+      "maskInspectionStatus": "provisional",
+      "playtestStatus": "pending",
+      "notes": []
+    },
+    {
+      "sceneId": "L0-0005B",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": ["L0-0005B-P1"],
+      "imageInspectionStatus": "assistant-pass",
+      "maskInspectionStatus": "provisional",
+      "playtestStatus": "pending",
+      "notes": []
+    },
+    {
+      "sceneId": "L0-0006A",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": ["L0-0006A-P1"],
+      "imageInspectionStatus": "assistant-pass",
+      "maskInspectionStatus": "provisional",
+      "playtestStatus": "pending",
+      "notes": []
+    },
+    {
+      "sceneId": "L0-0006B",
+      "observedVisibleRouteCount": 2,
+      "registeredPathIds": ["L0-0006B-P1", "L0-0006B-P2"],
+      "imageInspectionStatus": "assistant-pass",
+      "maskInspectionStatus": "provisional",
+      "playtestStatus": "pending",
+      "notes": []
+    },
+    {
+      "sceneId": "L0-0007A",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": ["L0-0007A-P1"],
+      "imageInspectionStatus": "assistant-pass",
+      "maskInspectionStatus": "provisional",
+      "playtestStatus": "pending",
+      "notes": []
+    },
+    {
+      "sceneId": "L0-0003C",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": ["L0-0003C-P1"],
+      "imageInspectionStatus": "assistant-pass",
+      "maskInspectionStatus": "provisional",
+      "playtestStatus": "pending",
+      "notes": ["Generated from the user-confirmed second passage in L0-0002B."]
+    },
+    {
+      "sceneId": "L0-0004C",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": ["L0-0004C-P1"],
+      "imageInspectionStatus": "assistant-pass",
+      "maskInspectionStatus": "provisional",
+      "playtestStatus": "pending",
+      "notes": ["Generated from the user-confirmed leftmost passage in L0-0003B."]
+    },
+    {
+      "sceneId": "L0-0004D",
+      "observedVisibleRouteCount": 2,
+      "registeredPathIds": ["L0-0004D-P1", "L0-0004D-P2"],
+      "imageInspectionStatus": "assistant-pass",
+      "maskInspectionStatus": "provisional",
+      "playtestStatus": "pending",
+      "notes": ["Generated from the user-confirmed middle passage in L0-0003B."]
+    },
+    {
+      "sceneId": "L0-0005C",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": ["L0-0005C-P1"],
+      "imageInspectionStatus": "assistant-pass",
+      "maskInspectionStatus": "provisional",
+      "playtestStatus": "pending",
+      "notes": ["Generated from the user-confirmed second passage in L0-0004B."]
+    },
+    {
+      "sceneId": "L0-0006C",
+      "observedVisibleRouteCount": 2,
+      "registeredPathIds": ["L0-0006C-P1", "L0-0006C-P2"],
+      "imageInspectionStatus": "assistant-pass",
+      "maskInspectionStatus": "provisional",
+      "playtestStatus": "pending",
+      "notes": ["Generated from the secondary right passage in L0-0005A."]
+    }
+  ]
+}

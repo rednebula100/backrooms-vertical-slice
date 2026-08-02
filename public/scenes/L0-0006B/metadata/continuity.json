@@ -1,0 +1,12 @@
+{
+  "scene_id": "L0-0006B",
+  "source_scene_id": "L0-0005B",
+  "source_path_id": "L0-0005B-P1",
+  "generation_job_id": "GEN-L0-PILOT-004",
+  "reference_image_role": "L0-0005B is the architectural and photographic continuity reference, not an edit target",
+  "continuity_assessment": "The camera clears the narrow bend into a compact junction while preserving B-branch compression, muted fluorescence, material family, eye height, and lens.",
+  "known_drift": "The single corridor divides around a joined central wall into two visible routes; both are registered as pending frontiers.",
+  "generation_output": "exec-3dc01a6c-6797-4cfb-9635-bcb8d1345b71.png",
+  "visible_route_count": 2,
+  "status": "needs-user-playtest"
+}

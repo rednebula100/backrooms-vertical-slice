@@ -1,0 +1,10 @@
+{
+  "scene_id": "L0-0006C",
+  "source_scene_id": "L0-0005A",
+  "source_path_id": "L0-0005A-P2",
+  "reference_image_role": "L0-0005A is a continuity reference, not an edit target",
+  "continuity_assessment": "The camera exits the narrower right opening into a brighter adjacent A-side split with the same material, camera, and light family.",
+  "known_drift": "The secondary branch becomes wider and brighter while preserving Level 0 visual identity.",
+  "visible_route_count": 2,
+  "frontier_path_ids": ["L0-0006C-P1", "L0-0006C-P2"]
+}
