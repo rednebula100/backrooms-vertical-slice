@@ -76,8 +76,10 @@ export function createDevEditor({
   const saveTimers = new Map();
   const saveRevisions = new Map();
   const saveStates = new Map();
-  let mode = "edit";
+  let mode = "graph";
   let viewport = "desktop";
+  let graphScale = 1;
+  let graphDragging = null;
   let testMasksVisible = false;
   let selectedMaskId = null;
   let selectedVertex = null;
@@ -85,6 +87,7 @@ export function createDevEditor({
   let dragging = null;
   let incompletePath = null;
   let sceneFilter = "";
+  const collapsedScenes = new Set();
 
   document.body.dataset.editor = "true";
   document.body.dataset.editorMode = mode;
@@ -97,7 +100,7 @@ export function createDevEditor({
     <aside class="editor-rail editor-glass" data-editor-rail>
       <header class="editor-brand">
         <span class="editor-brand-mark" aria-hidden="true"></span>
-        <span><strong>MASK EDITOR</strong><small>BACKROOMS / LEVEL 0</small></span>
+        <span><strong>ROUTE STUDIO</strong><small>BACKROOMS / LEVEL 0</small></span>
       </header>
       <div class="editor-nav-row">
         <button class="icon-button" type="button" data-history-back aria-label="이전 장면">←</button>
@@ -106,15 +109,27 @@ export function createDevEditor({
         <button class="icon-button" type="button" data-exit-editor aria-label="에디터 종료">×</button>
       </div>
       <label class="editor-search"><span class="sr-only">장면 찾기</span><input type="search" placeholder="장면 ID 검색" autocomplete="off" data-scene-search /></label>
-      <div class="scene-list" data-scene-list></div>
-      <footer class="editor-rail-footer"><span><kbd>Ctrl Z</kbd> 실행 취소</span><span><kbd>Delete</kbd> 점 / 통로 삭제</span><span><kbd>Enter</kbd> 그리기 완료</span></footer>
+      <section class="rail-focus-card">
+        <span>현재 포커스</span>
+        <strong data-rail-current>—</strong>
+        <small data-rail-parent>시작 장면</small>
+        <button type="button" data-focus-current>그래프에서 위치 찾기</button>
+        <button type="button" data-open-editor>마스크 편집 열기</button>
+      </section>
+      <section class="rail-legend" aria-label="그래프 범례">
+        <span><i data-kind="current"></i>현재 장면</span>
+        <span><i data-kind="candidate"></i>생성 후보</span>
+        <span><i data-kind="frontier"></i>미완성 통로</span>
+      </section>
+      <footer class="editor-rail-footer"><span><kbd>G</kbd> 그래프</span><span><kbd>E</kbd> 마스크 편집</span><span><kbd>T</kbd> 클릭 테스트</span></footer>
     </aside>
 
     <header class="editor-topbar editor-glass" data-editor-topbar>
       <div class="scene-heading"><span data-scene-kicker>현재 장면</span><strong data-current-scene>—</strong><small data-scene-description></small></div>
       <div class="editor-segment" aria-label="편집 모드">
-        <button type="button" data-mode="edit" aria-pressed="true">편집</button>
-        <button type="button" data-mode="test" aria-pressed="false">클릭 테스트</button>
+        <button type="button" data-mode="graph" aria-pressed="true">그래프</button>
+        <button type="button" data-mode="edit" aria-pressed="false">마스크</button>
+        <button type="button" data-mode="test" aria-pressed="false">테스트</button>
       </div>
       <div class="editor-segment compact" aria-label="영역 종류">
         <button type="button" data-viewport="desktop" aria-pressed="true">D</button>
@@ -123,6 +138,30 @@ export function createDevEditor({
       <button class="editor-action quiet export-action" type="button" data-export-annotations aria-label="주석 JSON 내보내기">JSON ↓</button>
       <span class="autosave-status" data-auto-save-status data-state="idle"><i aria-hidden="true"></i><span data-auto-save-label>자동 반영</span></span>
     </header>
+
+    <section class="graph-workspace" data-graph-workspace>
+      <header class="graph-header">
+        <div class="graph-heading"><span>WORLD GRAPH</span><strong>LEVEL 0 ROUTE MAP</strong></div>
+        <div class="graph-metrics">
+          <span><b data-graph-total>0</b>장면</span>
+          <span><b data-graph-frontiers>0</b>미완성</span>
+          <span><b data-graph-review>0</b>검수</span>
+        </div>
+        <div class="graph-controls">
+          <button type="button" data-collapse-branches>가지 접기</button>
+          <button type="button" data-focus-graph>현재 위치</button>
+          <button type="button" data-zoom-out aria-label="축소">−</button>
+          <span data-graph-scale>100%</span>
+          <button type="button" data-zoom-in aria-label="확대">＋</button>
+        </div>
+      </header>
+      <div class="graph-viewport" data-graph-viewport>
+        <div class="graph-canvas" data-graph-canvas>
+          <div class="scene-list" data-scene-list></div>
+        </div>
+      </div>
+      <footer class="graph-footer"><span>빈 공간 드래그로 이동</span><span>노드 더블클릭으로 마스크 편집</span></footer>
+    </section>
 
     <aside class="editor-inspector editor-glass" data-editor-inspector>
       <section class="inspector-summary">
@@ -162,7 +201,7 @@ export function createDevEditor({
   `;
   document.body.append(root);
 
-  const elements = Object.fromEntries([...root.querySelectorAll("[data-scene-list], [data-scene-search], [data-current-scene], [data-scene-description], [data-route-count], [data-draft-count], [data-mask-list], [data-selected-id], [data-selected-meta], [data-delete-mask], [data-undo], [data-redo], [data-new-mask], [data-complete-review], [data-test-mask-toggle], [data-auto-save-status], [data-auto-save-label], [data-editor-toast], [data-drawing-banner], [data-parent-scene], [data-test-scene], [data-incomplete-overlay], [data-incomplete-id]")].map((node) => {
+  const elements = Object.fromEntries([...root.querySelectorAll("[data-scene-list], [data-scene-search], [data-current-scene], [data-scene-description], [data-route-count], [data-draft-count], [data-mask-list], [data-selected-id], [data-selected-meta], [data-delete-mask], [data-undo], [data-redo], [data-new-mask], [data-complete-review], [data-test-mask-toggle], [data-auto-save-status], [data-auto-save-label], [data-editor-toast], [data-drawing-banner], [data-parent-scene], [data-test-scene], [data-incomplete-overlay], [data-incomplete-id], [data-rail-current], [data-rail-parent], [data-graph-total], [data-graph-frontiers], [data-graph-review], [data-graph-scale], [data-graph-viewport], [data-graph-canvas]")].map((node) => {
     const key = Object.keys(node.dataset)[0];
     return [key, node];
   }));
@@ -267,18 +306,62 @@ export function createDevEditor({
 
   function setMode(nextMode) {
     if (drawing) cancelDrawing();
-    if (nextMode === "edit") closeIncomplete();
+    if (nextMode !== "test") closeIncomplete();
     mode = nextMode;
     document.body.dataset.editorMode = mode;
     buttonPressed(root, "[data-mode]", mode, "mode");
     render();
-    motion.play(stage, [{ opacity: 0.72 }, { opacity: 1 }], "fast");
+    const target = mode === "graph" ? root.querySelector("[data-graph-workspace]") : stage;
+    motion.play(target, [{ opacity: 0.72 }, { opacity: 1 }], "fast");
   }
 
   function setViewport(nextViewport) {
     viewport = nextViewport;
     buttonPressed(root, "[data-viewport]", viewport, "viewport");
     render();
+  }
+
+  function setGraphScale(nextScale) {
+    graphScale = clamp(nextScale, 0.55, 1.55);
+    elements.graphCanvas.style.setProperty("--graph-scale", graphScale.toFixed(2));
+    elements.graphScale.textContent = `${Math.round(graphScale * 100)}%`;
+  }
+
+  function sceneAncestry(scene = getCurrentScene()) {
+    const ancestry = [];
+    let cursor = scene;
+    const visited = new Set();
+    while (cursor && !visited.has(cursor.id)) {
+      ancestry.push(cursor.id);
+      visited.add(cursor.id);
+      cursor = cursor.sourceSceneId ? scenes.get(cursor.sourceSceneId) : null;
+    }
+    return ancestry;
+  }
+
+  function focusCurrentGraph({ collapse = true } = {}) {
+    const ancestry = new Set(sceneAncestry());
+    if (collapse) {
+      collapsedScenes.clear();
+      for (const scene of orderedScenes) {
+        if (scene.id !== world.startSceneId && !ancestry.has(scene.id)) collapsedScenes.add(scene.id);
+      }
+    }
+    for (const sceneId of ancestry) collapsedScenes.delete(sceneId);
+    renderSceneList();
+    window.requestAnimationFrame(() => {
+      const current = elements.sceneList.querySelector('.scene-tree-node[data-current="true"]');
+      current?.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" });
+    });
+  }
+
+  function collapseBranches() {
+    collapsedScenes.clear();
+    for (const scene of orderedScenes) {
+      if (scene.id !== world.startSceneId) collapsedScenes.add(scene.id);
+    }
+    renderSceneList();
+    elements.graphViewport.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }
 
   function toggleTestMasks() {
@@ -498,6 +581,27 @@ export function createDevEditor({
     return item;
   }
 
+  function branchChildren(scene, masks) {
+    const children = [];
+    const masksBySource = new Map(masks.filter((mask) => mask.sourcePathId).map((mask) => [mask.sourcePathId, mask]));
+    for (const path of scene.paths) {
+      const included = masksBySource.has(path.id);
+      if (path.status === "active" && scenes.has(path.targetSceneId)) {
+        children.push({ type: "scene", scene: scenes.get(path.targetSceneId), path, included });
+      } else if (stagedBySourcePath.has(path.id)) {
+        children.push({ type: "scene", scene: stagedBySourcePath.get(path.id), path, included });
+      } else {
+        children.push({ type: "terminal", pathId: path.id, label: "미완성 구역", state: included ? "incomplete" : "removed" });
+      }
+    }
+    for (const mask of masks.filter((candidate) => !candidate.sourcePathId)) {
+      const stagedScene = stagedBySourcePath.get(mask.id);
+      if (stagedScene) children.push({ type: "scene", scene: stagedScene, path: mask, included: true });
+      else children.push({ type: "terminal", pathId: mask.id, label: "새 미완성 통로", state: "incomplete" });
+    }
+    return children;
+  }
+
   function createSceneBranch(scene, depth = 0, incoming = null, ancestry = new Set()) {
     const item = document.createElement("li");
     item.className = "scene-tree-branch";
@@ -509,38 +613,51 @@ export function createDevEditor({
       item.append(edge);
     }
 
-    const button = document.createElement("button");
     const masks = getState(scene).masks;
     const hasIncomplete = masks.some((mask) => connectionLabel(mask, scene) === "미완성");
+    const descriptors = branchChildren(scene, masks);
+    const row = document.createElement("div");
+    row.className = "tree-node-row";
+    const button = document.createElement("button");
     button.type = "button";
     button.className = "scene-tree-node";
     button.dataset.current = String(scene.id === getCurrentScene().id);
     button.dataset.incomplete = String(hasIncomplete);
     button.dataset.staging = String(Boolean(scene.staging));
+    button.dataset.reviewPending = String(isReviewQueueScene(scene) && !reviewedScenes.has(scene.id));
     button.innerHTML = `<span class="tree-node-mark"></span><span><b>${scene.id}</b><small>${scene.staging ? "후보" : `단계 ${depth}`}</small></span><em>${masks.length}</em>`;
     button.addEventListener("click", () => navigateToScene(scene.id));
-    item.append(button);
+    button.addEventListener("dblclick", () => {
+      navigateToScene(scene.id);
+      setMode("edit");
+    });
+    row.append(button);
+    if (descriptors.length) {
+      const collapsed = collapsedScenes.has(scene.id);
+      const toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "tree-branch-toggle";
+      toggle.setAttribute("aria-label", `${scene.id} 가지 ${collapsed ? "펼치기" : "접기"}`);
+      toggle.setAttribute("aria-expanded", String(!collapsed));
+      toggle.textContent = collapsed ? `+${descriptors.length}` : "−";
+      toggle.addEventListener("click", () => {
+        if (collapsedScenes.has(scene.id)) collapsedScenes.delete(scene.id);
+        else collapsedScenes.add(scene.id);
+        renderSceneList();
+      });
+      row.append(toggle);
+      item.dataset.collapsed = String(collapsed);
+    }
+    item.append(row);
 
-    if (ancestry.has(scene.id)) return item;
+    if (ancestry.has(scene.id) || collapsedScenes.has(scene.id)) return item;
     const nextAncestry = new Set(ancestry).add(scene.id);
     const children = document.createElement("ul");
-    const masksBySource = new Map(masks.filter((mask) => mask.sourcePathId).map((mask) => [mask.sourcePathId, mask]));
-    for (const path of scene.paths) {
-      const included = masksBySource.has(path.id);
-      if (path.status === "active" && scenes.has(path.targetSceneId)) {
-        children.append(createSceneBranch(scenes.get(path.targetSceneId), depth + 1, { path, included }, nextAncestry));
-      } else if (stagedBySourcePath.has(path.id)) {
-        children.append(createSceneBranch(stagedBySourcePath.get(path.id), depth + 1, { path, included }, nextAncestry));
+    for (const descriptor of descriptors) {
+      if (descriptor.type === "scene") {
+        children.append(createSceneBranch(descriptor.scene, depth + 1, { path: descriptor.path, included: descriptor.included }, nextAncestry));
       } else {
-        children.append(createTerminalNode(path.id, "미완성 구역", included ? "incomplete" : "removed"));
-      }
-    }
-    for (const mask of masks.filter((candidate) => !candidate.sourcePathId)) {
-      const stagedScene = stagedBySourcePath.get(mask.id);
-      if (stagedScene) {
-        children.append(createSceneBranch(stagedScene, depth + 1, { path: mask, included: true }, nextAncestry));
-      } else {
-        children.append(createTerminalNode(mask.id, "새 미완성 통로"));
+        children.append(createTerminalNode(descriptor.pathId, descriptor.label, descriptor.state));
       }
     }
     if (children.childElementCount) item.append(children);
@@ -550,6 +667,17 @@ export function createDevEditor({
   function renderSceneList() {
     const query = sceneFilter.trim().toLowerCase();
     elements.sceneList.replaceChildren();
+    elements.railCurrent.textContent = getCurrentScene().id;
+    elements.railParent.textContent = getCurrentScene().sourceSceneId ? `부모 ${getCurrentScene().sourceSceneId}` : "시작 장면";
+    const reviewScenes = reviewQueueScenes()
+      .filter((scene) => !reviewedScenes.has(scene.id))
+      .sort((first, second) => Number(second.staging) - Number(first.staging) || first.id.localeCompare(second.id));
+    const frontierCount = orderedScenes.reduce((count, scene) => {
+      return count + getState(scene).masks.filter((mask) => connectionLabel(mask, scene) === "미완성").length;
+    }, 0);
+    elements.graphTotal.textContent = String(orderedScenes.length);
+    elements.graphFrontiers.textContent = String(frontierCount);
+    elements.graphReview.textContent = String(reviewScenes.length);
     if (query) {
       const results = document.createElement("div");
       results.className = "scene-search-results";
@@ -569,36 +697,6 @@ export function createDevEditor({
     tree.append(createSceneBranch(scenes.get(world.startSceneId)));
     elements.sceneList.append(tree);
 
-    const reviewScenes = reviewQueueScenes()
-      .filter((scene) => !reviewedScenes.has(scene.id))
-      .sort((first, second) => Number(second.staging) - Number(first.staging) || first.id.localeCompare(second.id));
-    if (reviewScenes.length) {
-      const queue = document.createElement("section");
-      queue.className = "staging-queue";
-      queue.innerHTML = `<div class="staging-queue-title"><span>검수 대기</span><em>${reviewScenes.length}</em></div>`;
-      for (const scene of reviewScenes) {
-        const masks = getState(scene).masks;
-        const status = annotationStatus(scene, masks);
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "staging-scene-node";
-        button.dataset.current = String(scene.id === getCurrentScene().id);
-        button.dataset.state = status;
-        const origin = scene.staging
-          ? `새 후보 · ${scene.sourceSceneId} ${shortPathId(scene.sourcePathId)}`
-          : `기존 프런티어 · ${scene.paths.length}개 통로`;
-        button.innerHTML = `<span class="staging-scene-mark"></span><span><b>${scene.id}</b><small>${origin}</small></span><em>${masks.length || "·"}</em>`;
-        button.addEventListener("click", () => navigateToScene(scene.id));
-        queue.append(button);
-      }
-      elements.sceneList.append(queue);
-    }
-    const currentNode = elements.sceneList.querySelector('[data-current="true"]');
-    if (currentNode) {
-      const listRect = elements.sceneList.getBoundingClientRect();
-      const nodeRect = currentNode.getBoundingClientRect();
-      elements.sceneList.scrollTop += nodeRect.top - listRect.top - elements.sceneList.clientHeight / 2 + nodeRect.height / 2;
-    }
   }
 
   function renderMaskList(masks) {
@@ -738,6 +836,7 @@ export function createDevEditor({
     buttonPressed(root, "[data-viewport]", viewport, "viewport");
     elements.testMaskToggle.setAttribute("aria-pressed", String(testMasksVisible));
     elements.testMaskToggle.textContent = testMasksVisible ? "영역 숨기기" : "영역 보기";
+    setGraphScale(graphScale);
     renderSceneList();
     renderInspector(masks);
     if (mode === "test") {
@@ -752,8 +851,10 @@ export function createDevEditor({
         };
       });
       renderPlayableOverlay({ ...scene, paths });
-    } else {
+    } else if (mode === "edit") {
       renderEditableOverlay(scene, masks);
+    } else {
+      overlay.replaceChildren();
     }
   }
 
@@ -843,6 +944,15 @@ export function createDevEditor({
     sceneFilter = elements.sceneSearch.value;
     renderSceneList();
   });
+  root.querySelector("[data-focus-current]").addEventListener("click", () => {
+    setMode("graph");
+    focusCurrentGraph();
+  });
+  root.querySelector("[data-open-editor]").addEventListener("click", () => setMode("edit"));
+  root.querySelector("[data-focus-graph]").addEventListener("click", () => focusCurrentGraph());
+  root.querySelector("[data-collapse-branches]").addEventListener("click", collapseBranches);
+  root.querySelector("[data-zoom-out]").addEventListener("click", () => setGraphScale(graphScale - 0.1));
+  root.querySelector("[data-zoom-in]").addEventListener("click", () => setGraphScale(graphScale + 0.1));
   elements.newMask.addEventListener("click", () => drawing ? finishDrawing() : startDrawing());
   elements.deleteMask.addEventListener("click", removeSelectedMask);
   elements.undo.addEventListener("click", undo);
@@ -852,6 +962,35 @@ export function createDevEditor({
   root.querySelector("[data-export-annotations]").addEventListener("click", exportAnnotations);
   root.querySelector("[data-exit-test]").addEventListener("click", () => setMode("edit"));
   root.querySelector("[data-close-incomplete]").addEventListener("click", closeIncomplete);
+
+  elements.graphViewport.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0 || event.target.closest("button, input")) return;
+    graphDragging = {
+      pointerId: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      left: elements.graphViewport.scrollLeft,
+      top: elements.graphViewport.scrollTop,
+    };
+    elements.graphViewport.setPointerCapture(event.pointerId);
+    elements.graphViewport.dataset.dragging = "true";
+  });
+  elements.graphViewport.addEventListener("pointermove", (event) => {
+    if (!graphDragging || graphDragging.pointerId !== event.pointerId) return;
+    elements.graphViewport.scrollLeft = graphDragging.left - (event.clientX - graphDragging.x);
+    elements.graphViewport.scrollTop = graphDragging.top - (event.clientY - graphDragging.y);
+  });
+  elements.graphViewport.addEventListener("pointerup", (event) => {
+    if (!graphDragging || graphDragging.pointerId !== event.pointerId) return;
+    graphDragging = null;
+    delete elements.graphViewport.dataset.dragging;
+    elements.graphViewport.releasePointerCapture(event.pointerId);
+  });
+  elements.graphViewport.addEventListener("wheel", (event) => {
+    if (!event.ctrlKey && !event.metaKey) return;
+    event.preventDefault();
+    setGraphScale(graphScale + (event.deltaY < 0 ? 0.08 : -0.08));
+  }, { passive: false });
 
   overlay.addEventListener("pointerdown", (event) => {
     if (mode !== "edit" || event.target !== overlay || !drawing) return;
@@ -907,8 +1046,12 @@ export function createDevEditor({
       event.preventDefault();
       if (selectedVertex !== null) removeSelectedVertex();
       else removeSelectedMask();
+    } else if (event.key.toLowerCase() === "g") {
+      setMode("graph");
+    } else if (event.key.toLowerCase() === "e") {
+      setMode("edit");
     } else if (event.key.toLowerCase() === "t") {
-      setMode(mode === "edit" ? "test" : "edit");
+      setMode("test");
     }
   });
   window.addEventListener("popstate", () => {
@@ -927,6 +1070,10 @@ export function createDevEditor({
   motion.enterPanel(root.querySelector("[data-editor-rail]"), "left");
   motion.enterPanel(root.querySelector("[data-editor-inspector]"), "right");
   motion.play(root.querySelector("[data-editor-topbar]"), [{ opacity: 0, transform: "translateY(-12px)" }, { opacity: 1, transform: "translateY(0)" }], "panel");
+
+  window.requestAnimationFrame(() => {
+    focusCurrentGraph({ collapse: orderedScenes.length > 120 });
+  });
 
   return {
     render,
