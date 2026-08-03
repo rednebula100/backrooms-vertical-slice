@@ -983,7 +983,8 @@ body[data-editor-mode="edit"] .scene-shell {
   text-overflow: ellipsis;
 }
 
-.rail-focus-card button {
+.rail-focus-card button,
+.rail-focus-card .rail-atlas-link {
   min-height: 30px;
   border: 1px solid #2d2d2a !important;
   background: #0e0e0e;
@@ -992,13 +993,20 @@ body[data-editor-mode="edit"] .scene-shell {
   cursor: pointer;
 }
 
-.rail-focus-card button:last-child {
+.rail-focus-card .rail-atlas-link {
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+}
+
+.rail-focus-card .rail-atlas-link {
   border-color: #4a4335 !important;
   color: #c7b48e;
   background: #17140f;
 }
 
-.rail-focus-card button:hover {
+.rail-focus-card button:hover,
+.rail-focus-card .rail-atlas-link:hover {
   background: #1d1d1b;
   color: #d3d1ca;
 }

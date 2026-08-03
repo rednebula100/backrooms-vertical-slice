@@ -125,6 +125,7 @@ export function createDevEditor({
         <small data-rail-parent>시작 장면</small>
         <button type="button" data-focus-current>그래프에서 위치 찾기</button>
         <button type="button" data-open-editor>마스크 편집 열기</button>
+        <a class="rail-atlas-link" href="./atlas.html">세계 문서 열기</a>
       </section>
       <section class="rail-legend" aria-label="그래프 범례">
         <span><i data-kind="current"></i>현재 장면</span>

@@ -10,7 +10,7 @@ if (path.dirname(dist) !== root || path.basename(dist) !== "dist") {
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 await cp(path.join(root, "index.html"), path.join(dist, "index.html"));
+await cp(path.join(root, "atlas.html"), path.join(dist, "atlas.html"));
 await cp(path.join(root, "src"), path.join(dist, "src"), { recursive: true });
 await cp(path.join(root, "public"), dist, { recursive: true });
 console.log(`Built static site at ${dist}`);
-

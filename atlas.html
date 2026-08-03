@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0b09" />
+    <title>Backrooms World Atlas</title>
+    <link rel="stylesheet" href="./src/atlas.css" />
+  </head>
+  <body>
+    <header class="atlas-masthead">
+      <a href="./?dev=1" class="atlas-wordmark"><i aria-hidden="true"></i><span><b>WORLD ATLAS</b><small>BACKROOMS / DESIGN REGISTRY</small></span></a>
+      <p>세계 구조를 먼저 고정하고, 장면은 나중에 연결한다.</p>
+      <div class="atlas-counts" aria-label="등록 현황">
+        <span><b data-level-count>0</b> 레벨</span>
+        <span><b data-sublevel-count>0</b> 세부레벨</span>
+        <span><b data-region-count>0</b> 내부 지역</span>
+      </div>
+    </header>
+
+    <main class="atlas-layout">
+      <nav class="atlas-index" aria-label="레벨 목차">
+        <div class="index-heading">
+          <span>INDEX</span>
+          <input type="search" placeholder="번호 또는 이름 검색" aria-label="레벨 검색" data-atlas-search />
+        </div>
+        <ol data-atlas-index></ol>
+      </nav>
+
+      <article class="atlas-article" data-atlas-article aria-live="polite">
+        <div class="atlas-loading">세계 레지스트리를 불러오는 중…</div>
+      </article>
+    </main>
+
+    <footer class="atlas-footer">
+      <span>이미지 제작 일시 중지</span>
+      <span>플레이어 비공개 설계 문서</span>
+      <a href="./?dev=1">ROUTE STUDIO로 돌아가기</a>
+    </footer>
+    <script type="module" src="./src/atlas-app.mjs"></script>
+  </body>
+</html>

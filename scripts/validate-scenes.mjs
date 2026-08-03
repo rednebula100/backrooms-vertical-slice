@@ -9,6 +9,7 @@ import {
 } from "../src/scene-model.mjs";
 import { validateProductionQueue } from "../src/production-queue.mjs";
 import { validateRoutePacketRegistry } from "../src/route-packets.mjs";
+import { validateAtlas } from "../src/world-atlas.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const registryPath = path.join(root, "public", "scenes", "scenes.json");
@@ -18,6 +19,7 @@ const generationBatchPath = path.join(root, "production", "generation-jobs.json"
 const stagingPath = path.join(root, "public", "scenes", "staging-scenes.json");
 const annotationsPath = path.join(root, "public", "scenes", "manual-route-annotations.json");
 const routePacketsPath = path.join(root, "public", "scenes", "route-packets.json");
+const atlasPath = path.join(root, "public", "world", "atlas.json");
 const world = JSON.parse(await readFile(registryPath, "utf8"));
 const frontiers = JSON.parse(await readFile(frontiersPath, "utf8"));
 const routeReviews = JSON.parse(await readFile(routeReviewsPath, "utf8"));
@@ -25,6 +27,7 @@ const generationBatch = JSON.parse(await readFile(generationBatchPath, "utf8"));
 const staging = JSON.parse(await readFile(stagingPath, "utf8"));
 const annotations = JSON.parse(await readFile(annotationsPath, "utf8"));
 const routePackets = JSON.parse(await readFile(routePacketsPath, "utf8"));
+const atlas = JSON.parse(await readFile(atlasPath, "utf8"));
 const errors = [
   ...validateWorld(world),
   ...validateFrontiers(world, frontiers),
@@ -32,6 +35,7 @@ const errors = [
   ...validateGenerationBatch(world, generationBatch),
   ...validateProductionQueue(world, frontiers, annotations, staging),
   ...validateRoutePacketRegistry(world, annotations, routePackets),
+  ...validateAtlas(atlas, world),
 ];
 
 async function pngDimensions(source) {
@@ -70,5 +74,5 @@ if (errors.length) {
   console.error(errors.join("\n"));
   process.exitCode = 1;
 } else {
-  console.log(`Validated ${world.scenes.length} scenes, ${staging.candidates.length} staged candidate, ${frontiers.frontiers.length} production frontiers, ${generationBatch.jobs.length} generation jobs, ${routePackets.packets.length} route packets, and 2 boundary assets.`);
+  console.log(`Validated ${world.scenes.length} scenes, ${staging.candidates.length} staged candidate, ${frontiers.frontiers.length} production frontiers, ${generationBatch.jobs.length} generation jobs, ${routePackets.packets.length} route packets, ${atlas.levels.length} atlas entries, ${atlas.regions.length} atlas regions, and 2 boundary assets.`);
 }
