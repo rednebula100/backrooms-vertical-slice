@@ -1,6 +1,7 @@
 const LEVEL_STATUSES = new Set(["in-production", "skeleton", "concept"]);
 const REGION_STATUSES = new Set(["observed", "planned", "concept"]);
 const CONNECTION_STATUSES = new Set(["reserved", "concept"]);
+const IMAGE_STATUSES = new Set(["observed", "concept"]);
 
 function duplicates(values) {
   const seen = new Set();
@@ -11,7 +12,9 @@ export function validateAtlas(atlas, world = null) {
   const errors = [];
   if (!atlas || typeof atlas !== "object") return ["World atlas must be an object"];
   if (!atlas.atlasVersion) errors.push("World atlas is missing atlasVersion");
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(atlas.lastUpdated ?? "")) errors.push("World atlas is missing a valid lastUpdated date");
   if (atlas.canonPolicy?.imagesPaused !== true) errors.push("World atlas must keep image generation paused");
+  if (atlas.canonPolicy?.atlasConceptImagesAllowed !== true) errors.push("World atlas must distinguish concept imagery from paused playable-scene generation");
   if (!Array.isArray(atlas.levels) || !atlas.levels.length) errors.push("World atlas must contain levels");
   if (!Array.isArray(atlas.regions)) errors.push("World atlas regions must be an array");
   if (!Array.isArray(atlas.connections)) errors.push("World atlas connections must be an array");
@@ -43,6 +46,16 @@ export function validateAtlas(atlas, world = null) {
         errors.push(`${level.id} needs at least ${minimum} ${field} entries`);
       }
     }
+    if (!IMAGE_STATUSES.has(level.representativeImage?.status)) errors.push(`${level.id} needs a valid representative image status`);
+    for (const field of ["src", "alt", "caption", "label", "canonScope"]) {
+      if (!level.representativeImage?.[field]?.trim()) errors.push(`${level.id} representative image is missing ${field}`);
+    }
+    for (const field of ["scale", "navigability", "environmentalPressure", "primaryRisk"]) {
+      if (!level.classification?.[field]?.trim()) errors.push(`${level.id} classification is missing ${field}`);
+    }
+    if (!Array.isArray(level.sensoryProfile) || level.sensoryProfile.length !== 3) errors.push(`${level.id} needs exactly three sensory profile entries`);
+    if (!Array.isArray(level.experienceArc) || level.experienceArc.length !== 3) errors.push(`${level.id} needs exactly three experience arc entries`);
+    if (!Array.isArray(level.keywords) || level.keywords.length < 4) errors.push(`${level.id} needs at least four keywords`);
     if (level.kind === "sublevel") {
       if (!levels.has(level.parentLevelId)) errors.push(`${level.id} has missing parent ${level.parentLevelId}`);
       if (levels.get(level.parentLevelId)?.kind !== "level") errors.push(`${level.id} parent must be a top-level level`);

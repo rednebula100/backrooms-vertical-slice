@@ -19,10 +19,16 @@
     </header>
 
     <main class="atlas-layout">
-      <nav class="atlas-index" aria-label="레벨 목차">
+      <nav class="atlas-index" aria-label="레벨 목차" data-atlas-index-panel data-collapsed="true">
         <div class="index-heading">
           <span>INDEX</span>
+          <button type="button" class="index-mobile-toggle" aria-expanded="false" data-index-toggle>목차 펼치기</button>
           <input type="search" placeholder="번호 또는 이름 검색" aria-label="레벨 검색" data-atlas-search />
+          <div class="index-filters" aria-label="항목 분류">
+            <button type="button" data-atlas-filter="all" aria-pressed="true">전체</button>
+            <button type="button" data-atlas-filter="level" aria-pressed="false">레벨</button>
+            <button type="button" data-atlas-filter="sublevel" aria-pressed="false">세부</button>
+          </div>
         </div>
         <ol data-atlas-index></ol>
       </nav>
@@ -33,10 +39,15 @@
     </main>
 
     <footer class="atlas-footer">
-      <span>이미지 제작 일시 중지</span>
+      <span>플레이 장면 이미지 제작 일시 중지</span>
       <span>플레이어 비공개 설계 문서</span>
       <a href="./?dev=1">ROUTE STUDIO로 돌아가기</a>
     </footer>
+    <dialog class="atlas-lightbox" data-atlas-lightbox>
+      <button type="button" aria-label="대표 이미지 닫기" data-lightbox-close>닫기</button>
+      <img alt="" data-lightbox-image />
+      <p data-lightbox-caption></p>
+    </dialog>
     <script type="module" src="./src/atlas-app.mjs"></script>
   </body>
 </html>

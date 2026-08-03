@@ -151,7 +151,9 @@ http.createServer(async (request, response) => {
   }
 
   const requested = pathname === "/" ? "/index.html" : pathname;
-  const filePath = requested.startsWith("/scenes/") || requested.startsWith("/boundary/")
+  const filePath = requested.startsWith("/scenes/")
+    || requested.startsWith("/boundary/")
+    || requested.startsWith("/world/")
     ? path.resolve(root, "public", `.${requested}`)
     : path.resolve(root, `.${requested}`);
   if (!filePath.startsWith(`${root}${path.sep}`)) {
