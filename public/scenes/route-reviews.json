@@ -282,10 +282,114 @@
       ]
     },
     {
+      "sceneId": "L0-0007F",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": [
+        "L0-0007F-P1"
+      ],
+      "imageInspectionStatus": "human-pass",
+      "maskInspectionStatus": "human-pass",
+      "playtestStatus": "pass",
+      "notes": [
+        "Promoted from a human-completed route annotation."
+      ]
+    },
+    {
+      "sceneId": "L0-0007G",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": [
+        "L0-0007G-P1"
+      ],
+      "imageInspectionStatus": "human-pass",
+      "maskInspectionStatus": "human-pass",
+      "playtestStatus": "pass",
+      "notes": [
+        "Promoted from a human-completed route annotation."
+      ]
+    },
+    {
+      "sceneId": "L0-0007H",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": [
+        "L0-0007H-P1"
+      ],
+      "imageInspectionStatus": "human-pass",
+      "maskInspectionStatus": "human-pass",
+      "playtestStatus": "pass",
+      "notes": [
+        "Promoted from a human-completed route annotation."
+      ]
+    },
+    {
       "sceneId": "L0-0008A",
       "observedVisibleRouteCount": 1,
       "registeredPathIds": [
         "L0-0008A-P1"
+      ],
+      "imageInspectionStatus": "human-pass",
+      "maskInspectionStatus": "human-pass",
+      "playtestStatus": "pass",
+      "notes": [
+        "Promoted from a human-completed route annotation."
+      ]
+    },
+    {
+      "sceneId": "L0-0008B",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": [
+        "L0-0008B-P1"
+      ],
+      "imageInspectionStatus": "human-pass",
+      "maskInspectionStatus": "human-pass",
+      "playtestStatus": "pass",
+      "notes": [
+        "Promoted from a human-completed route annotation."
+      ]
+    },
+    {
+      "sceneId": "L0-0008C",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": [
+        "L0-0008C-P1"
+      ],
+      "imageInspectionStatus": "human-pass",
+      "maskInspectionStatus": "human-pass",
+      "playtestStatus": "pass",
+      "notes": [
+        "Promoted from a human-completed route annotation."
+      ]
+    },
+    {
+      "sceneId": "L0-0008D",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": [
+        "L0-0008D-P1"
+      ],
+      "imageInspectionStatus": "human-pass",
+      "maskInspectionStatus": "human-pass",
+      "playtestStatus": "pass",
+      "notes": [
+        "Promoted from a human-completed route annotation."
+      ]
+    },
+    {
+      "sceneId": "L0-0008E",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": [
+        "L0-0008E-P1"
+      ],
+      "imageInspectionStatus": "human-pass",
+      "maskInspectionStatus": "human-pass",
+      "playtestStatus": "pass",
+      "notes": [
+        "Promoted from a human-completed route annotation."
+      ]
+    },
+    {
+      "sceneId": "L0-0009A",
+      "observedVisibleRouteCount": 1,
+      "registeredPathIds": [
+        "L0-0009A-P1"
       ],
       "imageInspectionStatus": "human-pass",
       "maskInspectionStatus": "human-pass",

@@ -3,15 +3,39 @@
   "frontiers": [
     {
       "branch_id": "BR-L0-P1",
-      "current_scene_id": "L0-0008A",
-      "path_id": "L0-0008A-P1",
+      "current_scene_id": "L0-0009A",
+      "path_id": "L0-0009A-P1",
+      "level_id": "LV-000",
+      "depth": 8,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.55,
+        "ceiling": 0.52,
+        "objects": 0,
+        "wrongness": 0.19
+      },
+      "recent_drift": [
+        "Promoted from human review with 1 visible route."
+      ],
+      "continuity_anchors": [
+        "continuous right-curving carpet edge",
+        "long unbroken yellow wall",
+        "rounded foreground return wall",
+        "same ceiling grid and taupe carpet"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-P2",
+      "current_scene_id": "L0-0008B",
+      "path_id": "L0-0008B-P1",
       "level_id": "LV-000",
       "depth": 7,
       "status": "pending",
       "approval_status": "human-route-confirmed",
       "current_state": {
-        "openness": 0.25,
-        "ceiling": 0.33,
+        "openness": 0.28,
+        "ceiling": 0.31,
         "objects": 0,
         "wrongness": 0.18
       },
@@ -19,70 +43,22 @@
         "Promoted from human review with 1 visible route."
       ],
       "continuity_anchors": [
-        "rightward carpet bend",
-        "continuous curved wall",
-        "yellow-beige wallpaper",
-        "taupe patterned carpet"
-      ]
-    },
-    {
-      "branch_id": "BR-L0-P2",
-      "current_scene_id": "L0-0007B",
-      "path_id": "L0-0007B-P1",
-      "level_id": "LV-000",
-      "depth": 6,
-      "status": "pending",
-      "approval_status": "human-route-confirmed",
-      "current_state": {
-        "openness": 0.22,
-        "ceiling": 0.3,
-        "objects": 0,
-        "wrongness": 0.18
-      },
-      "recent_drift": [
-        "Promoted from human review with 1 visible route."
-      ],
-      "continuity_anchors": [
-        "narrow B-branch proportions",
-        "rightward carpet bend",
-        "yellow-beige patterned wallpaper",
-        "taupe patterned carpet"
+        "rounded inside wall",
+        "right-curving carpet and dark trim",
+        "single bright panel near the bend",
+        "narrow B-branch proportions"
       ]
     },
     {
       "branch_id": "BR-L0-0005A-P2",
-      "current_scene_id": "L0-0007C",
-      "path_id": "L0-0007C-P1",
+      "current_scene_id": "L0-0008C",
+      "path_id": "L0-0008C-P1",
       "level_id": "LV-000",
-      "depth": 6,
+      "depth": 7,
       "status": "pending",
       "approval_status": "human-route-confirmed",
       "current_state": {
-        "openness": 0.31,
-        "ceiling": 0.34,
-        "objects": 0,
-        "wrongness": 0.17
-      },
-      "recent_drift": [
-        "Promoted from human review with 1 visible route."
-      ],
-      "continuity_anchors": [
-        "small left source opening",
-        "broad curved wall",
-        "single narrow opening",
-        "brighter wallpaper"
-      ]
-    },
-    {
-      "branch_id": "BR-L0-0006C-P2",
-      "current_scene_id": "L0-0007D",
-      "path_id": "L0-0007D-P1",
-      "level_id": "LV-000",
-      "depth": 6,
-      "status": "pending",
-      "approval_status": "human-route-confirmed",
-      "current_state": {
-        "openness": 0.46,
+        "openness": 0.52,
         "ceiling": 0.36,
         "objects": 0,
         "wrongness": 0.18
@@ -91,10 +67,58 @@
         "Promoted from human review with 1 visible route."
       ],
       "continuity_anchors": [
-        "broad right source opening",
-        "two separated portals",
-        "solid center wall",
-        "bright ceiling grid"
+        "single narrow source opening",
+        "continuous carpet threshold",
+        "broad curved source-wall logic",
+        "brighter wallpaper and ceiling grid"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0006C-P2",
+      "current_scene_id": "L0-0008D",
+      "path_id": "L0-0008D-P1",
+      "level_id": "LV-000",
+      "depth": 7,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.72,
+        "ceiling": 0.36,
+        "objects": 0,
+        "wrongness": 0.19
+      },
+      "recent_drift": [
+        "Promoted from human review with 1 visible route."
+      ],
+      "continuity_anchors": [
+        "broad left source opening",
+        "left-curving carpet and dark trim",
+        "bright repeating fluorescent panels",
+        "thick separator from the unused right route"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0007E-P2",
+      "current_scene_id": "L0-0008E",
+      "path_id": "L0-0008E-P1",
+      "level_id": "LV-000",
+      "depth": 7,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.48,
+        "ceiling": 0.27,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "recent_drift": [
+        "Promoted from human review with 1 visible route."
+      ],
+      "continuity_anchors": [
+        "center carpet continuation",
+        "offset wall pier on the right",
+        "dimmer B-side fluorescent light",
+        "smooth rightward base-trim curve"
       ]
     },
     {
@@ -122,29 +146,76 @@
       ]
     },
     {
-      "branch_id": "BR-L0-0007E-P2",
-      "current_scene_id": "L0-0007E",
-      "path_id": "L0-0007E-P2",
+      "branch_id": "BR-L0-0006D-P2",
+      "current_scene_id": "L0-0007F",
+      "path_id": "L0-0007F-P1",
       "level_id": "LV-000",
       "depth": 6,
       "status": "pending",
       "approval_status": "human-route-confirmed",
       "current_state": {
-        "openness": 0.24,
-        "ceiling": 0.31,
+        "openness": 0.55,
+        "ceiling": 0.34,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "recent_drift": [
+        "Promoted from human review with 1 visible route."
+      ],
+      "continuity_anchors": [
+        "center-left carpet continuation",
+        "broad center-right source wall",
+        "slightly wavy dark base trim",
+        "same ceiling grid and subdued wallpaper"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0003B-P3",
+      "current_scene_id": "L0-0007G",
+      "path_id": "L0-0007G-P1",
+      "level_id": "LV-000",
+      "depth": 6,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.28,
+        "ceiling": 0.3,
         "objects": 0,
         "wrongness": 0.17
       },
       "recent_drift": [
-        "Promoted from human review with 2 visible routes."
+        "Promoted from human review with 1 visible route."
       ],
       "continuity_anchors": [
-        "broad right source opening",
-        "right-curving carpet",
-        "offset wall pier",
-        "dim B-side lighting"
+        "thick foreground return wall",
+        "narrow side passage beside it",
+        "single near fluorescent panel",
+        "compact proportions and dark trim"
+      ]
+    },
+    {
+      "branch_id": "BR-L0-0005E-P2",
+      "current_scene_id": "L0-0007H",
+      "path_id": "L0-0007H-P1",
+      "level_id": "LV-000",
+      "depth": 6,
+      "status": "pending",
+      "approval_status": "human-route-confirmed",
+      "current_state": {
+        "openness": 0.78,
+        "ceiling": 0.38,
+        "objects": 0,
+        "wrongness": 0.2
+      },
+      "recent_drift": [
+        "Promoted from human review with 1 visible route."
       ],
-      "parent_branch_id": "BR-L0-0006B-P2"
+      "continuity_anchors": [
+        "centered source opening",
+        "staggered attached source walls",
+        "broad carpeted floor plane",
+        "subdued fluorescent grid and wallpaper"
+      ]
     },
     {
       "branch_id": "BR-L0-0004B-P2",
@@ -168,79 +239,6 @@
         "broad center-right wall",
         "left carpet continuation",
         "ambiguous right edge"
-      ]
-    },
-    {
-      "branch_id": "BR-L0-0006D-P2",
-      "current_scene_id": "L0-0006D",
-      "path_id": "L0-0006D-P2",
-      "level_id": "LV-000",
-      "depth": 5,
-      "status": "pending",
-      "approval_status": "human-route-confirmed",
-      "current_state": {
-        "openness": 0.34,
-        "ceiling": 0.32,
-        "objects": 0,
-        "wrongness": 0.18
-      },
-      "recent_drift": [
-        "Promoted from human review with 2 visible routes."
-      ],
-      "continuity_anchors": [
-        "left source passage",
-        "broad center-right wall",
-        "left carpet continuation",
-        "ambiguous right edge"
-      ],
-      "parent_branch_id": "BR-L0-0004B-P2"
-    },
-    {
-      "branch_id": "BR-L0-0003B-P3",
-      "current_scene_id": "L0-0006E",
-      "path_id": "L0-0006E-P1",
-      "level_id": "LV-000",
-      "depth": 5,
-      "status": "pending",
-      "approval_status": "human-route-confirmed",
-      "current_state": {
-        "openness": 0.2,
-        "ceiling": 0.3,
-        "objects": 0,
-        "wrongness": 0.16
-      },
-      "recent_drift": [
-        "Promoted from human review with 1 visible route."
-      ],
-      "continuity_anchors": [
-        "narrow full-height right source opening",
-        "short straight carpet run",
-        "single near fluorescent panel",
-        "solid separating wall on the source opening's left"
-      ]
-    },
-    {
-      "branch_id": "BR-L0-0005E-P2",
-      "current_scene_id": "L0-0006F",
-      "path_id": "L0-0006F-P1",
-      "level_id": "LV-000",
-      "depth": 5,
-      "status": "pending",
-      "approval_status": "human-route-confirmed",
-      "current_state": {
-        "openness": 0.58,
-        "ceiling": 0.43,
-        "objects": 0,
-        "wrongness": 0.18
-      },
-      "recent_drift": [
-        "Promoted from human review with 1 visible route."
-      ],
-      "continuity_anchors": [
-        "broad full-height left source opening",
-        "left-curving carpet and dark base trim",
-        "fluorescent panel beyond the curve",
-        "thick source wall separating the right-hand route"
       ]
     },
     {

@@ -525,7 +525,7 @@ Exact landscape 4:3, direct adjacent viewpoint, believable parallax and wall thi
 
 ## 0.9.3 route-conditioned wave-2 completion
 
-All eight images used built-in `imagegen` generation mode. Each call supplied three references in the same order: the clean source scene, a route-selection map with the chosen path in green and sibling paths in red, and a clean crop of the chosen path. The diagnostic colors were forbidden from the outputs. All saved candidates are 1448×1086 PNG files (exact 4:3) and remain staged until human route annotation.
+All eight images used built-in `imagegen` generation mode. Each call supplied three references in the same order: the clean source scene, a route-selection map with the chosen path in green and sibling paths in red, and a clean crop of the chosen path. The diagnostic colors were forbidden from the outputs. All saved candidates are 1448×1086 PNG files (exact 4:3). The 2026-08-03 full editor snapshot confirmed one visible route in each candidate and promoted all eight into the connected registry.
 
 ### L0-0008A-P1 route packet wave 2
 

@@ -2363,7 +2363,7 @@
       "id": "L0-0008A",
       "levelId": "LV-000",
       "branchId": "BR-L0-P1",
-      "status": "provisional-frontier",
+      "status": "provisional",
       "approvalStatus": "human-route-confirmed",
       "reviewStatus": "route-playtest-passed",
       "accessibleName": "an A-branch corridor",
@@ -2401,17 +2401,15 @@
       "paths": [
         {
           "id": "L0-0008A-P1",
-          "status": "pending",
-          "frontier": true,
-          "frontierBranchId": "BR-L0-P1",
+          "status": "active",
           "accessibleName": "Continue through the visible passage in L0-0008A",
           "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
           "screenLocation": "center, medium depth",
           "physicalForm": "wall-bounded carpeted passage",
           "movementDirection": "forward",
           "movementType": "DIRECT",
-          "targetSceneId": null,
-          "targetCamera": null,
+          "targetSceneId": "L0-0009A",
+          "targetCamera": "inside L0-0009A, continuing from L0-0008A-P1",
           "continuityAnchors": [
             "rightward carpet bend",
             "continuous curved wall",
@@ -2465,7 +2463,7 @@
       "id": "L0-0007B",
       "levelId": "LV-000",
       "branchId": "BR-L0-P2",
-      "status": "provisional-frontier",
+      "status": "provisional",
       "approvalStatus": "human-route-confirmed",
       "reviewStatus": "route-playtest-passed",
       "accessibleName": "a B-branch corridor",
@@ -2503,17 +2501,15 @@
       "paths": [
         {
           "id": "L0-0007B-P1",
-          "status": "pending",
-          "frontier": true,
-          "frontierBranchId": "BR-L0-P2",
+          "status": "active",
           "accessibleName": "Continue through the visible passage in L0-0007B",
           "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
           "screenLocation": "right side, medium depth",
           "physicalForm": "wall-bounded carpeted passage",
           "movementDirection": "forward then right",
           "movementType": "DIRECT",
-          "targetSceneId": null,
-          "targetCamera": null,
+          "targetSceneId": "L0-0008B",
+          "targetCamera": "inside L0-0008B, continuing from L0-0007B-P1",
           "continuityAnchors": [
             "narrow B-branch proportions",
             "rightward carpet bend",
@@ -3083,7 +3079,7 @@
       "id": "L0-0006D",
       "levelId": "LV-000",
       "branchId": "BR-L0-0004B-P2",
-      "status": "provisional-frontier",
+      "status": "provisional",
       "approvalStatus": "human-route-confirmed",
       "reviewStatus": "route-playtest-passed",
       "accessibleName": "an offset Level 0 passage",
@@ -3178,17 +3174,15 @@
         },
         {
           "id": "L0-0006D-P2",
-          "status": "pending",
-          "frontier": true,
-          "frontierBranchId": "BR-L0-0006D-P2",
+          "status": "active",
           "accessibleName": "Continue through the visible passage in L0-0006D",
           "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
           "screenLocation": "center, medium depth",
           "physicalForm": "wall-bounded carpeted passage",
           "movementDirection": "forward",
           "movementType": "DIRECT",
-          "targetSceneId": null,
-          "targetCamera": null,
+          "targetSceneId": "L0-0007F",
+          "targetCamera": "inside L0-0007F, continuing from L0-0006D-P2",
           "continuityAnchors": [
             "left source passage",
             "broad center-right wall",
@@ -3242,7 +3236,7 @@
       "id": "L0-0007C",
       "levelId": "LV-000",
       "branchId": "BR-L0-0005A-P2",
-      "status": "provisional-frontier",
+      "status": "provisional",
       "approvalStatus": "human-route-confirmed",
       "reviewStatus": "route-playtest-passed",
       "accessibleName": "a curved Level 0 corridor",
@@ -3279,17 +3273,15 @@
       "paths": [
         {
           "id": "L0-0007C-P1",
-          "status": "pending",
-          "frontier": true,
-          "frontierBranchId": "BR-L0-0005A-P2",
+          "status": "active",
           "accessibleName": "Continue through the visible passage in L0-0007C",
           "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
           "screenLocation": "center, medium depth",
           "physicalForm": "wall-bounded carpeted passage",
           "movementDirection": "forward",
           "movementType": "DIRECT",
-          "targetSceneId": null,
-          "targetCamera": null,
+          "targetSceneId": "L0-0008C",
+          "targetCamera": "inside L0-0008C, continuing from L0-0007C-P1",
           "continuityAnchors": [
             "small left source opening",
             "broad curved wall",
@@ -3343,7 +3335,7 @@
       "id": "L0-0007D",
       "levelId": "LV-000",
       "branchId": "BR-L0-0006C-P2",
-      "status": "provisional-frontier",
+      "status": "provisional",
       "approvalStatus": "human-route-confirmed",
       "reviewStatus": "route-playtest-passed",
       "accessibleName": "a bright two-route Level 0 junction",
@@ -3380,17 +3372,15 @@
       "paths": [
         {
           "id": "L0-0007D-P1",
-          "status": "pending",
-          "frontier": true,
-          "frontierBranchId": "BR-L0-0006C-P2",
+          "status": "active",
           "accessibleName": "Continue through the visible passage in L0-0007D",
           "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
           "screenLocation": "left side, medium depth",
           "physicalForm": "wall-bounded carpeted passage",
           "movementDirection": "forward then left",
           "movementType": "DIRECT",
-          "targetSceneId": null,
-          "targetCamera": null,
+          "targetSceneId": "L0-0008D",
+          "targetCamera": "inside L0-0008D, continuing from L0-0007D-P1",
           "continuityAnchors": [
             "broad right source opening",
             "two separated portals",
@@ -3444,7 +3434,7 @@
       "id": "L0-0007E",
       "levelId": "LV-000",
       "branchId": "BR-L0-0006B-P2",
-      "status": "provisional-frontier",
+      "status": "provisional",
       "approvalStatus": "human-route-confirmed",
       "reviewStatus": "route-playtest-passed",
       "accessibleName": "a dim curved Level 0 corridor",
@@ -3539,17 +3529,15 @@
         },
         {
           "id": "L0-0007E-P2",
-          "status": "pending",
-          "frontier": true,
-          "frontierBranchId": "BR-L0-0007E-P2",
+          "status": "active",
           "accessibleName": "Continue through the visible passage in L0-0007E",
           "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
           "screenLocation": "center, medium depth",
           "physicalForm": "wall-bounded carpeted passage",
           "movementDirection": "forward",
           "movementType": "DIRECT",
-          "targetSceneId": null,
-          "targetCamera": null,
+          "targetSceneId": "L0-0008E",
+          "targetCamera": "inside L0-0008E, continuing from L0-0007E-P2",
           "continuityAnchors": [
             "broad right source opening",
             "right-curving carpet",
@@ -3603,7 +3591,7 @@
       "id": "L0-0006E",
       "levelId": "LV-000",
       "branchId": "BR-L0-0003B-P3",
-      "status": "provisional-frontier",
+      "status": "provisional",
       "approvalStatus": "human-route-confirmed",
       "reviewStatus": "route-playtest-passed",
       "accessibleName": "a compact wall-pocket Level 0",
@@ -3643,17 +3631,15 @@
       "paths": [
         {
           "id": "L0-0006E-P1",
-          "status": "pending",
-          "frontier": true,
-          "frontierBranchId": "BR-L0-0003B-P3",
+          "status": "active",
           "accessibleName": "Continue through the visible passage in L0-0006E",
           "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
           "screenLocation": "center, medium depth",
           "physicalForm": "wall-bounded carpeted passage",
           "movementDirection": "forward",
           "movementType": "DIRECT",
-          "targetSceneId": null,
-          "targetCamera": null,
+          "targetSceneId": "L0-0007G",
+          "targetCamera": "inside L0-0007G, continuing from L0-0006E-P1",
           "continuityAnchors": [
             "narrow full-height right source opening",
             "short straight carpet run",
@@ -3715,7 +3701,7 @@
       "id": "L0-0006F",
       "levelId": "LV-000",
       "branchId": "BR-L0-0005E-P2",
-      "status": "provisional-frontier",
+      "status": "provisional",
       "approvalStatus": "human-route-confirmed",
       "reviewStatus": "route-playtest-passed",
       "accessibleName": "a transverse Level 0 hall",
@@ -3755,17 +3741,15 @@
       "paths": [
         {
           "id": "L0-0006F-P1",
-          "status": "pending",
-          "frontier": true,
-          "frontierBranchId": "BR-L0-0005E-P2",
+          "status": "active",
           "accessibleName": "Continue through the visible passage in L0-0006F",
           "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
           "screenLocation": "center, medium depth",
           "physicalForm": "wall-bounded carpeted passage",
           "movementDirection": "forward",
           "movementType": "DIRECT",
-          "targetSceneId": null,
-          "targetCamera": null,
+          "targetSceneId": "L0-0007H",
+          "targetCamera": "inside L0-0007H, continuing from L0-0006F-P1",
           "continuityAnchors": [
             "broad full-height left source opening",
             "left-curving carpet and dark base trim",
@@ -3814,6 +3798,838 @@
       ],
       "generatorOutput": "exec-69cb0b20-f0d3-4fca-aa0c-12d54008c1b5.png",
       "promptRecord": "docs/generation-prompts.md#l0-0005e-p2-route-packet-pilot"
+    },
+    {
+      "id": "L0-0009A",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P1",
+      "status": "provisional-frontier",
+      "approvalStatus": "human-route-confirmed",
+      "reviewStatus": "route-playtest-passed",
+      "accessibleName": "a ceiling-expansion Level 0",
+      "description": "The long right curve releases into a wider central volume with a subtly expanded ceiling condition.",
+      "sourceSceneId": "L0-0008A",
+      "sourcePathId": "L0-0008A-P1",
+      "routePacketId": "RP-L0-0008A-P1",
+      "spaceId": "SP-L0-0008A",
+      "transitionRelation": "same-space-advance",
+      "continuityAnchors": [
+        "continuous right-curving carpet edge",
+        "long unbroken yellow wall",
+        "rounded foreground return wall",
+        "same ceiling grid and taupe carpet"
+      ],
+      "recentChanges": [
+        "Generated from the human-confirmed L0-0008A-P1 route packet in wave 2.",
+        "Promoted from human review with 1 visible route."
+      ],
+      "image": "/scenes/L0-0009A/candidates/L0-0009A-C01.png",
+      "asset": {
+        "width": 1448,
+        "height": 1086,
+        "aspectRatio": "4:3"
+      },
+      "camera": {
+        "heightMeters": 1.65,
+        "lensEquivalentMm": 40,
+        "facing": "unconfirmed"
+      },
+      "state": {
+        "openness": 0.55,
+        "ceiling": 0.52,
+        "objects": 0,
+        "wrongness": 0.19
+      },
+      "paths": [
+        {
+          "id": "L0-0009A-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-P1",
+          "accessibleName": "Continue through the visible passage in L0-0009A",
+          "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
+          "screenLocation": "right side, medium depth",
+          "physicalForm": "wall-bounded carpeted passage",
+          "movementDirection": "forward then right",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": [
+            "continuous right-curving carpet edge",
+            "long unbroken yellow wall",
+            "rounded foreground return wall",
+            "same ceiling grid and taupe carpet"
+          ],
+          "regions": {
+            "desktop": [
+              [
+                1063,
+                341
+              ],
+              [
+                1218,
+                316
+              ],
+              [
+                1216,
+                626
+              ],
+              [
+                1063,
+                602
+              ]
+            ],
+            "mobile": [
+              [
+                1041,
+                318
+              ],
+              [
+                1241,
+                288
+              ],
+              [
+                1238,
+                654
+              ],
+              [
+                1041,
+                626
+              ]
+            ]
+          }
+        }
+      ],
+      "generatorOutput": "exec-2e03ee16-ef61-4cc4-b2b3-f6a94e1a5d2d.png",
+      "promptRecord": "docs/generation-prompts.md#l0-0008a-p1-route-packet-wave-2"
+    },
+    {
+      "id": "L0-0008B",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "human-route-confirmed",
+      "reviewStatus": "route-playtest-passed",
+      "accessibleName": "a wide-bend Level 0",
+      "description": "The narrow B branch continues through a restrained rightward bend with a broader floor-plane read.",
+      "sourceSceneId": "L0-0007B",
+      "sourcePathId": "L0-0007B-P1",
+      "routePacketId": "RP-L0-0007B-P1",
+      "spaceId": "SP-L0-0007B",
+      "transitionRelation": "same-space-advance",
+      "continuityAnchors": [
+        "rounded inside wall",
+        "right-curving carpet and dark trim",
+        "single bright panel near the bend",
+        "narrow B-branch proportions"
+      ],
+      "recentChanges": [
+        "Generated from the human-confirmed L0-0007B-P1 route packet in wave 2.",
+        "Promoted from human review with 1 visible route."
+      ],
+      "image": "/scenes/L0-0008B/candidates/L0-0008B-C01.png",
+      "asset": {
+        "width": 1448,
+        "height": 1086,
+        "aspectRatio": "4:3"
+      },
+      "camera": {
+        "heightMeters": 1.65,
+        "lensEquivalentMm": 40,
+        "facing": "unconfirmed"
+      },
+      "state": {
+        "openness": 0.28,
+        "ceiling": 0.31,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "paths": [
+        {
+          "id": "L0-0008B-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-P2",
+          "accessibleName": "Continue through the visible passage in L0-0008B",
+          "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "wall-bounded carpeted passage",
+          "movementDirection": "forward",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": [
+            "rounded inside wall",
+            "right-curving carpet and dark trim",
+            "single bright panel near the bend",
+            "narrow B-branch proportions"
+          ],
+          "regions": {
+            "desktop": [
+              [
+                622,
+                78
+              ],
+              [
+                939,
+                128
+              ],
+              [
+                952,
+                559
+              ],
+              [
+                630,
+                613
+              ]
+            ],
+            "mobile": [
+              [
+                593,
+                30
+              ],
+              [
+                967,
+                89
+              ],
+              [
+                982,
+                598
+              ],
+              [
+                602,
+                661
+              ]
+            ]
+          }
+        }
+      ],
+      "generatorOutput": "exec-e0612c32-4866-4050-9266-74f5233d285a.png",
+      "promptRecord": "docs/generation-prompts.md#l0-0007b-p1-route-packet-wave-2"
+    },
+    {
+      "id": "L0-0008C",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-0005A-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "human-route-confirmed",
+      "reviewStatus": "route-playtest-passed",
+      "accessibleName": "a nested-chamber Level 0",
+      "description": "The narrow opening leads into two unequal connected room volumes whose exits need human annotation.",
+      "sourceSceneId": "L0-0007C",
+      "sourcePathId": "L0-0007C-P1",
+      "routePacketId": "RP-L0-0007C-P1",
+      "spaceId": "SP-L0-0008C",
+      "transitionRelation": "adjacent-space",
+      "continuityAnchors": [
+        "single narrow source opening",
+        "continuous carpet threshold",
+        "broad curved source-wall logic",
+        "brighter wallpaper and ceiling grid"
+      ],
+      "recentChanges": [
+        "Generated from the human-confirmed L0-0007C-P1 route packet in wave 2.",
+        "Promoted from human review with 1 visible route."
+      ],
+      "image": "/scenes/L0-0008C/candidates/L0-0008C-C01.png",
+      "asset": {
+        "width": 1448,
+        "height": 1086,
+        "aspectRatio": "4:3"
+      },
+      "camera": {
+        "heightMeters": 1.65,
+        "lensEquivalentMm": 40,
+        "facing": "unconfirmed"
+      },
+      "state": {
+        "openness": 0.52,
+        "ceiling": 0.36,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "paths": [
+        {
+          "id": "L0-0008C-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0005A-P2",
+          "accessibleName": "Continue through the visible passage in L0-0008C",
+          "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "wall-bounded carpeted passage",
+          "movementDirection": "forward",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": [
+            "single narrow source opening",
+            "continuous carpet threshold",
+            "broad curved source-wall logic",
+            "brighter wallpaper and ceiling grid"
+          ],
+          "regions": {
+            "desktop": [
+              [
+                957,
+                318
+              ],
+              [
+                963,
+                611
+              ],
+              [
+                881,
+                570
+              ],
+              [
+                855,
+                354
+              ]
+            ],
+            "mobile": [
+              [
+                993,
+                292
+              ],
+              [
+                1005,
+                638
+              ],
+              [
+                853,
+                589
+              ],
+              [
+                805,
+                334
+              ]
+            ]
+          }
+        }
+      ],
+      "generatorOutput": "exec-e7fc5a66-abfe-4759-8a84-275a4b9fc97d.png",
+      "promptRecord": "docs/generation-prompts.md#l0-0007c-p1-route-packet-wave-2"
+    },
+    {
+      "id": "L0-0008D",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-0006C-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "human-route-confirmed",
+      "reviewStatus": "route-playtest-passed",
+      "accessibleName": "a column-field Level 0",
+      "description": "The broad left route opens into a long hall structured by sparse attached piers.",
+      "sourceSceneId": "L0-0007D",
+      "sourcePathId": "L0-0007D-P1",
+      "routePacketId": "RP-L0-0007D-P1",
+      "spaceId": "SP-L0-0008D",
+      "transitionRelation": "adjacent-space",
+      "continuityAnchors": [
+        "broad left source opening",
+        "left-curving carpet and dark trim",
+        "bright repeating fluorescent panels",
+        "thick separator from the unused right route"
+      ],
+      "recentChanges": [
+        "Generated from the human-confirmed L0-0007D-P1 route packet in wave 2.",
+        "Promoted from human review with 1 visible route."
+      ],
+      "image": "/scenes/L0-0008D/candidates/L0-0008D-C01.png",
+      "asset": {
+        "width": 1448,
+        "height": 1086,
+        "aspectRatio": "4:3"
+      },
+      "camera": {
+        "heightMeters": 1.65,
+        "lensEquivalentMm": 40,
+        "facing": "unconfirmed"
+      },
+      "state": {
+        "openness": 0.72,
+        "ceiling": 0.36,
+        "objects": 0,
+        "wrongness": 0.19
+      },
+      "paths": [
+        {
+          "id": "L0-0008D-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0006C-P2",
+          "accessibleName": "Continue through the visible passage in L0-0008D",
+          "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
+          "screenLocation": "left side, medium depth",
+          "physicalForm": "wall-bounded carpeted passage",
+          "movementDirection": "forward then left",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": [
+            "broad left source opening",
+            "left-curving carpet and dark trim",
+            "bright repeating fluorescent panels",
+            "thick separator from the unused right route"
+          ],
+          "regions": {
+            "desktop": [
+              [
+                234,
+                398
+              ],
+              [
+                319,
+                409
+              ],
+              [
+                319,
+                505
+              ],
+              [
+                230,
+                518
+              ]
+            ],
+            "mobile": [
+              [
+                183,
+                359
+              ],
+              [
+                374,
+                377
+              ],
+              [
+                374,
+                536
+              ],
+              [
+                174,
+                559
+              ]
+            ]
+          }
+        }
+      ],
+      "generatorOutput": "exec-daec94e7-4898-48a7-9139-72557a7747ad.png",
+      "promptRecord": "docs/generation-prompts.md#l0-0007d-p1-route-packet-wave-2"
+    },
+    {
+      "id": "L0-0008E",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-0007E-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "human-route-confirmed",
+      "reviewStatus": "route-playtest-passed",
+      "accessibleName": "a ceiling-compression Level 0",
+      "description": "The center route clears the offset pier and widens beneath one localized low soffit.",
+      "sourceSceneId": "L0-0007E",
+      "sourcePathId": "L0-0007E-P2",
+      "routePacketId": "RP-L0-0007E-P2",
+      "spaceId": "SP-L0-0007E",
+      "transitionRelation": "same-space-advance",
+      "continuityAnchors": [
+        "center carpet continuation",
+        "offset wall pier on the right",
+        "dimmer B-side fluorescent light",
+        "smooth rightward base-trim curve"
+      ],
+      "recentChanges": [
+        "Generated from the human-confirmed L0-0007E-P2 route packet in wave 2.",
+        "Promoted from human review with 1 visible route."
+      ],
+      "image": "/scenes/L0-0008E/candidates/L0-0008E-C01.png",
+      "asset": {
+        "width": 1448,
+        "height": 1086,
+        "aspectRatio": "4:3"
+      },
+      "camera": {
+        "heightMeters": 1.65,
+        "lensEquivalentMm": 40,
+        "facing": "unconfirmed"
+      },
+      "state": {
+        "openness": 0.48,
+        "ceiling": 0.27,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "paths": [
+        {
+          "id": "L0-0008E-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0007E-P2",
+          "accessibleName": "Continue through the visible passage in L0-0008E",
+          "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "wall-bounded carpeted passage",
+          "movementDirection": "forward",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": [
+            "center carpet continuation",
+            "offset wall pier on the right",
+            "dimmer B-side fluorescent light",
+            "smooth rightward base-trim curve"
+          ],
+          "regions": {
+            "desktop": [
+              [
+                572,
+                304
+              ],
+              [
+                680,
+                337
+              ],
+              [
+                678,
+                531
+              ],
+              [
+                574,
+                605
+              ]
+            ],
+            "mobile": [
+              [
+                526,
+                279
+              ],
+              [
+                726,
+                318
+              ],
+              [
+                722,
+                547
+              ],
+              [
+                530,
+                634
+              ]
+            ]
+          }
+        }
+      ],
+      "generatorOutput": "exec-dc68f323-2d3e-4542-9b25-b3c6cbd75a7e.png",
+      "promptRecord": "docs/generation-prompts.md#l0-0007e-p2-route-packet-wave-2"
+    },
+    {
+      "id": "L0-0007F",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-0006D-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "human-route-confirmed",
+      "reviewStatus": "route-playtest-passed",
+      "accessibleName": "a long-parallax Level 0",
+      "description": "The center-left route clears the broad wall mass and reveals a deep sequence of attached wall planes.",
+      "sourceSceneId": "L0-0006D",
+      "sourcePathId": "L0-0006D-P2",
+      "routePacketId": "RP-L0-0006D-P2",
+      "spaceId": "SP-L0-0006D",
+      "transitionRelation": "same-space-advance",
+      "continuityAnchors": [
+        "center-left carpet continuation",
+        "broad center-right source wall",
+        "slightly wavy dark base trim",
+        "same ceiling grid and subdued wallpaper"
+      ],
+      "recentChanges": [
+        "Generated from the human-confirmed L0-0006D-P2 route packet in wave 2.",
+        "Promoted from human review with 1 visible route."
+      ],
+      "image": "/scenes/L0-0007F/candidates/L0-0007F-C01.png",
+      "asset": {
+        "width": 1448,
+        "height": 1086,
+        "aspectRatio": "4:3"
+      },
+      "camera": {
+        "heightMeters": 1.65,
+        "lensEquivalentMm": 40,
+        "facing": "unconfirmed"
+      },
+      "state": {
+        "openness": 0.55,
+        "ceiling": 0.34,
+        "objects": 0,
+        "wrongness": 0.18
+      },
+      "paths": [
+        {
+          "id": "L0-0007F-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0006D-P2",
+          "accessibleName": "Continue through the visible passage in L0-0007F",
+          "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "wall-bounded carpeted passage",
+          "movementDirection": "forward",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": [
+            "center-left carpet continuation",
+            "broad center-right source wall",
+            "slightly wavy dark base trim",
+            "same ceiling grid and subdued wallpaper"
+          ],
+          "regions": {
+            "desktop": [
+              [
+                641,
+                344
+              ],
+              [
+                809,
+                305
+              ],
+              [
+                809,
+                628
+              ],
+              [
+                643,
+                596
+              ]
+            ],
+            "mobile": [
+              [
+                625,
+                322
+              ],
+              [
+                825,
+                276
+              ],
+              [
+                825,
+                657
+              ],
+              [
+                628,
+                619
+              ]
+            ]
+          }
+        }
+      ],
+      "generatorOutput": "exec-007ab7bd-62a7-4422-981b-735cae43af47.png",
+      "promptRecord": "docs/generation-prompts.md#l0-0006d-p2-route-packet-wave-2"
+    },
+    {
+      "id": "L0-0007G",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-0003B-P3",
+      "status": "provisional-frontier",
+      "approvalStatus": "human-route-confirmed",
+      "reviewStatus": "route-playtest-passed",
+      "accessibleName": "an offset-room Level 0",
+      "description": "The thin side passage reveals a compact asymmetric room divided by one attached wall mass.",
+      "sourceSceneId": "L0-0006E",
+      "sourcePathId": "L0-0006E-P1",
+      "routePacketId": "RP-L0-0006E-P1",
+      "spaceId": "SP-L0-0006E",
+      "transitionRelation": "same-space-advance",
+      "continuityAnchors": [
+        "thick foreground return wall",
+        "narrow side passage beside it",
+        "single near fluorescent panel",
+        "compact proportions and dark trim"
+      ],
+      "recentChanges": [
+        "Generated from the human-confirmed L0-0006E-P1 route packet in wave 2.",
+        "Promoted from human review with 1 visible route."
+      ],
+      "image": "/scenes/L0-0007G/candidates/L0-0007G-C01.png",
+      "asset": {
+        "width": 1448,
+        "height": 1086,
+        "aspectRatio": "4:3"
+      },
+      "camera": {
+        "heightMeters": 1.65,
+        "lensEquivalentMm": 40,
+        "facing": "unconfirmed"
+      },
+      "state": {
+        "openness": 0.28,
+        "ceiling": 0.3,
+        "objects": 0,
+        "wrongness": 0.17
+      },
+      "paths": [
+        {
+          "id": "L0-0007G-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0003B-P3",
+          "accessibleName": "Continue through the visible passage in L0-0007G",
+          "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
+          "screenLocation": "left side, medium depth",
+          "physicalForm": "wall-bounded carpeted passage",
+          "movementDirection": "forward then left",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": [
+            "thick foreground return wall",
+            "narrow side passage beside it",
+            "single near fluorescent panel",
+            "compact proportions and dark trim"
+          ],
+          "regions": {
+            "desktop": [
+              [
+                359,
+                37
+              ],
+              [
+                235,
+                135
+              ],
+              [
+                259,
+                718
+              ],
+              [
+                382,
+                843
+              ]
+            ],
+            "mobile": [
+              [
+                377,
+                0
+              ],
+              [
+                209,
+                81
+              ],
+              [
+                241,
+                769
+              ],
+              [
+                409,
+                917
+              ]
+            ]
+          }
+        }
+      ],
+      "generatorOutput": "exec-9a4cafc6-6f77-4667-83c4-fa8b5e7529a4.png",
+      "promptRecord": "docs/generation-prompts.md#l0-0006e-p1-route-packet-wave-2"
+    },
+    {
+      "id": "L0-0007H",
+      "levelId": "LV-000",
+      "branchId": "BR-L0-0005E-P2",
+      "status": "provisional-frontier",
+      "approvalStatus": "human-route-confirmed",
+      "reviewStatus": "route-playtest-passed",
+      "accessibleName": "a service-grid Level 0",
+      "description": "The centered route enters a sparse open commercial floor with long off-center sightlines.",
+      "sourceSceneId": "L0-0006F",
+      "sourcePathId": "L0-0006F-P1",
+      "routePacketId": "RP-L0-0006F-P1",
+      "spaceId": "SP-L0-0007H",
+      "transitionRelation": "adjacent-space",
+      "continuityAnchors": [
+        "centered source opening",
+        "staggered attached source walls",
+        "broad carpeted floor plane",
+        "subdued fluorescent grid and wallpaper"
+      ],
+      "recentChanges": [
+        "Generated from the human-confirmed L0-0006F-P1 route packet in wave 2.",
+        "Promoted from human review with 1 visible route."
+      ],
+      "image": "/scenes/L0-0007H/candidates/L0-0007H-C01.png",
+      "asset": {
+        "width": 1448,
+        "height": 1086,
+        "aspectRatio": "4:3"
+      },
+      "camera": {
+        "heightMeters": 1.65,
+        "lensEquivalentMm": 40,
+        "facing": "unconfirmed"
+      },
+      "state": {
+        "openness": 0.78,
+        "ceiling": 0.38,
+        "objects": 0,
+        "wrongness": 0.2
+      },
+      "paths": [
+        {
+          "id": "L0-0007H-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-0005E-P2",
+          "accessibleName": "Continue through the visible passage in L0-0007H",
+          "semanticDescription": "A human-confirmed visible continuation in the Level 0 architecture",
+          "screenLocation": "center, medium depth",
+          "physicalForm": "wall-bounded carpeted passage",
+          "movementDirection": "forward",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": [
+            "centered source opening",
+            "staggered attached source walls",
+            "broad carpeted floor plane",
+            "subdued fluorescent grid and wallpaper"
+          ],
+          "regions": {
+            "desktop": [
+              [
+                781,
+                370
+              ],
+              [
+                902,
+                381
+              ],
+              [
+                902,
+                500
+              ],
+              [
+                783,
+                517
+              ]
+            ],
+            "mobile": [
+              [
+                742,
+                344
+              ],
+              [
+                942,
+                359
+              ],
+              [
+                942,
+                521
+              ],
+              [
+                745,
+                544
+              ]
+            ]
+          }
+        }
+      ],
+      "generatorOutput": "exec-781ecae0-da76-4b14-bf3a-a80fcc54c132.png",
+      "promptRecord": "docs/generation-prompts.md#l0-0006f-p1-route-packet-wave-2"
     }
   ]
 }
