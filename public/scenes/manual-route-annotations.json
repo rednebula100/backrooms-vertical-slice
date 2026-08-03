@@ -1,6 +1,6 @@
 {
   "worldVersion": "vertical-slice-0.7.0",
-  "updatedAt": "2026-08-03T11:32:37.005Z",
+  "updatedAt": "2026-08-03T17:40:03.330Z",
   "scenes": [
     {
       "sceneId": "L0-0001",
@@ -2597,6 +2597,58 @@
               [
                 1041,
                 626
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "L01-0001",
+      "image": "/scenes/L01-0001/candidates/L01-0001-C01.png",
+      "observedVisibleRouteCount": 1,
+      "annotationStatus": "staging-masks-confirmed",
+      "reviewComplete": true,
+      "masks": [
+        {
+          "id": "MASK-L01-0001-01",
+          "sourcePathId": null,
+          "status": "draft",
+          "regions": {
+            "desktop": [
+              [
+                1174,
+                257
+              ],
+              [
+                813,
+                252
+              ],
+              [
+                809,
+                613
+              ],
+              [
+                1176,
+                652
+              ]
+            ],
+            "mobile": [
+              [
+                1207,
+                223
+              ],
+              [
+                781,
+                218
+              ],
+              [
+                776,
+                644
+              ],
+              [
+                1209,
+                690
               ]
             ]
           }

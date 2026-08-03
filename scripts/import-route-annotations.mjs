@@ -8,9 +8,12 @@ import { validateFrontiers, validateRouteReviews, validateWorld } from "../src/s
 import { buildRoutePacketRegistry, validateRoutePacketRegistry } from "../src/route-packets.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const sourcePath = process.argv[2] ? path.resolve(process.argv[2]) : null;
+const args = process.argv.slice(2);
+const sourceArgument = args.find((argument) => !argument.startsWith("--"));
+const sourcePath = sourceArgument ? path.resolve(sourceArgument) : null;
+const deferPromotion = args.includes("--defer-promotion");
 if (!sourcePath) {
-  console.error("Usage: npm run annotations:import -- <exported-json-path>");
+  console.error("Usage: npm run annotations:import -- <exported-json-path> [--defer-promotion]");
   process.exit(1);
 }
 
@@ -60,6 +63,7 @@ const promoted = promoteReviewedCandidates({
   queue: staging,
   routeReviews,
   now: normalized.value.updatedAt,
+  promoteCandidates: !deferPromotion,
 });
 const routePackets = buildRoutePacketRegistry(promoted.world, promoted.annotations, routePacketOverrides, {
   updatedAt: normalized.value.updatedAt,
@@ -96,6 +100,7 @@ for (const [target] of outputs) await rename(`${target}.${process.pid}.tmp`, tar
 console.log(`Imported ${normalized.value.scenes.length} scene annotations.`);
 console.log(`Changed ${changedSceneIds.length}: ${changedSceneIds.join(", ") || "none"}`);
 console.log(`Promoted ${promoted.promotedSceneIds.length}: ${promoted.promotedSceneIds.join(", ") || "none"}`);
+if (deferPromotion) console.log("Promotion deferred; reviewed candidates remain staged for pilot testing.");
 console.log(`Registered ${promoted.registeredRouteIds.length} routes from the full editor snapshot.`);
 console.log(`Updated ${routePackets.packets.filter((packet) => packet.generationStatus === "consumed").length} consumed route packets.`);
 if (repaired.removedPathIds.length) console.log(`Removed duplicate route registrations: ${repaired.removedPathIds.join(", ")}.`);

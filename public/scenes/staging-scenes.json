@@ -1,6 +1,6 @@
 {
   "worldVersion": "vertical-slice-0.7.0",
-  "updatedAt": "2026-08-04T02:06:44.123+09:00",
+  "updatedAt": "2026-08-03T17:40:03.330Z",
   "batch": {
     "id": "L01-PILOT-001",
     "strategy": "depth-first-human-gated",
@@ -14,9 +14,9 @@
       "id": "L01-0001",
       "levelId": "LV-000.1",
       "branchId": "BR-L0-P1",
-      "status": "awaiting-route-annotation",
+      "status": "ready-for-promotion",
       "approvalStatus": "generated-candidate",
-      "reviewStatus": "needs-human-annotation",
+      "reviewStatus": "route-annotation-complete",
       "staging": true,
       "accessibleName": "an unreviewed Level 0.1 transition clamp candidate",
       "description": "Level 0 carpet and wallpaper cross one physical seam into a restrained right-curving metal and translucent-glass service gallery.",
@@ -56,7 +56,7 @@
       "paths": [],
       "generatorOutput": "exec-9d821502-e217-4c99-922e-e3b2c8a26aeb.png",
       "promptRecord": "docs/generation-prompts.md#l01-0001-transition-clamp",
-      "observedVisibleRouteCount": 0
+      "observedVisibleRouteCount": 1
     }
   ]
 }

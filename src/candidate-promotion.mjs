@@ -179,6 +179,7 @@ export function promoteReviewedCandidates({
   queue: inputQueue,
   routeReviews: inputRouteReviews,
   now = new Date().toISOString(),
+  promoteCandidates = true,
 }) {
   const world = clone(inputWorld);
   const annotations = clone(inputAnnotations);
@@ -213,6 +214,7 @@ export function promoteReviewedCandidates({
 
   const approvedFourPlus = new Set(queue.batch?.fourPlusApprovedSceneIds ?? []);
   const ready = queue.candidates.filter((candidate) => {
+    if (!promoteCandidates) return false;
     const record = annotationById.get(candidate.id);
     return record?.reviewComplete && record.annotationStatus === "staging-masks-confirmed";
   });

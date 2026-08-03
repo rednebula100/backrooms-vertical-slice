@@ -97,6 +97,7 @@ export function createDevEditor({
   let dragging = null;
   let incompletePath = null;
   let sceneFilter = "";
+  let testSceneHistory = [];
   const collapsedScenes = new Set();
 
   document.body.dataset.editor = "true";
@@ -201,6 +202,7 @@ export function createDevEditor({
     <div class="editor-toast" role="status" aria-live="polite" data-editor-toast></div>
     <div class="drawing-banner" data-drawing-banner hidden><span>통로 외곽을 순서대로 찍으세요</span><small>Enter 완료 · Esc 취소</small></div>
     <div class="test-mode-toolbar" data-test-mode-toolbar>
+      <button class="test-back-button" type="button" data-test-back disabled>← 이전 <kbd>Backspace</kbd></button>
       <span data-test-scene>—</span>
       <button type="button" data-test-mask-toggle aria-pressed="false">영역 보기</button>
       <button type="button" data-exit-test>편집으로 <kbd>Esc</kbd></button>
@@ -229,7 +231,7 @@ export function createDevEditor({
   `;
   document.body.append(root);
 
-  const elements = Object.fromEntries([...root.querySelectorAll("[data-scene-list], [data-scene-search], [data-current-scene], [data-scene-description], [data-route-count], [data-draft-count], [data-mask-list], [data-selected-id], [data-selected-meta], [data-delete-mask], [data-open-route-packet], [data-route-packet-preview], [data-route-packet-id], [data-route-packet-map], [data-route-packet-crop], [data-route-packet-relation], [data-route-packet-camera], [data-route-packet-status], [data-undo], [data-redo], [data-new-mask], [data-complete-review], [data-test-mask-toggle], [data-auto-save-status], [data-auto-save-label], [data-editor-toast], [data-drawing-banner], [data-parent-scene], [data-test-scene], [data-incomplete-overlay], [data-incomplete-id], [data-rail-current], [data-rail-parent], [data-graph-total], [data-graph-frontiers], [data-graph-review], [data-graph-scale], [data-graph-viewport], [data-graph-canvas]")].map((node) => {
+  const elements = Object.fromEntries([...root.querySelectorAll("[data-scene-list], [data-scene-search], [data-current-scene], [data-scene-description], [data-route-count], [data-draft-count], [data-mask-list], [data-selected-id], [data-selected-meta], [data-delete-mask], [data-open-route-packet], [data-route-packet-preview], [data-route-packet-id], [data-route-packet-map], [data-route-packet-crop], [data-route-packet-relation], [data-route-packet-camera], [data-route-packet-status], [data-undo], [data-redo], [data-new-mask], [data-complete-review], [data-test-back], [data-test-mask-toggle], [data-auto-save-status], [data-auto-save-label], [data-editor-toast], [data-drawing-banner], [data-parent-scene], [data-test-scene], [data-incomplete-overlay], [data-incomplete-id], [data-rail-current], [data-rail-parent], [data-graph-total], [data-graph-frontiers], [data-graph-review], [data-graph-scale], [data-graph-viewport], [data-graph-canvas]")].map((node) => {
     const key = Object.keys(node.dataset)[0];
     return [key, node];
   }));
@@ -338,10 +340,13 @@ export function createDevEditor({
   }
 
   function setMode(nextMode) {
+    const previousMode = mode;
     if (drawing) cancelDrawing();
     if (nextMode !== "test") closeIncomplete();
     elements.routePacketPreview.hidden = true;
     mode = nextMode;
+    if (mode === "test" && previousMode !== "test") testSceneHistory = [];
+    if (mode !== "test") testSceneHistory = [];
     document.body.dataset.editorMode = mode;
     buttonPressed(root, "[data-mode]", mode, "mode");
     render();
@@ -427,19 +432,36 @@ export function createDevEditor({
     motion.enterPanel(elements.incompleteOverlay, "right");
   }
 
-  function navigateToScene(sceneId, historyMode = "push") {
+  function navigateToScene(sceneId, historyMode = "push", recordTestVisit = true) {
     const scene = scenes.get(sceneId);
     if (!scene) return;
+    const currentSceneId = getCurrentScene()?.id;
+    if (mode === "test" && recordTestVisit && currentSceneId && currentSceneId !== sceneId) {
+      testSceneHistory.push(currentSceneId);
+      if (testSceneHistory.length > 200) testSceneHistory.shift();
+    }
     const url = new URL(window.location.href);
     url.searchParams.set("dev", "1");
     url.searchParams.set("scene", sceneId);
-    if (historyMode === "push") history.pushState({ sceneId }, "", url);
-    else if (historyMode === "replace") history.replaceState({ sceneId }, "", url);
+    const effectiveHistoryMode = mode === "test" ? "replace" : historyMode;
+    if (effectiveHistoryMode === "push") history.pushState({ sceneId }, "", url);
+    else if (effectiveHistoryMode === "replace") history.replaceState({ sceneId }, "", url);
     selectedMaskId = null;
     selectedVertex = null;
     drawing = null;
     closeIncomplete();
     showScene(scene);
+  }
+
+  function navigateBackInTest() {
+    if (mode !== "test") return;
+    if (incompletePath) {
+      closeIncomplete();
+      return;
+    }
+    const previousSceneId = testSceneHistory.pop();
+    if (!previousSceneId) return;
+    navigateToScene(previousSceneId, "replace", false);
   }
 
   function startDrawing() {
@@ -897,6 +919,10 @@ export function createDevEditor({
     elements.currentScene.textContent = scene.id;
     elements.sceneDescription.textContent = scene.accessibleName;
     elements.testScene.textContent = scene.id;
+    elements.testBack.disabled = testSceneHistory.length === 0;
+    elements.testBack.title = testSceneHistory.length
+      ? `이전에 방문한 ${testSceneHistory.at(-1)}로 돌아가기`
+      : "이전에 방문한 장면이 없습니다";
     elements.parentScene.disabled = !scene.sourceSceneId;
     buttonPressed(root, "[data-mode]", mode, "mode");
     buttonPressed(root, "[data-viewport]", viewport, "viewport");
@@ -1027,6 +1053,7 @@ export function createDevEditor({
   elements.undo.addEventListener("click", undo);
   elements.redo.addEventListener("click", redo);
   elements.completeReview.addEventListener("click", completeReview);
+  elements.testBack.addEventListener("click", navigateBackInTest);
   elements.testMaskToggle.addEventListener("click", toggleTestMasks);
   root.querySelector("[data-export-annotations]").addEventListener("click", exportAnnotations);
   root.querySelector("[data-exit-test]").addEventListener("click", () => setMode("edit"));
@@ -1111,6 +1138,9 @@ export function createDevEditor({
       event.preventDefault();
       if (incompletePath) closeIncomplete();
       else setMode("edit");
+    } else if (mode === "test" && (event.key === "Backspace" || (event.altKey && event.key === "ArrowLeft"))) {
+      event.preventDefault();
+      navigateBackInTest();
     } else if ((event.key === "Delete" || event.key === "Backspace") && selectedMaskId) {
       event.preventDefault();
       if (selectedVertex !== null) removeSelectedVertex();
@@ -1125,7 +1155,7 @@ export function createDevEditor({
   });
   window.addEventListener("popstate", () => {
     const sceneId = new URLSearchParams(window.location.search).get("scene");
-    if (sceneId && scenes.has(sceneId)) navigateToScene(sceneId, "none");
+    if (sceneId && scenes.has(sceneId)) navigateToScene(sceneId, "none", false);
   });
 
   function sceneChanged(scene) {

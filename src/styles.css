@@ -1845,6 +1845,22 @@ body[data-editor-mode="test"] .test-mode-toolbar {
   color: #d5b06b;
 }
 
+.test-mode-toolbar .test-back-button {
+  border-left: 0;
+  color: #d3d1ca;
+}
+
+.test-mode-toolbar .test-back-button:disabled {
+  color: #4d4c48;
+  cursor: default;
+}
+
+.test-mode-toolbar kbd {
+  margin-left: 3px;
+  color: #62615c;
+  font: inherit;
+}
+
 .incomplete-overlay {
   position: fixed;
   inset: 0;

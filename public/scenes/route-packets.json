@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "worldVersion": "vertical-slice-0.7.0",
-  "updatedAt": "2026-08-03T11:32:37.005Z",
+  "updatedAt": "2026-08-03T17:40:03.330Z",
   "policy": {
     "selectedMaskIsAuthoritative": true,
     "unselectedRoutesAreForbidden": true,

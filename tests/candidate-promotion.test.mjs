@@ -112,3 +112,59 @@ test("promotion registers full-snapshot routes and makes reviewed candidates pla
   assert.equal(result.annotations.scenes[1].annotationStatus, "masks-confirmed");
   assert.equal(result.routeReviews.scenes[0].playtestStatus, "pass");
 });
+
+test("promotion can preserve a reviewed pilot as a staged candidate", () => {
+  const world = {
+    worldVersion: "test",
+    startSceneId: "S1",
+    scenes: [scene("S1", [pendingPath("S1-P1")])],
+  };
+  const candidate = {
+    ...scene("S2", []),
+    staging: true,
+    status: "ready-for-promotion",
+    sourceSceneId: "S1",
+    sourcePathId: "S1-P1",
+  };
+  const annotations = {
+    worldVersion: "test",
+    scenes: [
+      {
+        sceneId: "S1",
+        image: "/S1.png",
+        observedVisibleRouteCount: 1,
+        annotationStatus: "masks-confirmed",
+        reviewComplete: true,
+        masks: [{ id: "S1-P1", sourcePathId: "S1-P1", status: "pending", regions }],
+      },
+      {
+        sceneId: "S2",
+        image: "/S2.png",
+        observedVisibleRouteCount: 1,
+        annotationStatus: "staging-masks-confirmed",
+        reviewComplete: true,
+        masks: [{ id: "MASK-S2-01", sourcePathId: null, status: "draft", regions }],
+      },
+    ],
+  };
+  const queue = {
+    worldVersion: "test",
+    batch: { targetSceneCount: 5, fourPlusApprovedSceneIds: [] },
+    completedSceneIds: [],
+    candidates: [candidate],
+  };
+  const result = promoteReviewedCandidates({
+    world,
+    registry: { world_version: "test", frontiers: [] },
+    annotations,
+    queue,
+    routeReviews: { worldVersion: "test", scenes: [] },
+    now: "2026-08-04T00:00:00.000Z",
+    promoteCandidates: false,
+  });
+
+  assert.deepEqual(result.promotedSceneIds, []);
+  assert.equal(result.world.scenes.some((scene) => scene.id === "S2"), false);
+  assert.equal(result.queue.candidates.some((candidate) => candidate.id === "S2"), true);
+  assert.equal(result.world.scenes[0].paths[0].status, "pending");
+});

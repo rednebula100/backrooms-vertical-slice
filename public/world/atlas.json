@@ -22,8 +22,8 @@
     "phase": "pilot-in-production",
     "pilotSceneCount": 5,
     "generatedCandidateCount": 1,
-    "reviewedSceneCount": 0,
-    "summary": "Level 0.1의 첫 파일럿 후보 L01-0001을 생성했으며, 사람 통로 마스크와 장면 승인을 기다린 뒤 다음 장면으로 진행한다."
+    "reviewedSceneCount": 1,
+    "summary": "Level 0.1의 첫 파일럿 후보 L01-0001은 사람 통로 마스크 검수를 통과했다. 5장 파일럿이 끝날 때까지 공개 승격은 보류하고 테스트 모드에서 연속성을 확인한다."
   },
   "levels": [
     {
@@ -92,7 +92,7 @@
         "pilotObjective": "Level 0의 오른쪽 곡선 통로를 물리적으로 이어받으면서도, 다섯 장 안에 수평 황색 복도에서 거대한 수직 환형 구조로 세계의 규모가 넓어졌음을 증명한다.",
         "pilotSceneCount": 5,
         "pilotBeats": [
-          {"id": "L01-B01", "title": "Transition Clamp", "purpose": "황색 벽체와 카펫이 금속 문틀·어두운 보행면에 끼이는 첫 도착 장면.", "topologyIntent": "확인 가능한 전진 경로 1개", "status": "candidate-awaiting-human-mask", "candidateSceneId": "L01-0001"},
+          {"id": "L01-B01", "title": "Transition Clamp", "purpose": "황색 벽체와 카펫이 금속 문틀·어두운 보행면에 끼이는 첫 도착 장면.", "topologyIntent": "확인 가능한 전진 경로 1개", "status": "candidate-reviewed-promotion-deferred", "candidateSceneId": "L01-0001"},
           {"id": "L01-B02", "title": "Service Bend", "purpose": "오른쪽 곡률을 유지한 채 금속 프레임과 반투명 유리의 비중을 늘리는 서비스 갤러리.", "topologyIntent": "주 경로 1개, 보조 경로는 최대 1개"},
           {"id": "L01-B03", "title": "Atrium Edge", "purpose": "난간·반사·원거리 조명으로 중앙 공동의 깊이를 처음 암시하되 전경은 감춘다.", "topologyIntent": "보행 경로 1개, 난간 너머 공동은 경로가 아님"},
           {"id": "L01-B04", "title": "Habitation Ring", "purpose": "사용자를 잃은 생활·서비스 흔적과 환형 곡률을 결합해 레벨의 생활 기능을 보여준다.", "topologyIntent": "서로 구분되는 경로 2개를 목표로 하되 실제 등록은 사람 검수에 따름"},

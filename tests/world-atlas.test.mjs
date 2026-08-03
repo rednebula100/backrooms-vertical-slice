@@ -38,18 +38,18 @@ test("Level 0.1 has one staged candidate in its five-scene pilot", () => {
   assert.equal(atlas.productionFocus.levelId, level.id);
   assert.equal(atlas.productionFocus.phase, "pilot-in-production");
   assert.equal(atlas.productionFocus.generatedCandidateCount, 1);
-  assert.equal(atlas.productionFocus.reviewedSceneCount, 0);
+  assert.equal(atlas.productionFocus.reviewedSceneCount, 1);
   assert.equal(level.productionSpec.pilotSceneCount, 5);
   assert.equal(level.productionSpec.pilotBeats.length, 5);
   assert.equal(level.productionSpec.signatureSpaces.length, 5);
   assert.match(level.productionSpec.routePolicy.fourPlusUse, /희귀 승인/);
   assert.equal(level.productionSpec.pilotBeats[0].candidateSceneId, "L01-0001");
-  assert.equal(level.productionSpec.pilotBeats[0].status, "candidate-awaiting-human-mask");
+  assert.equal(level.productionSpec.pilotBeats[0].status, "candidate-reviewed-promotion-deferred");
   assert.equal(staging.batch.id, "L01-PILOT-001");
   assert.equal(staging.candidates.length, 1);
   assert.equal(staging.candidates[0].id, "L01-0001");
   assert.equal(staging.candidates[0].sourcePathId, "L0-0009A-P1");
-  assert.equal(staging.candidates[0].status, "awaiting-route-annotation");
+  assert.equal(staging.candidates[0].status, "ready-for-promotion");
 });
 
 test("the reserved Level 0 to 0.1 boundary is anchored to the live source snapshot", () => {
