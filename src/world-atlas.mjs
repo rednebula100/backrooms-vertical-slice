@@ -2,6 +2,8 @@ const LEVEL_STATUSES = new Set(["in-production", "skeleton", "concept"]);
 const REGION_STATUSES = new Set(["observed", "planned", "concept"]);
 const CONNECTION_STATUSES = new Set(["reserved", "concept"]);
 const IMAGE_STATUSES = new Set(["observed", "concept"]);
+const PRODUCTION_READINESS = new Set(["specified-not-produced"]);
+const BOUNDARY_READINESS = new Set(["specified-not-active"]);
 
 function duplicates(values) {
   const seen = new Set();
@@ -25,6 +27,15 @@ export function validateAtlas(atlas, world = null) {
   for (const id of duplicates((atlas.levels ?? []).map((entry) => entry.id))) errors.push(`Duplicate level id: ${id}`);
   for (const id of duplicates((atlas.regions ?? []).map((entry) => entry.id))) errors.push(`Duplicate region id: ${id}`);
   for (const id of duplicates((atlas.connections ?? []).map((entry) => entry.id))) errors.push(`Duplicate connection id: ${id}`);
+
+  if (atlas.productionFocus) {
+    const focus = atlas.productionFocus;
+    if (!levels.has(focus.levelId)) errors.push(`Production focus references missing level ${focus.levelId}`);
+    if (!connections.has(focus.entryConnectionId)) errors.push(`Production focus references missing connection ${focus.entryConnectionId}`);
+    if (!PRODUCTION_READINESS.has(focus.phase)) errors.push(`Invalid production focus phase: ${focus.phase}`);
+    if (!Number.isInteger(focus.pilotSceneCount) || focus.pilotSceneCount < 1) errors.push("Production focus needs a positive pilot scene count");
+    if (!focus.summary?.trim()) errors.push("Production focus needs a summary");
+  }
 
   for (const level of atlas.levels ?? []) {
     if (!/^LV-\d{3}(?:\.\d+)?$/.test(level.id ?? "")) errors.push(`Invalid level id: ${level.id}`);
@@ -56,6 +67,30 @@ export function validateAtlas(atlas, world = null) {
     if (!Array.isArray(level.sensoryProfile) || level.sensoryProfile.length !== 3) errors.push(`${level.id} needs exactly three sensory profile entries`);
     if (!Array.isArray(level.experienceArc) || level.experienceArc.length !== 3) errors.push(`${level.id} needs exactly three experience arc entries`);
     if (!Array.isArray(level.keywords) || level.keywords.length < 4) errors.push(`${level.id} needs at least four keywords`);
+    if (level.productionSpec) {
+      const spec = level.productionSpec;
+      if (!PRODUCTION_READINESS.has(spec.readiness)) errors.push(`${level.id} has invalid production readiness`);
+      if (!spec.specVersion?.trim() || !spec.pilotObjective?.trim()) errors.push(`${level.id} production spec needs a version and objective`);
+      if (!Number.isInteger(spec.pilotSceneCount) || spec.pilotSceneCount < 1) errors.push(`${level.id} production spec needs a positive pilot scene count`);
+      if (!Array.isArray(spec.pilotBeats) || spec.pilotBeats.length !== spec.pilotSceneCount) errors.push(`${level.id} pilot beat count must match pilot scene count`);
+      if (!Array.isArray(spec.signatureSpaces) || spec.signatureSpaces.length < 4 || spec.signatureSpaces.length > 6) errors.push(`${level.id} needs four to six signature spaces`);
+      if (!Array.isArray(spec.variationAxes) || spec.variationAxes.length < 4) errors.push(`${level.id} needs at least four variation axes`);
+      if (!Array.isArray(spec.cameraGrammar) || spec.cameraGrammar.length < 3) errors.push(`${level.id} needs at least three camera grammar rules`);
+      if (!Array.isArray(spec.imagePromptRules) || spec.imagePromptRules.length < 5) errors.push(`${level.id} needs at least five image prompt rules`);
+      if (!Array.isArray(spec.continuityRules) || spec.continuityRules.length < 3) errors.push(`${level.id} needs at least three continuity rules`);
+      if (!Array.isArray(spec.acceptanceCriteria) || spec.acceptanceCriteria.length < 6) errors.push(`${level.id} needs at least six acceptance criteria`);
+      for (const field of ["annotationOrder", "defaultVisibleRoutes", "threeRouteUse", "fourPlusUse", "walkableRouteRule", "falseRouteRule"]) {
+        if (!spec.routePolicy?.[field]?.trim()) errors.push(`${level.id} route policy is missing ${field}`);
+      }
+      for (const beat of spec.pilotBeats ?? []) {
+        if (!beat.id?.trim() || !beat.title?.trim() || !beat.purpose?.trim() || !beat.topologyIntent?.trim()) errors.push(`${level.id} has an incomplete pilot beat`);
+      }
+      for (const space of spec.signatureSpaces ?? []) {
+        if (!space.id?.trim() || !space.title?.trim() || !space.role?.trim()) errors.push(`${level.id} has an incomplete signature space`);
+        if (!Array.isArray(space.requiredCues) || space.requiredCues.length < 3) errors.push(`${space.id} needs at least three required cues`);
+        if (!Array.isArray(space.forbiddenCues) || space.forbiddenCues.length < 2) errors.push(`${space.id} needs at least two forbidden cues`);
+      }
+    }
     if (level.kind === "sublevel") {
       if (!levels.has(level.parentLevelId)) errors.push(`${level.id} has missing parent ${level.parentLevelId}`);
       if (levels.get(level.parentLevelId)?.kind !== "level") errors.push(`${level.id} parent must be a top-level level`);
@@ -89,10 +124,34 @@ export function validateAtlas(atlas, world = null) {
     if (!CONNECTION_STATUSES.has(connection.status)) errors.push(`Invalid connection status for ${connection.id}: ${connection.status}`);
     if (connection.status === "reserved") {
       if (!connection.sourceSceneId || !connection.sourcePathId) errors.push(`${connection.id} reserved boundary needs a source scene and path`);
+      if (!connection.boundaryContract) errors.push(`${connection.id} reserved boundary needs a boundary contract`);
       const scene = worldScenes.get(connection.sourceSceneId);
       if (world && !scene) errors.push(`${connection.id} references missing scene ${connection.sourceSceneId}`);
       if (scene && !scene.paths.some((path) => path.id === connection.sourcePathId)) errors.push(`${connection.id} references missing path ${connection.sourcePathId}`);
+      const contract = connection.boundaryContract;
+      if (contract) {
+        if (!BOUNDARY_READINESS.has(contract.readiness)) errors.push(`${connection.id} has invalid boundary readiness`);
+        if (!contract.contractVersion?.trim()) errors.push(`${connection.id} boundary contract needs a version`);
+        if (!/^L\d{2}-\d{4}$/.test(contract.plannedArrivalSceneId ?? "")) errors.push(`${connection.id} has invalid planned arrival scene id`);
+        if (contract.sourceSnapshot?.sceneId !== connection.sourceSceneId || contract.sourceSnapshot?.pathId !== connection.sourcePathId) errors.push(`${connection.id} source snapshot does not match its reserved scene and path`);
+        if (!Array.isArray(contract.transitionBeats) || contract.transitionBeats.length !== 3) errors.push(`${connection.id} needs exactly three transition beats`);
+        if (!Array.isArray(contract.materialContinuity) || contract.materialContinuity.length < 4) errors.push(`${connection.id} needs at least four material continuity rules`);
+        if (!Array.isArray(contract.interactionContract) || contract.interactionContract.length < 4) errors.push(`${connection.id} needs at least four interaction rules`);
+        if (!Array.isArray(contract.activationGates) || contract.activationGates.length < 5) errors.push(`${connection.id} needs at least five activation gates`);
+        if (!Number.isFinite(contract.cameraContract?.heightMeters) || !Number.isFinite(contract.cameraContract?.lensEquivalentMm)) errors.push(`${connection.id} boundary camera contract is incomplete`);
+        const sourcePath = scene?.paths.find((path) => path.id === connection.sourcePathId);
+        if (scene && contract.sourceSnapshot?.cameraHeightMeters !== scene.camera?.heightMeters) errors.push(`${connection.id} source snapshot camera height drifted from ${scene.id}`);
+        if (scene && contract.sourceSnapshot?.lensEquivalentMm !== scene.camera?.lensEquivalentMm) errors.push(`${connection.id} source snapshot lens drifted from ${scene.id}`);
+        if (sourcePath && contract.sourceSnapshot?.movementDirection !== sourcePath.movementDirection) errors.push(`${connection.id} source snapshot movement direction drifted from ${sourcePath.id}`);
+      }
     }
+  }
+  if (atlas.productionFocus) {
+    const focusLevel = levels.get(atlas.productionFocus.levelId);
+    if (!focusLevel?.productionSpec) errors.push(`Production focus ${atlas.productionFocus.levelId} needs a production spec`);
+    if (focusLevel?.productionSpec?.pilotSceneCount !== atlas.productionFocus.pilotSceneCount) errors.push("Production focus pilot count must match its level production spec");
+    const focusConnection = connections.get(atlas.productionFocus.entryConnectionId);
+    if (focusConnection?.toLevelId !== atlas.productionFocus.levelId) errors.push("Production focus entry connection must lead to the focus level");
   }
   return errors;
 }

@@ -57,6 +57,13 @@ function imageStatusLabel(status) {
   return { observed: "실제 승인 장면", concept: "설정 컨셉" }[status] ?? status;
 }
 
+function readinessLabel(status) {
+  return {
+    "specified-not-produced": "사양 고정 · 이미지 미제작",
+    "specified-not-active": "사양 고정 · 비활성",
+  }[status] ?? status;
+}
+
 function levelUrl(levelId) {
   const url = new URL(location.href);
   url.searchParams.set("level", levelId);
@@ -114,6 +121,11 @@ function renderInfobox(level, parent) {
     ["미확정", `${level.openQuestions.length}개`],
     ["아틀라스 개정", `v${atlas.atlasVersion} · ${atlas.lastUpdated}`],
   ];
+  if (level.productionSpec) {
+    rows.splice(6, 0,
+      ["제작 사양", readinessLabel(level.productionSpec.readiness)],
+      ["파일럿", `${level.productionSpec.pilotSceneCount}장`]);
+  }
   return `<aside class="atlas-infobox" aria-label="Level ${escapeHtml(level.number)} 문서 정보">
     <h2>문서 정보</h2>
     <dl>${rows.map(([term, value]) => `<div><dt>${escapeHtml(term)}</dt><dd>${escapeHtml(value)}</dd></div>`).join("")}</dl>
@@ -132,6 +144,40 @@ function renderExperienceArc(level) {
     const [label, ...detail] = item.split(" — ");
     return `<li><span>${escapeHtml(label)}</span><p>${escapeHtml(detail.join(" — "))}</p></li>`;
   }).join("")}</ol>`;
+}
+
+function renderProductionSpec(level) {
+  const spec = level.productionSpec;
+  if (!spec) return "";
+  const policyRows = [
+    ["마스크 순서", spec.routePolicy.annotationOrder],
+    ["기본 경로 수", spec.routePolicy.defaultVisibleRoutes],
+    ["3개 경로", spec.routePolicy.threeRouteUse],
+    ["4개 이상", spec.routePolicy.fourPlusUse],
+  ];
+  return `<section class="article-chapter production-spec" id="production-spec">
+    <header><span>08</span><h2>제작 사양</h2></header>
+    <div class="spec-lede"><span>${escapeHtml(readinessLabel(spec.readiness))} · SPEC ${escapeHtml(spec.specVersion)}</span><p>${escapeHtml(spec.pilotObjective)}</p></div>
+    <section class="article-section"><h3>${escapeHtml(spec.pilotSceneCount)}장 파일럿 흐름</h3>
+      <ol class="pilot-beats">${spec.pilotBeats.map((beat, beatIndex) => `<li><span>${String(beatIndex + 1).padStart(2, "0")} · ${escapeHtml(beat.id)}</span><b>${escapeHtml(beat.title)}</b><p>${escapeHtml(beat.purpose)}</p><small>${escapeHtml(beat.topologyIntent)}</small></li>`).join("")}</ol>
+    </section>
+    <section class="article-section"><h3>대표 공간 5종</h3>
+      <div class="signature-spaces">${spec.signatureSpaces.map((space) => `<article><span>${escapeHtml(space.id)}</span><h4>${escapeHtml(space.title)}</h4><p>${escapeHtml(space.role)}</p><div><b>필수 단서</b><ul>${space.requiredCues.map((cue) => `<li>${escapeHtml(cue)}</li>`).join("")}</ul></div><div><b>금지</b><ul>${space.forbiddenCues.map((cue) => `<li>${escapeHtml(cue)}</li>`).join("")}</ul></div></article>`).join("")}</div>
+    </section>
+    <section class="article-section"><h3>변형 축</h3>
+      <div class="variation-table">${spec.variationAxes.map((axis) => `<div><b>${escapeHtml(axis.axis)}</b><span>${escapeHtml(axis.low)}</span><i>→</i><span>${escapeHtml(axis.high)}</span><small>${escapeHtml(axis.control)}</small></div>`).join("")}</div>
+    </section>
+    <div class="wiki-columns spec-columns">
+      <section class="article-section"><h3>카메라 문법</h3>${renderRules(spec.cameraGrammar)}</section>
+      <section class="article-section"><h3>이미지 프롬프트 규칙</h3>${renderRules(spec.imagePromptRules)}</section>
+    </div>
+    <section class="article-section"><h3>통로 판독 정책</h3>
+      <dl class="route-policy">${policyRows.map(([term, value]) => `<div><dt>${escapeHtml(term)}</dt><dd>${escapeHtml(value)}</dd></div>`).join("")}</dl>
+      <div class="wiki-columns policy-notes"><p><b>보행 경로</b>${escapeHtml(spec.routePolicy.walkableRouteRule)}</p><p><b>배경 구조</b>${escapeHtml(spec.routePolicy.falseRouteRule)}</p></div>
+    </section>
+    <section class="article-section"><h3>연속성 규칙</h3>${renderRules(spec.continuityRules)}</section>
+    <section class="article-section"><h3>파일럿 통과 기준</h3>${renderRules(spec.acceptanceCriteria, "acceptance")}</section>
+  </section>`;
 }
 
 function renderFamily(level) {
@@ -165,17 +211,32 @@ function renderRegions(level) {
     </section>`).join("")}</div>`;
 }
 
+function renderBoundaryContract(connection) {
+  const contract = connection.boundaryContract;
+  if (!contract) return "";
+  const camera = contract.cameraContract;
+  return `<details class="boundary-contract" open>
+    <summary><span>BOUNDARY CONTRACT ${escapeHtml(contract.contractVersion)}</span><b>${escapeHtml(readinessLabel(contract.readiness))}</b><em>도착 예정 ${escapeHtml(contract.plannedArrivalSceneId)}</em></summary>
+    <div class="boundary-contract-body">
+      <section><h4>세 단계 전환</h4><ol class="transition-beats">${contract.transitionBeats.map((beat) => `<li><span>${escapeHtml(beat.step)}</span><p>${escapeHtml(beat.rule)}</p></li>`).join("")}</ol></section>
+      <section><h4>재료 연속성</h4><div class="material-continuity">${contract.materialContinuity.map((item) => `<div><b>${escapeHtml(item.from)}</b><i>→</i><b>${escapeHtml(item.to)}</b><p>${escapeHtml(item.rule)}</p></div>`).join("")}</div></section>
+      <section><h4>카메라 계약</h4><dl class="camera-contract"><div><dt>높이</dt><dd>${escapeHtml(camera.heightMeters)}m ± ${escapeHtml(camera.heightToleranceMeters)}m</dd></div><div><dt>렌즈</dt><dd>${escapeHtml(camera.lensEquivalentMm)}mm · 허용 ${escapeHtml(camera.lensRangeMm.join("–"))}mm</dd></div><div><dt>회전</dt><dd>${escapeHtml(camera.turnRule)}</dd></div><div><dt>폭</dt><dd>${escapeHtml(camera.widthRule)}</dd></div><div><dt>수평선</dt><dd>${escapeHtml(camera.horizonRule)}</dd></div></dl></section>
+      <div class="wiki-columns boundary-columns"><section><h4>상호작용 계약</h4>${renderRules(contract.interactionContract)}</section><section><h4>활성화 게이트</h4>${renderRules(contract.activationGates, "acceptance")}</section></div>
+    </div>
+  </details>`;
+}
+
 function renderConnections(level) {
   const connections = index.connectionsByLevel.get(level.id) ?? [];
   if (!connections.length) return '<p class="empty-note">아직 연결 후보가 없다.</p>';
   return `<div class="connection-list">${connections.map((connection) => {
     const otherId = connection.relation === "outgoing" ? connection.toLevelId : connection.fromLevelId;
     const other = index.levels.get(otherId);
-    return `<a class="connection-row" href="${escapeHtml(levelUrl(otherId))}" data-level-link="${escapeHtml(otherId)}">
-      <span>${connection.relation === "outgoing" ? "나가는 길 →" : "← 들어오는 길"}</span>
-      <div><b>Level ${escapeHtml(other.number)} · ${escapeHtml(other.title)}</b><p>${escapeHtml(connection.summary)}</p></div>
-      <em>${escapeHtml(statusLabel(connection.status))}</em>
-    </a>`;
+    return `<section class="connection-card"><a class="connection-row" href="${escapeHtml(levelUrl(otherId))}" data-level-link="${escapeHtml(otherId)}">
+        <span>${connection.relation === "outgoing" ? "나가는 길 →" : "← 들어오는 길"}</span>
+        <div><b>Level ${escapeHtml(other.number)} · ${escapeHtml(other.title)}</b><p>${escapeHtml(connection.summary)}</p></div>
+        <em>${escapeHtml(statusLabel(connection.status))}</em>
+      </a>${renderBoundaryContract(connection)}</section>`;
   }).join("")}</div>`;
 }
 
@@ -221,6 +282,7 @@ function renderArticle() {
       <a href="#regions">지역</a>
       <a href="#routes">입출구</a>
       <a href="#relations">관계</a>
+      ${level.productionSpec ? '<a href="#production-spec">제작 사양</a>' : ""}
       <a href="#canon-notes">캐논 메모</a>
     </nav>
 
@@ -272,8 +334,9 @@ function renderArticle() {
       <section class="article-section"><h3>연결 후보</h3>${renderConnections(level)}</section>
     </section>
 
+    ${renderProductionSpec(level)}
     <section class="article-chapter" id="canon-notes">
-      <header><span>08</span><h2>캐논 메모</h2></header>
+      <header><span>${level.productionSpec ? "09" : "08"}</span><h2>캐논 메모</h2></header>
       <div class="wiki-columns">
         <section class="article-section"><h3>드리프트 금지</h3>${renderRules(level.forbiddenDrift, "forbidden")}</section>
         <section class="article-section"><h3>미확정 질문</h3>${renderRules(level.openQuestions, "questions")}</section>

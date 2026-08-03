@@ -1,7 +1,7 @@
 {
-  "atlasVersion": "0.3.0",
+  "atlasVersion": "0.4.0",
   "title": "Backrooms World Atlas",
-  "lastUpdated": "2026-08-03",
+  "lastUpdated": "2026-08-04",
   "canonPolicy": {
     "summary": "공식 위키의 상징적 명칭과 공간 인상은 선택적으로 재해석하고, 내부 구조와 연결은 이 프로젝트의 독자 캐논으로 다시 설계한다.",
     "imagesPaused": true,
@@ -15,6 +15,13 @@
       "플레이 장면 이미지 제작을 재개하기 전까지 모든 신규 항목은 문서와 데이터 뼈대로만 유지한다.",
       "아틀라스 컨셉 이미지는 재료·비례·조명 기준이며 플레이 가능한 장면이나 확정 지형으로 취급하지 않는다."
     ]
+  },
+  "productionFocus": {
+    "levelId": "LV-000.1",
+    "entryConnectionId": "CON-L0-L01-ENTRY",
+    "phase": "specified-not-produced",
+    "pilotSceneCount": 5,
+    "summary": "이미지 생성은 중지한 채 Level 0.1의 5장 파일럿과 첫 레벨 경계를 제작 가능한 사양으로 고정한다."
   },
   "levels": [
     {
@@ -77,6 +84,71 @@
       "sensoryProfile": ["빛 — 차가운 서비스광과 진입부의 황색 잔광", "소리 — 중앙 공동에서 오는 낮은 진동", "공기 — 차고 정체됨"],
       "experienceArc": ["도착 — Level 0 벽체가 금속 골격에 끼워진 문턱", "심화 — 곡선 통로를 따라 공동의 깊이만 반복 암시", "경계 — 더 낮거나 높은 환형부로 향하는 수직 연결"],
       "keywords": ["환형", "중앙 공동", "금속", "반투명 유리", "수직 규모"],
+      "productionSpec": {
+        "specVersion": "0.1",
+        "readiness": "specified-not-produced",
+        "pilotObjective": "Level 0의 오른쪽 곡선 통로를 물리적으로 이어받으면서도, 다섯 장 안에 수평 황색 복도에서 거대한 수직 환형 구조로 세계의 규모가 넓어졌음을 증명한다.",
+        "pilotSceneCount": 5,
+        "pilotBeats": [
+          {"id": "L01-B01", "title": "Transition Clamp", "purpose": "황색 벽체와 카펫이 금속 문틀·어두운 보행면에 끼이는 첫 도착 장면.", "topologyIntent": "확인 가능한 전진 경로 1개"},
+          {"id": "L01-B02", "title": "Service Bend", "purpose": "오른쪽 곡률을 유지한 채 금속 프레임과 반투명 유리의 비중을 늘리는 서비스 갤러리.", "topologyIntent": "주 경로 1개, 보조 경로는 최대 1개"},
+          {"id": "L01-B03", "title": "Atrium Edge", "purpose": "난간·반사·원거리 조명으로 중앙 공동의 깊이를 처음 암시하되 전경은 감춘다.", "topologyIntent": "보행 경로 1개, 난간 너머 공동은 경로가 아님"},
+          {"id": "L01-B04", "title": "Habitation Ring", "purpose": "사용자를 잃은 생활·서비스 흔적과 환형 곡률을 결합해 레벨의 생활 기능을 보여준다.", "topologyIntent": "서로 구분되는 경로 2개를 목표로 하되 실제 등록은 사람 검수에 따름"},
+          {"id": "L01-B05", "title": "Vertical Transfer Split", "purpose": "높이가 다른 다음 환형부를 암시하는 수직 연결부에서 파일럿의 다음 제작 최전선을 만든다.", "topologyIntent": "경로 2개, 최대 3개. 4개 이상이면 희귀 승인 전 보류"}
+        ],
+        "signatureSpaces": [
+          {"id": "L01-SP-ENTRY", "title": "Entry Clamp", "role": "두 레벨의 재료가 동시에 읽히는 좁은 물리 경계", "requiredCues": ["황색 벽지 잔재", "금속 삽입 프레임", "연속된 오른쪽 곡선"], "forbiddenCues": ["순간적인 완전 재질 교체", "포털 광원"]},
+          {"id": "L01-SP-GALLERY", "title": "Service Gallery", "role": "중앙 공동을 둘러싸는 기본 이동 단위", "requiredCues": ["환형 곡률", "반투명 유리", "낮은 구조 진동의 시각적 단서"], "forbiddenCues": ["직선 우주선 복도", "읽을 수 있는 안내 표지"]},
+          {"id": "L01-SP-EDGE", "title": "Atrium Edge", "role": "공동 전체를 숨기면서 수직 규모를 증명하는 가장자리", "requiredCues": ["난간", "원거리 조명", "부분적인 상하층"], "forbiddenCues": ["공동의 완전한 전경", "보행 가능한 것처럼 보이는 낙하 공간"]},
+          {"id": "L01-SP-RING", "title": "Habitation Ring", "role": "주민 없이 생활 기능만 남은 환형 구획", "requiredCues": ["비어 있는 생활실", "서비스 창", "곡면에 맞지 않는 가구 흔적"], "forbiddenCues": ["활성 주민", "정상적인 주거 단지"]},
+          {"id": "L01-SP-TRANSFER", "title": "Vertical Transfer", "role": "다른 높이의 환형부로 전진하는 희귀 연결 단위", "requiredCues": ["짧은 계단 또는 램프", "겹친 바닥선", "상하층의 제한된 암시"], "forbiddenCues": ["끝없는 계단 중심 구성", "작동 중인 대형 엘리베이터"]}
+        ],
+        "variationAxes": [
+          {"axis": "환형 곡률", "low": "거의 직선인 서비스 구간", "high": "프레임과 난간으로만 읽히는 강한 곡선", "control": "모든 장면을 원형 터널처럼 만들지 않는다."},
+          {"axis": "공동 노출", "low": "진동과 반사만 존재", "high": "화면의 35% 이하에서 부분 상하층이 보임", "control": "완전한 전경은 파일럿에서 금지한다."},
+          {"axis": "Level 0 잔재", "low": "벽지 조각과 따뜻한 잔광만 남음", "high": "한쪽 벽과 바닥 가장자리가 직접 이어짐", "control": "B01에서 가장 강하고 B03 이후 급격히 감소한다."},
+          {"axis": "생활 기능", "low": "닫힌 서비스 패널", "high": "비어 있는 생활실·창구·대기 구획", "control": "사람, 조직, 작동 결과는 나타내지 않는다."},
+          {"axis": "수직 압력", "low": "같은 높이의 환형 갤러리", "high": "난간 너머 두 개 층과 짧은 높이 이동", "control": "낙하 공간과 보행 경로를 시각적으로 분리한다."}
+        ],
+        "cameraGrammar": [
+          "기본 시점은 높이 1.65m, 40mm 환산 렌즈를 기준으로 하며 파일럿에서는 높이 1.58–1.70m와 38–44mm만 허용한다.",
+          "첫 도착 장면은 L0-0009A-P1의 전진 후 오른쪽 회전 방향, 수평선과 통로 폭을 유지한다.",
+          "주 경로는 프레임 중앙 또는 삼등분선 부근에서 바닥과 벽으로 둘러싸여야 하며 난간·유리 너머 구조와 겹치지 않는다.",
+          "공동은 광각 전경이 아니라 프레임 일부의 곡률, 난간, 반사와 원거리 조명으로만 누적해서 보여준다."
+        ],
+        "imagePromptRules": [
+          "4:3, 1448×1086, 사실적인 건축 기록 사진. 사람·생물·문자·표지·로고·워터마크를 넣지 않는다.",
+          "각 장면은 이전 승인 이미지와 선택한 통로 크롭을 참조하되 복제하지 않고, 도착 위치에서 보이는 새 구조를 만든다.",
+          "첫 장면은 누런 벽지·패턴 카펫·낮은 천장의 흔적과 금속 프레임·반투명 유리를 한 화면에서 물리적으로 접합한다.",
+          "중앙 공동의 전체 윤곽, 우주선 조종실, 미래형 역 안내체계와 대칭적인 SF 복도를 금지한다.",
+          "유리, 난간, 단차와 어두운 공동은 통로처럼 오인되지 않도록 바닥 연속성과 문턱을 명확히 구분한다.",
+          "눈에 보이는 통로 수는 프롬프트 목표일 뿐 확정값이 아니다. 생성 후 사람이 모든 보행 가능 통로를 점으로 등록한다."
+        ],
+        "routePolicy": {
+          "annotationOrder": "image-first-human-mask",
+          "defaultVisibleRoutes": "1–2개",
+          "threeRouteUse": "파일럿 전체에서 최대 한 장",
+          "fourPlusUse": "재생성 또는 명시적 희귀 승인 전 보류",
+          "walkableRouteRule": "바닥이 연속되고 사람이 통과할 폭과 높이가 있으며 벽·문틀로 경계가 읽히는 개구부만 경로로 등록한다.",
+          "falseRouteRule": "유리 너머 공간, 난간 밖 공동, 반사와 접근 불가능한 상하층은 시각적 배경이며 클릭 마스크를 만들지 않는다."
+        },
+        "continuityRules": [
+          "장면마다 직전 선택 통로의 진행 방향, 카메라 높이, 바닥 접선과 주요 벽체 중 최소 세 가지를 이어받는다.",
+          "B01과 B02에서는 Level 0 잔재가 뒤쪽 또는 한쪽 가장자리에 남아야 하며 B03 이후에는 재료 조각으로만 허용한다.",
+          "왼쪽·오른쪽 갈래는 같은 이전 사진을 복제한 공간이 아니라 각각 독립된 목적 공간과 카메라 계약을 가진다.",
+          "한 장에서 보였으나 등록되지 않은 보행 가능 통로가 있으면 다음 장면 생성보다 마스크·경로 등록을 먼저 수정한다."
+        ],
+        "acceptanceCriteria": [
+          "L0-0009A-P1과 B01을 나란히 보았을 때 전진 후 오른쪽 회전, 수평선과 통로 폭의 연속성이 읽힌다.",
+          "B02까지 금속·유리 구조가 주도권을 얻지만 Level 0 잔재가 물리적 접합 흔적으로 남는다.",
+          "파일럿 다섯 장 중 적어도 한 장은 공동의 수직 규모를 부분적으로 증명하고, 어느 장면도 전체 전경을 노출하지 않는다.",
+          "사람이 확인한 보행 통로 수와 등록 마스크 수가 일치하고 모든 미등록 통로는 배경임이 시각적으로 분명하다.",
+          "모바일 마스크는 320px 뷰포트에서 최소 44 CSS px 터치 폭을 만족하고 서로 과도하게 겹치지 않는다.",
+          "각 갈래의 다음 장면은 같은 출발 이미지의 변형이 아니라 선택한 통로 뒤의 독립된 공간 구조를 보여준다.",
+          "사람, 엔티티, 읽을 수 있는 표지, 포털 효과와 명확한 SF 조종 기능이 없다.",
+          "5장 전체가 검수 완료되기 전에는 Level 0.1을 플레이 가능 상태나 활성 경계로 승격하지 않는다."
+        ]
+      },
       "spatialDNA": [
         "황색 벽지의 잔재가 금속 프레임과 반투명 유리 사이에서 간헐적으로 드러난다.",
         "거대한 중앙 공동은 직접 보여주기보다 난간, 진동, 반사와 원거리 조명으로 암시한다.",
@@ -441,7 +513,65 @@
     { "id": "REG-L51-KITCHENS", "levelId": "LV-005.1", "title": "Service Kitchens", "status": "concept", "summary": "조리되지 않는 주방과 준비실의 연속.", "grammar": ["스테인리스", "꺼진 보온등", "긴 중간 복도"] }
   ],
   "connections": [
-    { "id": "CON-L0-L01-ENTRY", "fromLevelId": "LV-000", "toLevelId": "LV-000.1", "direction": "one-way", "status": "reserved", "boundaryType": "walkable-structural-threshold", "sourceSceneId": "L0-0009A", "sourcePathId": "L0-0009A-P1", "summary": "현재 Level 0의 가장 깊은 제작 최전선에 예약한 첫 세부레벨 경계 후보." },
+    {
+      "id": "CON-L0-L01-ENTRY",
+      "fromLevelId": "LV-000",
+      "toLevelId": "LV-000.1",
+      "direction": "one-way",
+      "status": "reserved",
+      "boundaryType": "walkable-structural-threshold",
+      "sourceSceneId": "L0-0009A",
+      "sourcePathId": "L0-0009A-P1",
+      "summary": "현재 Level 0의 가장 깊은 제작 최전선에 예약한 첫 세부레벨 경계 후보.",
+      "boundaryContract": {
+        "contractVersion": "0.1",
+        "readiness": "specified-not-active",
+        "plannedArrivalSceneId": "L01-0001",
+        "sourceSnapshot": {
+          "sceneId": "L0-0009A",
+          "pathId": "L0-0009A-P1",
+          "screenLocation": "right side, medium depth",
+          "movementDirection": "forward then right",
+          "cameraHeightMeters": 1.65,
+          "lensEquivalentMm": 40,
+          "continuityAnchors": ["continuous right-curving carpet edge", "long unbroken yellow wall", "rounded foreground return wall", "same ceiling grid and taupe carpet"]
+        },
+        "transitionBeats": [
+          {"step": "접근", "rule": "L0-0009A의 오른쪽 통로 안쪽에서 기존 카펫 가장자리와 누런 벽이 그대로 굽어 들어간다."},
+          {"step": "문턱", "rule": "금속 프레임이 기존 벽을 대체하지 않고 그 안에 삽입되며, 카펫은 어두운 복합 보행면으로 한 번의 이음선에서 바뀐다."},
+          {"step": "도착", "rule": "같은 오른쪽 회전을 마친 시점에서 곡선 서비스 갤러리가 열리고, 뒤쪽 가장자리에 황색 잔재가 남으며 중앙 공동은 보이지 않고 진동·반사로만 암시된다."}
+        ],
+        "materialContinuity": [
+          {"from": "누런 벽지", "to": "금속 프레임 사이의 벽지 잔재", "rule": "첫 두 장면에만 물리적으로 남기고 이후 조각과 잔광으로 감소시킨다."},
+          {"from": "회갈색 패턴 카펫", "to": "어두운 고무·복합재 보행면", "rule": "문턱 한 곳에서 직접 맞물리며 떠 있는 발판이나 순간 절단을 만들지 않는다."},
+          {"from": "낮은 드롭 천장", "to": "금속 서비스 격자", "rule": "천장 높이는 첫 장면에서 급격히 커지지 않고 프레임 간격이 점차 길어진다."},
+          {"from": "따뜻한 형광등 윙윙거림", "to": "차가운 서비스광과 저주파 진동", "rule": "도착 장면에는 두 조명색과 두 소리의 흔적이 함께 존재한다."}
+        ],
+        "cameraContract": {
+          "heightMeters": 1.65,
+          "heightToleranceMeters": 0.07,
+          "lensEquivalentMm": 40,
+          "lensRangeMm": [38, 44],
+          "horizonRule": "L0-0009A와 같은 눈높이를 유지하고 도착 이미지에서 인위적인 위·아래 틸트를 만들지 않는다.",
+          "turnRule": "선택 통로의 전진 후 오른쪽 회전을 완료한 도착 시점이며 좌우 반전하지 않는다.",
+          "widthRule": "도착부의 보행 폭은 원본 통로보다 0.85–1.25배 범위에서만 변한다."
+        },
+        "interactionContract": [
+          "클릭 마스크는 L0-0009A-P1의 벽으로 둘러싸인 보행 개구부 전체를 덮고 바닥 일부에만 치우치지 않는다.",
+          "클릭 시 정확히 L01-0001 한 장면으로 이동하며 중간 선택, 무작위 분기, 역방향 복귀와 런타임 이미지 생성을 만들지 않는다.",
+          "유리, 난간, 천장 틈과 공동은 클릭 대상이 아니며 도착 장면의 실제 통로는 생성 후 사람 검수로 별도 등록한다.",
+          "경계가 활성화되기 전에는 현재 콘텐츠 경계 동작과 진행 저장 형식을 그대로 유지한다."
+        ],
+        "activationGates": [
+          "L01-0001 최종 이미지와 프롬프트 기록이 승인됨",
+          "L0-0009A-P1과 L01-0001의 나란히 연속성 검수 통과",
+          "L01-0001의 모든 보행 통로를 사람이 점으로 등록하고 마스크 검수 완료",
+          "데스크톱·모바일 클릭 테스트와 44 CSS px 터치 기준 통과",
+          "장면 레지스트리, 경로 출처와 저장·복원 테스트 통과",
+          "Level 0.1 파일럿 5장 전체가 검수 완료된 뒤 별도 활성 승인"
+        ]
+      }
+    },
     { "id": "CON-L0-L02", "fromLevelId": "LV-000", "toLevelId": "LV-000.2", "direction": "one-way", "status": "concept", "boundaryType": "progressive-material-transition", "summary": "벽지와 마감이 여러 장면에 걸쳐 개보수 층으로 변하는 경계." },
     { "id": "CON-L02-L1", "fromLevelId": "LV-000.2", "toLevelId": "LV-001", "direction": "one-way", "status": "concept", "boundaryType": "unfinished-loading-threshold", "summary": "개보수 골조가 콘크리트 하역층으로 굳어지는 전환." },
     { "id": "CON-L1-L11", "fromLevelId": "LV-001", "toLevelId": "LV-001.1", "direction": "one-way", "status": "concept", "boundaryType": "lighting-state-threshold", "summary": "작업등이 하나씩 사라지며 교대 직전 상태로 진입." },

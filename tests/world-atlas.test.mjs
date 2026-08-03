@@ -31,3 +31,28 @@ test("every atlas entry has a real representative image asset", async () => {
     assert.ok(image.size > 100_000, `${level.id} representative image is unexpectedly small`);
   }
 });
+
+test("Level 0.1 has a five-scene production specification without activating generation", () => {
+  const level = atlas.levels.find((entry) => entry.id === "LV-000.1");
+  assert.equal(atlas.productionFocus.levelId, level.id);
+  assert.equal(atlas.productionFocus.phase, "specified-not-produced");
+  assert.equal(level.productionSpec.pilotSceneCount, 5);
+  assert.equal(level.productionSpec.pilotBeats.length, 5);
+  assert.equal(level.productionSpec.signatureSpaces.length, 5);
+  assert.match(level.productionSpec.routePolicy.fourPlusUse, /희귀 승인/);
+  assert.equal(atlas.canonPolicy.imagesPaused, true);
+});
+
+test("the reserved Level 0 to 0.1 boundary is anchored to the live source snapshot", () => {
+  const connection = atlas.connections.find((entry) => entry.id === "CON-L0-L01-ENTRY");
+  const scene = world.scenes.find((entry) => entry.id === connection.sourceSceneId);
+  const path = scene.paths.find((entry) => entry.id === connection.sourcePathId);
+  const contract = connection.boundaryContract;
+  assert.equal(contract.readiness, "specified-not-active");
+  assert.equal(contract.plannedArrivalSceneId, "L01-0001");
+  assert.equal(contract.sourceSnapshot.cameraHeightMeters, scene.camera.heightMeters);
+  assert.equal(contract.sourceSnapshot.lensEquivalentMm, scene.camera.lensEquivalentMm);
+  assert.equal(contract.sourceSnapshot.movementDirection, path.movementDirection);
+  assert.equal(contract.activationGates.length, 6);
+  assert.equal(path.targetSceneId, null);
+});
