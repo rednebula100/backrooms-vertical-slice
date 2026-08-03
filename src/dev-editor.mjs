@@ -111,7 +111,7 @@ export function createDevEditor({
     <aside class="editor-rail editor-glass" data-editor-rail>
       <header class="editor-brand">
         <span class="editor-brand-mark" aria-hidden="true"></span>
-        <span><strong>ROUTE STUDIO</strong><small>BACKROOMS / LEVEL 0</small></span>
+        <span><strong>ROUTE STUDIO</strong><small>BACKROOMS / WORLD</small></span>
       </header>
       <div class="editor-nav-row">
         <button class="icon-button" type="button" data-history-back aria-label="이전 장면">←</button>
@@ -153,7 +153,7 @@ export function createDevEditor({
 
     <section class="graph-workspace" data-graph-workspace>
       <header class="graph-header">
-        <div class="graph-heading"><span>WORLD GRAPH</span><strong>LEVEL 0 ROUTE MAP</strong></div>
+        <div class="graph-heading"><span>WORLD GRAPH</span><strong>PRODUCTION ROUTE MAP</strong></div>
         <div class="graph-metrics">
           <span><b data-graph-total>0</b>장면</span>
           <span><b data-graph-frontiers>0</b>미완성</span>

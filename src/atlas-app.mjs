@@ -62,6 +62,7 @@ function readinessLabel(status) {
     "specified-not-produced": "사양 고정 · 이미지 미제작",
     "pilot-in-production": "파일럿 제작 중",
     "candidate-awaiting-human-mask": "후보 생성 · 통로 검수 대기",
+    "candidate-reviewed-promotion-deferred": "통로 검수 완료 · 파일럿 승격 보류",
     "specified-not-active": "사양 고정 · 비활성",
   }[status] ?? status;
 }

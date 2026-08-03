@@ -540,6 +540,31 @@ Lighting: stale warm fluorescent residue at the entry, cold flat service light f
 Constraints: exactly one traversable passage, bending right. All other edges close continuously. No second opening, left route, side slot, dark doorway, floor channel, portal, staircase, elevator, sci-fi station, spaceship corridor, signage, text, UI, arrows, colored masks, people, entities, furniture, logo, watermark, VHS, glitch, fisheye, ultra-wide distortion, bloom, or view back into the source room.
 ```
 
+## L01-0002 Service Bend
+
+Level 0.1 파일럿의 두 번째 장면이다. Image 1은 사람 검수로 확정한 `L01-0001-C01.png`, Image 2는 아틀라스 재료 기준 `level-0-1-concept.png`이다. 공개 경계는 활성화하지 않고 `L01-0001-P1`을 후보 그래프 내부 최전선으로만 사용했다. 결과 `exec-cd6517d7-40dd-45ab-848d-60cc72968289.png`을 `L01-0002-C01.png`으로 채택했다.
+
+```text
+Use case: photorealistic-natural
+Asset type: playable Backrooms candidate L01-0002, Service Bend
+
+Input images:
+- Image 1 is the approved source scene L01-0001 and the authoritative camera, route direction, floor tangent, wall thickness, lighting, and material-continuity reference. Generate a new adjacent viewpoint after walking through its only human-confirmed passage; do not edit or restage Image 1.
+- Image 2 is material and long-term world-scale reference only. Do not copy its open atrium, railing, balcony, or panoramic composition into this scene.
+
+Advance about 8 meters along Image 1's single corridor, complete the visible RIGHTWARD bend around the attached inside wall, and stop just beyond the bend in a moderately broader service-gallery segment. From the new camera the same circulation path continues as one broad, floor-defined RIGHTWARD curve and disappears behind another attached structural frame. The geometry must read as direct forward progress from Image 1, with believable parallax; it must not mirror into a left turn.
+
+Use a restrained asymmetric service bend, slightly wider than Image 1 but still an enclosed circulation space rather than a grand chamber. Build foreground metal-frame thickness, a middle-ground curved floor plane, and a deep off-center sightline around the right bend. Avoid a repeated narrow centered doorway or a flat one-wall/one-opening layout.
+
+Dark worn metal framing and sealed wired/translucent glass now dominate about 70 percent of the visible architecture. Preserve the dark matte composite walking floor, its right-curving tangent, plain metal service ceiling, cold flat utility light, 1.65m eye-level horizon, and restrained 40mm-equivalent perspective from Image 1. Retain Level 0 only as one physically attached narrow strip of faded yellow wallpaper and a small remnant of dark base trim near the rear-left entry edge. Construction is aged, institutional, practical, and slightly inconsistent, not sleek or futuristic.
+
+Behind sealed cloudy glass, show only dim reflections, one distant horizontal service light, and an indistinct suggestion that the structure continues vertically. Do not reveal the central void, a complete lower floor, exterior space, or a panoramic atrium. Nothing behind the glass is traversable.
+
+The continuous composite floor around the right bend is the clear primary walkable route. Any recessed service panel or shallow maintenance niche is visibly closed and non-walkable. Reflections, dark glass, wall gaps, railings, floor seams, and distant structures must not read as extra passages. Route count is an intent; human annotation after generation is authoritative.
+
+Photorealistic late-1990s to mid-2000s budget consumer-digital architectural record photo; realistic material wear; subtle sensor grain; plain flat lighting; exact landscape 4:3; eye-level; asymmetric; no black border. No people, entities, furniture, readable signs, text, labels, UI, arrows, colored masks, logos, watermark, portal, staircase, elevator, spaceship corridor, sci-fi station, dramatic horror, cinematic grading, VHS, glitch, bloom, fisheye, ultra-wide distortion, visible camera, or view back into the source room.
+```
+
 ## 0.9.3 route-conditioned wave-2 completion
 
 All eight images used built-in `imagegen` generation mode. Each call supplied three references in the same order: the clean source scene, a route-selection map with the chosen path in green and sibling paths in red, and a clean crop of the chosen path. The diagnostic colors were forbidden from the outputs. All saved candidates are 1448×1086 PNG files (exact 4:3). The 2026-08-03 full editor snapshot confirmed one visible route in each candidate and promoted all eight into the connected registry.

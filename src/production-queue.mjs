@@ -47,6 +47,7 @@ export function classifyFrontiers(world, registry, annotations, {
 export function deriveCandidateStatus(candidate, annotations) {
   const annotation = annotationMap(annotations).get(candidate.id);
   if (!annotation) return "awaiting-route-annotation";
+  if (annotation.annotationStatus === "awaiting-route-annotation") return "awaiting-route-annotation";
   if (annotation.annotationStatus === "staging-masks-confirmed") return "ready-for-promotion";
   if (annotation.annotationStatus === "staging-awaiting-approval") return "awaiting-review-approval";
   return "annotation-invalid";
@@ -67,6 +68,8 @@ export function validateProductionQueue(world, registry, annotations, queue) {
   }
 
   const scenes = indexScenes(world);
+  const stagedScenes = new Map((queue.candidates ?? []).map((candidate) => [candidate.id, candidate]));
+  const annotationsById = annotationMap(annotations);
   const frontiers = new Map((registry?.frontiers ?? []).map((entry) => [entry.path_id, entry]));
   const completed = new Set(queue.completedSceneIds ?? []);
   const candidateIds = new Set();
@@ -84,12 +87,21 @@ export function validateProductionQueue(world, registry, annotations, queue) {
     candidateIds.add(candidate.id);
     if (candidateSources.has(candidate.sourcePathId)) errors.push(`Multiple candidates consume source path ${candidate.sourcePathId}`);
     candidateSources.add(candidate.sourcePathId);
-    const source = scenes.get(candidate.sourceSceneId);
+    const source = scenes.get(candidate.sourceSceneId) ?? stagedScenes.get(candidate.sourceSceneId);
     const sourcePath = source?.paths?.find((path) => path.id === candidate.sourcePathId);
     const frontier = frontiers.get(candidate.sourcePathId);
+    const stagedSource = stagedScenes.has(candidate.sourceSceneId);
     if (!source || !sourcePath || sourcePath.status !== "pending") errors.push(`Candidate ${candidate.id} must start from a pending source path`);
-    if (!frontier || frontier.current_scene_id !== candidate.sourceSceneId) errors.push(`Candidate ${candidate.id} source is missing from the frontier registry`);
-    if (candidate.branchId !== frontier?.branch_id) errors.push(`Candidate ${candidate.id} branch does not match its frontier`);
+    if (stagedSource) {
+      const sourceAnnotation = annotationsById.get(candidate.sourceSceneId);
+      if (sourceAnnotation?.annotationStatus !== "staging-masks-confirmed") {
+        errors.push(`Candidate ${candidate.id} staged source must have confirmed masks`);
+      }
+      if (candidate.branchId !== sourcePath?.frontierBranchId) errors.push(`Candidate ${candidate.id} branch does not match its staged frontier`);
+    } else {
+      if (!frontier || frontier.current_scene_id !== candidate.sourceSceneId) errors.push(`Candidate ${candidate.id} source is missing from the frontier registry`);
+      if (candidate.branchId !== frontier?.branch_id) errors.push(`Candidate ${candidate.id} branch does not match its frontier`);
+    }
     if (!candidate.image || !candidate.asset || candidate.asset.width / candidate.asset.height !== 4 / 3) {
       errors.push(`Candidate ${candidate.id} must declare an exact 4:3 image asset`);
     }

@@ -167,4 +167,6 @@ test("promotion can preserve a reviewed pilot as a staged candidate", () => {
   assert.equal(result.world.scenes.some((scene) => scene.id === "S2"), false);
   assert.equal(result.queue.candidates.some((candidate) => candidate.id === "S2"), true);
   assert.equal(result.world.scenes[0].paths[0].status, "pending");
+  assert.equal(result.queue.candidates[0].paths[0].id, "S2-P1");
+  assert.equal(result.annotations.scenes[1].masks[0].sourcePathId, "S2-P1");
 });

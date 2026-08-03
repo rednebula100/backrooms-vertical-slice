@@ -1,6 +1,6 @@
 {
   "worldVersion": "vertical-slice-0.7.0",
-  "updatedAt": "2026-08-03T17:40:03.330Z",
+  "updatedAt": "2026-08-04T03:08:50.8633790+09:00",
   "batch": {
     "id": "L01-PILOT-001",
     "strategy": "depth-first-human-gated",
@@ -53,10 +53,117 @@
         "objects": 0,
         "wrongness": 0.22
       },
-      "paths": [],
+      "paths": [
+        {
+          "id": "L01-0001-P1",
+          "status": "pending",
+          "frontier": true,
+          "frontierBranchId": "BR-L0-P1",
+          "accessibleName": "Continue through the visible passage in L01-0001",
+          "semanticDescription": "A human-confirmed visible continuation in the current level architecture",
+          "screenLocation": "right side, medium depth",
+          "physicalForm": "wall-bounded service passage",
+          "movementDirection": "forward then right",
+          "movementType": "DIRECT",
+          "targetSceneId": null,
+          "targetCamera": null,
+          "continuityAnchors": [
+            "forward-then-right movement from L0-0009A-P1",
+            "continuous taupe carpet into one composite-floor seam",
+            "yellow wallpaper retained at the entry wall",
+            "level 1.65m horizon with a restrained 40mm view"
+          ],
+          "regions": {
+            "desktop": [
+              [
+                1174,
+                257
+              ],
+              [
+                813,
+                252
+              ],
+              [
+                809,
+                613
+              ],
+              [
+                1176,
+                652
+              ]
+            ],
+            "mobile": [
+              [
+                1207,
+                223
+              ],
+              [
+                781,
+                218
+              ],
+              [
+                776,
+                644
+              ],
+              [
+                1209,
+                690
+              ]
+            ]
+          }
+        }
+      ],
       "generatorOutput": "exec-9d821502-e217-4c99-922e-e3b2c8a26aeb.png",
       "promptRecord": "docs/generation-prompts.md#l01-0001-transition-clamp",
       "observedVisibleRouteCount": 1
+    },
+    {
+      "id": "L01-0002",
+      "levelId": "LV-000.1",
+      "branchId": "BR-L0-P1",
+      "status": "awaiting-route-annotation",
+      "approvalStatus": "generated-candidate",
+      "reviewStatus": "needs-human-route-annotation",
+      "staging": true,
+      "accessibleName": "an unreviewed Level 0.1 service bend candidate",
+      "description": "The approved right-curving transition advances into a moderately broader metal and sealed-glass service gallery while the Level 0 finish recedes to one attached strip.",
+      "sourceSceneId": "L01-0001",
+      "sourcePathId": "L01-0001-P1",
+      "boundaryContractId": "CON-L0-L01-ENTRY",
+      "pilotBeatId": "L01-B02",
+      "spaceId": "L01-SP-GALLERY",
+      "transitionRelation": "same-space-advance",
+      "continuityAnchors": [
+        "single broad composite-floor route continuing around the right bend",
+        "worn dark metal frames and sealed wired-glass panels",
+        "one narrow yellow wallpaper remnant at the rear-left entry edge",
+        "level 1.65m horizon with a restrained 40mm view"
+      ],
+      "recentChanges": [
+        "Generated from the human-confirmed L01-0001-P1 staged frontier without activating the public Level 0.1 boundary.",
+        "Kept the central void concealed while increasing the share of metal and sealed glass for pilot beat L01-B02."
+      ],
+      "image": "/scenes/L01-0002/candidates/L01-0002-C01.png",
+      "asset": {
+        "width": 1448,
+        "height": 1086,
+        "aspectRatio": "4:3"
+      },
+      "camera": {
+        "heightMeters": 1.65,
+        "lensEquivalentMm": 40,
+        "facing": "forward then right from L01-0001-P1"
+      },
+      "state": {
+        "openness": 0.42,
+        "ceiling": 0.34,
+        "objects": 0,
+        "wrongness": 0.24
+      },
+      "paths": [],
+      "generatorOutput": "exec-cd6517d7-40dd-45ab-848d-60cc72968289.png",
+      "promptRecord": "docs/generation-prompts.md#l01-0002-service-bend",
+      "observedVisibleRouteCount": 0
     }
   ]
 }

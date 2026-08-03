@@ -61,9 +61,9 @@ function makePendingPath(scene, mask, pathId, branchId) {
     frontier: true,
     frontierBranchId: branchId,
     accessibleName: `Continue through the visible passage in ${scene.id}`,
-    semanticDescription: "A human-confirmed visible continuation in the Level 0 architecture",
+    semanticDescription: "A human-confirmed visible continuation in the current level architecture",
     screenLocation: position.location,
-    physicalForm: "wall-bounded carpeted passage",
+    physicalForm: scene.levelId === "LV-000" ? "wall-bounded carpeted passage" : "wall-bounded service passage",
     movementDirection: position.direction,
     movementType: "DIRECT",
     targetSceneId: null,
@@ -71,6 +71,18 @@ function makePendingPath(scene, mask, pathId, branchId) {
     continuityAnchors: scene.continuityAnchors.slice(0, 4),
     regions: accessibleRegions(mask.regions, scene.asset),
   };
+}
+
+function materializeDeferredPaths(candidate, record, registeredRouteIds) {
+  if (!record?.reviewComplete || record.annotationStatus !== "staging-masks-confirmed") return;
+  candidate.paths = record.masks.map((mask, index) => {
+    const pathId = mask.sourcePathId ?? `${candidate.id}-P${index + 1}`;
+    const branchId = index === 0 ? candidate.branchId : `BR-${pathId}`;
+    mask.sourcePathId = pathId;
+    mask.status = "pending";
+    if (!candidate.paths?.some((path) => path.id === pathId)) registeredRouteIds.push(pathId);
+    return makePendingPath(candidate, mask, pathId, branchId);
+  });
 }
 
 function graphDepths(world) {
@@ -213,6 +225,11 @@ export function promoteReviewedCandidates({
   }
 
   const approvedFourPlus = new Set(queue.batch?.fourPlusApprovedSceneIds ?? []);
+  if (!promoteCandidates) {
+    for (const candidate of queue.candidates) {
+      materializeDeferredPaths(candidate, annotationById.get(candidate.id), registeredRouteIds);
+    }
+  }
   const ready = queue.candidates.filter((candidate) => {
     if (!promoteCandidates) return false;
     const record = annotationById.get(candidate.id);

@@ -36,6 +36,7 @@ test("classifyFrontiers reserves source paths already consumed by active candida
 test("deriveCandidateStatus follows the staging annotation", () => {
   const candidate = { id: "S2" };
   assert.equal(deriveCandidateStatus(candidate, { scenes: [] }), "awaiting-route-annotation");
+  assert.equal(deriveCandidateStatus(candidate, { scenes: [{ sceneId: "S2", annotationStatus: "awaiting-route-annotation" }] }), "awaiting-route-annotation");
   assert.equal(deriveCandidateStatus(candidate, { scenes: [{ sceneId: "S2", annotationStatus: "staging-awaiting-approval" }] }), "awaiting-review-approval");
   assert.equal(deriveCandidateStatus(candidate, { scenes: [{ sceneId: "S2", annotationStatus: "staging-masks-confirmed" }] }), "ready-for-promotion");
 });
@@ -68,4 +69,60 @@ test("validateProductionQueue accepts multiple independent staged candidates", (
     }],
   };
   assert.deepEqual(validateProductionQueue(world, frontiers, { scenes: [] }, queue), []);
+});
+
+test("validateProductionQueue accepts a candidate sourced from a reviewed staged path", () => {
+  const baseCandidate = {
+    branchId: "B1",
+    image: "/candidate.png",
+    asset: { width: 1448, height: 1086 },
+    generatorOutput: "output.png",
+    promptRecord: "docs/prompts#candidate",
+  };
+  const stagedSource = {
+    ...baseCandidate,
+    id: "S2",
+    sourceSceneId: "S1",
+    sourcePathId: "S1-P1",
+    status: "ready-for-promotion",
+    paths: [{ ...world.scenes[0].paths[0], id: "S2-P1", frontierBranchId: "B1" }],
+  };
+  const stagedTarget = {
+    ...baseCandidate,
+    id: "S3",
+    image: "/S3.png",
+    sourceSceneId: "S2",
+    sourcePathId: "S2-P1",
+    status: "awaiting-route-annotation",
+  };
+  const stagedAnnotations = {
+    worldVersion: "test",
+    scenes: [
+      ...confirmed.scenes,
+      {
+        sceneId: "S2",
+        image: stagedSource.image,
+        observedVisibleRouteCount: 1,
+        annotationStatus: "staging-masks-confirmed",
+        reviewComplete: true,
+        masks: [{ id: "MASK-S2-01", sourcePathId: "S2-P1", status: "pending" }],
+      },
+      {
+        sceneId: "S3",
+        image: stagedTarget.image,
+        observedVisibleRouteCount: 0,
+        annotationStatus: "awaiting-route-annotation",
+        reviewComplete: false,
+        masks: [],
+      },
+    ],
+  };
+  const errors = validateProductionQueue(world, frontiers, stagedAnnotations, {
+    worldVersion: "test",
+    batch: { id: "BATCH", strategy: "depth-first-human-gated", targetSceneCount: 5 },
+    completedSceneIds: [],
+    candidates: [stagedSource, stagedTarget],
+  });
+
+  assert.deepEqual(errors, []);
 });

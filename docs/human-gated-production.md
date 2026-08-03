@@ -41,6 +41,8 @@ npm run annotations:import -- <내보낸-json-경로>
 
 여러 장의 파일럿을 먼저 테스트하고 공개 연결은 나중에 열 때는 `--defer-promotion`을 붙인다. 이 모드는 전체 장면의 마스크 수정과 검수 완료 상태는 반영하지만, 검수된 후보를 정식 플레이 경로로 승격하지 않는다.
 
+승격을 보류한 검수 완료 후보의 마스크에는 `<scene-id>-P<n>` 형식의 안정적인 내부 경로 ID가 생긴다. 다음 후보는 이 경로를 출발점으로 삼아 후보 그래프 안에서 연속 제작할 수 있고, 공개 `scenes.json`과 레벨 진입 경계는 5장 전체 승인 전까지 바뀌지 않는다.
+
 ```powershell
 npm run annotations:import -- <내보낸-json-경로> --defer-promotion
 ```
