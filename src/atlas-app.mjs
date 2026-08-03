@@ -113,10 +113,24 @@ function renderArticle() {
     <p class="article-summary">${escapeHtml(level.summary)}</p>
     <hr class="article-rule" />
     <section class="article-section"><h2>핵심 정체성</h2><p class="identity">${escapeHtml(level.coreIdentity)}</p></section>
-    <section class="article-section"><h2>공간 DNA</h2>${renderRules(level.spatialDNA)}</section>
-    <section class="article-section"><h2>드리프트 금지</h2>${renderRules(level.forbiddenDrift, "forbidden")}</section>
+    <section class="article-section prose-section"><h2>세계 안에서의 역할</h2><p>${escapeHtml(level.narrativeFunction)}</p></section>
+    <section class="article-section prose-section"><h2>공간 구조</h2><p>${escapeHtml(level.spatialStructure)}</p></section>
+    <div class="wiki-columns">
+      <section class="article-section"><h2>공간 DNA</h2>${renderRules(level.spatialDNA)}</section>
+      <section class="article-section"><h2>환경 법칙</h2>${renderRules(level.environmentalRules)}</section>
+    </div>
+    <div class="wiki-columns">
+      <section class="article-section"><h2>현상</h2>${renderRules(level.phenomena)}</section>
+      <section class="article-section"><h2>위험</h2>${renderRules(level.hazards, "hazard")}</section>
+    </div>
     <section class="article-section"><h2>내부 지역</h2>${renderRegions(level)}</section>
+    <div class="wiki-columns">
+      <section class="article-section"><h2>입구</h2>${renderRules(level.entrances, "passage")}</section>
+      <section class="article-section"><h2>출구</h2>${renderRules(level.exits, "passage")}</section>
+    </div>
     <section class="article-section"><h2>연결 후보</h2>${renderConnections(level)}</section>
+    <section class="article-section"><h2>드리프트 금지</h2>${renderRules(level.forbiddenDrift, "forbidden")}</section>
+    <section class="article-section"><h2>미확정 질문</h2>${renderRules(level.openQuestions, "questions")}</section>
     <section class="article-section"><h2>참고 기준</h2>${renderSources(level)}</section>`;
   article.focus({ preventScroll: true });
 }

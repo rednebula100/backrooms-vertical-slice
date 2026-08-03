@@ -28,6 +28,21 @@ export function validateAtlas(atlas, world = null) {
     if (!LEVEL_STATUSES.has(level.status)) errors.push(`Invalid level status for ${level.id}: ${level.status}`);
     if (!Array.isArray(level.spatialDNA) || level.spatialDNA.length < 3) errors.push(`${level.id} needs at least three spatial DNA rules`);
     if (!Array.isArray(level.forbiddenDrift) || level.forbiddenDrift.length < 3) errors.push(`${level.id} needs at least three forbidden drift rules`);
+    if (!level.narrativeFunction?.trim()) errors.push(`${level.id} needs a narrative function`);
+    if (!level.spatialStructure?.trim()) errors.push(`${level.id} needs a spatial structure description`);
+    const wikiLists = [
+      ["environmentalRules", 3],
+      ["phenomena", 2],
+      ["hazards", 2],
+      ["entrances", 1],
+      ["exits", 1],
+      ["openQuestions", 2],
+    ];
+    for (const [field, minimum] of wikiLists) {
+      if (!Array.isArray(level[field]) || level[field].length < minimum) {
+        errors.push(`${level.id} needs at least ${minimum} ${field} entries`);
+      }
+    }
     if (level.kind === "sublevel") {
       if (!levels.has(level.parentLevelId)) errors.push(`${level.id} has missing parent ${level.parentLevelId}`);
       if (levels.get(level.parentLevelId)?.kind !== "level") errors.push(`${level.id} parent must be a top-level level`);
