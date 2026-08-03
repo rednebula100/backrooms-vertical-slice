@@ -60,6 +60,8 @@ function imageStatusLabel(status) {
 function readinessLabel(status) {
   return {
     "specified-not-produced": "사양 고정 · 이미지 미제작",
+    "pilot-in-production": "파일럿 제작 중",
+    "candidate-awaiting-human-mask": "후보 생성 · 통로 검수 대기",
     "specified-not-active": "사양 고정 · 비활성",
   }[status] ?? status;
 }
@@ -159,7 +161,7 @@ function renderProductionSpec(level) {
     <header><span>08</span><h2>제작 사양</h2></header>
     <div class="spec-lede"><span>${escapeHtml(readinessLabel(spec.readiness))} · SPEC ${escapeHtml(spec.specVersion)}</span><p>${escapeHtml(spec.pilotObjective)}</p></div>
     <section class="article-section"><h3>${escapeHtml(spec.pilotSceneCount)}장 파일럿 흐름</h3>
-      <ol class="pilot-beats">${spec.pilotBeats.map((beat, beatIndex) => `<li><span>${String(beatIndex + 1).padStart(2, "0")} · ${escapeHtml(beat.id)}</span><b>${escapeHtml(beat.title)}</b><p>${escapeHtml(beat.purpose)}</p><small>${escapeHtml(beat.topologyIntent)}</small></li>`).join("")}</ol>
+      <ol class="pilot-beats">${spec.pilotBeats.map((beat, beatIndex) => `<li data-production-state="${escapeHtml(beat.status ?? "planned")}"><span>${String(beatIndex + 1).padStart(2, "0")} · ${escapeHtml(beat.id)}</span><b>${escapeHtml(beat.title)}</b><p>${escapeHtml(beat.purpose)}</p><small>${escapeHtml(beat.topologyIntent)}</small>${beat.candidateSceneId ? `<a class="pilot-beat-status" href="./?dev=1&amp;scene=${escapeHtml(beat.candidateSceneId)}">${escapeHtml(readinessLabel(beat.status))}<b>${escapeHtml(beat.candidateSceneId)} 편집</b></a>` : ""}</li>`).join("")}</ol>
     </section>
     <section class="article-section"><h3>대표 공간 5종</h3>
       <div class="signature-spaces">${spec.signatureSpaces.map((space) => `<article><span>${escapeHtml(space.id)}</span><h4>${escapeHtml(space.title)}</h4><p>${escapeHtml(space.role)}</p><div><b>필수 단서</b><ul>${space.requiredCues.map((cue) => `<li>${escapeHtml(cue)}</li>`).join("")}</ul></div><div><b>금지</b><ul>${space.forbiddenCues.map((cue) => `<li>${escapeHtml(cue)}</li>`).join("")}</ul></div></article>`).join("")}</div>

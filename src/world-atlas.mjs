@@ -2,7 +2,7 @@ const LEVEL_STATUSES = new Set(["in-production", "skeleton", "concept"]);
 const REGION_STATUSES = new Set(["observed", "planned", "concept"]);
 const CONNECTION_STATUSES = new Set(["reserved", "concept"]);
 const IMAGE_STATUSES = new Set(["observed", "concept"]);
-const PRODUCTION_READINESS = new Set(["specified-not-produced"]);
+const PRODUCTION_READINESS = new Set(["specified-not-produced", "pilot-in-production"]);
 const BOUNDARY_READINESS = new Set(["specified-not-active"]);
 
 function duplicates(values) {
@@ -15,8 +15,8 @@ export function validateAtlas(atlas, world = null) {
   if (!atlas || typeof atlas !== "object") return ["World atlas must be an object"];
   if (!atlas.atlasVersion) errors.push("World atlas is missing atlasVersion");
   if (!/^\d{4}-\d{2}-\d{2}$/.test(atlas.lastUpdated ?? "")) errors.push("World atlas is missing a valid lastUpdated date");
-  if (atlas.canonPolicy?.imagesPaused !== true) errors.push("World atlas must keep image generation paused");
-  if (atlas.canonPolicy?.atlasConceptImagesAllowed !== true) errors.push("World atlas must distinguish concept imagery from paused playable-scene generation");
+  if (typeof atlas.canonPolicy?.imagesPaused !== "boolean") errors.push("World atlas must declare whether playable-scene generation is paused");
+  if (atlas.canonPolicy?.atlasConceptImagesAllowed !== true) errors.push("World atlas must distinguish concept imagery from playable-scene generation");
   if (!Array.isArray(atlas.levels) || !atlas.levels.length) errors.push("World atlas must contain levels");
   if (!Array.isArray(atlas.regions)) errors.push("World atlas regions must be an array");
   if (!Array.isArray(atlas.connections)) errors.push("World atlas connections must be an array");
@@ -34,6 +34,9 @@ export function validateAtlas(atlas, world = null) {
     if (!connections.has(focus.entryConnectionId)) errors.push(`Production focus references missing connection ${focus.entryConnectionId}`);
     if (!PRODUCTION_READINESS.has(focus.phase)) errors.push(`Invalid production focus phase: ${focus.phase}`);
     if (!Number.isInteger(focus.pilotSceneCount) || focus.pilotSceneCount < 1) errors.push("Production focus needs a positive pilot scene count");
+    if (!Number.isInteger(focus.generatedCandidateCount) || focus.generatedCandidateCount < 0 || focus.generatedCandidateCount > focus.pilotSceneCount) errors.push("Production focus has an invalid generated candidate count");
+    if (!Number.isInteger(focus.reviewedSceneCount) || focus.reviewedSceneCount < 0 || focus.reviewedSceneCount > focus.generatedCandidateCount) errors.push("Production focus has an invalid reviewed scene count");
+    if (focus.phase === "pilot-in-production" && atlas.canonPolicy.imagesPaused) errors.push("Pilot production cannot remain image-paused");
     if (!focus.summary?.trim()) errors.push("Production focus needs a summary");
   }
 
@@ -84,6 +87,7 @@ export function validateAtlas(atlas, world = null) {
       }
       for (const beat of spec.pilotBeats ?? []) {
         if (!beat.id?.trim() || !beat.title?.trim() || !beat.purpose?.trim() || !beat.topologyIntent?.trim()) errors.push(`${level.id} has an incomplete pilot beat`);
+        if (beat.status && !/^L\d{2}-\d{4}$/.test(beat.candidateSceneId ?? "")) errors.push(`${beat.id} has an invalid candidate scene id`);
       }
       for (const space of spec.signatureSpaces ?? []) {
         if (!space.id?.trim() || !space.title?.trim() || !space.role?.trim()) errors.push(`${level.id} has an incomplete signature space`);

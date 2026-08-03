@@ -5,6 +5,7 @@ import { validateAtlas, createAtlasIndex } from "../src/world-atlas.mjs";
 
 const atlas = JSON.parse(await readFile(new URL("../public/world/atlas.json", import.meta.url), "utf8"));
 const world = JSON.parse(await readFile(new URL("../public/scenes/scenes.json", import.meta.url), "utf8"));
+const staging = JSON.parse(await readFile(new URL("../public/scenes/staging-scenes.json", import.meta.url), "utf8"));
 
 test("world atlas is internally consistent", () => {
   assert.deepEqual(validateAtlas(atlas, world), []);
@@ -16,10 +17,10 @@ test("atlas index exposes regions and both sides of connections", () => {
   assert.ok(index.connectionsByLevel.get("LV-000.1").some((entry) => entry.relation === "incoming"));
 });
 
-test("new atlas entries remain documentation-only", () => {
-  assert.equal(atlas.canonPolicy.imagesPaused, true);
+test("playable generation is limited to the inactive Level 0.1 pilot", () => {
+  assert.equal(atlas.canonPolicy.imagesPaused, false);
   assert.equal(atlas.canonPolicy.atlasConceptImagesAllowed, true);
-  assert.equal(atlas.levels.filter((level) => level.status === "in-production").length, 1);
+  assert.deepEqual(atlas.levels.filter((level) => level.status === "in-production").map((level) => level.id), ["LV-000", "LV-000.1"]);
   assert.ok(atlas.connections.every((connection) => connection.status !== "active"));
 });
 
@@ -32,15 +33,23 @@ test("every atlas entry has a real representative image asset", async () => {
   }
 });
 
-test("Level 0.1 has a five-scene production specification without activating generation", () => {
+test("Level 0.1 has one staged candidate in its five-scene pilot", () => {
   const level = atlas.levels.find((entry) => entry.id === "LV-000.1");
   assert.equal(atlas.productionFocus.levelId, level.id);
-  assert.equal(atlas.productionFocus.phase, "specified-not-produced");
+  assert.equal(atlas.productionFocus.phase, "pilot-in-production");
+  assert.equal(atlas.productionFocus.generatedCandidateCount, 1);
+  assert.equal(atlas.productionFocus.reviewedSceneCount, 0);
   assert.equal(level.productionSpec.pilotSceneCount, 5);
   assert.equal(level.productionSpec.pilotBeats.length, 5);
   assert.equal(level.productionSpec.signatureSpaces.length, 5);
   assert.match(level.productionSpec.routePolicy.fourPlusUse, /희귀 승인/);
-  assert.equal(atlas.canonPolicy.imagesPaused, true);
+  assert.equal(level.productionSpec.pilotBeats[0].candidateSceneId, "L01-0001");
+  assert.equal(level.productionSpec.pilotBeats[0].status, "candidate-awaiting-human-mask");
+  assert.equal(staging.batch.id, "L01-PILOT-001");
+  assert.equal(staging.candidates.length, 1);
+  assert.equal(staging.candidates[0].id, "L01-0001");
+  assert.equal(staging.candidates[0].sourcePathId, "L0-0009A-P1");
+  assert.equal(staging.candidates[0].status, "awaiting-route-annotation");
 });
 
 test("the reserved Level 0 to 0.1 boundary is anchored to the live source snapshot", () => {

@@ -1,10 +1,10 @@
 {
-  "atlasVersion": "0.4.0",
+  "atlasVersion": "0.5.0",
   "title": "Backrooms World Atlas",
   "lastUpdated": "2026-08-04",
   "canonPolicy": {
     "summary": "공식 위키의 상징적 명칭과 공간 인상은 선택적으로 재해석하고, 내부 구조와 연결은 이 프로젝트의 독자 캐논으로 다시 설계한다.",
-    "imagesPaused": true,
+    "imagesPaused": false,
     "atlasConceptImagesAllowed": true,
     "playerVisibility": "hidden",
     "rules": [
@@ -12,16 +12,18 @@
       "세부레벨은 부모 레벨 안에 있지만 독립적인 공간 DNA와 진입·이탈 문법을 가진다.",
       "내부 지역은 같은 레벨의 법칙 안에서 반복 발견된 공간 문법을 관리하기 위한 비공개 라벨이다.",
       "개념 연결은 실제 장면과 클릭 경로가 승인되기 전까지 플레이 가능한 연결로 취급하지 않는다.",
-      "플레이 장면 이미지 제작을 재개하기 전까지 모든 신규 항목은 문서와 데이터 뼈대로만 유지한다.",
+      "플레이 장면 이미지 제작은 productionFocus의 승인된 파일럿에만 허용하고, 다른 신규 항목은 문서와 데이터 뼈대로 유지한다.",
       "아틀라스 컨셉 이미지는 재료·비례·조명 기준이며 플레이 가능한 장면이나 확정 지형으로 취급하지 않는다."
     ]
   },
   "productionFocus": {
     "levelId": "LV-000.1",
     "entryConnectionId": "CON-L0-L01-ENTRY",
-    "phase": "specified-not-produced",
+    "phase": "pilot-in-production",
     "pilotSceneCount": 5,
-    "summary": "이미지 생성은 중지한 채 Level 0.1의 5장 파일럿과 첫 레벨 경계를 제작 가능한 사양으로 고정한다."
+    "generatedCandidateCount": 1,
+    "reviewedSceneCount": 0,
+    "summary": "Level 0.1의 첫 파일럿 후보 L01-0001을 생성했으며, 사람 통로 마스크와 장면 승인을 기다린 뒤 다음 장면으로 진행한다."
   },
   "levels": [
     {
@@ -68,7 +70,7 @@
       "kind": "sublevel",
       "parentLevelId": "LV-000",
       "origin": "reinterpretation",
-      "status": "skeleton",
+      "status": "in-production",
       "summary": "Level 0의 벽 사이에 끼어든 금속·유리 서비스 거대구조. 도달할 수 없는 중앙 공동을 둘러싼 환형 시설로 재해석한다.",
       "coreIdentity": "생활 기능의 흔적은 충분하지만 누구를 위해 만들어졌는지 알 수 없는 수직 역 구조.",
       "narrativeFunction": "Level 0의 친숙한 내부가 더 큰 기계적 구조의 얇은 외피였을 수 있다는 첫 확장이다. 세계의 규모를 수평 복도에서 수직 공동으로 넓힌다.",
@@ -86,11 +88,11 @@
       "keywords": ["환형", "중앙 공동", "금속", "반투명 유리", "수직 규모"],
       "productionSpec": {
         "specVersion": "0.1",
-        "readiness": "specified-not-produced",
+        "readiness": "pilot-in-production",
         "pilotObjective": "Level 0의 오른쪽 곡선 통로를 물리적으로 이어받으면서도, 다섯 장 안에 수평 황색 복도에서 거대한 수직 환형 구조로 세계의 규모가 넓어졌음을 증명한다.",
         "pilotSceneCount": 5,
         "pilotBeats": [
-          {"id": "L01-B01", "title": "Transition Clamp", "purpose": "황색 벽체와 카펫이 금속 문틀·어두운 보행면에 끼이는 첫 도착 장면.", "topologyIntent": "확인 가능한 전진 경로 1개"},
+          {"id": "L01-B01", "title": "Transition Clamp", "purpose": "황색 벽체와 카펫이 금속 문틀·어두운 보행면에 끼이는 첫 도착 장면.", "topologyIntent": "확인 가능한 전진 경로 1개", "status": "candidate-awaiting-human-mask", "candidateSceneId": "L01-0001"},
           {"id": "L01-B02", "title": "Service Bend", "purpose": "오른쪽 곡률을 유지한 채 금속 프레임과 반투명 유리의 비중을 늘리는 서비스 갤러리.", "topologyIntent": "주 경로 1개, 보조 경로는 최대 1개"},
           {"id": "L01-B03", "title": "Atrium Edge", "purpose": "난간·반사·원거리 조명으로 중앙 공동의 깊이를 처음 암시하되 전경은 감춘다.", "topologyIntent": "보행 경로 1개, 난간 너머 공동은 경로가 아님"},
           {"id": "L01-B04", "title": "Habitation Ring", "purpose": "사용자를 잃은 생활·서비스 흔적과 환형 곡률을 결합해 레벨의 생활 기능을 보여준다.", "topologyIntent": "서로 구분되는 경로 2개를 목표로 하되 실제 등록은 사람 검수에 따름"},

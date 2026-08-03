@@ -523,6 +523,23 @@ Style: photorealistic late-1990s to mid-2000s budget consumer-digital photograph
 Exact landscape 4:3, direct adjacent viewpoint, believable parallax and wall thickness, mostly empty. No text, UI, colored route marks, labels, arrows, people, entities, furniture, unsupported doors, windows, stairs, landmarks, dramatic horror, cinematic grading, VHS, glitch, fisheye, bloom, logo, watermark, or view of the previous room behind the camera.
 ```
 
+## L01-0001 Transition Clamp
+
+Level 0.1 파일럿의 첫 장면이다. Image 1은 실제 출발 장면 `L0-0009A-C01.png`, Image 2는 아틀라스 재료 기준 `level-0-1-concept.png`이며 둘 다 편집 대상이 아닌 연속성 참고 이미지로 사용했다. 첫 생성 `exec-9c62aa7e-8444-401f-ac82-0961045f2fbb.png`은 재료 접합과 단일 통로는 좋았지만 진행 방향이 왼쪽 곡선으로 읽혀 폐기했다. 아래 두 번째 생성 `exec-9d821502-e217-4c99-922e-e3b2c8a26aeb.png`을 `L01-0001-C01.png`으로 채택했다.
+
+```text
+Use case: photorealistic-natural
+Asset type: playable Backrooms candidate L01-0001, Transition Clamp
+Reference roles: Image 1 is the fixed source camera and selected-route continuity reference, not an edit target. Image 2 is only the material language for later Level 0.1 spaces, not the desired large-scale composition.
+Generate a brand-new view immediately after walking through Image 1's sole right-side passage, advancing about 6 meters, and finishing the source's forward-then-RIGHT turn. The direction is critical: from the new camera, the ONE walkable corridor must visibly continue bending to the RIGHT and disappear behind a solid attached inside wall on the RIGHT. The wider outer curve and sealed translucent-glass panels belong on the LEFT. Do not mirror this layout and do not create a left-turning route.
+This is a compact first threshold, not a grand atrium. Preserve the source eye-level horizon, ordinary passage width, taupe patterned carpet, yellow patterned wallpaper, dark vinyl trim, low acoustic ceiling residue, and gentle right-curving floor tangent. Physically splice these materials into worn dark metal frames, sealed wired/translucent glass, a simple metal service ceiling, and a dark matte composite floor. Show one clear construction seam where the carpet narrows and becomes the dark composite walking surface before continuing through the right bend. Yellow wallpaper remains as one attached wall segment near the entry; metal and glass are beginning to take over but do not look futuristic.
+Imply a much larger structure only with muted cold reflections and a distant horizontal light behind sealed glass. No visible atrium, balcony, drop, railing, lower floor, exterior, or alternate space that looks walkable.
+Style: photorealistic late-1990s to mid-2000s budget consumer-digital architectural photo; realistic wear; plain institutional construction; no cinematic concept-art polish.
+Composition: exact landscape 4:3, level 1.65m camera, restrained 40mm-equivalent lens, asymmetric, believable wall thickness and parallax, no black borders.
+Lighting: stale warm fluorescent residue at the entry, cold flat service light farther around the right bend.
+Constraints: exactly one traversable passage, bending right. All other edges close continuously. No second opening, left route, side slot, dark doorway, floor channel, portal, staircase, elevator, sci-fi station, spaceship corridor, signage, text, UI, arrows, colored masks, people, entities, furniture, logo, watermark, VHS, glitch, fisheye, ultra-wide distortion, bloom, or view back into the source room.
+```
+
 ## 0.9.3 route-conditioned wave-2 completion
 
 All eight images used built-in `imagegen` generation mode. Each call supplied three references in the same order: the clean source scene, a route-selection map with the chosen path in green and sibling paths in red, and a clean crop of the chosen path. The diagnostic colors were forbidden from the outputs. All saved candidates are 1448×1086 PNG files (exact 4:3). The 2026-08-03 full editor snapshot confirmed one visible route in each candidate and promoted all eight into the connected registry.
