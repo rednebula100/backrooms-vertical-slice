@@ -542,7 +542,9 @@ Constraints: exactly one traversable passage, bending right. All other edges clo
 
 ## L01-0002 Service Bend
 
-Level 0.1 파일럿의 두 번째 장면이다. Image 1은 사람 검수로 확정한 `L01-0001-C01.png`, Image 2는 아틀라스 재료 기준 `level-0-1-concept.png`이다. 공개 경계는 활성화하지 않고 `L01-0001-P1`을 후보 그래프 내부 최전선으로만 사용했다. 결과 `exec-cd6517d7-40dd-45ab-848d-60cc72968289.png`을 `L01-0002-C01.png`으로 채택했다.
+Level 0.1 파일럿의 두 번째 장면이다. 첫 결과 `L01-0002-C01.png`은 재료 변화에는 성공했지만, 사람 마스크를 실제 생성 입력으로 사용하지 않아 이전 곡선 유리 복도를 거의 같은 구도로 반복했다. 전진 완료 조건을 위반하므로 실패 이력으로 보존하고 플레이 후보에서는 제외했다.
+
+### C01 — rejected near-duplicate
 
 ```text
 Use case: photorealistic-natural
@@ -563,6 +565,82 @@ Behind sealed cloudy glass, show only dim reflections, one distant horizontal se
 The continuous composite floor around the right bend is the clear primary walkable route. Any recessed service panel or shallow maintenance niche is visibly closed and non-walkable. Reflections, dark glass, wall gaps, railings, floor seams, and distant structures must not read as extra passages. Route count is an intent; human annotation after generation is authoritative.
 
 Photorealistic late-1990s to mid-2000s budget consumer-digital architectural record photo; realistic material wear; subtle sensor grain; plain flat lighting; exact landscape 4:3; eye-level; asymmetric; no black border. No people, entities, furniture, readable signs, text, labels, UI, arrows, colored masks, logos, watermark, portal, staircase, elevator, spaceship corridor, sci-fi station, dramatic horror, cinematic grading, VHS, glitch, bloom, fisheye, ultra-wide distortion, visible camera, or view back into the source room.
+```
+
+### C02 — rejected contract drift
+
+두 번째 생성은 사람 마스크를 실제 입력 계약으로 연결했지만, 전진감을 강제하려고 프롬프트에 중앙 기둥·직선 서비스 갤러리·리브형 벽을 임의로 추가했다. 그 결과 이전 장면 끝의 곡선 구조를 잃었고 Level 0의 노란 벽지도 남았다. `exec-ce42cec5-764e-4102-a4cd-6dbad03cfb20.png`은 `L01-0002-C02.png` 실패 이력으로만 보존한다.
+
+```text
+Use case: photorealistic-natural
+Asset type: playable Backrooms candidate L01-0002-C02, a new adjacent camera view after following the selected route
+
+Input images and roles:
+- Image 1 is the clean source scene L01-0001. It is a geometry and material continuity reference, not an edit target.
+- Image 2 is a diagnostic route map. The green polygon marks the human-selected forward travel zone L01-0001-P1. It is NOT a doorway and it is NOT a surface to walk through. The player walks only on the dark floor visible in the lower part of that green zone, follows it to the right, and passes completely beyond the entire green polygon. Never reproduce green color, outlines, masks, or dimming.
+- Image 3 is a clean close crop of that selected travel zone. It shows an area the player passes through and leaves behind, not the destination composition. Do not restage or copy this crop as the new view.
+
+Primary request:
+Generate a brand-new direct next viewpoint after the player walks far enough along the selected dark floor, completes the visible right-hand bend around the attached yellow inside wall, and stops approximately 10–12 meters ahead, well beyond the selected polygon. The whole green-marked zone and its repeated glass bays are now behind the camera or confined to only a tiny rear-left edge. The camera must reveal architecture that was fully occluded around the bend in Image 1.
+
+Spatial change:
+After completing the bend, reveal a moderately broader but still enclosed service gallery. The new view faces down a straighter, asymmetrical section instead of repeating another identical sweeping glass curve. Put one heavy dark structural service pier off-center in the middle distance and an opaque ribbed metal utility wall on the right; retain sealed wired-glass only along part of the left side. The continuous dark composite floor passes clearly around the pier as ONE walkable route and continues into a single offset opening farther ahead. No second branch. No atrium panorama yet.
+
+Departure test — all are mandatory:
+- Do not repeat Image 1's composition of a long curved glass bank across the middle and a large yellow wall filling the right foreground.
+- Do not show the same sequence of glass frames at the same scale or screen position.
+- The destination must contain substantially new previously hidden floor and wall geometry.
+- The source's selected green/cropped zone must not remain the middle-ground subject.
+- The camera movement must read immediately as a completed turn and meaningful forward travel, not a 1–3 meter camera nudge.
+
+Continuity anchors:
+Keep the same 1.65m eye height, restrained 40mm-equivalent perspective, dark matte composite walking floor, low plain metal service ceiling, worn institutional dark-metal construction, cold flat utility light, and sealed cloudy wired glass. Preserve Level 0 only as a very narrow physically attached faded-yellow wallpaper strip at the extreme rear-left entry edge; it must not become a dominant wall.
+
+Style/medium:
+Photorealistic late-1990s to mid-2000s budget consumer-digital architectural record photograph, plain and practical, realistic wear, subtle sensor grain, mostly empty, exact landscape 4:3, level camera, believable parallax and wall thickness, restrained rather than cinematic.
+
+Route constraints:
+Exactly one traversable continuation. Glass is sealed and non-walkable. The floor around the service pier must not split into two viable paths: one side is visibly blocked by the pier joining a low service barrier, leaving only one clear passage. No doors added without support, no staircase, elevator, balcony, railing, exterior, complete atrium, portal, people, entities, furniture, readable signs, text, UI, labels, arrows, colored masks, logos, watermark, spaceship, sleek sci-fi station, dramatic horror, cinematic grading, VHS, glitch, fisheye, ultra-wide distortion, bloom, or view back into the previous room.
+```
+
+### C03 — strict route-packet retry, selected
+
+세 번째 생성은 B02의 기존 계약만 사용했다. 오른쪽 곡률·통로 폭·카메라·외측 유리와 내측 벽을 유지하고, 카메라가 Level 0.1 내부로 들어온 만큼 Level 0 재료는 전부 화면 밖으로 보냈다. 임의의 기둥·직선 갤러리·새 방을 추가하지 않았다. 결과 `exec-6c41a41f-0bd1-4117-82c8-8bdd135559ca.png`을 `L01-0002-C03.png` 검수 후보로 채택했다.
+
+```text
+Use case: photorealistic-natural
+Asset type: playable Backrooms candidate L01-0002-C03, generated strictly from the confirmed L01-0001-P1 route packet
+
+Input images:
+- Image 1 is the clean source scene L01-0001 and the authoritative physical continuity reference.
+- Image 2 is the route-selection map. Green marks the human-confirmed travel zone L01-0001-P1. The player follows the dark floor in the lower part of this zone; green is diagnostic only and must never appear in the output.
+- Image 3 is the clean crop of L01-0001-P1. It is the section of corridor the player advances into. It is not a doorway and the glass is not traversable.
+All three images are references, not edit targets.
+
+Transition relation: same-space-advance.
+Camera transition: move forward about 6–8 meters along the selected dark composite floor while continuing through the SAME broad right-hand curve visible in Image 1. Do not finish the curve into a straight hall. Do not replace the curved composition with a new room. The next camera is farther around the same curve, so the exact frames seen in the selected crop have enlarged and moved past the camera with believable parallax, while a later unseen section of the continuing curve is revealed ahead.
+
+Required spatial continuity:
+- Preserve the same rightward floor tangent, curve direction, corridor width, ceiling height, 1.65m horizon, and restrained 40mm-equivalent lens.
+- Keep sealed wired-glass and worn dark metal frames along the OUTER LEFT side of the curve.
+- Keep a solid attached INNER RIGHT wall following the same curve.
+- The single walkable route continues around that inner right wall and disappears farther to the RIGHT.
+- Show a later part of the same curved service passage, not a near-duplicate frame and not an unrelated gallery.
+
+Level/material state:
+The camera is now fully inside Level 0.1. Remove every Level 0 remnant from the visible frame. Absolutely no yellow or beige wallpaper, no taupe carpet, no acoustic ceiling tiles, and no Level 0 base trim. The inner right wall is aged dark charcoal metal service cladding, not wallpaper. The floor is entirely dark matte composite. The ceiling is entirely low plain dark service metal. The outer curve is sealed cloudy wired glass in worn dark frames. Cold, flat utility lighting only.
+
+Do not invent spatial features:
+No central pier, freestanding column, straight corridor, ribbed feature wall, new chamber, door, maintenance doorway, branch, side opening, barrier, railing, balcony, atrium panorama, stairs, elevator, exterior, or furniture. This beat is only the continued curved service bend specified by the route packet.
+
+Movement/readability test:
+The view must still be recognizably curved, but it must not copy Image 1's exact glass-frame positions or crop composition. The source's selected bays are now beside or behind the camera, and newly revealed later glass bays and the later continuation of the inner curved wall occupy the middle and far distance. The result must read as real forward motion along one continuous curve.
+
+Style/medium:
+Photorealistic late-1990s to mid-2000s budget consumer-digital architectural record photograph; restrained institutional construction; realistic wear; subtle sensor grain; plain flat lighting; mostly empty; exact landscape 4:3; level camera; believable wall thickness and parallax.
+
+Constraints:
+Exactly one traversable continuation. Glass is sealed and non-walkable. No text, signs, UI, labels, arrows, colored masks, people, entities, logos, watermark, portal, spaceship, sleek sci-fi station, dramatic horror, cinematic grading, VHS, glitch, fisheye, ultra-wide distortion, or bloom.
 ```
 
 ## 0.9.3 route-conditioned wave-2 completion

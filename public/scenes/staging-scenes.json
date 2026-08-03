@@ -126,7 +126,7 @@
       "reviewStatus": "needs-human-route-annotation",
       "staging": true,
       "accessibleName": "an unreviewed Level 0.1 service bend candidate",
-      "description": "The approved right-curving transition advances into a moderately broader metal and sealed-glass service gallery while the Level 0 finish recedes to one attached strip.",
+      "description": "The camera advances farther through the same broad right-hand service bend as Level 0 materials disappear completely, leaving only worn dark metal, sealed wired glass, and composite flooring.",
       "sourceSceneId": "L01-0001",
       "sourcePathId": "L01-0001-P1",
       "boundaryContractId": "CON-L0-L01-ENTRY",
@@ -134,16 +134,19 @@
       "spaceId": "L01-SP-GALLERY",
       "transitionRelation": "same-space-advance",
       "continuityAnchors": [
-        "single broad composite-floor route continuing around the right bend",
-        "worn dark metal frames and sealed wired-glass panels",
-        "one narrow yellow wallpaper remnant at the rear-left entry edge",
+        "the same broad right-hand floor tangent continuing into the new view",
+        "sealed wired-glass and worn dark frames on the outer left curve",
+        "solid attached dark-metal wall on the inner right curve",
+        "Level 0 material seam now entirely behind the camera",
         "level 1.65m horizon with a restrained 40mm view"
       ],
       "recentChanges": [
         "Generated from the human-confirmed L01-0001-P1 staged frontier without activating the public Level 0.1 boundary.",
-        "Kept the central void concealed while increasing the share of metal and sealed glass for pilot beat L01-B02."
+        "Rejected C01 because it restaged the source glass curve instead of showing meaningful forward travel.",
+        "Rejected C02 because it replaced the required curve with an invented straight gallery and incorrectly retained yellow Level 0 wallpaper.",
+        "Generated C03 strictly from the route packet: the same right-hand curve continues with visible parallax and only Level 0.1 metal, glass, ceiling, and floor materials remain."
       ],
-      "image": "/scenes/L01-0002/candidates/L01-0002-C01.png",
+      "image": "/scenes/L01-0002/candidates/L01-0002-C03.png",
       "asset": {
         "width": 1448,
         "height": 1086,
@@ -152,16 +155,21 @@
       "camera": {
         "heightMeters": 1.65,
         "lensEquivalentMm": 40,
-        "facing": "forward then right from L01-0001-P1"
+        "facing": "farther along the same right-hand curve from L01-0001-P1"
       },
       "state": {
-        "openness": 0.42,
+        "openness": 0.4,
         "ceiling": 0.34,
         "objects": 0,
         "wrongness": 0.24
       },
       "paths": [],
-      "generatorOutput": "exec-cd6517d7-40dd-45ab-848d-60cc72968289.png",
+      "generatorOutput": "exec-6c41a41f-0bd1-4117-82c8-8bdd135559ca.png",
+      "generationReferences": {
+        "cleanSource": "/scenes/L01-0001/candidates/L01-0001-C01.png",
+        "routeMap": "/scenes/L01-0001/route-packets/L01-0001-P1-route-map.png",
+        "routeCrop": "/scenes/L01-0001/route-packets/L01-0001-P1-route-crop.png"
+      },
       "promptRecord": "docs/generation-prompts.md#l01-0002-service-bend",
       "observedVisibleRouteCount": 0
     }
